@@ -1,4 +1,4 @@
-![main-cover](./assets/banners/main-banner.png)
+![main-cover](./docs/assets/banners/main-banner.png)
 
 # Guardia, Core Banking 
 
@@ -11,7 +11,7 @@ Nossa missão é capacitar empresas de tecnologia financeira a maximizar resulta
 
 Combinamos o poder do Open Source com as possibilidades da Inteligência Artificial para impulsionar a escalabilidade das operações, simplificar integrações e garantir transações seguras e consistentes em tempo real.
 
-![maximize-your-future](./assets/banners/pt-br/maximize-your-future.png)
+![maximize-your-future](./docs/assets/banners/pt-br/maximize-your-future.png)
 
 ## Projetos:
 
@@ -71,7 +71,7 @@ Além disso, acreditamos que a comunidade open source desempenha um papel fundam
 
 Nosso compromisso é apoiar, participar e contribuir ativamente com essa comunidade, reforçando os valores de transparência, colaboração e excelência que definem o open source.
 
-![own-your-freedom](./assets/banners/pt-br/own-your-freedom.png)
+![own-your-freedom](./docs/assets/banners/pt-br/own-your-freedom.png)
 
 
 ---
