@@ -36,17 +36,20 @@
 <body>
     <div class="container">
         <div class="wip-banner">
-            <span>🚧 Em Construção 🚧</span>
+            <span data-i18n="banner.wip">🚧 Em Construção 🚧</span>
         </div>
 
         <!-- Botão de idiomas -->
         <div class="language-switcher">
             <div class="language-options">
-                <a href="javascript:void(0)" class="language-option" onclick="changeLanguage('en')">
-                    English
+                <a href="javascript:void(0)" class="language-option" onclick="changeLanguage('pt')" data-i18n="languages.portuguese">
+                    Português
                 </a>
-                <a href="javascript:void(0)" class="language-option" onclick="changeLanguage('es')">
+                <a href="javascript:void(0)" class="language-option" onclick="changeLanguage('es')" data-i18n="languages.spanish">
                     Español
+                </a>
+                <a href="javascript:void(0)" class="language-option" onclick="changeLanguage('en')" data-i18n="languages.english">
+                    English
                 </a>
             </div>
             <button class="language-button">
@@ -56,20 +59,20 @@
 
         <section class="hero-section">
             <img src="./assets/logos/logotipo-white.png" alt="Guardia Logo" class="logo">
-            <h1>Bem-vindo ao início. Bem-vindo à Guardia. Aproveite a jornada!</h1>
-            <p class="hero-text">Mude seu core, Maximize seu futuro.</p>
-            <a href="#" class="cta-button">Open Roadmap</a>
+            <h1 data-i18n="hero.title"></h1>
+            <p class="hero-text" data-i18n="hero.subtitle"></p>
+            <a href="#" class="cta-button" data-i18n="hero.getStarted"></a>
         </section>
 
         <section class="products">
             <div class="product-container">
                 <div class="product-card">
                     <div class="badge-container">
-                        <div class="dev-badge blue">Em desenvolvimento</div>
-                        <div class="version-badge">v0.0.1-alpha</div>
+                        <div class="dev-badge blue" data-i18n="products.status.development"></div>
+                        <div class="version-badge">v0.1.0-alpha</div>
                     </div>
                     <h2><i class="fas fa-book"></i> LKE (Ledger Kernel Engine)</h2>
-                    <p>Motor de contabilidade multi-tenant para gestão financeira avançada. Organize livros contábeis em múltiplos ledgers, segmente-os em books e chapters, faça transações com Triple-entry Bookkeeping, Multi-signing e Cross-ledger em múltiplas moedas, garantindo transparência e conformidade com registros imutáveis.</p>
+                    <p data-i18n="products.lke.description"></p>
                     <div class="sub-cards">
                         <a href="#" class="sub-card" target="_blank">
                             <i class="fab fa-github"></i>
@@ -81,21 +84,21 @@
                         </a>
                         <a href="#" class="sub-card" target="_blank">
                             <i class="fab fa-docker"></i>
-                            <span>DockerHub</span>
+                            <span>Docker Hub</span>
                         </a>
                         <a href="#" class="sub-card" target="_blank">
                             <i class="fas fa-book"></i>
-                            <span>Documentação</span>
+                            <span data-i18n="products.documentation"></span>
                         </a>
                     </div>
                 </div>
                 <div class="product-card">
                     <div class="badge-container">
-                        <div class="dev-badge gray">Em planejamento</div>
+                        <div class="dev-badge gray" data-i18n="products.status.planning"></div>
                         <div class="version-badge">v0.0.0</div>
                     </div>
                     <h2><i class="fas fa-wallet"></i> BASE (Banking System Engine)</h2>
-                    <p>Core de plataforma de Banking com integração a LKE ou ledgers externas via contratos low code. Gerencie contas com múltiplos titulares, saldos em moedas fiat e não-fiat, exibidos de forma agregada ou individual. Transacione por diversos rails, gerencie contrapartes e conecte-se a múltiplos provedores bancários com multi-roteamento.</p>
+                    <p data-i18n="products.base.description"></p>
                     <div class="sub-cards">
                         <a href="#" class="sub-card" target="_blank">
                             <i class="fab fa-github"></i>
@@ -107,11 +110,11 @@
                         </a>
                         <a href="#" class="sub-card" target="_blank">
                             <i class="fab fa-docker"></i>
-                            <span>DockerHub</span>
+                            <span>Docker Hub</span>
                         </a>
                         <a href="#" class="sub-card" target="_blank">
                             <i class="fas fa-book"></i>
-                            <span>Documentação</span>
+                            <span data-i18n="products.documentation"></span>
                         </a>
                     </div>
                 </div>
@@ -123,24 +126,24 @@
                 <div class="resource-card">
                     <div class="resource-header">
                         <i class="fas fa-code"></i>
-                        <h3>Padrões e Convenções</h3>
+                        <h3 data-i18n="resources.patterns.title"></h3>
                     </div>
                     <div class="resource-links">
                         <a href="./CODE_CONVENTIONS.md" class="resource-link">
                             <i class="fas fa-file-code"></i>
-                            <span>Convenção de Código</span>
+                            <span data-i18n="resources.patterns.codeConventions"></span>
                         </a>
                         <a href="./PROJECT_PATTERNS.md" class="resource-link">
                             <i class="fas fa-puzzle-piece"></i>
-                            <span>Padrões de Projeto</span>
+                            <span data-i18n="resources.patterns.projectPatterns"></span>
                         </a>
                         <a href="./ARCHITECTURE_PATTERN.md" class="resource-link">
                             <i class="fas fa-sitemap"></i>
-                            <span>Padrão de Arquitetura</span>
+                            <span data-i18n="resources.patterns.architecturePattern"></span>
                         </a>
                         <a href="./SEMANTIC_VERSIONING.md" class="resource-link">
                             <i class="fas fa-code-branch"></i>
-                            <span>Versionamento Semântico</span>
+                            <span data-i18n="resources.patterns.semanticVersioning"></span>
                         </a>
                         <a href="./CLOUD_EVENTS.md" class="resource-link">
                             <i class="fas fa-cloud"></i>
@@ -160,7 +163,7 @@
                 <div class="resource-card">
                     <div class="resource-header">
                         <i class="fas fa-book"></i>
-                        <h3>Documentação</h3>
+                        <h3 data-i18n="resources.documentation.title"></h3>
                     </div>
                     <div class="resource-links">
                         <a href="https://apidog.guardia.finance" class="resource-link">
@@ -171,13 +174,9 @@
                             <i class="fas fa-rocket"></i>
                             <span>Postman</span>
                         </a>
-                        <a href="./SDKS.md" class="resource-link">
-                            <i class="fas fa-code"></i>
-                            <span>SDKs</span>
-                        </a>
                         <a href="./RELEASE_NOTES.md" class="resource-link">
                             <i class="fas fa-clipboard-list"></i>
-                            <span>Release Notes</span>
+                            <span data-i18n="resources.documentation.releaseNotes"></span>
                         </a>
                     </div>
                 </div>
@@ -185,20 +184,20 @@
                 <div class="resource-card">
                     <div class="resource-header">
                         <i class="fas fa-users"></i>
-                        <h3>Comunidade</h3>
+                        <h3 data-i18n="resources.community.title"></h3>
                     </div>
                     <div class="resource-links">
                         <a href="./CONTRIBUTING.md" class="resource-link">
                             <i class="fas fa-hands-helping"></i>
-                            <span>Como Contribuir</span>
+                            <span data-i18n="resources.community.howToContribute"></span>
                         </a>
                         <a href="./CODE_OF_CONDUCT.md" class="resource-link">
                             <i class="fas fa-handshake"></i>
-                            <span>Código de Conduta</span>
+                            <span data-i18n="resources.community.codeOfConduct"></span>
                         </a>
                         <a href="./README.md" class="resource-link">
                             <i class="fas fa-heart"></i>
-                            <span>Nosso compromisso</span>
+                            <span data-i18n="resources.community.ourCommitment"></span>
                         </a>
                     </div>
                 </div>
@@ -208,7 +207,7 @@
 
         <section class="sdk-grid">
             <div class="container">
-                <h2 class="sdk-title">SDKs Disponíveis</h2>
+                <h2 class="sdk-title" data-i18n="sdks.title"></h2>
                 <div class="sdk-cards">
                     <a href="https://github.com/guardia-sdk/python" class="sdk-card">
                         <div class="sdk-icon">
@@ -269,17 +268,17 @@
         <section class="discord-invite">
             <div class="discord-container">
                 <i class="fab fa-discord"></i>
-                <h2>Junte-se à nossa comunidade</h2>
-                <p>Participe das discussões, tire dúvidas e contribua com o desenvolvimento da Guardia.</p>
+                <h2 data-i18n="discord.title"></h2>
+                <p data-i18n="discord.description"></p>
                 <a href="#" class="discord-button" target="_blank">
                     <i class="fab fa-discord"></i>
-                    Entrar no Discord
+                    <span data-i18n="discord.button"></span>
                 </a>
             </div>
         </section>
 
         <footer>
-            <p>&copy; Guardia, 2025. Todos os direitos reservados.</p>
+            <p data-i18n="footer.copyright"></p>
             <div class="social-links">
                 <a href="https://github.com/guardiafinance" class="social-link" target="_blank">GitHub</a> |
                 <a href="https://linkedin.com/company/guardiafinance" class="social-link" target="_blank">LinkedIn</a> |
@@ -288,8 +287,8 @@
                 <a href="https://youtube.com/@guardiafinance" class="social-link" target="_blank">YouTube</a>
             </div>
             <div class="footer-links">
-                <a href="./PRIVACY_POLICY.md">Política de Privacidade</a> •
-                <a href="./SECURITY.md">Política de Segurança</a>
+                <a href="./PRIVACY_POLICY.md" data-i18n="footer.privacyPolicy"></a> •
+                <a href="./SECURITY.md" data-i18n="footer.securityPolicy"></a>
             </div>
         </footer>
     </div>
@@ -301,8 +300,11 @@
         fallbackLng: 'pt',
         debug: true,
         backend: {
-          loadPath: '/locales/{{lng}}.json'
+          loadPath: './locales/{{lng}}.json'
         }
+      }, function(err, t) {
+        if (err) return console.error('Erro ao inicializar i18next:', err);
+        updateContent();
       });
 
     function changeLanguage(lang) {
@@ -315,28 +317,15 @@
     function updateContent() {
         document.querySelectorAll('[data-i18n]').forEach(element => {
             const key = element.getAttribute('data-i18n');
-            element.textContent = i18next.t(key);
+            const translation = i18next.t(key);
+            if (translation) {
+                element.textContent = translation;
+            }
         });
     }
 
     document.addEventListener('DOMContentLoaded', () => {
-        const elements = {
-            '.wip-banner span': 'wip',
-            '.sdk-title': 'sdks.title',
-            '.sdk-button': 'sdks.viewDocs',
-            '#open-source-title': 'openSource.title',
-            '#open-source-p1': 'openSource.p1',
-            '#open-source-p2': 'openSource.p2',
-            '#open-source-p3': 'openSource.p3',
-            '#open-source-p4': 'openSource.p4'
-        };
-
-        for (let [selector, key] of Object.entries(elements)) {
-            const element = document.querySelector(selector);
-            if (element) {
-                element.setAttribute('data-i18n', key);
-            }
-        }
+        updateContent();
     });
     </script>
 </body>
