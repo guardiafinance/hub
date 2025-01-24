@@ -400,11 +400,16 @@ footer {
 }
 
 .sdk-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
     background: rgba(255,255,255,0.1);
-    border-radius: 8px;
-    padding: 1rem;
-    text-align: center;
-    transition: all 0.3s ease;
+    padding: 30px;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+    text-decoration: none;
 }
 
 .sdk-card:hover {
@@ -413,14 +418,19 @@ footer {
 }
 
 .sdk-icon {
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
+    font-size: 32px;
+    color: #e07400;
+}
+
+.sdk-icon i, .sdk-icon svg {
+    font-size: 32px;
     color: #e07400;
 }
 
 .sdk-card h3 {
-    margin: 0 0 0.5rem 0;
-    font-size: 1rem;
+    margin-top: 10px;
+    margin-bottom: 25px;
+    text-decoration: none;
 }
 
 .sdk-button {
@@ -437,6 +447,54 @@ footer {
 .sdk-button:hover {
     background: rgba(224,116,0,0.3);
     transform: translateY(-2px);
+}
+
+.sdk-badges {
+    position: absolute;
+    bottom: 15px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 15px;
+    pointer-events: none;
+}
+
+.sdk-status, .sdk-version {
+    font-size: 0.65rem;
+    padding: 1px 4px;
+    border-radius: 3px;
+    text-transform: uppercase;
+}
+
+.sdk-status {
+    font-weight: 500;
+}
+
+.sdk-status.wip {
+    background: rgba(66, 153, 225, 0.2);
+    color: #4299e1;
+}
+
+.sdk-status.stable {
+    background: rgba(72, 187, 120, 0.2);
+    color: #48bb78;
+}
+
+.sdk-status.unstable {
+    background: rgba(236, 201, 75, 0.2);
+    color: #ecc94b;
+}
+
+.sdk-status.deprecated {
+    background: rgba(160, 174, 192, 0.2);
+    color: #a0aec0;
+}
+
+.sdk-version {
+    background: rgba(0, 0, 0, 0.2);
+    font-family: monospace;
+    text-transform: lowercase;
 }
 
 @media (max-width: 1200px) {
