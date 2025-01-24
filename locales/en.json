@@ -1,0 +1,43 @@
+{
+  "wip": "Work In Progress",
+  "sdks": {
+    "title": "Available SDKs",
+    "viewDocs": "View Documentation",
+    "languages": {
+      "python": "Python",
+      "go": "Go",
+      "rust": "Rust",
+      "nodejs": "Node.js",
+      "csharp": "C#",
+      "ruby": "Ruby",
+      "java": "Java"
+    }
+  },
+  "nav": {
+    "docs": "Documentation",
+    "sdks": "SDKs",
+    "api": "API Reference",
+    "support": "Support",
+    "github": "GitHub"
+  },
+  "hero": {
+    "title": "Guardia Documentation",
+    "subtitle": "Everything you need to integrate with our platform",
+    "getStarted": "Get Started"
+  },
+  "openSource": {
+    "title": "Our commitment to the Open Source Community",
+    "p1": "Guardia is a company that values the open source community and is firmly committed to contributing to open source software development. We believe that open source is the best way to create high-quality software efficiently, securely, and collaboratively, driving innovation and continuous evolution.",
+    "p2": "In the financial market, to which we are closely connected, the open source community has played a crucial role in accelerating innovation, reducing costs, and promoting security and transparency. Initiatives like Pix and Drex benefit not only from the expertise of major players like The Linux Foundation and Red Hat but also from an active and collaborative global community that continuously contributes to the evolution of these platforms.",
+    "p3": "Furthermore, we believe that the open source community plays a fundamental role in economic and social development. It empowers new professionals, promotes social inclusion, and democratizes access to technology, creating opportunities for everyone and helping to build a more equitable future.",
+    "p4": "Our commitment is to support, participate in, and actively contribute to this community, reinforcing the values of transparency, collaboration, and excellence that define open source."
+  },
+  "footer": {
+    "copyright": "© 2024 Guardia. All rights reserved.",
+    "links": {
+      "privacy": "Privacy",
+      "terms": "Terms",
+      "contact": "Contact"
+    }
+  }
+} 

@@ -1,0 +1,43 @@
+{
+  "wip": "Trabajo en Progreso",
+  "sdks": {
+    "title": "SDKs Disponibles",
+    "viewDocs": "Ver Documentación",
+    "languages": {
+      "python": "Python",
+      "go": "Go",
+      "rust": "Rust",
+      "nodejs": "Node.js",
+      "csharp": "C#",
+      "ruby": "Ruby",
+      "java": "Java"
+    }
+  },
+  "nav": {
+    "docs": "Documentación",
+    "sdks": "SDKs",
+    "api": "API Reference",
+    "support": "Soporte",
+    "github": "GitHub"
+  },
+  "hero": {
+    "title": "Documentación de Guardia",
+    "subtitle": "Todo lo que necesitas para integrar con nuestra plataforma",
+    "getStarted": "Comenzar Ahora"
+  },
+  "openSource": {
+    "title": "Nuestro compromiso con la Comunidad Open Source",
+    "p1": "Guardia es una empresa que valora la comunidad de código abierto y está firmemente comprometida a contribuir al desarrollo de software de código abierto. Creemos que el código abierto es la mejor manera de crear software de alta calidad de manera eficiente, segura y colaborativa, impulsando la innovación y la evolución continua.",
+    "p2": "En el mercado financiero, al cual estamos estrechamente conectados, la comunidad de código abierto ha jugado un papel crucial en acelerar la innovación, reducir costos y promover la seguridad y la transparencia. Iniciativas como Pix y Drex se benefician no solo de la experiencia de grandes actores como The Linux Foundation y Red Hat, sino también de una comunidad global activa y colaborativa que contribuye continuamente a la evolución de estas plataformas.",
+    "p3": "Además, creemos que la comunidad de código abierto juega un papel fundamental en el desarrollo económico y social. Capacita a nuevos profesionales, promueve la inclusión social y democratiza el acceso a la tecnología, creando oportunidades para todos y ayudando a construir un futuro más equitativo.",
+    "p4": "Nuestro compromiso es apoyar, participar y contribuir activamente a esta comunidad, reforzando los valores de transparencia, colaboración y excelencia que definen el código abierto."
+  },
+  "footer": {
+    "copyright": "© 2024 Guardia. Todos los derechos reservados.",
+    "links": {
+      "privacy": "Privacidad",
+      "terms": "Términos",
+      "contact": "Contacto"
+    }
+  }
+} 

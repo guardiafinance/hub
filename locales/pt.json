@@ -1,0 +1,43 @@
+{
+  "wip": "Em Desenvolvimento",
+  "sdks": {
+    "title": "SDKs Disponíveis",
+    "viewDocs": "Ver Documentação",
+    "languages": {
+      "python": "Python",
+      "go": "Go",
+      "rust": "Rust",
+      "nodejs": "Node.js",
+      "csharp": "C#",
+      "ruby": "Ruby",
+      "java": "Java"
+    }
+  },
+  "nav": {
+    "docs": "Documentação",
+    "sdks": "SDKs",
+    "api": "API Reference",
+    "support": "Suporte",
+    "github": "GitHub"
+  },
+  "hero": {
+    "title": "Documentação da Guardia",
+    "subtitle": "Tudo que você precisa para integrar com nossa plataforma",
+    "getStarted": "Começar Agora"
+  },
+  "openSource": {
+    "title": "Nosso compromisso com a Comunidade Open Source",
+    "p1": "A Guardia é uma empresa que valoriza a comunidade open source e está firmemente comprometida em contribuir para o desenvolvimento de software de código aberto. Acreditamos que o open source é a melhor forma de criar software de alta qualidade, de maneira eficiente, segura e colaborativa, impulsionando a inovação e a evolução contínua.",
+    "p2": "No mercado financeiro, ao qual estamos intimamente conectados, a comunidade open source tem desempenhado um papel crucial ao acelerar a inovação, reduzir custos e promover segurança e transparência. Iniciativas como o Pix e o Drex se beneficiam não apenas da expertise de grandes players como The Linux Foundation e Red Hat, mas também de uma comunidade global ativa e colaborativa que contribui continuamente para a evolução dessas plataformas.",
+    "p3": "Além disso, acreditamos que a comunidade open source desempenha um papel fundamental no desenvolvimento econômico e social. Ela capacita novos profissionais, promove a inclusão social e democratiza o acesso à tecnologia, criando oportunidades para todos e ajudando a construir um futuro mais equitativo.",
+    "p4": "Nosso compromisso é apoiar, participar e contribuir ativamente com essa comunidade, reforçando os valores de transparência, colaboração e excelência que definem o open source."
+  },
+  "footer": {
+    "copyright": "© 2024 Guardia. Todos os direitos reservados.",
+    "links": {
+      "privacy": "Privacidade",
+      "terms": "Termos",
+      "contact": "Contato"
+    }
+  }
+} 
