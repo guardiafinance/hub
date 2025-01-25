@@ -20,9 +20,9 @@ Combinamos o poder do Open Source com as possibilidades da Inteligência Artific
 - [Guardia Ledger Kernel Engine](https://github.com/guardia-lke)
 - [Guardia Banking System Engine](https://github.com/guardia-base)
 
-### Wrench App
+### Projetos Apoiados
 
-- [GoWrench](https://github.com/guardia-open-banking)
+- [GoWrench](https://github.com/WrenchApps/GoWrench)
 
 ## Modelo de Negócios Open Core
 
