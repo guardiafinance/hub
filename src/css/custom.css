@@ -1,0 +1,225 @@
+/**
+ * Guardia theme colors and styles
+ */
+
+:root {
+  /* Cores base do Guardia */
+  --guardia-orange: #e07400;
+  --guardia-purple: #1f092b;
+  --guardia-purple-dark: #2a0d3a;
+  --discord-color: #5865F2;
+  --discord-color-dark: #4752C4;
+  
+  /* Tema claro - padrão */
+  --ifm-color-primary: var(--guardia-purple);
+  --ifm-color-primary-dark: #1a0824;
+  --ifm-color-primary-darker: #160720;
+  --ifm-color-primary-darkest: #12051a;
+  --ifm-color-primary-light: #240a32;
+  --ifm-color-primary-lighter: #280b36;
+  --ifm-color-primary-lightest: #2c0d3c;
+  
+  --ifm-background-color: #ffffff;
+  --ifm-background-surface-color: #f5f5f5;
+  --ifm-navbar-background-color: rgba(255, 255, 255, 0.95);
+  --ifm-font-color-base: var(--guardia-purple);
+  --ifm-heading-color: var(--guardia-purple);
+  --ifm-menu-color: var(--guardia-purple);
+  --ifm-toc-link-color: var(--guardia-purple);
+  
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+}
+
+/* Dark mode */
+[data-theme='dark'] {
+  --ifm-color-primary: var(--guardia-orange);
+  --ifm-color-primary-dark: #ca6900;
+  --ifm-color-primary-darker: #bf6300;
+  --ifm-color-primary-darkest: #9d5200;
+  --ifm-color-primary-light: #f67f00;
+  --ifm-color-primary-lighter: #ff8500;
+  --ifm-color-primary-lightest: #ff9420;
+  
+  --ifm-background-color: linear-gradient(135deg, #1f092b, #2a0d3a) !important;
+  --ifm-background-surface-color: #2a0d3a !important;
+  --ifm-navbar-background-color: rgba(31, 9, 43, 0.95);
+  --ifm-footer-background-color: var(--guardia-purple-dark);
+  --ifm-font-color-base: #ffffff;
+  --ifm-heading-color: #ffffff;
+  --ifm-menu-color: #ffffff;
+  --ifm-toc-link-color: #ffffff;
+
+  --ifm-card-background-color: rgba(255, 255, 255, 0.1);
+  
+  --docusaurus-highlighted-code-line-bg: rgba(255, 255, 255, 0.1);
+}
+
+/* Força o background no root */
+html[data-theme='dark'] {
+  background: var(--ifm-background-color) !important;
+}
+
+/* Reset básico */
+html, body {
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+/* Base styles */
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Tema escuro - background gradiente */
+[data-theme='dark'] body {
+  background: var(--ifm-background-color) !important;
+}
+
+/* Tema claro - background branco */
+[data-theme='light'] body {
+  background: #ffffff;
+}
+
+/* Remove todos os backgrounds padrão no tema escuro */
+[data-theme='dark'] #__docusaurus,
+[data-theme='dark'] .main-wrapper,
+[data-theme='dark'] main {
+  background: transparent !important;
+}
+
+/* Navbar */
+.navbar {
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+[data-theme='dark'] .navbar {
+  background-color: rgba(31, 9, 43, 0.97);
+}
+
+/* Footer */
+.footer {
+  margin-top: 50px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  text-align: center;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* WIP Banner */
+.wip-banner {
+  background: var(--guardia-orange);
+  color: white;
+  text-align: center;
+  padding: 0.75rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  position: sticky;
+  top: var(--ifm-navbar-height);
+  z-index: 100;
+}
+
+/* Links */
+a {
+  color: var(--ifm-color-primary);
+  transition: all 0.3s ease;
+}
+
+a:hover {
+  color: var(--ifm-color-primary-darker);
+  text-decoration: none;
+}
+
+/* Buttons */
+.button {
+  color: white;
+  background: var(--ifm-color-primary);
+  transition: all 0.3s ease;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+}
+
+/* Discord button */
+.discord-button {
+  background: var(--discord-color);
+  color: white;
+}
+
+.discord-button:hover {
+  background: var(--discord-color-dark);
+}
+
+/* Cards */
+.card {
+  transition: all 0.3s ease;
+}
+
+[data-theme='dark'] .card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+}
+
+[data-theme='light'] .card {
+  background: white;
+  box-shadow: 0 2px 8px rgba(31, 9, 43, 0.1);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+[data-theme='dark'] .card:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* Icons */
+[data-theme='light'] .icon {
+  color: var(--guardia-purple);
+}
+
+[data-theme='dark'] .icon {
+  color: var(--guardia-orange);
+}
+
+/* Badges */
+.badge {
+  border-radius: 20px;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+[data-theme='light'] .badge {
+  background: rgba(31, 9, 43, 0.1);
+  color: var(--guardia-purple);
+}
+
+[data-theme='dark'] .badge {
+  background: rgba(224, 116, 0, 0.1);
+  color: var(--guardia-orange);
+}
+
+/* Responsiveness */
+@media (max-width: 996px) {
+  .container {
+    padding: 0 1rem;
+  }
+}
+
+/* Container principal */
+#__docusaurus {
+  min-height: 100vh;
+}
+
+.main-wrapper {
+  min-height: 100vh;
+}
+
+[data-theme='dark'] .main-wrapper {
+  background: linear-gradient(135deg, #1f092b, #2a0d3a);
+}

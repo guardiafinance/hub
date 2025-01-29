@@ -1,0 +1,29 @@
+{
+  "homepage.hero.title": "Guardia Developer Hub",
+  "homepage.hero.tagline": "The Cloud Native and Open Source banking core designed for the new era of digital economy",
+  "homepage.hero.cta": "Get Started",
+  
+  "products.status.development": "Development",
+  "products.status.planning": "Planning",
+  "products.documentation": "Documentation",
+  "products.lke.description": "The distributed ledger engine designed for the new era of digital economy",
+  "products.base.description": "The banking engine that simplifies the complexity of financial systems",
+  
+  "resources.patterns.title": "Patterns",
+  "resources.patterns.codeConventions": "Code Conventions",
+  "resources.patterns.projectPatterns": "Project Patterns",
+  "resources.patterns.architecturePattern": "Architecture Pattern",
+  "resources.patterns.semanticVersioning": "Semantic Versioning",
+  
+  "resources.documentation.title": "Documentation",
+  "resources.documentation.releaseNotes": "Release Notes",
+  
+  "resources.community.title": "Community",
+  "resources.community.howToContribute": "How to Contribute",
+  "resources.community.codeOfConduct": "Code of Conduct",
+  "resources.community.ourCommitment": "Our Commitment",
+  
+  "discord.title": "Join our community",
+  "discord.description": "Connect with other developers, share experiences and stay up to date with Guardia news",
+  "discord.button": "Join Discord"
+} 
