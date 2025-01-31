@@ -6,9 +6,9 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
   title: 'Guardia Developer Hub',
-  tagline: 'Dinosaurs are cool',
+  tagline: 'Guardia Developer Hub',
   favicon: 'img/favicon.ico',
-  url: 'https://your-docusaurus-site.example.com',
+  url: 'https://hub.guardia.finance',
   baseUrl: '/',
   organizationName: 'facebook',
   projectName: 'hub',
@@ -17,8 +17,8 @@ const config: Config = {
   onBrokenMarkdownLinks: 'warn',
   
   i18n: {
-    defaultLocale: 'en',
-    locales: ['en'],
+    defaultLocale: 'pt-BR',
+    locales: ['pt-BR','en'],
   },
 
   presets: [
@@ -29,22 +29,8 @@ const config: Config = {
           sidebarPath: './sidebars.ts',          
           editUrl:
             'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
-        },
-        blog: {
-          showReadingTime: true,
-          feedOptions: {
-            type: ['rss', 'atom'],
-            xslt: true,
-          },
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
-          // Useful options to enforce blogging best practices
-          onInlineTags: 'warn',
-          onInlineAuthors: 'warn',
-          onUntruncatedBlogPosts: 'warn',
-        },
+        },  
+        blog: false,      
         theme: {
           customCss: './src/css/custom.css',
         },
@@ -64,12 +50,16 @@ const config: Config = {
           type: 'docSidebar',
           sidebarId: 'tutorialSidebar',
           position: 'left',
-          label: 'Tutorial',
+          label: 'Docs',
         },        
         {
           href: 'https://github.com/guardiafinance',
           label: 'GitHub',
           position: 'right',
+        },
+        {
+          type: 'localeDropdown',
+          position: 'right'
         },
       ],
     },
@@ -105,11 +95,11 @@ const config: Config = {
           items: [
             {
               label: 'Política de Privacidade',
-              to: '/privacy',
+              to: '/',
             },
             {
               label: 'Política de Segurança',
-              to: '/security',
+              to: '/',
             },
           ],
         },
