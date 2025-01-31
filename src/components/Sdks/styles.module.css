@@ -1,0 +1,90 @@
+.container {
+  padding: 20px;  
+  border-radius: 8px;
+  text-align: center;
+}
+
+.sdkTitle {
+  color: #fff;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.sdkGrid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.sdkCard {
+  box-sizing: content-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;  
+  background: rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 20px;
+  margin: 3px;
+  width: 120px;  
+  text-align: center;
+  color: #fff;
+  text-decoration: none !important;
+}
+
+.sdkCard i, .sdkCard svg {
+  color: #e07400;
+}
+
+.sdkCard i{
+  font-size: 36px;  
+}
+
+.sdkCard span {
+  display: block;
+  margin: 2px 0;
+  font-weight: bold;
+  font-size: 1.17em;
+}
+
+.sdkCard svg {
+  width: 36px;
+  height: 36px;
+}
+
+.sdkStatus, .sdkVersion {
+  padding: 3px;
+  border-radius: 10%;
+}
+
+.sdkStatus {    
+  background: rgba(66, 153, 225, 0.2);
+  color: #4299e1;
+}
+
+.sdkVersion {
+  background: rgba(0, 0, 0, 0.2);
+  font-family: monospace;
+  text-transform: lowercase;
+}
+
+.tags {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.tags span {
+  display: inline;
+  font-size: 11px;    
+}
+
+.sdkCard:hover {
+  transform: translateY(-5px);
+  transition: transform 0.3s ease;
+}
+
+.sdkCard:hover, .sdkLanguage:hover {
+  color: #e07400;
+}

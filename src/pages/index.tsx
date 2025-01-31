@@ -1,24 +1,61 @@
-import React from 'react';
+import type {ReactNode} from 'react';
+import clsx from 'clsx';
+import Link from '@docusaurus/Link';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
-import HomepageHero from '@site/src/components/HomepageHero';
-import ProductsSection from '@site/src/components/ProductsSection';
-import ResourcesSection from '@site/src/components/ResourcesSection';
-import SdkGrid from '@site/src/components/SdkGrid';
-import DiscordSection from '@site/src/components/DiscordSection';
+import Heading from '@theme/Heading';
+import ConstructionBanner from '@site/src/components/ConstructionBanner';
+import ProductCards from '@site/src/components/ProductCards';
+import DocLinks from '@site/src/components/DocLinks';
+import Sdks from '@site/src/components/Sdks';
+import DiscordCommunity from '@site/src/components/DiscordCommunity';
 
-export default function Home(): JSX.Element {
+import styles from './index.module.css';
+
+function HomepageHeader() {
+  const {siteConfig} = useDocusaurusContext();
   return (
-    <Layout>
-      <div className="wip-banner">
-        🚧 Em Construção 🚧
+    <div className={styles.container}>
+      <div className="container">
+        <img 
+          src="/img/logotipo-white.png" 
+          alt="Guardia Logo" 
+          className={styles.heroLogo}
+        />
+        <Heading as="h1" className="hero__title">
+          Bem-vindo ao início. Bem-vindo à Guardia. Aproveite a jornada!
+        </Heading>
+        <p className="hero__subtitle">
+          Mude seu core. Maximize seu futuro.
+        </p>
+        <div className={styles.buttons}>
+          <Link
+            className="button button--secondary button--lg"
+            to="/docs/intro">
+            Open Roadmap
+          </Link>
+        </div>
       </div>
-      <main>
-        <HomepageHero />
-        <ProductsSection />
-        <ResourcesSection />
-        <SdkGrid />
-        <DiscordSection />
-      </main>
-    </Layout>
+    </div>
+  );
+}
+
+export default function Home(): ReactNode {
+  const {siteConfig} = useDocusaurusContext();
+  return (
+    <>
+      <ConstructionBanner/>
+      <Layout
+        title={`${siteConfig.title}`}
+        description="Description will go into a meta tag in <head />">      
+        <div className={styles.background}>
+          <HomepageHeader />             
+          <ProductCards />
+          <DocLinks />
+          <Sdks />
+          <DiscordCommunity />
+        </div >        
+      </Layout>
+    </>    
   );
 }

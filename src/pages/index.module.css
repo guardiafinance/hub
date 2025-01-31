@@ -1,0 +1,56 @@
+.background {
+  background: linear-gradient(135deg, #1f092b, #2a0d3a);
+}
+
+.container {
+  padding: 4rem 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  min-height: 50vh;
+  display: flex;
+  align-items: center;  
+  color: white;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.heroLogo {
+  width: 200px;
+  margin-bottom: 2rem;
+}
+
+@media screen and (max-width: 996px) {
+  .heroBanner {
+    padding: 2rem;
+  }
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+/* Estilo para o botão */
+:global(.button.button--secondary) {
+  background-color: #f97316;
+  color: white;
+  border: none;
+  transition: background-color 0.2s;
+}
+
+:global(.button.button--secondary:hover) {
+  background-color: #ea580c;
+}
+
+/* Ajustes de texto */
+:global(.hero__title) {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+:global(.hero__subtitle) {
+  font-size: 1.2rem;
+  opacity: 0.8;
+}

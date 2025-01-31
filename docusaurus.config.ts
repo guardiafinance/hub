@@ -6,42 +6,45 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
   title: 'Guardia Developer Hub',
-  tagline: 'O core bancário Cloud Native e Open Source',
+  tagline: 'Dinosaurs are cool',
   favicon: 'img/favicon.ico',
-
-  // Set the production url of your site here
-  url: 'https://guardia.finance',
-  // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, it is often '/<projectName>/'
+  url: 'https://your-docusaurus-site.example.com',
   baseUrl: '/',
-
-  // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'guardiafinance', // Usually your GitHub org/user name.
-  projectName: 'hub', // Usually your repo name.
+  organizationName: 'facebook',
+  projectName: 'hub',
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
-
-  // Even if you don't use internationalization, you can use this field to set
-  // useful metadata like html lang. For example, if your site is Chinese, you
-  // may want to replace "en" with "zh-Hans".
+  
   i18n: {
-    defaultLocale: 'pt',
-    locales: ['pt', 'en', 'es'],
+    defaultLocale: 'en',
+    locales: ['en'],
   },
-
-  // Adicione esta linha para o Font Awesome
-  stylesheets: [
-    'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css',
-  ],
 
   presets: [
     [
       'classic',
       {
-        docs: false,
-        blog: false,
+        docs: {
+          sidebarPath: './sidebars.ts',          
+          editUrl:
+            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+        },
+        blog: {
+          showReadingTime: true,
+          feedOptions: {
+            type: ['rss', 'atom'],
+            xslt: true,
+          },
+          // Please change this to your repo.
+          // Remove this to remove the "edit this page" links.
+          editUrl:
+            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          // Useful options to enforce blogging best practices
+          onInlineTags: 'warn',
+          onInlineAuthors: 'warn',
+          onUntruncatedBlogPosts: 'warn',
+        },
         theme: {
           customCss: './src/css/custom.css',
         },
@@ -49,40 +52,92 @@ const config: Config = {
     ],
   ],
 
-  themeConfig: {
-    // Configuração das cores e modo do tema
-    colorMode: {
-      defaultMode: 'dark',
-      disableSwitch: false,
-      respectPrefersColorScheme: true,
-    },
-    
-    // Replace with your project's social card
+  themeConfig: {    
     image: 'img/docusaurus-social-card.jpg',
-    navbar: {
-      title: 'Guardia Developer Hub',
+    navbar: {      
       logo: {
         alt: 'Guardia Logo',
-        src: 'img/logo.svg',
+        src: 'img/logotipo-white.png',
       },
       items: [
         {
-          type: 'localeDropdown',
+          type: 'docSidebar',
+          sidebarId: 'tutorialSidebar',
+          position: 'left',
+          label: 'Tutorial',
+        },        
+        {
+          href: 'https://github.com/guardiafinance',
+          label: 'GitHub',
           position: 'right',
         },
       ],
-      style: 'dark',
     },
     footer: {
       style: 'dark',
-      links: [],
-      copyright: `Copyright © ${new Date().getFullYear()} Guardia Finance`,
+      copyright: `© Guardia, ${new Date().getFullYear()}. Todos os direitos reservados.`,
+      links: [
+        {
+          items: [
+            {
+              label: 'GitHub',
+              href: 'https://github.com/guardiafinance',
+            },
+            {
+              label: 'LinkedIn',
+              href: 'https://linkedin.com/company/guardia-finance',
+            },
+            {
+              label: 'Instagram',
+              href: 'https://instagram.com/guardia',
+            },
+            {
+              label: 'Facebook',
+              href: 'https://facebook.com/guardia',
+            },
+            {
+              label: 'YouTube',
+              href: 'https://youtube.com/guardia',
+            },
+          ],
+        },
+        {
+          items: [
+            {
+              label: 'Política de Privacidade',
+              to: '/privacy',
+            },
+            {
+              label: 'Política de Segurança',
+              to: '/security',
+            },
+          ],
+        },
+      ],
     },
     prism: {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
     },
+    colorMode: {
+      disableSwitch: true,
+      defaultMode: 'dark',
+      respectPrefersColorScheme: false,
+    },
   } satisfies Preset.ThemeConfig,
+
+  headTags: [
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'stylesheet',
+        href: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css',
+      },
+    },
+  ],
+
+  plugins: [
+  ],
 };
 
 export default config;

@@ -1,6 +1,6 @@
 ![main-cover](./portal/assets/banners/main-banner.png)
 
-# Guardia, Core Banking 
+This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
 
 ### O core bancário Cloud Native e Open Source, projetado para a nova era da economia digital.
 
@@ -34,30 +34,13 @@ Combinamos o poder do Open Source com as possibilidades da Inteligência Artific
 
 O modelo de negócios **Open Core** é uma abordagem utilizada por empresas que trabalham com software de código aberto, que combina o melhor do código aberto com a sustentabilidade de um negócio, permitindo que uma empresa ou projeto cresça enquanto apoia e é apoiado por sua comunidade.
 
-### **Como funciona o Open Core?**
+### Build
 
-1. **Base Open Source:**
-   - O núcleo do software é disponibilizado como código aberto, permitindo que qualquer pessoa use, modifique e distribua conforme as licenças open source.
-   - Isso incentiva a adoção em larga escala, colaboração e contribuições da comunidade. Além disso, é o primeiro ponto de contato com o produto.
+```
+$ yarn build
+```
 
-2. **Funcionalidades Proprietárias:**
-   - Recursos avançados, ferramentas de gestão, integrações específicas, suporte técnico ou serviços adicionais são mantidos como componentes proprietários e geralmente exigem uma assinatura paga.
-   - Essas funcionalidades são voltadas para clientes corporativos ou usuários com necessidades mais complexas.
-
-### **Vantagens do Modelo Open Core**
-
-1. **Adoção Ampliada:**
-   - Como a base do software é gratuita, ele pode atingir um público amplo, incluindo desenvolvedores individuais, pequenas empresas e organizações que não podem ou simplesmente não querem pagar por soluções completamente proprietárias.
-
-3. **Evolução e Inovação Contínua:**
-   - A comunidade de código aberto pode ajudar a melhorar o núcleo do software, corrigindo bugs, desenvolvendo novos recursos, extensões
-   e garantindo a evolução do produto.
-
-4. **Modelo Sustentável:**
-   - O modelo permite que as empresas monetizem as funcionalidades enterprise, tornando o negócio viável e garantindo a continuidade do desenvolvimento do software.
-
-4. **Flexibilidade para os Clientes:**
-   - Pequenas empresas ou desenvolvedores podem usar a versão gratuita sem se preocupar com a licença, enquanto empresas maiores e grandes organizações podem se beneficiar de funcionalidades avançadas pagando por recursos adicionais.
+This command generates static content into the `build` directory and can be served using any static contents hosting service.
 
 ### **Exemplos de Empresas que Utilizam Open Core**
 
