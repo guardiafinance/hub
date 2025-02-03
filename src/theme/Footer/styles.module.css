@@ -1,0 +1,27 @@
+footer {    
+    padding-top: 30px;
+    padding-bottom: 30px;
+    border-top: 1px solid rgba(255,255,255,0.2);
+    text-align: center;
+    font-size: .9rem;
+    color: rgba(255,255,255,0.7);
+}
+
+.socialLinks a{
+    color: white;
+}
+
+.socialLinks a:hover {
+    color: #f97316;
+}
+.footerLinks {
+    margin-top: 1rem;
+    font-size: 0.85rem;
+    opacity: 0.7;
+}
+
+.footerLinks a {
+    color: white;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+}

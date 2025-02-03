@@ -10,7 +10,7 @@ const config: Config = {
   favicon: 'img/favicon.ico',
   url: 'https://hub.guardia.finance',
   baseUrl: '/',
-  organizationName: 'facebook',
+  organizationName: 'guardia',
   projectName: 'hub',
 
   onBrokenLinks: 'throw',
@@ -18,7 +18,7 @@ const config: Config = {
   
   i18n: {
     defaultLocale: 'pt-BR',
-    locales: ['pt-BR','en'],
+    locales: ['pt-BR','en','es'],
   },
 
   presets: [
@@ -26,9 +26,7 @@ const config: Config = {
       'classic',
       {
         docs: {
-          sidebarPath: './sidebars.ts',          
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          sidebarPath: './sidebars.ts',         
         },  
         blog: false,      
         theme: {
@@ -60,48 +58,6 @@ const config: Config = {
         {
           type: 'localeDropdown',
           position: 'right'
-        },
-      ],
-    },
-    footer: {
-      style: 'dark',
-      copyright: `© Guardia, ${new Date().getFullYear()}. Todos os direitos reservados.`,
-      links: [
-        {
-          items: [
-            {
-              label: 'GitHub',
-              href: 'https://github.com/guardiafinance',
-            },
-            {
-              label: 'LinkedIn',
-              href: 'https://linkedin.com/company/guardia-finance',
-            },
-            {
-              label: 'Instagram',
-              href: 'https://instagram.com/guardia',
-            },
-            {
-              label: 'Facebook',
-              href: 'https://facebook.com/guardia',
-            },
-            {
-              label: 'YouTube',
-              href: 'https://youtube.com/guardia',
-            },
-          ],
-        },
-        {
-          items: [
-            {
-              label: 'Política de Privacidade',
-              to: '/',
-            },
-            {
-              label: 'Política de Segurança',
-              to: '/',
-            },
-          ],
         },
       ],
     },

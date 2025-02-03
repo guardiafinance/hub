@@ -1,14 +1,25 @@
 import React from 'react';
 import styles from './styles.module.css';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import ptBR from '../../i18n/pt-BR.json';
+import en from '../../i18n/en.json';
+import es from '../../i18n/es.json';
 
 const Sdks = () => {
+  const { i18n } = useDocusaurusContext();
+  const translations = {
+    'pt-BR': ptBR,
+    'en': en,
+    'es': es
+  };
+  const { sdks } = translations[i18n.currentLocale];
   return (
     <div className={styles.container}>
-      <h2 className={styles.sdkTitle}>SDKs Disponíveis</h2>
+      <h2 className={styles.sdkTitle}>{sdks.title}</h2>
       <div className={styles.sdkGrid}>
         <a href="https://www.python.org" target="_blank" rel="noopener noreferrer" className={styles.sdkCard}>
           <i className="fab fa-python"></i>
-          <span>Python</span>
+          <span>{sdks.languages.python}</span>
           <div className={styles.tags}>
             <span className={styles.sdkStatus}>WIP</span>
             <span className={styles.sdkVersion}>v0.1.0-alpha</span>
