@@ -1,8 +1,8 @@
-![main-cover](./portal/assets/banners/main-banner.png)
+![main-cover](./portal/static/img/main-banner.png)
 
-# Guardia, Core Banking 
+# Guardia, Core Banking
 
-### O core bancário Cloud Native e Open Source, projetado para a nova era da economia digital.
+## O core bancário Cloud Native e Open Source, projetado para a nova era da economia digital.
 
 Guardia é a plataforma core banking Cloud Native e Open Source, projetada para fintechs, neobanks e startups que buscam modularidade e escalabilidade para otimizar suas operações financeiras com agilidade, segurança e eficiência.
   
@@ -10,7 +10,7 @@ Nossa missão é capacitar empresas de tecnologia financeira a maximizar resulta
 
 Combinamos o poder do Open Source com as possibilidades da Inteligência Artificial para impulsionar a escalabilidade das operações, simplificar integrações e garantir transações seguras e consistentes em tempo real.
 
-![maximize-your-future](./portal/assets/banners/pt-br/maximize-your-future.png)
+![maximize-your-future](./portal/static/img/pt-br/maximize-your-future.png)
 
 ## Projetos
 
@@ -23,12 +23,9 @@ Combinamos o poder do Open Source com as possibilidades da Inteligência Artific
 
 - [GoWrench](https://github.com/WrenchApps/GoWrench)
 
-
 ## Open Roadmap
 
 ![Open Roadmap](./portal/assets/open-roadmap.svg "Open Roadmap")
-
-
 
 ## Modelo de Negócios Open Core
 
@@ -78,7 +75,6 @@ O modelo de negócios **Open Core** é uma abordagem utilizada por empresas que 
 - [Style Guide](./specifications/pt-BR/API_STYLE_GUIDE.md)
 - [Status Codes](./specifications/pt-BR/STATUS_CODE.md)
 
-
 ### **Documentações**
 
 - [API Dog](https://docs.guardia.finance)  
@@ -104,7 +100,6 @@ Se você precisar de ajuda, quiser nos mostrar o que construiu ou apenas bater u
 - [Política de Privacidade](./docs/pt-BR/PRIVACY_POLICY.md)  
 - [Política de Segurança](./docs/pt-BR/SECURITY.md )  
 
-
 ## Nosso compromisso com a Comunidade Open Source
 
 A Guardia é uma empresa que valoriza a comunidade open source e está firmemente comprometida em contribuir para o desenvolvimento de software de código aberto. Acreditamos que o open source é a melhor forma de criar software de alta qualidade, de maneira eficiente, segura e colaborativa, impulsionando a inovação e a evolução contínua.
@@ -119,4 +114,4 @@ Queremos que a participação seja acessível a todos e que todos se sintam bem-
 
 ---
 
-![own-your-freedom](./portal/assets/banners/pt-br/own-your-freedom.png)
+![own-your-freedom](./portal/static/img/pt-br/own-your-freedom.png)

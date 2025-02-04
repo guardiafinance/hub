@@ -1,0 +1,77 @@
+{
+    "banner": {
+      "wip": "🚧 Work in Progress🚧"
+    },  
+    "hero": {
+      "title": "Welcome to the beginning. Welcome to Guardia. Enjoy the journey!",
+      "subtitle": "Change your core. Maximize your future.",
+      "getStarted": "Open Roadmap"
+    },
+    "sdks": {
+      "title": "Available SDKs",
+      "viewDocs": "View Documentation",
+      "languages": {
+        "python": "Python",
+        "go": "Go",
+        "rust": "Rust",
+        "nodejs": "Node.js",
+        "csharp": "C#",
+        "ruby": "Ruby",
+        "java": "Java"
+      }
+    },
+    "openSource": {
+      "title": "Our commitment to the Open Source Community",
+      "p1": "Guardia is a company that values the open source community and is firmly committed to contributing to open source software development. We believe that open source is the best way to create high-quality software efficiently, securely, and collaboratively, driving innovation and continuous evolution.",
+      "p2": "In the financial market, to which we are closely connected, the open source community has played a crucial role in accelerating innovation, reducing costs, and promoting security and transparency. Initiatives like Pix and Drex benefit not only from the expertise of major players like The Linux Foundation and Red Hat but also from an active and collaborative global community that continuously contributes to the evolution of these platforms.",
+      "p3": "Furthermore, we believe that the open source community plays a fundamental role in economic and social development. It empowers new professionals, promotes social inclusion, and democratizes access to technology, creating opportunities for everyone and helping to build a more equitable future.",
+      "p4": "Our commitment is to support, participate in, and actively contribute to this community, reinforcing the values of transparency, collaboration, and excellence that define open source."
+    },
+    "products": {
+      "status": {
+        "development": "In development",
+        "planning": "In planning"
+      },
+      "documentation": "Documentation",
+      "lke": {
+        "description": "Multi-tenant accounting engine for advanced financial management. Organize accounting books in multiple ledgers, segment them into books and chapters, make transactions with Triple-entry Bookkeeping, Multi-signing and Cross-ledger in multiple currencies, ensuring transparency and compliance with immutable records."
+      },
+      "base": {
+        "description": "Banking platform core with integration to LKE or external ledgers via low code contracts. Manage accounts with multiple holders, balances in fiat and non-fiat currencies, displayed in aggregate or individual form. Transact through various rails, manage counterparties and connect to multiple banking providers with multi-routing."
+      }
+    },
+    "resources": {
+      "patterns": {
+        "title": "Standards and Conventions",
+        "codeConventions": "Code Conventions",
+        "projectPatterns": "Project Patterns",
+        "architecturePattern": "Architecture Pattern",
+        "semanticVersioning": "Semantic Versioning"
+      },
+      "documentation": {
+        "title": "Documentation",
+        "releaseNotes": "Release Notes"
+      },
+      "community": {
+        "title": "Community",
+        "howToContribute": "How to Contribute",
+        "codeOfConduct": "Code of Conduct",
+        "ourCommitment": "Our Commitment"
+      }
+    },
+    "discord": {
+      "title": "Join our community",
+      "description": "Join the discussions, ask questions and contribute to Guardia's development.",
+      "button": "Join Discord"
+    },
+    "footer": {
+      "copyright": "© Guardia, 2025. All rights reserved.",
+      "links": {
+        "privacy": "Privacy",
+        "terms": "Terms",
+        "contact": "Contact"
+      },
+      "privacyPolicy": "Privacy Policy",
+      "securityPolicy": "Security Policy"
+    }
+  } 

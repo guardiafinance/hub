@@ -1,0 +1,65 @@
+.discordInvite {  
+  padding: 40px 0;
+  text-align: center;
+  color: #fff;
+}
+
+.discordContainer {  
+  margin: 60px auto;
+}
+
+.discordContainer i {
+  font-size: 4rem;
+  color: #5865F2;    
+}
+
+.discordContainer h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.discordContainer p {
+  width: 100%;
+  font-size: 1.1rem;  
+  padding:20px;
+}
+
+.discordButton {
+  display: inline-flex;  
+  justify-content: center;
+  background: #5865F2;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.discordButton i {
+  font-size: 1.5rem;
+  color: white;
+  margin-right: 10px;
+}
+
+.discordButton:hover {
+  color: white;
+  text-decoration: none !important;
+}
+
+.discordButton:hover {
+  color: white;
+  text-decoration: none !important;
+  transform: translateY(-3px);
+  transition: transform 0.3s ease;
+  background: #4752C4;
+}
+
+.divider {
+  border: 0;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
+  margin: 4rem auto;
+  width: 80%;
+}
+
