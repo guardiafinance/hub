@@ -1,16 +1,12 @@
 import {themes as prismThemes} from 'prism-react-renderer';
-import type {Config} from '@docusaurus/types';
-import type * as Preset from '@docusaurus/preset-classic';
-
-// This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
   title: 'Guardia Developer Hub',
   tagline: 'Guardia Developer Hub',
   favicon: 'img/favicon.ico',
   url: 'https://hub.guardia.finance',
-  baseUrl: '/',
-  organizationName: 'guardia',
+  baseUrl: '/hub/',
+  organizationName: 'guardiafinance',
   projectName: 'hub',
 
   onBrokenLinks: 'throw',
