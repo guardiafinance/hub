@@ -1,6 +1,6 @@
 # Uniform Resource Name
 
-Uniform Resource Name (URN) es un tipo de URI (Uniform Resource Identifier) que utiliza el esquema URN para identificar recursos de forma única, persistente e independiente de la ubicación. Los URNs, definidos por la [RFC 8141](https://www.rfc-editor.org/rfc/rfc8141.html), tienen como característica principal ser un identificador que permanece globalmente único y persistente incluso cuando el recurso deja de estar disponible o deja de existir.
+El Uniform Resource Name (URN) es un tipo de URI (Uniform Resource Identifier) que utiliza el esquema URN para identificar recursos de forma única, persistente e independiente de la ubicación. Los URNs, definidos por [RFC 8141](https://www.rfc-editor.org/rfc/rfc8141.html), tienen como característica principal ser un identificador que permanece globalmente único y persistente incluso cuando el recurso deja de estar disponible o deja de existir.
 
 ## ¿Por qué usar?
 
@@ -14,7 +14,7 @@ El uso de URNs ofrece beneficios significativos para la identificación y gesti�
 
 - **Estandarización**: Sigue especificaciones técnicas rigurosas definidas por RFCs, garantizando consistencia en la implementación y compatibilidad entre diferentes sistemas y tecnologías.
 
-- **Independencia de Ubicación**: Aunque el URN incluye información de región en su estructura para fines organizacionales, el identificador mantiene independencia de la ubicación física del recurso, permitiendo su movimiento sin romper referencias existentes.
+- **Independencia de Ubicación**: El URN mantiene independencia de la ubicación física del recurso, permitiendo su movimiento sin romper referencias existentes.
 
 ## ¿Cuándo usar?
 
@@ -50,23 +50,11 @@ El NID (Namespace Identifier) es la primera parte del URN que identifica el name
 Ejemplo completo de URN:
 
 ```
-urn:guardia:org:\{organization_id}:tenant:\{tenant_id}:[\{cloud_provider}:\{region}]:\{product}:\{entity_id}
+urn:guardia:org:\{organization_id}:tenant:\{tenant_id}:\{product}:\{entity_id}
 
-urn:guardia:org:\{organization_id}:tenant:\{tenant_id}:[\{cloud_provider}:\{region}]:\{product}:\{entity_type}:\{entity_id}
+urn:guardia:org:\{organization_id}:tenant:\{tenant_id}:\{product}:\{entity_type}:\{entity_id}
 
-urn:guardia:org:\{organization_id}:tenant:\{tenant_id}:[\{cloud_provider}:\{region}]:\{product}/\{entity_type}:\{entity_id}
-```
-
-#### Recurso global:
-
-```
-urn:guardia:org:\{organization_id}:tenant:\{tenant_id}:\{entity_type}:\{entity_id}
-```
-
-#### Recursos con replicación regional:
-
-```
-urn:guardia:org:\{organization_id}:tenant:\{tenant_id}:\{cloud_provider}:\{region}:\{product}:\{entity_type}:\{entity_id}
+urn:guardia:org:\{organization_id}:tenant:\{tenant_id}:\{product}/\{entity_type}:\{entity_id}
 ```
 
 ### NSS 
@@ -79,10 +67,6 @@ Campos globales:
 - product: Identifica el producto Guardia (ej: lke, base, tms, psa, bsa)
 - entity_type: Tipo de la entidad
 - entity_id: Identificador único de la entidad
-
-Campos locales (específicos de la región):
-- cloud_provider: Proveedor de nube donde el recurso está alojado
-- region: Región del proveedor de nube
 
 Campos contextuales:
 - rail: Identifica el tipo de transacción (ej: p2p, pix, ted, boleto, wire, ach)
@@ -98,14 +82,12 @@ Campos contextuales:
 #### Ejemplo:
 
 ```
-urn:guardia:org:6683756247371776:tenant:6683756247371777:aws:us-east-1:lke:ledger:6683756247371778
+urn:guardia:org:6683756247371776:tenant:6683756247371777:lke:ledger:6683756247371778
 ```
 
 #### Donde:
 - organization_id = 6683756247371776
 - tenant_id = 6683756247371777
-- cloud_provider = aws  
-- region = us-east-1
 - product = lke
 - entity_type = ledger
 - entity_id = 6683756247371778
@@ -116,11 +98,11 @@ urn:guardia:org:6683756247371776:tenant:6683756247371777:aws:us-east-1:lke:ledge
 > 
 > Por convención, el NID debe escribirse en letras minúsculas.
 
-# Products:
+# Productos:
 
 Los productos son los módulos básicos que componen Guardia, que pueden utilizarse en conjunto o aisladamente, dependiendo de las necesidades del cliente.
 
-## Core Modules:
+## Módulos Core:
 - Guardia Ledger Kernel Engine:
 ```
 urn:guardia:org:\{organization_id}:tenant:\{tenant_id}:lke:*
@@ -131,7 +113,7 @@ urn:guardia:org:\{organization_id}:tenant:\{tenant_id}:lke:*
 urn:guardia:org:\{organization_id}:tenant:\{tenant_id}:base:*
 ```
 
-## Service Modules:
+## Módulos de Servicio:
 - Guardia Treasury Management Services: 
 ```
 urn:guardia:org:\{organization_id}:tenant:\{tenant_id}:tms:*
@@ -158,63 +140,40 @@ urn:guardia:org:\{organization_id}:tenant:\{tenant_id}:bsa:\{rail}:\{provider}*
 - fx
 ...
 
-#### Providers:
+#### Proveedores:
 
-p2p Providers:
+Proveedores p2p:
 - guardia
 
-Pix Providers:
+Proveedores Pix:
 - transfeera
 - celcoin
 
-## Data Modules:
+## Módulos de Datos:
 - Guardia Data Warehouse Adapter:     
 ```
 urn:guardia:org:\{organization_id}:tenant:\{tenant_id}:dwa:\{protocol}:\{provider}*
 ```
 
-
-#### Protocol
+#### Protocolo
 - stream
 - http
 - obdc
 - tcp
 
-#### Provider
+#### Proveedor
 - kafka
 - postgres
 - mysql
 - mongodb
 - rabbitmq
 
-## Cloud Providers:
-
-- aws - Amazon Web Services
-- azure - Microsoft Azure
-- gcp - Google Cloud Platform
-- self - Autoalojado
-
-### Cloud Regions:
-
-#### AWS
-- us-east-1 - US East (N. Virginia)
-- us-west-2 - US West (Oregon)
-- sa-east-1 - South America (São Paulo)
-
-#### Azure
-- Por determinar
-
-#### GCP
-- Por determinar
-
-# Environments:
+# Entornos:
 
 Las siguientes variables de entorno se utilizan para identificar el ambiente donde el recurso está siendo ejecutado:
 
 - ORGANIZATION_ID: Identificador único de la organización
 - TENANT_ID: Identificador único del tenant
-- CLOUD_PROVIDER: Proveedor de nube donde el recurso está alojado
-- CLOUD_REGION: Región del proveedor de nube
 - PRODUCT: Identifica el producto Guardia (ej: lke, base, tms, psa, bsa, dwa)
 
 Adicionalmente, las siguientes variables de entorno se utilizan para identificar el servicio de pago y el proveedor del recurso:

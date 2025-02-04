@@ -15,7 +15,7 @@ O uso de URNs oferece benefícios significativos para a identificação e gerenc
 
 - **Padronização**: Segue especificações técnicas rigorosas definidas por RFCs, garantindo consistência na implementação e compatibilidade entre diferentes sistemas e tecnologias.
 
-- **Independência de Localização**: Embora o URN inclua informação de região em sua estrutura para fins organizacionais, o identificador ainda mantém independência da localização física do recurso, permitindo sua movimentação sem quebrar referências existentes.
+- **Independência de Localização**: O URN mantém independência da localização física do recurso, permitindo sua movimentação sem quebrar referências existentes.
 
 
 ## Quando usar?
@@ -53,23 +53,11 @@ O NID (Namespace Identifier) é a primeira parte do URN que identifica o namespa
 Exemplo completo de URN:
 
 ```
-urn:guardia:org:\{organization_id}:tenant:\{tenant_id}:[\{cloud_provider}:\{region}]:\{product}:\{entity_id}
+urn:guardia:org:\{organization_id}:tenant:\{tenant_id}:\{product}:\{entity_id}
 
-urn:guardia:org:\{organization_id}:tenant:\{tenant_id}:[\{cloud_provider}:\{region}]:\{product}:\{entity_type}:\{entity_id}
+urn:guardia:org:\{organization_id}:tenant:\{tenant_id}:\{product}:\{entity_type}:\{entity_id}
 
-urn:guardia:org:\{organization_id}:tenant:\{tenant_id}:[\{cloud_provider}:\{region}]:\{product}/\{entity_type}:\{entity_id}
-```
-
-#### Recurso global:
-
-```
-urn:guardia:org:\{organization_id}:tenant:\{tenant_id}:\{entity_type}:\{entity_id}
-```
-
-#### Recursos com replicação regional:
-
-```
-urn:guardia:org:\{organization_id}:tenant:\{tenant_id}:\{cloud_provider}:\{region}:\{product}:\{entity_type}:\{entity_id}
+urn:guardia:org:\{organization_id}:tenant:\{tenant_id}:\{product}/\{entity_type}:\{entity_id}
 ```
 
 ### NSS 
@@ -83,10 +71,6 @@ Campos globais:
 - entity_type: Tipo da entidade
 - entity_id: Identificador único da entidade
 
-Campos locais (específicos da região):
-- cloud_provider: Provedor de nuvem onde o recurso está hospedado
-- region: Região do provedor de nuvem
-
 Campos contextuais:
 - rail: Identifica o tipo de transação (ex: p2p, pix, ted, boleto, wire, ach)
 - provider: Identifica o provedor do serviço (ex: guardia)
@@ -98,22 +82,18 @@ Campos contextuais:
 >
 > Os campos contextuais são necessarios quandos os produtos forem psa, bsa ou dwa.
 
-
 #### Exemplo:
 
 ```
-urn:guardia:org:6683756247371776:tenant:6683756247371777:aws:us-east-1:lke:ledger:6683756247371778
+urn:guardia:org:6683756247371776:tenant:6683756247371777:lke:ledger:6683756247371778
 ```
 
 #### Onde:
 - organization_id = 6683756247371776
 - tenant_id = 6683756247371777
-- cloud_provider = aws  
-- region = us-east-1
 - product = lke
 - entity_type = ledger
 - entity_id = 6683756247371778
-
 
 > IMPORTANTE:
 > 
@@ -193,35 +173,12 @@ urn:guardia:org:\{organization_id}:tenant:\{tenant_id}:dwa:\{protocol}:\{provide
 - mongodb
 - rabbitmq
 
-## Cloud Providers:
-
-- aws - Amazon Web Services
-- azure - Microsoft Azure
-- gcp - Google Cloud Platform
-- self - Self-hosted
-
-### Cloud Regions:
-
-#### AWS
-- us-east-1 - US East (N. Virginia)
-- us-west-2 - US West (Oregon)
-- sa-east-1 - South America (São Paulo)
-
-#### Azure
-- TBD
-
-#### GCP
-- TBD
-
-
 # Environments:
 
 As seguintes variáveis de ambiente são utilizadas para identificar o ambiente onde o recurso está sendo executado:
 
 - ORGANIZATION_ID: Identificador único da organização
 - TENANT_ID: Identificador único do tenant
-- CLOUD_PROVIDER: Provedor de nuvem onde o recurso está hospedado
-- CLOUD_REGION: Região do provedor de nuvem
 - PRODUCT: Identifica o produto Guardia (ex: lke, base, tms, psa, bsa, dwa)
 
 Adicionalmente, as seguintes variáveis de ambiente são utilizadas para identificar o serviço de pagamento e o provedor do recurso:

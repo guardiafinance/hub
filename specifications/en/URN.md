@@ -1,6 +1,6 @@
 # Uniform Resource Name
 
-A Uniform Resource Name (URN) is a type of URI (Uniform Resource Identifier) that uses the URN scheme to identify resources uniquely, persistently, and location-independently. URNs, defined by [RFC 8141](https://www.rfc-editor.org/rfc/rfc8141.html), have the main characteristic of being an identifier that remains globally unique and persistent even when the resource becomes unavailable or ceases to exist.
+A Uniform Resource Name (URN) is a type of URI (Uniform Resource Identifier) that uses the URN scheme to identify resources in a unique, persistent, and location-independent way. URNs, defined by [RFC 8141](https://www.rfc-editor.org/rfc/rfc8141.html), have the main characteristic of being an identifier that remains globally unique and persistent even when the resource becomes unavailable or ceases to exist.
 
 ## Why use it?
 
@@ -14,21 +14,21 @@ The use of URNs offers significant benefits for resource identification and mana
 
 - **Standardization**: Follows rigorous technical specifications defined by RFCs, ensuring consistency in implementation and compatibility between different systems and technologies.
 
-- **Location Independence**: Although the URN includes region information in its structure for organizational purposes, the identifier still maintains independence from the resource's physical location, allowing it to be moved without breaking existing references.
+- **Location Independence**: The URN maintains independence from the physical location of the resource, allowing its movement without breaking existing references.
 
 ## When to use?
 
 URNs should be used in scenarios where:
 
-- **Persistent identification**: In Guardia, it's crucial to maintain immutable identifiers for accounts, transactions, and other financial records over time. For example, even if an account is closed, its history and unique identifier need to be preserved for auditing and regulatory compliance purposes.
+- **Persistent Identification**: In Guardia, it is crucial to maintain immutable identifiers for accounts, transactions, and other financial records over time. For example, even if an account is closed, its history and unique identifier need to be preserved for auditing and regulatory compliance purposes.
 
-- **Cross-reference**: Guardia needs to integrate various modules such as Ledger Kernel Engine, Banking System Engine, Treasury Management Services, Payments Service Adapters, Banking Service Adapters, and Data Warehouse Adapter, among others, which need to reference shared resources like accounts and customers consistently and reliably among themselves.
+- **Cross-reference**: Guardia needs to integrate various modules such as Ledger Kernel Engine, Banking System Engine, Treasury Management Services, Payments Service Adapters, Banking Service Adapters, and Data Warehouse Adapter, among others, which need to reference shared resources like accounts and clients consistently and reliably among themselves.
 
-- **Global resources**: In cloud-native environments with multiple regions and availability zones like Guardia, it's essential to have unique and consistent identifiers that work across the entire distributed infrastructure, enabling traceability and consistency even in disaster recovery and failover scenarios between regions.
+- **Global Resources**: In cloud-native environments with multiple regions and availability zones like Guardia, it is essential to have unique and consistent identifiers that work across the entire distributed infrastructure, enabling traceability and consistency even in disaster recovery and failover scenarios between regions.
 
 - **Compliance**: The banking sector has strict regulatory requirements that demand complete traceability of all operations. URNs ensure unique and persistent identification necessary to meet Central Bank and other regulatory bodies' requirements.
 
-- **System integration**: Guardia can integrate with various external systems in the financial ecosystem. URNs establish a consistent identification standard that facilitates these critical financial system integrations.
+- **System Integration**: Guardia can integrate with various external systems in the financial ecosystem. URNs establish a consistent identification standard that facilitates these critical financial system integrations.
 
 ## How to use?
 
@@ -50,24 +50,11 @@ The NID (Namespace Identifier) is the first part of the URN that identifies the 
 Complete URN example:
 
 ```
-urn:guardia:org:\{organization_id}:tenant:\{tenant_id}:[\{cloud_provider}:\{region}]:\{product}:\{entity_id}
+urn:guardia:org:\{organization_id}:tenant:\{tenant_id}:\{product}:\{entity_id}
 
-urn:guardia:org:\{organization_id}:tenant:\{tenant_id}:[\{cloud_provider}:\{region}]:\{product}:\{entity_type}:\{entity_id}
+urn:guardia:org:\{organization_id}:tenant:\{tenant_id}:\{product}:\{entity_type}:\{entity_id}
 
-
-urn:guardia:org:\{organization_id}:tenant:\{tenant_id}:[\{cloud_provider}:\{region}]:\{product}/\{entity_type}:\{entity_id}
-```
-
-#### Global resource:
-
-```
-urn:guardia:org:\{organization_id}:tenant:\{tenant_id}:\{entity_type}:\{entity_id}
-```
-
-#### Resources with regional replication:
-
-```
-urn:guardia:org:\{organization_id}:tenant:\{tenant_id}:\{cloud_provider}:\{region}:\{product}:\{entity_type}:\{entity_id}
+urn:guardia:org:\{organization_id}:tenant:\{tenant_id}:\{product}/\{entity_type}:\{entity_id}
 ```
 
 ### NSS 
@@ -81,13 +68,14 @@ Global fields:
 - entity_type: Entity type
 - entity_id: Unique entity identifier
 
-Local fields (region-specific):
-- cloud_provider: Cloud provider where the resource is hosted
-- region: Cloud provider region
-
 Contextual fields:
+
+**Payment/Banking Services adapters:**
+
 - rail: Identifies the transaction type (e.g., p2p, pix, ted, boleto, wire, ach)
 - provider: Identifies the service provider (e.g., guardia)
+
+**Data Warehouse Adapter:**
 
 - protocol: Identifies the communication protocol (e.g., stream, http, obdc, tcp)
 - provider: Identifies the service provider (e.g., guardia)
@@ -99,14 +87,12 @@ Contextual fields:
 #### Example:
 
 ```
-urn:guardia:org:6683756247371776:tenant:6683756247371777:aws:us-east-1:lke:ledger:6683756247371778
+urn:guardia:org:6683756247371776:tenant:6683756247371777:lke:ledger:6683756247371778
 ```
 
 #### Where:
 - organization_id = 6683756247371776
 - tenant_id = 6683756247371777
-- cloud_provider = aws  
-- region = us-east-1
 - product = lke
 - entity_type = ledger
 - entity_id = 6683756247371778
@@ -187,34 +173,12 @@ urn:guardia:org:\{organization_id}:tenant:\{tenant_id}:dwa:\{protocol}:\{provide
 - mongodb
 - rabbitmq
 
-## Cloud Providers:
-
-- aws - Amazon Web Services
-- azure - Microsoft Azure
-- gcp - Google Cloud Platform
-- self - Self-hosted
-
-### Cloud Regions:
-
-#### AWS
-- us-east-1 - US East (N. Virginia)
-- us-west-2 - US West (Oregon)
-- sa-east-1 - South America (São Paulo)
-
-#### Azure
-- TBD
-
-#### GCP
-- TBD
-
 # Environments:
 
 The following environment variables are used to identify the environment where the resource is being executed:
 
 - ORGANIZATION_ID: Unique organization identifier
 - TENANT_ID: Unique tenant identifier
-- CLOUD_PROVIDER: Cloud provider where the resource is hosted
-- CLOUD_REGION: Cloud provider region
 - PRODUCT: Identifies the Guardia product (e.g., lke, base, tms, psa, bsa, dwa)
 
 Additionally, the following environment variables are used to identify the payment service and resource provider:
