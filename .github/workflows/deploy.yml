@@ -19,14 +19,14 @@ jobs:
           cache: npm
 
       - name: Install dependencies
-        run: npm ci
+        run: npm ci --prefix portal
       - name: Build website
-        run: npm run build
+        run: npm run build --prefix portal
 
       - name: Upload Build Artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: build
+          path: portal/build
 
   deploy:
     name: Deploy to GitHub Pages
