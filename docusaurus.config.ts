@@ -5,7 +5,7 @@ const config: Config = {
   tagline: 'Guardia Developer Hub',
   favicon: 'img/favicon.ico',
   url: 'https://hub.guardia.finance',
-  baseUrl: '/hub/',
+  baseUrl: '/',
   organizationName: 'guardiafinance',
   projectName: 'hub',
 
