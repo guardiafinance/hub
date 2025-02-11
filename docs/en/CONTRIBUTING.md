@@ -55,6 +55,8 @@ graph LR
     M -->|No| D
 ```
 
+If you are working in a pair programming flow, see also the [Pair Programming Workflow with Individual Forks](./PAIR_PROGRAM_WORKFLOW.md) for more information.
+
 ## Commit Message Guidelines
 
 ### Use "Small Commits"
