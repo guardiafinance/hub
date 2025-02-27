@@ -143,6 +143,8 @@ A mensagem principal do commit deve ser escrita em inglês. Se você sentir nece
 
 ### Issues e Pull Requests
 
+Todos os contribuidores devem assinar o CNCF [Contributor License Agreement (CLA)](../../policies/pt-BR/CLA.md), conforme descrito no documento oficial. 
+
 Você pode abrir issues e pull requests em qualquer idioma. Se a issue ou pull request for postada em um idioma diferente do inglês, encorajamos a incluir uma cópia em inglês no corpo da issue ou pull request ou como resposta contendo a tag `[en]`. 
 
 > **IMPORTANTE:** **Por favor, note** que usar qualquer idioma diferente do inglês como tentativa de contornar o [Código de Conduta](https://github.com/guardiafinancas/hub/blob/main/CODE_OF_CONDUCT.md) resultará em banimento imediato e possivelmente indefinido do projeto.
