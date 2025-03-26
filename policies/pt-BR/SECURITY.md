@@ -1,378 +1,139 @@
-# **Política de Segurança da Informação**  
+# Política de Segurança da Informação
 
-## **1. Introdução**  
+## Introdução
 
-Na **Guardia**, a segurança das informações de nossos clientes é nossa prioridade absoluta. Por meio de um programa abrangente de segurança, trabalhamos continuamente para conquistar e manter a confiança de nossos clientes através da proteção rigorosa de seus dados. Nossa abordagem baseia-se em dois pilares fundamentais: o modelo **Zero Trust** para proteção de dados e os princípios de **Compliance and Security by Design**, garantindo que todos os nossos produtos e serviços sejam desenvolvidos com segurança integrada e em total conformidade com normas e regulamentações vigentes.  
+Na **Guardia**, a segurança das informações de nossos clientes é prioridade absoluta. Por meio de um programa abrangente, buscamos garantir proteção contínua, conformidade regulatória e confiança, desde a concepção até a operação dos sistemas. Nossa abordagem baseia-se no modelo **Zero Trust** e nos princípios de **Compliance e Security by Design**, assegurando que nossos produtos e serviços sejam desenvolvidos com segurança integrada e em aderência às melhores práticas do setor.
 
-**Trust Center:** [https://trust.guardia.com.br](https://trust.guardia.com.br)  
-
----
-
-
-
-## **4. Security by Design**  
-
-**Security by Design** é um princípio fundamental em todos os aspectos da **Guardia**, abrangendo **produto, aplicações, infraestrutura e governança organizacional**. Desde a concepção, cada funcionalidade é projetada com **segurança integrada**, garantindo que os mais altos padrões de proteção sejam aplicados de forma proativa, minimizando riscos, prevenindo ameaças e assegurando conformidade contínua com regulamentações e boas práticas do setor.
-
-### **4.1 Produto**  
-
-#### **4.1.1 Access Control (Controle de Acesso)**  
-
-### **Authorization by Context**  
-
-#### **O que:**  
-O acesso aos **front-ends da Guardia** adota um modelo de **controle de acesso baseado no contexto do usuário**, combinando **RBAC (Role-Based Access Control)** e **ABAC (Attribute-Based Access Control)** para garantir que cada usuário tenha permissões adequadas de acordo com sua função e o contexto da solicitação. Esse modelo assegura que operações sensíveis sejam acessíveis apenas a usuários devidamente autorizados, considerando fatores como **função, dispositivo, localização e tipo de conexão**.  
-
-Para os **acessos internos da Guardia**, todos os requisitos de segurança descritos aqui são **obrigatórios**, garantindo total controle sobre as permissões e autenticações. Para os **acessos de clientes**, os mesmos requisitos são **recomendados**, permitindo flexibilidade para que cada cliente implemente as melhores práticas de segurança conforme sua necessidade e nível de risco.  
+Acesse nosso Trust Center: [https://trust.guardia.com.br](https://trust.guardia.com.br)
 
 ---
 
-#### **Como implementamos:**  
+## Security by Design
 
-##### **Modelo de Permissões Híbrido (RBAC + ABAC)**  
-- **RBAC:** Cada usuário recebe permissões com base em sua **função dentro da organização** (ex.: administrador, operador, auditor).  
-- **ABAC:** Permissões são ajustadas dinamicamente de acordo com **atributos do contexto**, como:  
-  - Localização geográfica do usuário.  
-  - Dispositivo utilizado (desktop, mobile, tablet).  
-  - Horário e dia da solicitação.  
-  - Tipo de conexão (interna ou externa à rede corporativa).  
+**Security by Design** é um princípio transversal à plataforma da Guardia. Cada produto, processo e componente da infraestrutura é desenhado com segurança embutida desde o início. Essa postura preventiva e contínua visa reduzir riscos, antecipar ameaças e garantir alinhamento com normas como PCI DSS, ISO 27001, LGPD, SOC 2 e FAPI.
 
 ---
 
-##### **Provisionamento e Gestão de Identidades via SCIM**  
-- Utilização do **SCIM (System for Cross-domain Identity Management)** para:  
-  - **Provisionamento automático de usuários**, garantindo que novos acessos sejam atribuídos corretamente.  
-  - **Atualização de permissões em tempo real** quando um usuário muda de função.  
-  - **Revogação automática de acessos** para ex-colaboradores ou usuários inativos, reduzindo riscos de credenciais órfãs.  
+### 4.1 Produto
+
+#### Controle de Acesso por Contexto (RBAC + ABAC)
+
+A Guardia adota uma abordagem de controle de acesso baseada em contexto, combinando RBAC (Role-Based Access Control) com ABAC (Attribute-Based Access Control). As permissões são avaliadas de forma dinâmica, levando em conta variáveis como função do usuário, localização, dispositivo e tipo de conexão. Esse modelo permite uma aplicação mais inteligente do princípio do menor privilégio, ajustando-se ao risco associado a cada requisição.
+
+A exigência de MFA para acessos internos e sua recomendação para clientes fortalecem a proteção contra uso indevido de credenciais. Recursos como SAML e SCIM viabilizam autenticação federada e provisionamento automatizado de usuários, reduzindo erros operacionais e melhorando a governança de identidades. Esta abordagem está alinhada aos requisitos da ISO 27001, SOC 2 Type II, PCI DSS 4.0 e LGPD.
+
+**Entenda em mais detalhes em:** [Access Control Context Spec.](../specifications/access-control-context.md)
 
 ---
 
-##### **Autenticação Federada via SAML**  
-- Suporte a **SAML 2.0 (Security Assertion Markup Language)** para integração com **provedores de identidade (IdPs)** como:  
-  - Okta, Azure AD, Auth0, Google Workspace e outros.  
-  - Permite **Single Sign-On (SSO)**, reduzindo a necessidade de múltiplas credenciais e facilitando o gerenciamento de acessos.  
-  - **Autorização e atributos sincronizados automaticamente** com as políticas RBAC e ABAC, garantindo acesso dinâmico baseado em contexto.  
+#### Autorização por Escopo nas APIs
+
+As APIs da Guardia seguem um modelo de autorização granular baseado em escopos, garantindo que cada cliente tenha acesso apenas às operações necessárias ao seu contexto. Os tokens de acesso são emitidos dinamicamente com escopos específicos e prazo de expiração definido, o que impede seu uso prolongado ou indevido.
+
+Esse modelo reduz significativamente o risco de escalonamento de privilégios, uso indevido de credenciais e vazamentos. Ele também está alinhado às exigências do FAPI, promovendo segurança e interoperabilidade em integrações com instituições financeiras. Além disso, reforça a conformidade com normas como ISO 27001 e PCI DSS 4.0.
+
+**Entenda em mais detalhes em:** [API Scope Authorization Spec.](../specifications/api-scope-authorization.md)
 
 ---
 
-##### **Políticas Centralizadas e Gerenciáveis**  
-- Definição e aplicação de **políticas de controle de acesso em tempo real** para evitar acessos indevidos.  
-- Atualização dinâmica de permissões com base em **eventos de segurança** (ex.: login suspeito pode revogar acessos temporariamente).  
-- Implementação de **mecanismos de revisão periódica de permissões** para evitar a concessão de privilégios excessivos.  
+#### Autenticação Segura
+
+A Guardia emprega padrões modernos de autenticação baseados em OAuth 2.0, OpenID Connect e Mutual TLS (MTLS), com tokens assinados digitalmente e controle de sessão baseado em expiração automática e rotação de chaves.
+
+Esses mecanismos garantem robustez contra ataques de spoofing, replay e sequestro de sessão, promovendo uma autenticação confiável e auditável. A conformidade com normas como FAPI, ISO 27001 e NIST CSF reforça a segurança das integrações com clientes e parceiros.
+
+**Entenda em mais detalhes em:** [Secure Authentication Spec.](../specifications/secure-authentication.md)
 
 ---
 
-##### **Autenticação Contextual e Escalonável**  
-- **Autenticação Multifator (MFA) obrigatória para todos os acessos internos, independentemente da origem (rede interna ou externa).**  
-- **Para clientes, o MFA é altamente recomendado,** podendo ser configurado conforme a política de segurança de cada organização.  
-- Restrição de acessos com base em **dispositivos confiáveis**, reforçando a segurança em sessões críticas.  
-- **Sessões adaptativas**, onde políticas de segurança podem reforçar autenticação conforme mudanças no comportamento do usuário.  
+#### Registros de Auditoria (Audit Logs)
+
+Todas as ações críticas dentro da plataforma são registradas com granularidade e imutabilidade, utilizando o modelo 5W1H (quem, o que, quando, onde, por que e como). Os logs são integrados a soluções de SIEM para detecção de anomalias e monitoramento contínuo.
+
+Essa rastreabilidade reforça a governança, apoia investigações forenses e permite auditorias internas e externas em conformidade com SOC 2 Type II, ISO 27001 e LGPD.
+
+**Entenda em mais detalhes em:** [Audit Logs Spec.](../specifications/audit-logs.md)
 
 ---
 
-#### **Por que é importante?**  
-A exigência de **MFA para todos os acessos internos** impede que credenciais comprometidas sejam exploradas isoladamente, reduzindo drasticamente o risco de ataques baseados em phishing e credenciais vazadas. Para os **acessos de clientes**, a recomendação do MFA e dos modelos de autenticação contextuais proporciona **flexibilidade e segurança**, permitindo que cada cliente escolha o nível de proteção adequado às suas necessidades.  
+#### SAML, SCIM e MFA
 
-O uso de **SCIM automatiza a gestão de identidades**, evitando erros manuais e garantindo que acessos sejam concedidos e revogados de maneira eficiente, reduzindo o risco de contas inativas ou acessos indevidos. Já o **SAML possibilita a autenticação federada e integração com IdPs**, permitindo um login seguro e centralizado, melhorando a experiência do usuário e reduzindo a necessidade de senhas adicionais.  
+A autenticação federada via SAML, o provisionamento automatizado de usuários com SCIM 2.0 e o uso de autenticação multifator com FIDO2/WebAuthn são recursos essenciais para garantir uma experiência de login segura e com governança centralizada.
 
-A aplicação de **políticas centralizadas e revisões periódicas de permissões** assegura que acessos sejam continuamente monitorados e ajustados conforme necessário, mantendo a conformidade com normas regulatórias e fortalecendo a postura de segurança organizacional.
+Essa combinação reduz a dependência de senhas, automatiza o ciclo de vida de identidades e atende diretamente às exigências da PCI DSS 4.0, ISO 27001 e SOC 2 Type II.
 
----
-
-### **Authentication and Authorization by Scope**  
-
-#### **O que:**  
-O controle de autorização nas **APIs da Guardia** segue um modelo baseado em escopos, garantindo que cada cliente tenha acesso **apenas às features e operações estritamente necessárias**. O processo é dinâmico, permitindo que clientes sejam registrados automaticamente e emitam **tokens contextuais**, que contêm escopos específicos e expiram automaticamente dentro de um período predefinido, conforme as recomendações do **FAPI (Financial-grade API Security Profile)**.  
+**Entenda em mais detalhes em:** [Identity Federation and MFA Spec.](../specifications/identity-federation-mfa.md)
 
 ---
 
-#### **Como implementamos:**  
+#### Criptografia Forte
 
-##### **Registro Dinâmico de Clientes (DCR - Dynamic Client Registration)**  
-- Cada cliente é **registrado automaticamente** com acesso restrito aos escopos e features previamente autorizados.  
-- Aplicação do princípio de **privilégio mínimo**, evitando concessões excessivas de permissões.  
+Todos os dados sensíveis são protegidos com criptografia robusta, utilizando AES-256 para dados em repouso, TLS 1.3 para dados em trânsito e HSMs para gerenciamento seguro de chaves.
 
-##### **Definição de Escopos e Features**  
-- O acesso é concedido de forma granular, associando features e escopos específicos ao cliente.  
-- Exemplo de escopos:  
-  - `ledger:read` → Permite leitura de transações.  
-  - `ledger:write` → Permite criação e alteração de transações.  
-  - `book:read` → Acesso a dados de contas bancárias.  
-  - `book:write` → Modificação de informações de conta.  
+Essa camada de proteção garante confidencialidade, integridade e conformidade com requisitos técnicos estabelecidos pelas normas PCI DSS 4.0 e ISO 27001.
 
-##### **Emissão de Tokens Contextuais**  
-- Cada **token gerado está associado a um conjunto específico de escopos**, garantindo que ele só possa ser utilizado para as operações autorizadas.  
-- Tokens possuem **expiração automática** conforme as diretrizes do **FAPI**, reduzindo riscos de credenciais comprometidas.  
-- Tokens de longa duração **não são permitidos**, exigindo renovação periódica para manter acessos ativos.  
-- A emissão de tokens é **limitada**, impedindo que um cliente gere um número excessivo de tokens simultâneos, garantindo segurança e conformidade. 
-- Token Opacos são emitidos.
+**Entenda em mais detalhes em:** [Strong Encryption Spec.](../specifications/strong-encryption.md)
 
 ---
 
-#### **Por que é importante?**  
+#### Assinatura de Webhooks
 
-A implementação de autorização baseada em escopos garante um modelo de segurança **granular e robusto**, onde cada cliente tem acesso **apenas ao que precisa**, reduzindo riscos de acessos indevidos e privilégios excessivos. Além disso, a aplicação de **tokens contextuais com expiração automática** segue as melhores práticas do **FAPI**, mitigando o risco de comprometimento de credenciais, garantindo que qualquer token exposto tenha uma validade limitada.  
+Todas as requisições enviadas e recebidas via webhook são assinadas com HMAC-SHA256 e validadas com base em cabeçalhos de segurança e janelas de expiração.
 
-Essa abordagem **minimiza impactos de possíveis vazamentos de credenciais, melhora a rastreabilidade e assegura conformidade com padrões rigorosos de segurança**, tornando o sistema mais confiável e resiliente.  
+Esse controle garante integridade das mensagens e proteção contra ataques de replay e falsificação, em conformidade com FAPI e ISO 27001.
 
----
-
-### **Authentication (Autenticação Segura)**  
-
-#### **O que:**  
-Implementação de mecanismos robustos de autenticação para garantir a identidade confiável dos usuários e serviços, protegendo acessos e prevenindo fraudes.  
-
-#### **Como implementamos:**  
-- **OAuth 2.0 + OpenID Connect** para autenticação segura e delegação de acessos.  
-- Implementação de **JWT (JSON Web Tokens)** assinados digitalmente para assegurar a integridade das credenciais.  
-- **Rotação periódica de chaves** e expiração automática de sessões para reduzir o impacto de credenciais comprometidas.  
-- **Autenticação Segura via MTLS Client Auth (Mutual TLS Authentication)**  
-  - O processo de autenticação utiliza **MTLS (Mutual TLS Authentication)**, garantindo que apenas clientes autenticados com **certificados válidos** possam acessar as APIs.  
-  - Essa abordagem evita ataques como **spoofing**, **replay attacks** e uso indevido de credenciais roubadas.  
+**Entenda em mais detalhes em:** [Webhooks Signature Spec.](../specifications/webhooks-sign.md)
 
 ---
 
-#### **Por que é importante?**  
-Adoção de padrões como **OAuth 2.0 e OpenID Connect** garante uma autenticação **moderna, segura e interoperável**, reduzindo riscos de acessos não autorizados. O uso de **JWTs assinados** assegura a integridade dos tokens, enquanto a **rotação periódica de chaves** e expiração de sessões limitam os danos caso uma credencial seja comprometida.  
+#### Hashing Seguro
 
-A inclusão do **MTLS Client Auth** fortalece ainda mais a segurança ao validar **tanto o cliente quanto o servidor**, garantindo que apenas clientes autenticados com certificados válidos possam interagir com a API. Essa abordagem previne ataques de **spoofing**, impede o uso de credenciais roubadas e reforça a confiabilidade do sistema.
+Senhas e dados sensíveis são armazenados com algoritmos de hashing modernos como bcrypt, Argon2 e PBKDF2, sempre com salting aleatório.
 
-### **Audit Logs (Registros de Auditoria)**  
+Essa prática reduz drasticamente o risco de exposição em caso de violação e está alinhada com as exigências de PCI DSS 4.0 e ISO 27001.
 
-#### **O que:**  
-Registro detalhado de todas as ações administrativas e operações sensíveis dentro do sistema, garantindo **visibilidade, rastreabilidade e conformidade** com requisitos regulatórios e boas práticas de segurança.  
-
-#### **Como implementamos:**  
-- **Captura de eventos essenciais**, incluindo:  
-  - Tentativas de login (sucesso e falha).  
-  - Alterações de permissões e acessos privilegiados.  
-  - Modificações em dados sensíveis e configurações de segurança.  
-
-- **Armazenamento seguro e imutável**:  
-  - Logs são armazenados em **sistemas protegidos contra alteração ou exclusão**, garantindo integridade e não repúdio.  
-  - Retenção mínima de **180 dias**, podendo ser estendida conforme requisitos regulatórios e operacionais.  
-
-- **Monitoramento e resposta a incidentes:**  
-  - Integração com **SIEM (Security Information and Event Management)** para análise em tempo real e detecção de atividades suspeitas.  
-  - Alertas automáticos para eventos anômalos, como acessos incomuns ou tentativas repetidas de login.  
-
-- **Aplicação do Princípio 5W1H para Auditoria**:  
-  Todos os eventos registrados seguem o modelo **5W1H**, garantindo informações detalhadas para rastreabilidade e conformidade:  
-  - **Who (Quem):** Identificação do usuário responsável pela ação.  
-  - **What (O que):** Descrição detalhada da alteração realizada.  
-  - **When (Quando):** Registro exato de data e hora do evento.  
-  - **Where (Onde):** Origem da ação (dispositivo, IP, geolocalização).  
-  - **Why (Por que):** Justificativa associada à ação.  
-  - **How (Como):** Método utilizado para executar a alteração (manual, API, script, interface, etc.).  
-
-#### **Por que é importante?**  
-A implementação de **registros de auditoria robustos** assegura **rastreabilidade, transparência e conformidade**, permitindo que todas as atividades críticas sejam documentadas e revisadas. O uso do **princípio 5W1H** garante que cada evento registrado tenha **informações suficientes para auditorias internas e investigações forenses**, reduzindo riscos e permitindo resposta rápida a incidentes. A integração com **SIEM** reforça a segurança ao monitorar e detectar atividades suspeitas em tempo real, fortalecendo a postura de segurança da organização.
+**Entenda em mais detalhes em:** [Secure Hashing Spec.](../specifications/secure-hashing.md)
 
 ---
 
-##### **SAML, SCIM, and MFA Support**  
-- **O que:**  
-  Implementação de **Single Sign-On (SSO)** com **SAML**, provisionamento automatizado de usuários com **SCIM** e exigência de **Autenticação Multifator (MFA)** para acessos críticos.  
+#### Tokenização de Dados
 
-- **Como:**  
-  - Suporte a provedores de identidade como **Okta, Azure AD, Auth0**.  
-  - Uso de **FIDO2/WebAuthn** para MFA sem senhas.  
-  - Provisionamento dinâmico via **SCIM 2.0**, garantindo sincronização segura de usuários.  
+Dados confidenciais podem ser substituídos por tokens opacos, não reversíveis, armazenados em vaults seguros.
 
-- **Por que:**  
-  Reduz risco de credenciais comprometidas, facilita gestão de usuários e melhora experiência de login seguro.  
+Esse mecanismo limita a exposição de informações sensíveis e facilita o cumprimento das obrigações legais impostas pela LGPD e ISO 27701.
+
+**Entenda em mais detalhes em:** [Data Tokenization Spec.](../specifications/data-tokenization.md)
 
 ---
 
-#### **4.1.2 Encryption and Authentication**  
+#### Rate Limiting
 
-##### **Strong Encryption (Criptografia Forte)**  
-- **O que:**  
-  Proteção de dados sensíveis com criptografia de alto nível em repouso e em trânsito.  
+Requisições a APIs e serviços são controladas por algoritmos de limitação de taxa (como Token Bucket e Leaky Bucket), com base em IP, identidade e aplicação.
 
-- **Como:**  
-  - **AES-256** para criptografia de dados armazenados.  
-  - **TLS 1.3** para comunicações seguras.  
-  - Uso de **HSMs (Hardware Security Modules)** para gerenciamento de chaves criptográficas.  
+Essa medida protege os sistemas contra abuso, DDoS e brute force, garantindo estabilidade e aderência às diretrizes do FAPI e ISO 27001.
 
-- **Por que:**  
-  Garante confidencialidade dos dados e impede acesso não autorizado mesmo em caso de vazamento.  
+**Entenda em mais detalhes em:** [Rate Limiting Spec.](../specifications/rate-limiting.md)
 
 ---
 
-##### **Webhook Signature (Assinatura de Webhooks)**  
-- **O que:**  
-  Garantia de integridade e autenticidade das requisições enviadas e recebidas via webhook.  
+#### Política de Dados
 
-- **Como:**  
-  - Uso de **HMAC-SHA256** para assinatura das requisições.  
-  - Validação do cabeçalho de assinatura antes do processamento.  
-  - Expiração de requisições antigas para evitar ataques de replay.  
+Os dados de clientes são segmentados logicamente, com chaves de criptografia distintas por tenant e controles de acesso isolados. Políticas de retenção garantem que dados sejam descartados com segurança ao fim do seu ciclo de vida, e mecanismos de proteção previnem vazamentos e exposições indevidas.
 
-- **Por que:**  
-  Protege contra ataques MITM (Man-in-the-Middle) e garante que apenas webhooks legítimos sejam processados.  
+Essas práticas atendem diretamente à LGPD, promovem privacidade by design e estão alinhadas à ISO 27701 e ISO 27001.
+
+**Entenda em mais detalhes em:** [Data Policy Spec.](../specifications/data-policy.md)
 
 ---
 
-#### **4.1.3 Hashing & Tokenization**  
+#### Resposta a Incidentes de Vazamento de Dados
 
-##### **Hashing (Hash Seguro de Dados Sensíveis)**  
-- **O que:**  
-  Utilização de hashing forte para armazenamento seguro de senhas e dados críticos.  
+A Guardia mantém um plano robusto de resposta a incidentes, incluindo detecção proativa, resposta imediata, comunicação estruturada com stakeholders e planos de recuperação de desastres.
 
-- **Como:**  
-  - Uso de **bcrypt, Argon2 ou PBKDF2** com fator de iteração alto.  
-  - Salting aleatório para cada hash gerado.  
-  - Proibição de armazenamento de senhas em texto plano.  
+Essa abordagem reforça a resiliência organizacional e garante conformidade com normas como ISO 27001, LGPD e NIST CSF.
 
-- **Por que:**  
-  Previne vazamentos de credenciais e ataques de força bruta.  
+**Entenda em mais detalhes em:** [Data Breach Response Spec.](../specifications/data-breach-response.md)
 
----
+## Conclusão
 
-##### **Tokenization (Substituição de Dados Sensíveis por Tokens)**  
-- **O que:**  
-  Substituição de dados sensíveis por identificadores únicos sem significado externo.  
-
-- **Como:**  
-  - Implementação de **Vaults Seguros** para mapeamento reverso de tokens.  
-  - Tokens gerados com **UUIDs ou chaves criptográficas**.  
-  - Proibição de armazenar valores originais em sistemas de acesso público.  
-
-- **Por que:**  
-  Minimiza impacto de vazamentos e simplifica conformidade com regulamentos de privacidade.  
-
----
-
-#### **4.1.4 Rate Limiting (Proteção contra abuso de requisições)**  
-- **O que:**  
-  Controle do número de requisições permitidas em APIs e serviços para evitar abusos e ataques DDoS.  
-
-- **Como:**  
-  - Implementação de **Rate Limiting (limitação de taxa)** baseada em **IP, usuário e aplicação**.  
-  - Uso de **algoritmos como Token Bucket e Leaky Bucket** para controle de fluxo.  
-  - Bloqueio temporário de IPs após tentativas excessivas de autenticação (proteção contra **Brute Force**).  
-
-- **Por que:**  
-  Garante disponibilidade do serviço e protege contra ataques automatizados.  
-
----
-
-#### **4.1.5 Data Policy (Política de Dados)**  
-
-##### **Data Segmentation (Segmentação de Dados)**  
-- **O que:**  
-  Garantia de que dados de clientes sejam armazenados de forma isolada para evitar acessos indevidos.  
-
-- **Como:**  
-  - Separação lógica entre dados de diferentes clientes.  
-  - Aplicação de **chaves de criptografia distintas por tenant**.  
-  - Uso de **access control lists (ACLs)** para restringir acessos entre domínios de dados.  
-
-- **Por que:**  
-  Impede acessos não autorizados entre diferentes usuários ou organizações.  
-
----
-
-##### **Data Protection (Proteção de Dados)**  
-- **O que:**  
-  Aplicação de medidas técnicas para evitar vazamento e exposição de dados sensíveis.  
-
-- **Como:**  
-  - **Monitoramento contínuo** contra tentativas de extração de dados.  
-  - Aplicação de **DLP (Data Loss Prevention)** para evitar acessos não autorizados.  
-  - **Política de Privacidade by Design**, minimizando coleta e retenção desnecessária.  
-
-- **Por que:**  
-  Reduz riscos de vazamento de dados e garante conformidade regulatória.  
-
----
-
-##### **Data Retention (Retenção de Dados)**  
-- **O que:**  
-  Definição de períodos claros para retenção e descarte seguro de dados.  
-
-- **Como:**  
-  - Implementação de **políticas de retenção automatizadas**.  
-  - Exclusão definitiva de dados após o prazo regulamentar.  
-  - Registro e auditoria de operações de exclusão.  
-
-- **Por que:**  
-  Evita armazenamento desnecessário e reduz riscos legais e operacionais.  
-
----
-
-##### **Data Breach (Resposta a Incidentes de Vazamento de Dados)**  
-- **O que:**  
-  Definição de processos para resposta rápida e mitigação de incidentes de segurança.  
-
-- **Como:**  
-  - **Plano de resposta a incidentes**, incluindo comunicação com clientes e autoridades.  
-  - **Monitoramento 24/7** para detecção proativa de vazamentos.  
-  - Adoção de **disaster recovery plans (DRP)** para rápida contenção de impactos.  
-
-- **Por que:**  
-  Minimiza impactos de vazamentos e melhora a resiliência do sistema.  
-
----
-
-Essa estrutura garante que **Security by Design** esteja presente desde a concepção dos produtos. 🚀
-
-
----
-
-### **Application**  
-
-
----
-
-### Infrastructure
-
-
-
-
-#### Availability and Reliability
-
- - Three 9s (99.9%) uptime
- - Four 9s (99.99%) uptime
- - Five 9s (99.999%) uptime
-
-#### Disaster Recovery
-
-##### Guardia Platform
-
-##### Guardia Modules
-
-- Pilot Light
-- Warm Standby
-- Active Active
-
-#### Continuous Backup
-
-#### DDoS Protection
-
-#### Infrastructure Scanning
-
-
----
-
-### Organizational
-
-#### Background Checks
-
-#### Incident Response
-
-#### Security Training
-
-#### Security Monitoring
-
-#### Security Testing
-
-#### Security Incident Management
-
----
-
-
-## **4. Conclusão**  
-
-Esta política assegura que a **Guardia** implemente práticas de segurança alinhadas aos padrões internacionais, garantindo proteção de dados, conformidade regulatória e confiança dos clientes. A integração dessas normas no dia a dia operacional fortalece a postura de segurança da empresa, promovendo um ambiente seguro e resiliente para todos os stakeholders.
+Esta política reforça o compromisso da **Guardia** com práticas modernas de segurança da informação, baseadas em padrões internacionais, princípios de confiança contínua e governança integrada. A adoção dessas diretrizes é fundamental para garantir proteção de dados, conformidade regulatória e uma plataforma resiliente, segura e confiável.

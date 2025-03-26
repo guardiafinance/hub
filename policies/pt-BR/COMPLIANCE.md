@@ -1,8 +1,8 @@
-# **Compliance by Design**  
+# Compliance by Design
 
 O **Compliance by Design** é um modelo que incorpora princípios de conformidade regulatória desde a concepção de sistemas, processos e produtos. Essa abordagem evita a necessidade de correções posteriores e garante aderência contínua às regulamentações.
 
-Este documento estabelece as diretrizes de Compliance by Design que devem ser seguidas em todos da Guardia. A adoção dessas práticas não é opcional, sendo obrigatória para garantir a segurança, conformidade regulatória e governança contínua.
+Este documento estabelece as diretrizes de Compliance by Design que devem ser seguidas em todos os projetos e operações da Guardia. A adoção dessas práticas não é opcional, sendo obrigatória para garantir a segurança, conformidade regulatória e governança contínua.
 
 Cada sistema, processo ou produto desenvolvido deve estar em total alinhamento com as normas e padrões aqui definidos, incluindo, mas não se limitando aos princípios e diretrizes de Compliance by Design.
 
@@ -10,133 +10,94 @@ O não cumprimento dessas diretrizes pode resultar em revisões obrigatórias, b
 
 Para dúvidas ou solicitações relacionadas à aplicação dessas normas, consulte a equipe de Governança e Compliance ou acesse os documentos complementares disponíveis no repositório oficial da Guardia.
 
+## Princípios
 
-## **Princípios**  
+- **Automação da Conformidade** – Controles e verificações automatizadas são implementados desde os primeiros estágios de projeto, permitindo conformidade contínua com menor custo operacional e risco reduzido de falhas humanas.
 
-- **_Automação da Conformidade_** – Implementação de controles e verificações automatizadas nos processos e sistemas, garantindo conformidade contínua e reduzindo riscos de não conformidade de forma eficiente e escalável.  
+- **Zero Trust** – Nenhum acesso é presumido como confiável. Cada requisição é validada de forma rigorosa, com autenticação multifator, políticas de acesso dinâmico, criptografia forte e registros auditáveis.
 
-- **_Zero Trust_** – Aplicação do princípio de mínima confiança, protegendo dados e processos sensíveis por meio de autenticação rigorosa, controle de acesso contínuo, criptografia e auditorias constantes, minimizando a superfície de ataque e prevenindo acessos indevidos.  
+- **Transparência e Auditabilidade** – Toda ação relevante é registrada com granularidade, utilizando o modelo 5W1H (Who, What, When, Where, Why, How), permitindo rastreabilidade e prestação de contas efetiva.
 
-- **_Transparência e Auditabilidade_** – Registro detalhado de todas as ações para garantir rastreabilidade e conformidade, seguindo o princípio dos **5W1H** (Who, What, When, Where, Why e How).  
+- **Reversibilidade e Rastreabilidade** – Qualquer alteração de estado no sistema é registrada de forma imutável. Reversões geram novos eventos auditáveis, assegurando histórico completo de decisões e mudanças.
 
-- **_Reversibilidade e Rastreabilidade_** – Todas as alterações são registradas de forma imutável e qualquer reversão gera um novo evento que anula a modificação anterior, preservando o histórico completo das operações.  
+- **Governança Contínua** – As políticas e controles passam por revisão e monitoramento periódicos. Isso garante alinhamento constante com novas regulamentações e evolução dos riscos.
 
-- **_Governança Contínua_** – Monitoramento proativo e revisão periódica de políticas, processos e sistemas para garantir conformidade contínua e adaptação a novas regulamentações.  
+- **Engajamento Interdisciplinar** – As áreas de Governança, Jurídico, Engenharia e Segurança trabalham de forma integrada desde a concepção de novos produtos, promovendo responsabilidade compartilhada pela conformidade.
 
-- **_Engajamento Interdisciplinar_** – Colaboração ativa entre governança, jurídico, engenharia e segurança desde a concepção dos produtos e processos.  
+## Normas, Padrões e Certificações
 
-## **Normas, Padrões e Certificações**  
+### PCI DSS 4.0
 
-Abaixo estão as normas seguidas pela **Guardia**, explicando **o que** cada uma exige, **como** implementamos e **por que** ela é essencial para nossos clientes e operações.  
+A Guardia é aderente à versão mais atual da norma PCI DSS (Payment Card Industry Data Security Standard), garantindo controles rigorosos para o processamento, armazenamento e transmissão de dados de cartão de pagamento. A segurança é assegurada por criptografia forte (AES-256, TLS 1.2+), autenticação multifator para ambientes sensíveis, segmentação de rede e monitoramento contínuo com uso de SIEM.
 
-### **PCI DSS 4.0 (Payment Card Industry Data Security Standard)**  
+Essas medidas evitam fraudes financeiras, reforçam a integridade das operações e garantem conformidade com os principais requisitos do setor financeiro.
 
-**O que:**  
-Define requisitos para garantir a segurança no processamento, armazenamento e transmissão de dados de cartões de pagamento.  
-
-**Como implementamos:**  
-- **Criptografia AES-256** para dados em repouso e **TLS 1.2+** para comunicação segura.  
-- **Autenticação Multifator (MFA)** para acesso a sistemas sensíveis.  
-- **Segmentação de redes**, isolando ambientes de pagamento de outros sistemas internos.  
-- **SIEM para monitoramento contínuo**, detectando atividades suspeitas em tempo real.  
-
-**Por que é importante:**  
-Evita fraudes financeiras, vazamentos de dados e garante a integridade dos pagamentos eletrônicos.  
+**Entenda em mais detalhes em:** [PCI DSS 4.0 Compliance Spec.](../specifications/pci-dss-4.0.md)
 
 ---
 
-### **SOC 1 Type I e SOC 2 Type II**  
+### SOC 1 Type I e SOC 2 Type II
 
-**O que:**  
-Define padrões para a segurança operacional e a integridade dos controles internos sobre dados financeiros e de clientes.  
+A conformidade com os padrões SOC assegura que os processos da Guardia sejam auditáveis, resilientes e confiáveis. Isso inclui controle de acesso granular, retenção e monitoramento de logs por no mínimo 12 meses, auditorias externas regulares e testes recorrentes de continuidade de negócios.
 
-**Como implementamos:**  
-- **Controle de acesso granular**, garantindo o princípio do menor privilégio.  
-- **Monitoramento e logs centralizados**, com retenção mínima de 12 meses.  
-- **Auditorias regulares** conduzidas por terceiros independentes.  
-- **Testes periódicos de continuidade de negócios e recuperação de desastres**.  
+Essas práticas reforçam a confiança dos clientes e parceiros na integridade das operações financeiras e na governança da plataforma.
 
-**Por que é importante:**  
-Assegura que nossos processos e sistemas financeiros sejam confiáveis e auditáveis, reforçando a credibilidade da plataforma.  
+**Entenda em mais detalhes em:** [SOC Compliance Spec.](../specifications/soc.md)
 
 ---
 
-### **NIST CSF v2 (Cybersecurity Framework)**  
+### NIST CSF v2
 
-**O que:**  
-Fornece um modelo de referência para identificar, proteger, detectar, responder e recuperar-se de ameaças cibernéticas.  
+O framework NIST CSF guia a estratégia da Guardia em cibersegurança. São mantidos inventários atualizados de ativos, processos de gestão de riscos, threat intelligence integrado ao SIEM e planos de resposta a incidentes.
 
-**Como implementamos:**  
-- **Inventário de ativos e gestão de riscos**, garantindo visibilidade total sobre sistemas e dados.  
-- **Threat Intelligence e SIEM**, permitindo respostas rápidas a incidentes.  
-- **Treinamento contínuo** para conscientização de segurança cibernética.  
-- **Plano de resposta a incidentes e recuperação de desastres**, minimizando impacto operacional.  
+Essa estrutura garante preparação frente a ameaças emergentes e fortalece a capacidade de resposta da organização diante de incidentes operacionais e de segurança.
 
-**Por que é importante:**  
-Reduz riscos cibernéticos e assegura que a Guardia esteja preparada para responder a ataques rapidamente.  
+**Entenda em mais detalhes em:** [NIST CSF Compliance Spec.](../specifications/nist-csf.md)
 
 ---
 
-### **LGPD Compliance (Lei Geral de Proteção de Dados)**  
+### LGPD (Lei Geral de Proteção de Dados)
 
-**O que:**  
-Estabelece regras sobre coleta, armazenamento e processamento de dados pessoais, garantindo direitos aos titulares.  
+A Guardia adota políticas e controles aderentes à LGPD, priorizando privacidade desde a concepção. São aplicadas práticas de minimização de dados, gestão ativa de consentimento, registros de tratamento e a atuação de um DPO dedicado.
 
-**Como implementamos:**  
-- **Coleta de dados minimizada**, garantindo que apenas informações essenciais sejam armazenadas.  
-- **Gestão de consentimento** para assegurar que os usuários tenham controle sobre seus dados.  
-- **Registro de operações de tratamento**, garantindo transparência e rastreabilidade.  
-- **Nomeação de um DPO** para garantir conformidade e resposta eficiente a incidentes.  
+Essa conformidade mitiga riscos legais e reputacionais, promovendo transparência e fortalecendo a relação de confiança com os titulares de dados.
 
-**Por que é importante:**  
-Evita penalidades regulatórias e reforça a confiança dos clientes na proteção de seus dados.  
+**Entenda em mais detalhes em:** [LGPD Compliance Spec.](../specifications/lgpd.md)
 
 ---
 
-### **FAPI (Financial-grade API Security Profile)**  
+### FAPI (Financial-grade API Security Profile)
 
-**O que:**  
-Define padrões de segurança para APIs financeiras, garantindo autenticação forte e proteção de dados.  
+Para garantir segurança em APIs de alto risco, especialmente no contexto financeiro, a Guardia adota o padrão FAPI. Isso inclui autenticação robusta com OAuth 2.0 e OpenID Connect, tokens assinados e criptografados, rate limiting e mecanismos antifraude integrados.
 
-**Como implementamos:**  
-- **OAuth 2.0 + OpenID Connect**, com escopos específicos para cada acesso.  
-- **Assinatura digital (JWS) e criptografia (JWE)** para garantir a integridade dos tokens.  
-- **Rate limiting e detecção de ataques**, prevenindo abusos e acessos indevidos.  
+Essa abordagem protege contra acesso indevido, fraude e vazamento de dados, alinhando a plataforma aos requisitos de instituições financeiras e reguladores.
 
-**Por que é importante:**  
-Protege APIs financeiras contra fraudes, vazamentos de dados e ataques automatizados.  
+**Entenda em mais detalhes em:** [FAPI Compliance Spec.](../specifications/fapi.md)
 
 ---
 
-### **ISO 27001 (Gestão da Segurança da Informação)**  
+### ISO 27001
 
-**O que:**  
-Estabelece um modelo para gerenciamento seguro da informação dentro da organização.  
+O Sistema de Gestão de Segurança da Informação (SGSI) da Guardia é baseado na norma ISO 27001. Ele contempla políticas formalizadas, avaliações de risco recorrentes, segregação de funções e controles de acesso adaptativos.
 
-**Como implementamos:**  
-- **Sistema de Gestão de Segurança da Informação (SGSI)** estruturado com políticas claras.  
-- **Gestão de riscos cibernéticos**, incluindo avaliações regulares de vulnerabilidades.  
-- **Segregação de funções e controle de acesso**, evitando acessos indevidos a dados críticos.  
+A implementação dessa norma reduz a superfície de ataque, promove proteção contínua de ativos e assegura resiliência operacional mesmo em cenários adversos.
 
-**Por que é importante:**  
-Reduz vulnerabilidades, protege a organização contra ataques e melhora a resiliência operacional.  
+**Entenda em mais detalhes em:** [ISO 27001 Compliance Spec.](../specifications/iso-27001.md)
 
 ---
 
-### **ISO 27701 (Gestão da Privacidade da Informação)**  
+### ISO 27701
 
-**O que:**  
-Extensão da ISO 27001, focada na privacidade e proteção de dados pessoais.  
+Como extensão da ISO 27001, a ISO 27701 orienta a gestão de privacidade da informação. A Guardia aplica práticas de governança de dados pessoais, resposta rápida a incidentes de privacidade e registro transparente de base legal para tratamento de dados.
 
-**Como implementamos:**  
-- **Gestão contínua dos riscos de privacidade**, assegurando proteção de dados desde a coleta.  
-- **Resposta rápida a incidentes de privacidade**, minimizando impactos regulatórios.  
-- **Transparência e governança**, garantindo que todos os dados sejam processados com base legal adequada.  
+Esse padrão reforça o compromisso com a privacidade desde a concepção e facilita conformidade com legislações internacionais como LGPD e GDPR.
 
-**Por que é importante:**  
-Permite que a Guardia atenda às regulamentações globais de privacidade e ofereça um alto nível de proteção de dados.
+**Entenda em mais detalhes em:** [ISO 27701 Compliance Spec.](../specifications/iso-27701.md)
 
+## Dúvidas, Sugestões e Reportar Problemas
 
-## **Dúvidas, Sugestões e Reportar Problemas**  
+Para dúvidas ou solicitações relacionadas à aplicação dessas normas:
 
-Para dúvidas ou solicitações relacionadas à aplicação dessas normas, consulte a equipe de **Governança e Compliance** @guardia/governance ou acesse os documentos complementares disponíveis no repositório oficial da **Guardia**.
+- Consulte a equipe de **Governança e Compliance** [@guardia/governance](https://github.com/guardiafinance/governance)
+- Envie um e-mail para [governance@guardia.finance](mailto:governance@guardia.finance)
+- Acesse os documentos complementares via [Developer Hub](https://hub.guardia.finance) ou [repositório](https://github.com/guardia/hub) da **Guardia**
