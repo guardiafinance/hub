@@ -112,8 +112,8 @@ Os PDRs quando globais devem ser armazenadas no repositório [guardia](https://g
 
 ---
 
-##### **Requests for Comments (RFCs) Internas**  
-Mudanças significativas em processos, tecnologias ou estratégias devem ser discutidas por meio de **RFCs Internas**.  
+##### **Requests for Comments (RFCs)**  
+Mudanças significativas em processos, tecnologias ou estratégias devem ser discutidas por meio de **RFCs**.  
 
 O processo segue os seguintes passos:  
 1. **Proposta**: Qualquer membro pode propor uma RFC, documentando o problema e possíveis soluções.  
