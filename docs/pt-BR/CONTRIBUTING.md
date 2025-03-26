@@ -124,11 +124,11 @@ Quando um commit ou uma tag contém uma assinatura GPG que possa ser verificada 
 |--------|-----------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Sim    | Verificado            | O commit foi assinado, a assinatura foi verificada com sucesso e o committer é o único autor que habilitou o modo vigilante.                                                                              |
 | Não    | Parcialmente verificado | O commit foi assinado e a assinatura foi verificada com sucesso, mas o commit tem um autor que: a) não é o committer e b) habilitou o modo vigilante. Neste caso, a assinatura de commit não garante o consentimento do autor. Portanto o commit é verificado apenas parcialmente. |
-| Não    | Não verificado        | Qualquer uma das seguintes opções é verdadeira: <br> – O commit foi assinado, mas não foi possível verificar a assinatura. <br> – O commit não foi assinado, e o usuário que o fez habilitou o modo vigilante. <br> – O commit não foi assinado, e um autor habilitou o modo vigilante. |
+| Não    | Não verificado        | Qualquer uma das seguintes opções é verdadeira: <br /> – O commit foi assinado, mas não foi possível verificar a assinatura. <br /> – O commit não foi assinado, e o usuário que o fez habilitou o modo vigilante. <br /> – O commit não foi assinado, e um autor habilitou o modo vigilante. |
 | Não    | Sem status de verificação | O commit não foi assinado.                                                                                                                                                                                  |
-</br>
+<br />
 
->**IMPORTANTE:** Serão aceitos apenas Pull Requests com todos os commits assinados e marcados como "Verificado". Veja como configurar o Git para assinar commits automaticamente em [Assinando commits](../../tutorials/pt-BR/signing-commits.md).
+>**IMPORTANTE:** Serão aceitos apenas Pull Requests com todos os commits assinados e marcados como "Verificado". Veja como configurar o Git para assinar commits automaticamente em [Assinando commits](../../../tutorials/pt-BR/signing-commits.md).
 
 ## Idiomas
 

@@ -34,7 +34,7 @@ Para la mayoría de los cambios, se recomienda crear un problema para discutir t
 - Después de enviar tus commits a GitHub, asegúrate de que tu rama pueda fusionarse automáticamente (sin conflictos de fusión). Si no, en tu computadora, fusiona la rama principal en tu rama, resuelve cualquier conflicto de fusión, asegúrate de que todo siga funcionando correctamente y pase todas las pruebas, y luego envía esos cambios.
 - Una vez que el cambio haya sido aprobado y fusionado, te notificaremos en un comentario.
 
-</br>
+<br />
 
 ```mermaid
 graph LR
@@ -121,11 +121,11 @@ Cuando un commit o etiqueta contiene una firma GPG criptográficamente verificab
 |----------|-----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Sí       | Verificado            | El commit fue firmado, la firma se verificó con éxito, y el autor es el único que habilitó el modo vigilante.                                                                              |
 | No       | Parcialmente verificado| El commit fue firmado y la firma se verificó con éxito, pero el commit tiene un autor que: a) no es el autor del commit y b) habilitó el modo vigilante. En este caso, la firma del commit no garantiza el consentimiento del autor. Por lo tanto, el commit solo está parcialmente verificado. |
-| No       | No verificado         | Cualquiera de las siguientes es verdadera: <br> – El commit fue firmado, pero la firma no pudo ser verificada. <br> – El commit no fue firmado, y el usuario que lo hizo habilitó el modo vigilante. <br> – El commit no fue firmado, y un autor habilitó el modo vigilante. |
+| No       | No verificado         | Cualquiera de las siguientes es verdadera: <br /> – El commit fue firmado, pero la firma no pudo ser verificada. <br /> – El commit no fue firmado, y el usuario que lo hizo habilitó el modo vigilante. <br /> – El commit no fue firmado, y un autor habilitó el modo vigilante. |
 | No       | Sin estado de verificación | El commit no fue firmado.                                                                                                                                                                                  |
-</br>
+<br />
 
->**IMPORTANTE:** Solo se aceptarán Pull Requests con todos los commits firmados y marcados como "Verificado". Vea cómo configurar Git para firmar commits automáticamente en [Firmando commits](../../tutorials/pt-BR/signing-commits.md).
+>**IMPORTANTE:** Solo se aceptarán Pull Requests con todos los commits firmados y marcados como "Verificado". Vea cómo configurar Git para firmar commits automáticamente en [Firmando commits](../../../tutorials/pt-BR/signing-commits.md).
 
 ## Idiomas
 

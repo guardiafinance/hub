@@ -34,7 +34,7 @@ For most changes, it is recommended to create an issue to discuss your proposals
 - After pushing your commits to GitHub, ensure your branch can be automatically merged (no merge conflicts). If not, on your computer, merge the main branch into your branch, resolve any merge conflicts, ensure everything still works correctly and passes all tests, and then push those changes.
 - Once the change has been approved and merged, we will notify you in a comment.
 
-</br>
+<br />
 
 ```mermaid
 graph LR
@@ -121,11 +121,11 @@ When a commit or tag contains a cryptographically verifiable GPG signature, it w
 |----------|-----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Yes      | Verified              | The commit was signed, the signature was successfully verified, and the committer is the only author who enabled vigilant mode.                                                                              |
 | No       | Partially verified    | The commit was signed and the signature was successfully verified, but the commit has an author who: a) is not the committer and b) enabled vigilant mode. In this case, the commit signature does not guarantee the author's consent. Therefore, the commit is only partially verified. |
-| No       | Not verified          | Any of the following is true: <br> – The commit was signed, but the signature could not be verified. <br> – The commit was not signed, and the user who made it enabled vigilant mode. <br> – The commit was not signed, and an author enabled vigilant mode. |
+| No       | Not verified          | Any of the following is true: <br /> – The commit was signed, but the signature could not be verified. <br /> – The commit was not signed, and the user who made it enabled vigilant mode. <br /> – The commit was not signed, and an author enabled vigilant mode. |
 | No       | No verification status | The commit was not signed.                                                                                                                                                                                  |
-</br>
+<br />
 
->**IMPORTANT:** Only Pull Requests with all commits signed and marked as "Verified" will be accepted. See how to configure Git to sign commits automatically in [Signing commits](../../tutorials/pt-BR/signing-commits.md).
+>**IMPORTANT:** Only Pull Requests with all commits signed and marked as "Verified" will be accepted. See how to configure Git to sign commits automatically in [Signing commits](../../../tutorials/pt-BR/signing-commits.md).
 
 ## Languages
 
