@@ -17,17 +17,17 @@ jobs:
         with:
           node-version: 18
           cache: npm
-          cache-dependency-path: 'portal'
+          cache-dependency-path: 'package-lock.json'
 
       - name: Install dependencies
-        run: npm ci --prefix portal
+        run: npm ci
       - name: Build website
-        run: npm run build --prefix portal
+        run: npm run build
 
       - name: Upload Build Artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: portal/build
+          path: build
 
   deploy:
     name: Deploy to GitHub Pages
