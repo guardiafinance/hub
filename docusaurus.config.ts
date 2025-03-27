@@ -35,6 +35,10 @@ const config: Config = {
   ],
 
   themeConfig: {    
+    metadata: [
+      {name: 'keywords', content: 'guardia, finance, api, sdk, developer, hub, documentation, fintech, open source'},
+      {name: 'twitter:card', content: 'summary_large_image'},
+    ],
     image: 'img/docusaurus-social-card.jpg',
     navbar: {      
       logo: {
@@ -69,6 +73,29 @@ const config: Config = {
       defaultMode: 'dark',
       respectPrefersColorScheme: true,
     },
+    // Configurações de Open Graph
+    openGraph: {
+      type: 'website',
+      locale: 'pt_BR',
+      url: 'https://hub.guardia.finance',
+      siteName: 'Guardia',
+      title: 'Developer Hub',
+      description: 'Documentação técnica, guias e recursos para a comunidade de desenvolvedores da Guardia',
+      images: [
+        {
+          url: 'img/logotipo-purple.png',
+          width: 1200,
+          height: 630,
+          alt: 'Guardia Developer Hub',
+        },
+      ],
+    },
+    // Configurações do Twitter
+    twitter: {
+      cardType: 'summary_large_image',
+      site: '@guardiafinance',
+      creator: '@guardiafinance',
+    },
   } satisfies Preset.ThemeConfig,
 
   headTags: [
@@ -81,6 +108,11 @@ const config: Config = {
     },
   ],
 
+  // Configurações de SEO
+  titleDelimiter: '|',
+  noIndex: false,
+  trailingSlash: true,
+  
   plugins: [
   ],
 };
