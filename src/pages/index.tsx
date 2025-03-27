@@ -4,7 +4,6 @@ import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import Heading from '@theme/Heading';
-import ConstructionBanner from '@site/src/components/ConstructionBanner';
 import ProductCards from '@site/src/components/ProductCards';
 import DocLinks from '@site/src/components/DocLinks';
 import Sdks from '@site/src/components/Sdks';
@@ -55,7 +54,6 @@ export default function Home(): ReactNode {
   const {siteConfig, i18n } = useDocusaurusContext();
   return (
     <>
-      <ConstructionBanner/>
       <Layout
         title={`${siteConfig.tagline}`}>      
         <div className={styles.background}>
