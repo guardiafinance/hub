@@ -3,9 +3,9 @@ import type FooterType from '@theme/Footer';
 import type {WrapperProps} from '@docusaurus/types';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import styles from './styles.module.css';
-import ptBR from '../../i18n/pt-BR.json';
-import en from '../../i18n/en.json';
-import es from '../../i18n/es.json';
+import ptBR from '../../translations/pt-BR.json';
+import en from '../../translations/en.json';
+import es from '../../translations/es.json';
 
 type Props = WrapperProps<typeof FooterType>;
 

@@ -9,9 +9,9 @@ import ProductCards from '@site/src/components/ProductCards';
 import DocLinks from '@site/src/components/DocLinks';
 import Sdks from '@site/src/components/Sdks';
 import DiscordCommunity from '@site/src/components/DiscordCommunity';
-import ptBR from '../i18n/pt-BR.json';
-import en from '../i18n/en.json';
-import es from '../i18n/es.json';
+import ptBR from '../translations/pt-BR.json';
+import en from '../translations/en.json';
+import es from '../translations/es.json';
 import { useColorMode } from '@docusaurus/theme-common';
 
 import styles from './index.module.css';
