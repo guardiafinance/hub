@@ -4,7 +4,7 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import ptBR from '../../translations/pt-BR.json';
 import en from '../../translations/en.json';
 import es from '../../translations/es.json';
-import { EXTERNAL_LINKS } from '../../config/external-links';
+import { EXTERNAL_LINKS } from '../ExternalLink/external-links';
 
 const CommunityChannel = () => {
   const { i18n } = useDocusaurusContext();
@@ -22,7 +22,7 @@ const CommunityChannel = () => {
         <h2>{communityChannel.title}</h2>
         <p>{communityChannel.description}</p>
         <a 
-          href={EXTERNAL_LINKS.WhatsApp_COMMUNITY} 
+          href={EXTERNAL_LINKS.WHATSAPP_COMMUNITY} 
           className={styles.communityChannelButton} 
           target="_blank" 
           rel="noopener noreferrer"

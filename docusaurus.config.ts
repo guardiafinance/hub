@@ -1,6 +1,7 @@
 import {themes as prismThemes} from 'prism-react-renderer';
 import type {Config, ThemeConfig} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
+import { EXTERNAL_LINKS } from './src/components/ExternalLink/external-links';
 
 const config: Config = {
   title: 'Guardia',
@@ -54,7 +55,7 @@ const config: Config = {
           label: 'Docs',
         },        
         {
-          href: 'https://github.com/guardiafinance',
+          href: EXTERNAL_LINKS.GITHUB,
           label: 'GitHub',
           position: 'right',
         },

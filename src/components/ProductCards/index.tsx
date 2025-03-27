@@ -5,6 +5,7 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import ptBR from '../../translations/pt-BR.json';
 import en from '../../translations/en.json';
 import es from '../../translations/es.json';
+import { EXTERNAL_LINKS } from '@site/src/components/ExternalLink/external-links';
 
 interface ProductCardProps {
   title: string | ReactNode;
@@ -86,9 +87,9 @@ export default function ProductCards() {
           status={products.status.development}
           version="v0.1.0-alpha"
           links={{
-            github: "#",
-            api: "https://docs.guardia.finance/sobre-o-lke-822954m0",
-            docker: "#",
+            github: EXTERNAL_LINKS.GITHUB,
+            api: `${EXTERNAL_LINKS.API_DOG}/about-the-lke-822954m0`,
+            docker: EXTERNAL_LINKS.DOCKER_HUB,
             docs: "/docs/modules/lke/",
           }}
         />
@@ -98,9 +99,9 @@ export default function ProductCards() {
           status={products.status.planning}
           version="v0.0.0"
           links={{
-            github: "#",
-            api: "https://docs.guardia.finance/about-the-base-822955m0",
-            docker: "#",
+            github: EXTERNAL_LINKS.GITHUB,
+            api: `${EXTERNAL_LINKS.API_DOG}/about-the-base-822955m0`,
+            docker: EXTERNAL_LINKS.DOCKER_HUB,
             docs: "/docs/modules/base/",
           }}
         />

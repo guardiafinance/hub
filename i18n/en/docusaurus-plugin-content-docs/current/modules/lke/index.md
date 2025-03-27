@@ -5,6 +5,8 @@ description: The LKE (Ledger Kernel Engine) is Guardia's transactional core, ide
 keywords: [guardia core banking, open source core banking, scalable core banking, transactional ledger, real-time transactions]
 ---
 
+import ExternalLink from '@site/src/components/ExternalLink';
+
 # Ledger Kernel Engine
 
 **LKE (Ledger Kernel Engine)** is Guardia's transactional core — an infrastructure designed to ensure total control, traceability, and integrity in financial transactions for fintechs, digital banks, and companies operating financial services.
@@ -13,9 +15,9 @@ We created LKE for organizations seeking autonomy and predictability, without th
 
 In the Open Core model, LKE is available for free with all essential features. For operations requiring high availability, multiple environments, and dedicated support, we also offer a provisioned version as part of our PaaS offering.
 
-You can access the official LKE image on [Docker Hub](https://hub.docker.com/u/guardiafinance) and explore community resources.
+You can access the official LKE image on <ExternalLink type="DOCKER_HUB">Docker Hub</ExternalLink> and explore the community resources.
 
-If you want to use LKE in production with high availability and full support, contact our commercial team through the [contact form](https://guardia.finance/#contact-us) or our [WhatsApp](#) community.
+If you want to use LKE in production with high availability and full support, contact our commercial team through the <ExternalLink type="CONTACT_FORM">contact form</ExternalLink> or our <ExternalLink type="WHATSAPP_COMMUNITY">WhatsApp</ExternalLink> community.
 
 ---
 

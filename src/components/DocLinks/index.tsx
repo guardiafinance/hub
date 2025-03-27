@@ -6,6 +6,7 @@ import ptBR from '../../translations/pt-BR.json';
 import en from '../../translations/en.json';
 import es from '../../translations/es.json';
 import { ApiDogIcon, PostmanIcon } from './SvgIcon';
+import { EXTERNAL_LINKS } from '@site/src/components/ExternalLink/external-links';
 
 interface DocSection {
   title: string;
@@ -45,8 +46,8 @@ export default function DocLinks() {
       title: documentation.title,
       icon: 'fa-solid fa-book',
       links: [
-        { label: 'API Dog', to: '/', icon: <ApiDogIcon /> },
-        { label: 'Postman', to: '/', icon: <PostmanIcon /> },
+        { label: 'API Dog', to: EXTERNAL_LINKS.API_DOG, icon: <ApiDogIcon /> },
+        { label: 'Postman', to: EXTERNAL_LINKS.POSTMAN_COLLECTION, icon: <PostmanIcon /> },
         { label: documentation.releaseNotes, to: '/', icon: 'fa-solid fa-clipboard-list' },
       ],
     },

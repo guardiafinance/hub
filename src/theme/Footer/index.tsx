@@ -6,6 +6,7 @@ import styles from './styles.module.css';
 import ptBR from '../../translations/pt-BR.json';
 import en from '../../translations/en.json';
 import es from '../../translations/es.json';
+import { EXTERNAL_LINKS } from '../../components/ExternalLink/external-links';
 
 type Props = WrapperProps<typeof FooterType>;
 
@@ -22,19 +23,19 @@ export default function FooterWrapper(props: Props): ReactNode {
       <footer>
         <p>{copyright}</p>
         <div className={styles.socialLinks}>
-          <a href="https://github.com/guardiafinance" className="social-link" target="_blank" rel="noopener noreferrer">
+          <a href={EXTERNAL_LINKS.GITHUB} className="social-link" target="_blank" rel="noopener noreferrer">
             <i className="fab fa-github" aria-label="GitHub"></i>
           </a>
-          <a href="https://linkedin.com/company/guardiafinance" className="social-link" target="_blank" rel="noopener noreferrer">
+          <a href={EXTERNAL_LINKS.LINKEDIN} className="social-link" target="_blank" rel="noopener noreferrer">
             <i className="fab fa-linkedin" aria-label="LinkedIn"></i>
           </a>
-          <a href="https://instagram.com/guardiafinance" className="social-link" target="_blank" rel="noopener noreferrer">
+          <a href={EXTERNAL_LINKS.INSTAGRAM} className="social-link" target="_blank" rel="noopener noreferrer">
             <i className="fab fa-instagram" aria-label="Instagram"></i>
           </a>
-          <a href="https://facebook.com/guardiafinance" className="social-link" target="_blank" rel="noopener noreferrer">
+          <a href={EXTERNAL_LINKS.FACEBOOK} className="social-link" target="_blank" rel="noopener noreferrer">
             <i className="fab fa-facebook" aria-label="Facebook"></i>
           </a>
-          <a href="https://youtube.com/@guardiafinance" className="social-link" target="_blank" rel="noopener noreferrer">
+          <a href={EXTERNAL_LINKS.YOUTUBE} className="social-link" target="_blank" rel="noopener noreferrer">
             <i className="fab fa-youtube" aria-label="YouTube"></i>
           </a>
         </div>

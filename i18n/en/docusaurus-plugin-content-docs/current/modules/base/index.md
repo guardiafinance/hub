@@ -5,6 +5,8 @@ description: The BASE (Banking System Engine) is Guardia's financial product cre
 keywords: [guardia core banking, open source core banking, scalable core banking, account engine, financial product creation]
 ---
 
+import ExternalLink from '@site/src/components/ExternalLink';
+
 # Banking System Engine
 
 **BASE (Banking System Engine)** is Guardia's financial product creation engine — designed to give fintechs, digital banks, and companies operating financial services the freedom to build robust solutions with agility, governance, and flexibility.
@@ -15,9 +17,9 @@ We created BASE for those who need to scale consistently — whether launching a
 
 In the Open Core model, BASE is available for free with essential features. For operations requiring higher throughput, isolated environments, and dedicated support, we also offer provisioned versions as part of our PaaS offering.
 
-You can access the official BASE image on [Docker Hub](https://hub.docker.com/u/guardiafinance) and explore community resources.
+You can access the official BASE image on <ExternalLink type="DOCKER_HUB">Docker Hub</ExternalLink> and explore community resources.
 
-If you want to use BASE in production with high availability and full support, contact our commercial team through the [contact form](https://guardia.finance/#contact-us) or our [WhatsApp](#) community.
+If you want to use BASE in production with high availability and full support, contact our commercial team through the <ExternalLink type="CONTACT_FORM">contact form</ExternalLink> or our <ExternalLink type="WHATSAPP_COMMUNITY">WhatsApp</ExternalLink> community.
 
 ---
 
