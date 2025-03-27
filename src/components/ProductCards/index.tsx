@@ -41,25 +41,25 @@ function ProductCard({ title, description, status, version, links }: ProductCard
       <p className={styles.description}>{description}</p>
       <div className={styles.links}>
         {links.github && (
-          <a href={links.github} className={styles.link}>
+          <a href={links.github} className={styles.link} target='_blank'>
             <i className="fa-brands fa-github"></i>
             GitHub
           </a>
         )}
         {links.api && (
-          <a href={links.api} className={styles.link}>
+          <a href={links.api} className={styles.link} target='_blank'>
             <i className="fa-solid fa-code"></i>
             API
           </a>
         )}
         {links.docker && (
-          <a href={links.docker} className={styles.link}>
+          <a href={links.docker} className={styles.link} target='_blank'>
             <i className="fa-brands fa-docker"></i>
             Docker Hub
           </a>
         )}
         {links.docs && (
-          <a href={links.docs} className={styles.link}>
+          <a href={links.docs} className={styles.link} target='_blank'>
             <i className="fa-solid fa-book"></i>
             {products.documentation}
           </a>
@@ -87,9 +87,9 @@ export default function ProductCards() {
           version="v0.1.0-alpha"
           links={{
             github: "#",
-            api: "#",
+            api: "https://docs.guardia.finance/sobre-o-lke-822954m0",
             docker: "#",
-            docs: "#",
+            docs: "/docs/modules/lke/",
           }}
         />
         <ProductCard
@@ -99,9 +99,9 @@ export default function ProductCards() {
           version="v0.0.0"
           links={{
             github: "#",
-            api: "#",
+            api: "https://docs.guardia.finance/about-the-base-822955m0",
             docker: "#",
-            docs: "#",
+            docs: "/docs/modules/base/",
           }}
         />
       </div>
