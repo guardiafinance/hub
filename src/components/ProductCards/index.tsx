@@ -2,9 +2,9 @@ import React, { ReactNode } from 'react';
 import styles from './styles.module.css';
 import clsx from 'clsx';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import ptBR from '../../i18n/pt-BR.json';
-import en from '../../i18n/en.json';
-import es from '../../i18n/es.json';
+import ptBR from '../../translations/pt-BR.json';
+import en from '../../translations/en.json';
+import es from '../../translations/es.json';
 
 interface ProductCardProps {
   title: string | ReactNode;

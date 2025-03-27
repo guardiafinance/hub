@@ -9,14 +9,16 @@ import ProductCards from '@site/src/components/ProductCards';
 import DocLinks from '@site/src/components/DocLinks';
 import Sdks from '@site/src/components/Sdks';
 import DiscordCommunity from '@site/src/components/DiscordCommunity';
-import ptBR from '../i18n/pt-BR.json';
-import en from '../i18n/en.json';
-import es from '../i18n/es.json';
+import ptBR from '../translations/pt-BR.json';
+import en from '../translations/en.json';
+import es from '../translations/es.json';
+import { useColorMode } from '@docusaurus/theme-common';
 
 import styles from './index.module.css';
 
 function HomepageHeader() {
   const { i18n } = useDocusaurusContext();
+  const { isDarkTheme } = useColorMode();
   const translations = {
     'pt-BR': ptBR,
     'en': en,
@@ -27,9 +29,9 @@ function HomepageHeader() {
     <div className={styles.container}>
       <div className="container">
         <img 
-          src="/img/logotipo-white.png" 
-          alt="Guardia Logo" 
-          className={styles.heroLogo}
+          src={isDarkTheme ? '/img/logotipo-white.png' : '/img/logotipo-purple.png'}
+          className={styles.heroLogo} 
+          alt="Guardia Logo"
         />
         <Heading as="h1" className="hero__title">
           {title}
@@ -55,8 +57,7 @@ export default function Home(): ReactNode {
     <>
       <ConstructionBanner/>
       <Layout
-        title={`${siteConfig.title}`}
-        description="Guardia Developer Hub">      
+        title={`${siteConfig.tagline}`}>      
         <div className={styles.background}>
           <HomepageHeader />             
           <ProductCards />

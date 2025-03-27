@@ -1,7 +1,23 @@
+/* Adicionar ao custom.css */
+:root {
+  /* ... outras variáveis ... */
+  --discord-brand: #5865F2;
+  --discord-brand-hover: #4752C4;
+  --text-light: var(--ifm-color-primary);
+  --text-dark: white;
+  --text-secondary-light: var(--ifm-color-primary-darker);
+  --text-secondary-dark: rgba(255, 255, 255, 0.8);
+}
+
+/* DiscordCommunity styles */
 .discordInvite {  
   padding: 40px 0;
   text-align: center;
-  color: #fff;
+  color: var(--text-light);
+}
+
+[data-theme='dark'] .discordInvite {
+  color: var(--text-dark);
 }
 
 .discordContainer {  
@@ -10,56 +26,65 @@
 
 .discordContainer i {
   font-size: 4rem;
-  color: #5865F2;    
+  color: var(--discord-brand);    
 }
 
 .discordContainer h2 {
   font-size: 2rem;
   margin-bottom: 10px;
+  color: var(--text-light);
+}
+
+[data-theme='dark'] .discordContainer h2 {
+  color: var(--text-dark);
 }
 
 .discordContainer p {
   width: 100%;
   font-size: 1.1rem;  
-  padding:20px;
+  padding: 20px;
+  color: var(--text-secondary-light);
+}
+
+[data-theme='dark'] .discordContainer p {
+  color: var(--text-secondary-dark);
 }
 
 .discordButton {
   display: inline-flex;  
   justify-content: center;
-  background: #5865F2;
-  color: #fff;
+  background: var(--discord-brand);
+  color: var(--text-dark);
   padding: 10px 20px;
   border-radius: 5px;
   text-decoration: none;
   font-size: 1rem;
   font-weight: bold;
+  transition: all 0.3s ease;
 }
 
 .discordButton i {
   font-size: 1.5rem;
-  color: white;
+  color: var(--text-dark);
   margin-right: 10px;
 }
 
 .discordButton:hover {
-  color: white;
-  text-decoration: none !important;
-}
-
-.discordButton:hover {
-  color: white;
+  color: var(--text-dark);
   text-decoration: none !important;
   transform: translateY(-3px);
-  transition: transform 0.3s ease;
-  background: #4752C4;
+  background: var(--discord-brand-hover);
 }
 
 .divider {
   border: 0;
   height: 1px;
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--divider-color-light);
   margin: 4rem auto;
   width: 80%;
+}
+
+[data-theme='dark'] .divider {
+  background: var(--divider-color-dark);
 }
 

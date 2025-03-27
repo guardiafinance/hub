@@ -125,7 +125,7 @@ When a commit or tag contains a cryptographically verifiable GPG signature, it w
 | No       | No verification status | The commit was not signed.                                                                                                                                                                                  |
 <br />
 
->**IMPORTANT:** Only Pull Requests with all commits signed and marked as "Verified" will be accepted. See how to configure Git to sign commits automatically in [Signing commits](../../../tutorials/pt-BR/signing-commits.md).
+>**IMPORTANT:** Only Pull Requests with all commits signed and marked as "Verified" will be accepted. See how to configure Git to sign commits automatically in [Signing commits](../../tutorials/en/signing-commits.md).
 
 ## Languages
 

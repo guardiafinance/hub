@@ -1,5 +1,5 @@
 .container {  
-  padding: 2rem;  
+  padding: 4rem; 
 }
 
 .grid {
@@ -12,21 +12,29 @@
 }
 
 .card {
-  background: rgba(255,255,255,0.1);
+  background: var(--card-background-light);
   border-radius: 12px;
   padding: 1.5rem;
   transition: all 0.3s ease;
   border: 1px solid transparent;
 }
 
+[data-theme='dark'] .card {
+  background: var(--card-background-dark);
+}
+
 .card:hover {  
   box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-  border-color: rgba(255,255,255,0.1);
-  background: rgba(255,255,255,0.15);
+  border-color: var(--card-border-hover);
+  background: var(--card-hover-background-light);
+}
+
+[data-theme='dark'] .card:hover {
+  background: var(--card-hover-background-dark);
 }
 
 .card:hover .link {
-  background: rgba(255,255,255,0.15);
+  background: var(--card-hover-background-light);
 }
 
 .cardHeader {
@@ -44,34 +52,47 @@
 }
 
 .statusDevelopment {
-  background: rgba(88, 101, 242, 0.2) !important;
-  color: #5865F2 !important;
+  background: var(--discord-status-background) !important;
+  color: var(--discord-status-color) !important;
 }
 
 /* Estilo padrão para outros status */
 .status:not(.statusDevelopment) {
-  background: rgba(255, 255, 255, 0.1);
-  color: #a0a0a0;
+  background: var(--status-background-light) !important;
+  color: var(--status-color-light) !important;
+}
+
+/* Ajuste para tema escuro */
+[data-theme='dark'] .status:not(.statusDevelopment) {
+  background: var(--status-background-dark) !important;
+  color: var(--status-color-dark) !important;
 }
 
 .version {
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--status-background-light);
   padding: 0.25rem 0.75rem;
   border-radius: 999px;
   font-size: 0.875rem;
   order: 2;
+  color: var(--status-color-light);
+}
+
+[data-theme='dark'] .version {
+  background: var(--status-background-dark);
+  color: var(--status-color-dark) !important;
 }
 
 .title {
   font-size: 1.5rem;
   margin-bottom: 1rem;
-  color: white;
+  color: var(--ifm-color-primary);
 }
 
 .description {
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--ifm-color-primary);
   margin-bottom: 1.5rem;
   line-height: 1.6;
+  text-align: justify;
 }
 
 .links {
@@ -89,7 +110,11 @@
   left: 0;
   right: 0;
   height: 1px;
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: var(--divider-color-light);
+}
+
+[data-theme='dark'] .links::before {
+  background-color: var(--divider-color-dark);
 }
 
 .link {
@@ -100,24 +125,32 @@
   flex: 1;
   gap: 0.5rem;
   padding: 0.5rem;
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--card-background-light);
   border-radius: 8px;
-  color: white;
+  color: var(--ifm-color-primary);
   text-decoration: none;
-  transition: background-color 0.2s;
+  transition: all 0.2s ease;
   text-align: center;
   min-width: 0;  
 }
 
+[data-theme='dark'] .link {
+  background: var(--card-background-dark);
+}
+
 .link:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: var(--card-background-light) !important;
   text-decoration: none;
-  color: white;
+}
+
+[data-theme='dark'] .link:hover {
+  background: var(--card-background-dark);
 }
 
 .link i {
   font-size: 1.5rem;
   margin-bottom: 0.25rem;
+  color: inherit;
 }
 
 /* Ajustes para mobile */
