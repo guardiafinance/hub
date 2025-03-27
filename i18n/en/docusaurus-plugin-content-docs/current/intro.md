@@ -2,6 +2,10 @@
 sidebar_position: 0
 ---
 
+import ProductCards from '@site/src/components/ProductCards';
+import DocLinks from '@site/src/components/DocLinks';
+import DiscordCommunity from '@site/src/components/DiscordCommunity';
+
 # Welcome to Guardia Hub!
 
 Welcome to Guardia's Developer Hub, your central portal for all technical documentation, guides, and resources for developers who wish to integrate and work with Guardia Finance products.

@@ -2,6 +2,10 @@
 sidebar_position: 0
 ---
 
+import ProductCards from '@site/src/components/ProductCards';
+import DocLinks from '@site/src/components/DocLinks';
+import DiscordCommunity from '@site/src/components/DiscordCommunity';
+
 # ¡Bienvenido al Hub de Guardia!
 
 Bienvenido al Hub de Desarrolladores de Guardia, tu portal central para toda la documentación técnica, guías y recursos para desarrolladores que desean integrar y trabajar con los productos de Guardia Finance.
