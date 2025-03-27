@@ -3,8 +3,8 @@ import type {Config, ThemeConfig} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
-  title: 'Guardia Developer Hub',
-  tagline: 'Guardia Developer Hub',
+  title: 'Guardia',
+  tagline: 'Developer Hub',
   favicon: 'img/favicon.ico',
   url: 'https://hub.guardia.finance',
   baseUrl: '/',

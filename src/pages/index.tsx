@@ -57,8 +57,7 @@ export default function Home(): ReactNode {
     <>
       <ConstructionBanner/>
       <Layout
-        title={`${siteConfig.title}`}
-        description="Guardia Developer Hub">      
+        title={`${siteConfig.tagline}`}>      
         <div className={styles.background}>
           <HomepageHeader />             
           <ProductCards />
