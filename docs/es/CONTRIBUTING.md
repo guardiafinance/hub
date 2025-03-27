@@ -125,7 +125,7 @@ Cuando un commit o etiqueta contiene una firma GPG criptográficamente verificab
 | No       | Sin estado de verificación | El commit no fue firmado.                                                                                                                                                                                  |
 <br />
 
->**IMPORTANTE:** Solo se aceptarán Pull Requests con todos los commits firmados y marcados como "Verificado". Vea cómo configurar Git para firmar commits automáticamente en [Firmando commits](../../../tutorials/pt-BR/signing-commits.md).
+>**IMPORTANTE:** Solo se aceptarán Pull Requests con todos los commits firmados y marcados como "Verificado". Vea cómo configurar Git para firmar commits automáticamente en [Firmando commits](../../tutorials/es/signing-commits.md).
 
 ## Idiomas
 
