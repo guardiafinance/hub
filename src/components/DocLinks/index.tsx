@@ -1,18 +1,19 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import styles from './styles.module.css';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import ptBR from '../../translations/pt-BR.json';
 import en from '../../translations/en.json';
 import es from '../../translations/es.json';
+import { ApiDogIcon, PostmanIcon } from './SvgIcon';
 
 interface DocSection {
   title: string;
-  icon: string;
+  icon: string | ReactNode;
   links: {
     label: string;
     to: string;
-    icon: string;
+    icon: string | ReactNode;
   }[];
 }
 
@@ -44,8 +45,8 @@ export default function DocLinks() {
       title: documentation.title,
       icon: 'fa-solid fa-book',
       links: [
-        { label: 'API Dog', to: '/', icon: 'fa-solid fa-dog' },
-        { label: 'Postman', to: '/', icon: 'fa-solid fa-paper-plane' },
+        { label: 'API Dog', to: '/', icon: <ApiDogIcon /> },
+        { label: 'Postman', to: '/', icon: <PostmanIcon /> },
         { label: documentation.releaseNotes, to: '/', icon: 'fa-solid fa-clipboard-list' },
       ],
     },
@@ -65,7 +66,11 @@ export default function DocLinks() {
         {sections.map((section) => (
           <div key={section.title} className={styles.section}>
             <h2 className={styles.sectionTitle}>
-              <i className={section.icon}></i>
+              {typeof section.icon === 'string' ? (
+                <i className={section.icon}></i>
+              ) : (
+                section.icon
+              )}
               {section.title}
             </h2>
             <div className={styles.linkList}>
@@ -75,7 +80,11 @@ export default function DocLinks() {
                   to={link.to}
                   className={styles.link}
                 >
-                  <i className={link.icon}></i>
+                  {typeof link.icon === 'string' ? (
+                    <i className={link.icon}></i>
+                  ) : (
+                    link.icon
+                  )}
                   {link.label}
                 </Link>
               ))}

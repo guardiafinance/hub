@@ -53,7 +53,11 @@
   color: var(--text-dark);
 }
 
-.sectionTitle i {
+.sectionTitle svg {
+  color: inherit;
+}
+
+.sectionTitle:hover {
   color: var(--link-hover-color);
 }
 
@@ -124,4 +128,33 @@
     padding: 0.5rem;
     font-size: 0.9rem;
   }
-} 
+}
+
+/* Estilo base do ícone */
+.svgIcon {
+  fill: currentColor;
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+  transition: color 0.2s ease;
+}
+
+/* Hover para ambos os temas */
+.sectionTitle:hover .svgIcon {
+  fill: var(--link-hover-color);
+}
+
+.astronaut {
+  fill: transparent;
+  stroke: white;
+  stroke-width: 6;
+  transition: stroke 0.2s ease;
+}
+
+[data-theme='dark'] .astronaut {
+  stroke: #1f092b;
+}
+
+.sectionTitle:hover .astronaut {
+  stroke: white; /* Mantém branco no hover em ambos os temas */
+}
