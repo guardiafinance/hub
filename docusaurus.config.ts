@@ -1,4 +1,6 @@
 import {themes as prismThemes} from 'prism-react-renderer';
+import type {Config, ThemeConfig} from '@docusaurus/types';
+import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
   title: 'Guardia Developer Hub',
@@ -37,7 +39,8 @@ const config: Config = {
     navbar: {      
       logo: {
         alt: 'Guardia Logo',
-        src: 'img/logotipo-white.png',
+        src: 'img/logotipo-purple.png',
+        srcDark: 'img/logotipo-white.png',
       },
       items: [
         {
@@ -62,9 +65,9 @@ const config: Config = {
       darkTheme: prismThemes.dracula,
     },
     colorMode: {
-      disableSwitch: true,
+      disableSwitch: false,
       defaultMode: 'dark',
-      respectPrefersColorScheme: false,
+      respectPrefersColorScheme: true,
     },
   } satisfies Preset.ThemeConfig,
 

@@ -12,11 +12,13 @@ import DiscordCommunity from '@site/src/components/DiscordCommunity';
 import ptBR from '../i18n/pt-BR.json';
 import en from '../i18n/en.json';
 import es from '../i18n/es.json';
+import { useColorMode } from '@docusaurus/theme-common';
 
 import styles from './index.module.css';
 
 function HomepageHeader() {
   const { i18n } = useDocusaurusContext();
+  const { isDarkTheme } = useColorMode();
   const translations = {
     'pt-BR': ptBR,
     'en': en,
@@ -27,9 +29,9 @@ function HomepageHeader() {
     <div className={styles.container}>
       <div className="container">
         <img 
-          src="/img/logotipo-white.png" 
-          alt="Guardia Logo" 
-          className={styles.heroLogo}
+          src={isDarkTheme ? '/img/logotipo-white.png' : '/img/logotipo-purple.png'}
+          className={styles.heroLogo} 
+          alt="Guardia Logo"
         />
         <Heading as="h1" className="hero__title">
           {title}

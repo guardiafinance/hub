@@ -1,6 +1,23 @@
+/* Adicionar ao custom.css se ainda não existirem */
+:root {
+  /* ... outras variáveis ... */
+  --section-background-light: rgba(128, 128, 128, 0.05);
+  --section-background-dark: rgba(255, 255, 255, 0.05);
+  --link-hover-color: #f97316;
+  --link-background-light: rgba(128, 128, 128, 0.1);
+  --link-background-dark: rgba(255, 255, 255, 0.1);
+  --link-hover-background-light: rgba(128, 128, 128, 0.15);
+  --link-hover-background-dark: rgba(255, 255, 255, 0.15);
+}
+
+/* DocLinks styles */
 .container {
-  background: rgba(255, 255, 255, 0.05);
-  padding: 2rem;   
+  background: var(--section-background-light);
+  padding: 4rem;   
+}
+
+[data-theme='dark'] .container {
+  background: var(--section-background-dark);
 }
 
 .grid {
@@ -13,14 +30,18 @@
 }
 
 .section {
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--card-background-light);
   border-radius: 12px;
   padding: 1.5rem;
   transition: all 0.3s ease;
 }
 
+[data-theme='dark'] .section {
+  background: var(--card-background-dark);
+}
+
 .sectionTitle {
-  color: white;
+  color: var(--text-light);
   font-size: 1.25rem;
   margin-bottom: 1.5rem;
   display: flex;
@@ -28,8 +49,12 @@
   gap: 0.5rem;
 }
 
+[data-theme='dark'] .sectionTitle {
+  color: var(--text-dark);
+}
+
 .sectionTitle i {
-  color: #f97316;
+  color: var(--link-hover-color);
 }
 
 .linkList {
@@ -43,31 +68,38 @@
   align-items: center;
   gap: 0.75rem;
   padding: 0.75rem;
-  color: white;
+  color: var(--text-light);
   text-decoration: none;
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--link-background-light);
   border-radius: 8px;
-  transition: 
-    background-color 0.2s, 
-    color 0.2s, 
-    transform 0.2s;
+  transition: all 0.2s ease;
+}
+
+[data-theme='dark'] .link {
+  color: var(--text-dark);
+  background: var(--link-background-dark);
 }
 
 .link:hover {
-  background: rgba(255, 255, 255, 0.15);
+  background: var(--link-hover-background-light);
   text-decoration: none;
-  color: #FF6B35; /* Laranja */
+  color: var(--link-hover-color);
   transform: translateX(5px);
 }
 
+[data-theme='dark'] .link:hover {
+  background: var(--link-hover-background-dark);
+}
+
 .link:hover i {
-  color: #FF6B35; /* Laranja para o ícone também */
+  color: var(--link-hover-color);
 }
 
 .link i {
   font-size: 1rem;
   width: 1.5rem;
   text-align: center;
+  color: inherit;
 }
 
 @media screen and (max-width: 1200px) {

@@ -1,13 +1,24 @@
+:root {
+  --sdk-status-bg: rgba(66, 153, 225, 0.2);
+  --sdk-status-color: #4299e1;
+  --sdk-version-bg-light: rgba(0, 0, 0, 0.2);
+  --sdk-version-bg-dark: rgba(255, 255, 255, 0.2);
+}
+
 .container {
-  padding: 20px;  
+  padding: 4em;  
   border-radius: 8px;
   text-align: center;
 }
 
 .sdkTitle {
-  color: #fff;
+  color: var(--text-light);
   font-size: 24px;
   margin-bottom: 20px;
+}
+
+[data-theme='dark'] .sdkTitle {
+  color: var(--text-dark);
 }
 
 .sdkGrid {
@@ -22,21 +33,27 @@
   display: flex;
   flex-direction: column;
   align-items: center;  
-  background: rgba(255,255,255,0.1);
+  background: var(--card-background-light);
   border-radius: 8px;
   padding: 20px;
   margin: 3px;
   width: 120px;  
   text-align: center;
-  color: #fff;
+  color: var(--text-light);
   text-decoration: none !important;
+  transition: all 0.3s ease;
+}
+
+[data-theme='dark'] .sdkCard {
+  background: var(--card-background-dark);
+  color: var(--text-dark);
 }
 
 .sdkCard i, .sdkCard svg {
-  color: #e07400;
+  color: #f97316;
 }
 
-.sdkCard i{
+.sdkCard i {
   font-size: 36px;  
 }
 
@@ -58,14 +75,20 @@
 }
 
 .sdkStatus {    
-  background: rgba(66, 153, 225, 0.2);
-  color: #4299e1;
+  background: var(--sdk-status-bg);
+  color: var(--sdk-status-color);
 }
 
 .sdkVersion {
-  background: rgba(0, 0, 0, 0.2);
+  background: var(--sdk-version-bg-light);
   font-family: monospace;
   text-transform: lowercase;
+  color: var(--text-light);
+}
+
+[data-theme='dark'] .sdkVersion {
+  background: var(--sdk-version-bg-dark);
+  color: var(--text-dark);
 }
 
 .tags {
@@ -82,9 +105,17 @@
 
 .sdkCard:hover {
   transform: translateY(-5px);
-  transition: transform 0.3s ease;
+  box-shadow: 0 5px 15px rgba(var(--ifm-color-primary-rgb), 0.2);
+}
+
+[data-theme='dark'] .sdkCard:hover {
+  box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);
 }
 
 .sdkCard:hover, .sdkLanguage:hover {
-  color: #e07400;
+  color: var(--link-hover-color);
+}
+
+.sdkCard:hover i, .sdkCard:hover svg {
+  color: #f97316;
 }
