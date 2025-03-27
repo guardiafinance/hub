@@ -56,7 +56,8 @@
         "title": "Community",
         "howToContribute": "How to Contribute",
         "codeOfConduct": "Code of Conduct",
-        "ourCommitment": "Our Commitment"
+        "ourCommitment": "Our Commitment",
+        "CLA": "Contributor License Agreement"
       }
     },
     "discord": {

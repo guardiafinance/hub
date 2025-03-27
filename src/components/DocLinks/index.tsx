@@ -57,6 +57,7 @@ export default function DocLinks() {
         { label: community.howToContribute, to: '/', icon: 'fa-solid fa-handshake' },
         { label: community.codeOfConduct, to: '/', icon: 'fa-solid fa-shield' },
         { label: community.ourCommitment, to: '/', icon: 'fa-solid fa-heart' },
+        { label: community.CLA, to: '/', icon: 'fa-solid fa-user-check' },
       ],
     },
   ];

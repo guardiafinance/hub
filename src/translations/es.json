@@ -56,7 +56,8 @@
         "title": "Comunidad",
         "howToContribute": "Cómo Contribuir",
         "codeOfConduct": "Código de Conducta",
-        "ourCommitment": "Nuestro Compromiso"
+        "ourCommitment": "Nuestro Compromiso",
+        "CLA": "Acuerdo de Licencia del Contribuyente"
       }
     },
     "discord": {
