@@ -15,7 +15,7 @@ In the Open Core model, LKE is available for free with all essential features. F
 
 You can access the official LKE image on [Docker Hub](https://hub.docker.com/u/guardiafinance) and explore community resources.
 
-If you want to use LKE in production with high availability and full support, contact our commercial team through the [contact form](https://guardia.finance/#contact-us) or our [Discord](#) channel.
+If you want to use LKE in production with high availability and full support, contact our commercial team through the [contact form](https://guardia.finance/#contact-us) or our [WhatsApp](#) community.
 
 ---
 

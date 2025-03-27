@@ -1,59 +1,59 @@
 /* Adicionar ao custom.css */
 :root {
   /* ... outras variáveis ... */
-  --discord-brand: #5865F2;
-  --discord-brand-hover: #4752C4;
+  --WhatsApp-brand: #25D366;
+  --WhatsApp-brand-hover: #128C7E;
   --text-light: var(--ifm-color-primary);
   --text-dark: white;
   --text-secondary-light: var(--ifm-color-primary-darker);
   --text-secondary-dark: rgba(255, 255, 255, 0.8);
 }
 
-/* DiscordCommunity styles */
-.discordInvite {  
+/* CommunityChannel styles */
+.communityChannelInvite {  
   padding: 40px 0;
   text-align: center;
   color: var(--text-light);
 }
 
-[data-theme='dark'] .discordInvite {
+[data-theme='dark'] .communityChannelInvite {
   color: var(--text-dark);
 }
 
-.discordContainer {  
+.communityChannelContainer {  
   margin: 60px auto;
 }
 
-.discordContainer i {
+.communityChannelContainer i {
   font-size: 4rem;
-  color: var(--discord-brand);    
+  color: var(--WhatsApp-brand);    
 }
 
-.discordContainer h2 {
+.communityChannelContainer h2 {
   font-size: 2rem;
   margin-bottom: 10px;
   color: var(--text-light);
 }
 
-[data-theme='dark'] .discordContainer h2 {
+[data-theme='dark'] .communityChannelContainer h2 {
   color: var(--text-dark);
 }
 
-.discordContainer p {
+.communityChannelContainer p {
   width: 100%;
   font-size: 1.1rem;  
   padding: 20px;
   color: var(--text-secondary-light);
 }
 
-[data-theme='dark'] .discordContainer p {
+[data-theme='dark'] .communityChannelContainer p {
   color: var(--text-secondary-dark);
 }
 
-.discordButton {
+.communityChannelButton {
   display: inline-flex;  
   justify-content: center;
-  background: var(--discord-brand);
+  background: var(--WhatsApp-brand);
   color: var(--text-dark);
   padding: 10px 20px;
   border-radius: 5px;
@@ -63,17 +63,17 @@
   transition: all 0.3s ease;
 }
 
-.discordButton i {
+.communityChannelButton i {
   font-size: 1.5rem;
   color: var(--text-dark);
   margin-right: 10px;
 }
 
-.discordButton:hover {
+.communityChannelButton:hover {
   color: var(--text-dark);
   text-decoration: none !important;
   transform: translateY(-3px);
-  background: var(--discord-brand-hover);
+  background: var(--WhatsApp-brand-hover);
 }
 
 .divider {

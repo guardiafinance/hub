@@ -46,9 +46,9 @@ body {
   --status-background-dark: rgba(255, 255, 255, 0.1);
   --status-color-dark: #a0a0a0;
   
-  /* Discord status */
-  --discord-status-background: rgba(88, 101, 242, 0.2);
-  --discord-status-color: #5865F2;
+  /* Community status */
+  --community-status-background: rgba(88, 101, 242, 0.2);
+  --community-status-color: #5865F2;
   
   /* Separadores */
   --divider-color-light: rgba(0, 0, 0, 0.2);

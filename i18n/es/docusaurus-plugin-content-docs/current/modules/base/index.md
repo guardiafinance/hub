@@ -17,7 +17,7 @@ En el modelo Open Core, BASE está disponible gratuitamente con las funcionalida
 
 Puedes acceder a la imagen oficial de BASE en [Docker Hub](https://hub.docker.com/u/guardiafinance) y explorar los recursos de la comunidad.
 
-Si quieres usar BASE en producción con alta disponibilidad y soporte completo, contacta a nuestro equipo comercial a través del [formulario de contacto](https://guardia.finance/#contact-us) o por nuestro canal de [Discord](#).
+Si quieres usar BASE en producción con alta disponibilidad y soporte completo, contacta a nuestro equipo comercial a través del [formulario de contacto](https://guardia.finance/#contact-us) o nuestra comunidad de [WhatsApp](#).
 
 ---
 

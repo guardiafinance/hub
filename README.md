@@ -86,7 +86,7 @@ O modelo de negócios **Open Core** é uma abordagem utilizada por empresas que 
 - [Saiba como Contribuir](./CONTRIBUTING.md)  
 - [Conheça nosso Código de Conduta](./CODE_OF_CONDUCT.md)  
 
-Se você precisar de ajuda, quiser nos mostrar o que construiu ou apenas bater um papo sobre ledgers, será mais que bem-vindo no nosso [Discord](#) — estamos ansiosos para te ver por lá!
+Se você precisar de ajuda, quiser nos mostrar o que construiu ou apenas bater um papo sobre ledgers, será mais que bem-vindo na nossa comunidade no [WhatsApp](#) — estamos ansiosos para te ver por lá!
 
 #### Redes Sociais
 

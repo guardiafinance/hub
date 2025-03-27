@@ -15,7 +15,7 @@ No modelo Open Core, o LKE está disponível gratuitamente com todos os recursos
 
 Você pode acessar a imagem oficial do LKE no [Docker Hub](https://hub.docker.com/u/guardiafinance) e explorar os recursos da comunidade.
 
-Se quiser usar o LKE em produção com alta disponibilidade e suporte completo, entre em contato com nosso time comercial através do [formulário de contato](https://guardia.finance/#contact-us) ou pelo nosso canal do [Discord](#).
+Se quiser usar o LKE em produção com alta disponibilidade e suporte completo, entre em contato com nosso time comercial através do [formulário de contato](https://guardia.finance/#contact-us) ou da nossa comunidade no [WhatsApp](#).
 
 ---
 

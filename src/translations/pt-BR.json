@@ -60,10 +60,10 @@
         "CLA": "Acordo de Licença do Contribuidor"
       }
     },
-    "discord": {
+    "communityChannel": {
       "title": "Junte-se à nossa comunidade",
       "description": "Participe das discussões, tire dúvidas e contribua com o desenvolvimento da Guardia.",
-      "button": "Entrar no Discord"
+      "button": "Entrar no WhatsApp"
     },
     "footer": {
       "copyright": "© Guardia, 2025. Todos os direitos reservados.",

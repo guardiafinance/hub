@@ -4,7 +4,7 @@ sidebar_position: 0
 
 import ProductCards from '@site/src/components/ProductCards';
 import DocLinks from '@site/src/components/DocLinks';
-import DiscordCommunity from '@site/src/components/DiscordCommunity';
+import CommunityChannel from '@site/src/components/CommunityChannel';
 
 # ¡Bienvenido al Hub de Guardia!
 
@@ -14,4 +14,4 @@ Aquí encontrarás información detallada sobre nuestras APIs, SDKs, ejemplos de
 
 Estamos constantemente actualizando nuestra documentación para asegurarnos de que tengas acceso a la información más reciente y relevante. Si tienes preguntas o sugerencias, no dudes en contactar a nuestro equipo de soporte.
 
-<DiscordCommunity />
+<CommunityChannel />

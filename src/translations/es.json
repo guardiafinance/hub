@@ -60,10 +60,10 @@
         "CLA": "Acuerdo de Licencia del Contribuyente"
       }
     },
-    "discord": {
+    "communityChannel": {
       "title": "Únete a nuestra comunidad",
       "description": "Participa en las discusiones, resuelve dudas y contribuye al desarrollo de Guardia.",
-      "button": "Unirse a Discord"
+      "button": "Unirse a WhatsApp"
     },
     "footer": {
       "copyright": "© Guardia, 2025. Todos los derechos reservados.",

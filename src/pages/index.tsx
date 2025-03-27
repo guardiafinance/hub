@@ -7,7 +7,7 @@ import Heading from '@theme/Heading';
 import ProductCards from '@site/src/components/ProductCards';
 import DocLinks from '@site/src/components/DocLinks';
 import Sdks from '@site/src/components/Sdks';
-import DiscordCommunity from '@site/src/components/DiscordCommunity';
+import CommunityChannel from '@site/src/components/CommunityChannel';
 import ptBR from '../translations/pt-BR.json';
 import en from '../translations/en.json';
 import es from '../translations/es.json';
@@ -61,7 +61,7 @@ export default function Home(): ReactNode {
           <ProductCards />
           <DocLinks />
           <Sdks />
-          <DiscordCommunity />
+          <CommunityChannel />
         </div >        
       </Layout>
     </>    
