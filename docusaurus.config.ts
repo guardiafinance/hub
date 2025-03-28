@@ -42,10 +42,22 @@ const config: Config = {
   ],
 
   themeConfig: {    
-    metadata: [
-      {name: 'keywords', content: 'guardia, finance, api, sdk, developer, hub, documentation, fintech, open source'},
-      {name: 'twitter:card', content: 'summary_large_image'},
-    ],
+    author: 'Guardia',
+    viewport: {
+      width: 'device-width',
+      initialScale: 1,
+    },
+    themeColor: {
+      default: '#37104c',
+      light: '#37104c',
+      dark: '#37104c',
+    },
+    robots: {
+      index: true,
+      follow: true,
+    },
+    description: 'Documentação técnica, guias e recursos para a comunidade de desenvolvedores da Guardia',
+    keywords: ['guardia', 'core banking', 'api docs', 'sdk', 'developer hub', 'documentation', 'core bancario open source'],
     image: 'img/docusaurus-social-card.jpg',
     navbar: {      
       logo: {
@@ -80,12 +92,13 @@ const config: Config = {
       defaultMode: 'dark',
       respectPrefersColorScheme: true,
     },
-    // Configurações de Open Graph
+    baseUrlCanonical: 'https://hub.guardia.finance',
+    createCanonicalUrlForDoc: true,
     openGraph: {
       type: 'website',
       locale: 'pt_BR',
       url: 'https://hub.guardia.finance',
-      siteName: 'Guardia',
+      siteName: 'Guardia Developer Hub',
       title: 'Developer Hub',
       description: 'Documentação técnica, guias e recursos para a comunidade de desenvolvedores da Guardia',
       images: [
@@ -93,11 +106,12 @@ const config: Config = {
           url: 'img/logotipo-purple.png',
           width: 1200,
           height: 630,
-          alt: 'Guardia Developer Hub',
+          alt: 'Guardia Logotipo',
+          type: 'image/png',
         },
       ],
+      site_name: 'Guardia Developer Hub',
     },
-    // Configurações do Twitter
     twitter: {
       cardType: 'summary_large_image',
       site: '@guardiafinance',
@@ -163,8 +177,6 @@ const config: Config = {
       }),
     }
   ],
-
-  // Configurações de SEO
   titleDelimiter: '|',
   noIndex: false,
   trailingSlash: true,
