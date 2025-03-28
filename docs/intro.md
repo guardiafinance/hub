@@ -6,9 +6,9 @@ import ProductCards from '@site/src/components/ProductCards';
 import DocLinks from '@site/src/components/DocLinks';
 import CommunityChannel from '@site/src/components/CommunityChannel';
 
-# Seja Bem-vindo ao Hub da Guardia!
+# Seja Bem-vindo ao Developer Hub da Guardia!
 
-Bem-vindo ao Developer Hub da Guardia, seu portal central para toda a documentação técnica, guias e recursos para desenvolvedores que desejam integrar e trabalhar com os produtos da Guardia Finance.
+Bem-vindo ao Developer Hub da Guardia, seu portal central para toda a documentação técnica, guias e recursos para desenvolvedores que desejam integrar e trabalhar com os produtos da Guardia.
 
 Aqui você encontrará informações detalhadas sobre nossas APIs, SDKs, exemplos de código, melhores práticas para implementação, entre outros conteúdos para que você possa aproveitar ao máximo nossa tecnologia.
 
