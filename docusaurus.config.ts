@@ -41,23 +41,15 @@ const config: Config = {
     ],
   ],
 
-  themeConfig: {    
-    author: 'Guardia',
-    viewport: {
-      width: 'device-width',
-      initialScale: 1,
-    },
-    themeColor: {
-      default: '#37104c',
-      light: '#37104c',
-      dark: '#37104c',
-    },
-    robots: {
-      index: true,
-      follow: true,
-    },
-    description: 'Documentação técnica, guias e recursos para a comunidade de desenvolvedores da Guardia',
-    keywords: ['guardia', 'core banking', 'api docs', 'sdk', 'developer hub', 'documentation', 'core bancario open source'],
+  themeConfig: { 
+    metadata: [
+      {name: 'description', content: 'Documentação técnica, guias e recursos para a comunidade de desenvolvedores da Guardia'},
+      {name: 'keywords', content: 'guardia, core banking, api docs, sdk, developer hub, documentation, core bancario open source'},
+      {name: 'author', content: 'Guardia'},
+      {name: 'viewport', content: 'width=device-width, initial-scale=1.0'},
+      {name: 'theme-color', content: '#37104c'},
+      {name: 'robots', content: 'index, follow'},
+    ],
     image: 'img/docusaurus-social-card.jpg',
     navbar: {      
       logo: {
