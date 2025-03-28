@@ -140,6 +140,27 @@ const config: Config = {
         httpEquiv: 'Strict-Transport-Security',
         content: 'max-age=31536000; includeSubDomains'
       }
+    },
+    {
+      tagName: 'script',
+      attributes: {
+        type: 'application/ld+json',
+      },
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'WebSite',
+        name: 'Guardia',
+        description: 'Documentação técnica, guias e recursos para a comunidade de desenvolvedores da Guardia',
+        url: 'https://hub.guardia.finance',
+        publisher: {
+          '@type': 'Organization',
+          name: 'Guardia',
+          logo: {
+            '@type': 'ImageObject',
+            url: 'https://hub.guardia.finance/img/logotipo-purple.png'
+          }
+        }
+      }),
     }
   ],
 
