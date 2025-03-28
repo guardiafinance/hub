@@ -113,6 +113,34 @@ const config: Config = {
         href: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css',
       },
     },
+    {
+      tagName: 'meta',
+      attributes: {
+        httpEquiv: 'Content-Security-Policy',
+        content: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self' https://*.guardia.finance"
+      }
+    },
+    {
+      tagName: 'meta',
+      attributes: {
+        httpEquiv: 'X-Content-Type-Options',
+        content: 'nosniff'
+      }
+    },
+    {
+      tagName: 'meta',
+      attributes: {
+        httpEquiv: 'X-Frame-Options',
+        content: 'DENY'
+      }
+    },
+    {
+      tagName: 'meta',
+      attributes: {
+        httpEquiv: 'Strict-Transport-Security',
+        content: 'max-age=31536000; includeSubDomains'
+      }
+    }
   ],
 
   // Configurações de SEO

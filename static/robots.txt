@@ -1,3 +1,10 @@
 User-agent: *
 Allow: /
+Allow: /docs/
+Allow: /img/
+Disallow: /api/
+Disallow: /admin/
+Disallow: /private/
+Disallow: /temp/
+
 Sitemap: https://hub.guardia.finance/sitemap.xml 
