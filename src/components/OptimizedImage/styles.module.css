@@ -1,0 +1,13 @@
+.optimizedImage {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1rem 0;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+}
+
+.optimizedImage:hover {
+  transform: scale(1.02);
+} 

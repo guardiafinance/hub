@@ -6,6 +6,7 @@ keywords: [guardia core banking, open source core banking, scalable core banking
 ---
 
 import ExternalLink from '@site/src/components/ExternalLink';
+import OptimizedImage from '@site/src/components/OptimizedImage';
 
 # Banking System Engine
 
@@ -23,4 +24,9 @@ If you want to use BASE in production with high availability and full support, c
 
 ---
 
-<img src="/img/banner-base.svg" alt="Banking System Engine Banner" />
+<OptimizedImage
+  src="/img/banner-base.svg"
+  alt="Banking System Engine Banner"
+  width={800}
+  height={400}
+/>

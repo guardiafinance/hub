@@ -121,6 +121,16 @@ const config: Config = {
   trailingSlash: true,
   
   plugins: [
+    [
+      '@docusaurus/plugin-ideal-image',
+      {
+        quality: 70,
+        max: 1030, // max resized image's dimension, if exceeded, will resize by 0.8
+        min: 640, // min resized image's dimension, if exceeded, will resize by 1.2
+        steps: 2, // the max number of images generated between min and max (inclusive)
+        disableInDev: false,
+      },
+    ],
   ],
 };
 
