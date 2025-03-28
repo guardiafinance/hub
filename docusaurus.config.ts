@@ -37,6 +37,10 @@ const config: Config = {
           ignorePatterns: ['/tags/**'],
           filename: 'sitemap.xml',
         },
+        gtag: {
+          trackingID: process.env.GA_TRACKING_ID || 'development',
+          anonymizeIP: true,
+        },
       } satisfies Preset.Options,
     ],
   ],
@@ -184,6 +188,13 @@ const config: Config = {
         disableInDev: false,
       },
     ],
+  ],
+
+  scripts: [
+    {
+      src: `https://www.googletagmanager.com/gtag/js?id=${process.env.GA_TRACKING_ID}`,
+      async: true,
+    },
   ],
 };
 

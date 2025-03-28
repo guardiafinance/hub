@@ -22,6 +22,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Build website
+        env:
+          GA_TRACKING_ID: ${{ secrets.GA_TRACKING_ID }}
         run: npm run build
 
       - name: Upload Build Artifact
