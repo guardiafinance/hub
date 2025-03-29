@@ -63,7 +63,7 @@ const config: Config = {
     ],
     navbar: {      
       logo: {
-        alt: 'Guardia Logo',
+        alt: 'logo.alt',
         src: 'img/logotipo-purple.png',
         srcDark: 'img/logotipo-white.png',
       },
@@ -72,13 +72,13 @@ const config: Config = {
           type: 'docSidebar',
           sidebarId: 'tutorialSidebar',
           position: 'left',
-          label: 'Documentação',
+          label: 'Docs',
         },
         {
           type: 'docSidebar',
           sidebarId: 'communitySidebar',
           position: 'left',
-          label: 'Comunidade',
+          label: 'Community',
         },
         {
           href: EXTERNAL_LINKS.GITHUB,

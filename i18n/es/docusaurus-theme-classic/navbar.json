@@ -1,0 +1,18 @@
+{
+  "logo.alt": {
+    "message": "Guardia Logo",
+    "description": "El texto alternativo del logo de la navbar"
+  },
+  "item.label.Docs": {
+    "message": "Documentación",
+    "description": "Navbar item con label Documentación"
+  },
+  "item.label.Community": {
+    "message": "Comunidad",
+    "description": "Navbar item con label Comunidad"
+  },
+  "item.label.GitHub": {
+    "message": "GitHub",
+    "description": "Navbar item con label GitHub"
+  }
+}
