@@ -25,7 +25,7 @@ If you want to use LKE in production with high availability and full support, co
 <OptimizedImage
   src="/img/banner-lke.svg"
   alt="Ledger Kernel Engine Banner"
-  width={800}
-  height={400}
+  width={960}
+  height={200}
 />
 

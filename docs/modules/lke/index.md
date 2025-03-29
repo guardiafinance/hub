@@ -6,6 +6,7 @@ keywords: [guardia core banking, core bancario open source, core bancário escal
 ---
 
 import ExternalLink from '@site/src/components/ExternalLink';
+import OptimizedImage from '@site/src/components/OptimizedImage';
 
 # Ledger Kernel Engine
 
@@ -21,5 +22,10 @@ Se quiser usar o LKE em produção com alta disponibilidade e suporte completo, 
 
 ---
 
-<img src="/img/banner-lke.svg" alt="Ledger Kernel Engine Banner" />
+<OptimizedImage
+  src="/img/banner-lke.svg"
+  alt="Ledger Kernel Engine Banner"
+  width={960}
+  height={200}
+/>
 

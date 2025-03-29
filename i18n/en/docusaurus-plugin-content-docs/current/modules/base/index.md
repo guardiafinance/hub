@@ -27,6 +27,6 @@ If you want to use BASE in production with high availability and full support, c
 <OptimizedImage
   src="/img/banner-base.svg"
   alt="Banking System Engine Banner"
-  width={800}
-  height={400}
+  width={960}
+  height={200}
 />
