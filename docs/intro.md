@@ -2,9 +2,8 @@
 sidebar_position: 0
 ---
 
-import ProductCards from '@site/src/components/ProductCards';
-import DocLinks from '@site/src/components/DocLinks';
 import CommunityChannel from '@site/src/components/CommunityChannel';
+import ExternalLink from '@site/src/components/ExternalLink';
 
 # Seja Bem-vindo ao Developer Hub da Guardia!
 
