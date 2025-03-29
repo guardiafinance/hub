@@ -1,0 +1,6 @@
+{
+  "watch": ["docs", "src", "static", "openapi"],
+  "ext": "md,mdx,js,jsx,ts,tsx,json,css",
+  "ignore": ["node_modules", ".docusaurus", "build"],
+  "exec": "npm run start"
+} 

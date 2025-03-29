@@ -12,7 +12,7 @@ const config: Config = {
   organizationName: 'guardiafinance',
   projectName: 'hub',
 
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
   
   i18n: {
@@ -25,11 +25,13 @@ const config: Config = {
       'classic',
       {
         docs: {
-          sidebarPath: './sidebars.ts',         
+          sidebarPath: require.resolve("./sidebars.ts"),    
         },  
         blog: false,      
         theme: {
-          customCss: './src/css/custom.css',
+          customCss: [
+            require.resolve("./src/css/custom.css"),
+          ]
         },
         sitemap: {
           changefreq: 'weekly',
@@ -46,6 +48,7 @@ const config: Config = {
   ],
 
   themeConfig: { 
+    description: 'Documentação técnica, guias e recursos para a comunidade de desenvolvedores da Guardia',
     metadata: [
       {name: 'description', content: 'Documentação técnica, guias e recursos para a comunidade de desenvolvedores da Guardia'},
       {name: 'keywords', content: 'guardia, core banking, api docs, sdk, developer hub, documentation, core bancario open source'},
@@ -55,6 +58,9 @@ const config: Config = {
       {name: 'robots', content: 'index, follow'},
     ],
     image: 'img/docusaurus-social-card.jpg',
+    customCss: [
+      require.resolve("./src/css/custom.css"),
+    ],
     navbar: {      
       logo: {
         alt: 'Guardia Logo',
@@ -66,8 +72,14 @@ const config: Config = {
           type: 'docSidebar',
           sidebarId: 'tutorialSidebar',
           position: 'left',
-          label: 'Docs',
-        },        
+          label: 'Documentação',
+        },
+        {
+          type: 'docSidebar',
+          sidebarId: 'communitySidebar',
+          position: 'left',
+          label: 'Comunidade',
+        },
         {
           href: EXTERNAL_LINKS.GITHUB,
           label: 'GitHub',

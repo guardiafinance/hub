@@ -34,6 +34,7 @@
     "@docusaurus/module-type-aliases": "3.7.0",
     "@docusaurus/tsconfig": "3.7.0",
     "@docusaurus/types": "3.7.0",
+    "nodemon": "^3.1.9",
     "typescript": "5.8.2"
   },
   "browserslist": {
