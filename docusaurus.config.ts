@@ -61,9 +61,9 @@ const config: Config = {
     customCss: [
       require.resolve("./src/css/custom.css"),
     ],
-    navbar: {      
+    navbar: {
       logo: {
-        alt: 'logo.alt',
+        alt: 'Logotipo da Guardia',
         src: 'img/logotipo-purple.png',
         srcDark: 'img/logotipo-white.png',
       },
