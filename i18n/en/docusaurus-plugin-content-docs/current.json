@@ -1,0 +1,10 @@
+{
+  "sidebar.tutorialSidebar.doc.Start": {
+    "message": "Getting Started",
+    "description": "The label for the doc item Start in sidebar tutorialSidebar, linking to the doc intro"
+  },
+  "sidebar.tutorialSidebar.category.Modules": {
+    "message": "Modules",
+    "description": "The label for category Modules in sidebar tutorialSidebar"
+  }
+} 
