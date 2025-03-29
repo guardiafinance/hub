@@ -1,0 +1,32 @@
+---
+id: asset
+title: "Asset"
+description: ""
+sidebar_label: "Asset"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"entity_id":"string","entity_type":"string","external_entity_id":"string","version":0,"code":"string","number":"string","exponent":"string","is_fiat":false,"locations":["string"],"created_at":"2024-07-29T15:51:28.071Z","updated_at":"2024-07-29T15:51:28.071Z","discarded_at":"2024-07-29T15:51:28.071Z"}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Asset"}
+>
+</Heading>
+
+
+
+
+
+<Schema
+  schema={{"type":"object","properties":{"entity_id":{"description":"Identificador único do ledger.","type":"string","format":"snowflake","examples":["6683756247371778"],"x-apidog-folder":"Schemas/VOs","title":"EntityID"},"entity_type":{"type":"string","description":"Tipo da entidade"},"external_entity_id":{"type":"string","title":"","description":"Um ID externo único do asset de ser associado para uso externo. Recomendado o formato UUID."},"version":{"description":"Versao da entidade. Inicia em 0 e incrementa 1 a cada alteração realizada.","type":"integer","minimum":0,"maximum":128,"examples":[0],"x-apidog-folder":"Schemas/VOs","title":"Version"},"code":{"type":"string","description":"O código do asset deve ter entre 3 e 24 caracteres, podendo seguir os formatos ISO 4217, ISO 10962, MIC, ISIN ou um padrão interno da instituição."},"number":{"type":"string","description":"Alguns assets podem possuir, além do código, um identificador alfanumérico de 3 a 24 caracteres, adicional para referência específica dentro da instituição ou do sistema."},"exponent":{"type":"string","description":"O expoente define a escala de precisão do ativo, determinando o número de casas decimais permitidas, podendo variar de 0 a 18 dígitos após a vírgula."},"is_fiat":{"type":"boolean","description":"Indicador que define se o ativo é fiduciário, ou seja, com respaldo de um regulador, como um estado ou governo, ou não.","default":false},"locations":{"type":"array","items":{"type":"string","description":"BR, AG, US, ... veja a lista de codigos da ISO 3166 ou ALL para todos ou NONE para uso interno."},"description":"Países onde o ativo é válido no formato ISO 3166, por exemplo, BR, AG, US. Para representar todos os países, use ALL, e para uso interno, use NONE."},"created_at":{"description":"Data e hora de criação do ledger no formato ISO 8601 (UTC).","type":"string","format":"date-time","examples":["2024-11-17T00:00:00.000Z"],"pattern":"^(?<year>[0-9]{4})-?(?<month>1[0-2]|0[1-9])-?(?<day>3[01]|0[1-9]|[12][0-9])T(?<hour>2[0-3]|[01][0-9]):?(?<minute>[0-5][0-9]):?(?<second>[0-5][0-9])(?:\\.(?<fraction>[0-9]{1,9}))?Z$","nullable":true,"x-apidog-folder":"Schemas/VOs","title":"DateTime (ISO 8601 / RFC 3339)"},"updated_at":{"description":"Data e hora de criação do ledger no formato ISO 8601 (UTC).","type":"string","format":"date-time","examples":["2024-11-17T00:00:00.000Z"],"pattern":"^(?<year>[0-9]{4})-?(?<month>1[0-2]|0[1-9])-?(?<day>3[01]|0[1-9]|[12][0-9])T(?<hour>2[0-3]|[01][0-9]):?(?<minute>[0-5][0-9]):?(?<second>[0-5][0-9])(?:\\.(?<fraction>[0-9]{1,9}))?Z$","nullable":true,"x-apidog-folder":"Schemas/VOs","title":"DateTime (ISO 8601 / RFC 3339)"},"discarded_at":{"description":"Data e hora de criação do ledger no formato ISO 8601 (UTC).","type":"string","format":"date-time","examples":["2024-11-17T00:00:00.000Z"],"pattern":"^(?<year>[0-9]{4})-?(?<month>1[0-2]|0[1-9])-?(?<day>3[01]|0[1-9]|[12][0-9])T(?<hour>2[0-3]|[01][0-9]):?(?<minute>[0-5][0-9]):?(?<second>[0-5][0-9])(?:\\.(?<fraction>[0-9]{1,9}))?Z$","nullable":true,"x-apidog-folder":"Schemas/VOs","title":"DateTime (ISO 8601 / RFC 3339)"}},"x-apidog-orders":["entity_id","entity_type","external_entity_id","version","code","number","exponent","is_fiat","locations","created_at","updated_at","discarded_at"],"required":["entity_id","entity_type","version","external_entity_id","code","number","exponent","is_fiat","locations","created_at","discarded_at","updated_at"],"x-apidog-ignore-properties":[],"x-apidog-folder":"Schemas/Entities","title":"Asset"}}
+  schemaType={"response"}
+>
+  
+</Schema>

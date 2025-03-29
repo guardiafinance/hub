@@ -78,7 +78,7 @@ export default function ProductCards() {
           version="v0.1.0-alpha"
           links={{
             github: EXTERNAL_LINKS.GITHUB,
-            api: `${EXTERNAL_LINKS.API_DOG}/about-the-lke-822954m0`,
+            api: '/docs/reference/lke',
             docker: EXTERNAL_LINKS.DOCKER_HUB,
             docs: "/docs/modules/lke/",
           }}
@@ -90,7 +90,7 @@ export default function ProductCards() {
           version="v0.0.0"
           links={{
             github: EXTERNAL_LINKS.GITHUB,
-            api: `${EXTERNAL_LINKS.API_DOG}/about-the-base-822955m0`,
+            api: '/docs/reference/base',
             docker: EXTERNAL_LINKS.DOCKER_HUB,
             docs: "/docs/modules/base/",
           }}
