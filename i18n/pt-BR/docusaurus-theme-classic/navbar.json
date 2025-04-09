@@ -11,8 +11,12 @@
     "message": "Comunidade",
     "description": "Navbar item com label Comunidade"
   },
+  "item.label.Tutorials": {
+    "message": "Tutoriais",
+    "description": "Navbar item com label Tutoriais"
+  },
   "item.label.GitHub": {
     "message": "GitHub",
-    "description": "Navbar item with label GitHub"
+    "description": "Navbar item com label GitHub"
   }
 }

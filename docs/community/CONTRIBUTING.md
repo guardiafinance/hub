@@ -86,7 +86,7 @@ graph LR
 
 ## Fluxo de Trabalho para Pair Programming
 
-Caso esteja trabalhando em um fluxo de pair programming, veja também o [Fluxo de Trabalho para Pair Programming com Forks Individuais](./PAIR_PROGRAM_WORKFLOW.md) para mais informações.
+Caso esteja trabalhando em um fluxo de pair programming, veja também o [Fluxo de Trabalho para Pair Programming com Forks Individuais](../tutorials/pair-program-workflow.md) para mais informações.
 
 ## Diretrizes para Mensagens de Commit
 

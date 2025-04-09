@@ -88,6 +88,12 @@ const config: Config = {
           label: 'Community',
         },
         {
+          type: 'docSidebar',
+          sidebarId: 'tutorialsSidebar',
+          position: 'left',
+          label: 'Tutorials',
+        },
+        {
           href: EXTERNAL_LINKS.GITHUB,
           label: 'GitHub',
           position: 'right',

@@ -83,7 +83,7 @@ graph LR
     class J,M decision;
 ```
 
-If you're working in a pair programming flow, also check out the [Pair Programming Workflow with Individual Forks](./PAIR_PROGRAM_WORKFLOW.md) for more information.
+If you're working in a pair programming flow, also check out the [Pair Programming Workflow with Individual Forks](../tutorials/pair-program-workflow.md) for more information.
 
 ## Commit Message Guidelines
 
