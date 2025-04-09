@@ -1,0 +1,18 @@
+# CODEOWNERS - Responsible for code review
+
+# Project Maintainers
+* @guardia/guardians
+
+# Documentation
+docs/ @guardia/guardians
+
+# Source Code
+src/ @guardia/guardians
+
+# Configuration and Infrastructure
+.github/ @guardia/guardians
+
+# Políticas e Governança
+GOVERNANCE and COMPLIANCE @guardia/governance
+SECURITY @guardia/security
+CODE_OF_CONDUCT @guardia/compliance
