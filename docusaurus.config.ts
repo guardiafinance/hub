@@ -18,6 +18,23 @@ const config: Config = {
   i18n: {
     defaultLocale: 'pt-BR',
     locales: ['pt-BR','en','es'],
+    localeConfigs: {
+      'pt-BR': {
+        label: 'Português (Brasil)',
+        direction: 'ltr',
+        htmlLang: 'pt-BR',
+      },
+      'en': {
+        label: 'English',
+        direction: 'ltr',
+        htmlLang: 'en',
+      },
+      'es': {
+        label: 'Español',
+        direction: 'ltr',
+        htmlLang: 'es',
+      },
+    },
   },
 
   markdown: {
