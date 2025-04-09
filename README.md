@@ -1,16 +1,16 @@
-![main-cover](./portal/static/img/main-banner.png)
+![main-cover](./static/img/main-banner.png)
 
 # Guardia, Core Banking
 
 ## O core bancário Cloud Native e Open Source, projetado para a nova era da economia digital.
 
 Guardia é a plataforma core banking Cloud Native e Open Source, projetada para fintechs, neobanks e startups que buscam modularidade e escalabilidade para otimizar suas operações financeiras com agilidade, segurança e eficiência.
-  
+
 Nossa missão é capacitar empresas de tecnologia financeira a maximizar resultados, entregar maior valor aos clientes e promover inovação por meio de tecnologia de ponta.
 
 Combinamos o poder do Open Source com as possibilidades da Inteligência Artificial para impulsionar a escalabilidade das operações, simplificar integrações e garantir transações seguras e consistentes em tempo real.
 
-![maximize-your-future](./portal/static/img/pt-br/maximize-your-future.png)
+![maximize-your-future](./static/img/pt-br/maximize-your-future.png)
 
 ## Projetos
 
@@ -25,7 +25,7 @@ Combinamos o poder do Open Source com as possibilidades da Inteligência Artific
 
 ## Open Roadmap
 
-![Open Roadmap](./portal/assets/open-roadmap.svg "Open Roadmap")
+![Open Roadmap](./static/img/open-roadmap.svg "Open Roadmap")
 
 ## Modelo de Negócios Open Core
 
@@ -58,33 +58,33 @@ O modelo de negócios **Open Core** é uma abordagem utilizada por empresas que 
 
 ### **Exemplos de Empresas que Utilizam Open Core**
 
-- **Elastic (ElasticSearch):** Base de código aberto, com funcionalidades avançadas proprietárias, como segurança e monitoramento.  
-- **Red Hat:** Oferece produtos baseados em código aberto, como o Fedora, e monetiza serviços corporativos com o Red Hat Enterprise Linux.  
-- **Confluent (Apache Kafka):** Expande o Apache Kafka com funcionalidades proprietárias na plataforma Confluent, como monitoramento, segurança e serviços gerenciados.  
-- **Redis Inc. (Redis):** Oferece o Redis open source e funcionalidades empresariais no Redis Enterprise, como persistência avançada e replicação global.  
+- **Elastic (ElasticSearch):** Base de código aberto, com funcionalidades avançadas proprietárias, como segurança e monitoramento.
+- **Red Hat:** Oferece produtos baseados em código aberto, como o Fedora, e monetiza serviços corporativos com o Red Hat Enterprise Linux.
+- **Confluent (Apache Kafka):** Expande o Apache Kafka com funcionalidades proprietárias na plataforma Confluent, como monitoramento, segurança e serviços gerenciados.
+- **Redis Inc. (Redis):** Oferece o Redis open source e funcionalidades empresariais no Redis Enterprise, como persistência avançada e replicação global.
 
 ---
 
 ### **Padrões e Convenções Adotadas**
 
 - [Convenção de Código](./specifications/pt-BR/CODE_CONVENTIONS.md)
-- [Padrões de Projeto](./specifications/pt-BR/PROJECT_PATTERNS.md)  
-- [Padrão de Arquitetura](./specifications/pt-BR/ARCHITECTURE_PATTERN.md)  
-- [Versionamento Semântico](./specifications/pt-BR/SEMANTIC_VERSIONING.md)  
-- [Cloud Events](./specifications/pt-BR/CLOUD_EVENTS.md)  
+- [Padrões de Projeto](./specifications/pt-BR/PROJECT_PATTERNS.md)
+- [Padrão de Arquitetura](./specifications/pt-BR/ARCHITECTURE_PATTERN.md)
+- [Versionamento Semântico](./specifications/pt-BR/SEMANTIC_VERSIONING.md)
+- [Cloud Events](./specifications/pt-BR/CLOUD_EVENTS.md)
 - [Style Guide](./specifications/pt-BR/API_STYLE_GUIDE.md)
 - [Status Codes](./specifications/pt-BR/STATUS_CODE.md)
 
 ### **Documentações**
 
-- [API Dog](https://docs.guardia.finance)  
-- [Postman](https://postman.guardia.finance)  
-- [Developer Manual](./DEVELOPER_MANUAL.md)  
+- [API Dog](https://docs.guardia.finance)
+- [Postman](https://postman.guardia.finance)
+- [Developer Manual](./DEVELOPER_MANUAL.md)
 
 ### **Comunidade**
 
-- [Saiba como Contribuir](./CONTRIBUTING.md)  
-- [Conheça nosso Código de Conduta](./CODE_OF_CONDUCT.md)  
+- [Saiba como Contribuir](./CONTRIBUTING.md)
+- [Conheça nosso Código de Conduta](./CODE_OF_CONDUCT.md)
 
 Se você precisar de ajuda, quiser nos mostrar o que construiu ou apenas bater um papo sobre ledgers, será mais que bem-vindo na nossa comunidade no [WhatsApp](#) — estamos ansiosos para te ver por lá!
 
@@ -97,8 +97,8 @@ Se você precisar de ajuda, quiser nos mostrar o que construiu ou apenas bater u
 
 ### **Documentos Adicionais**
 
-- [Política de Privacidade](./docs/pt-BR/PRIVACY_POLICY.md)  
-- [Política de Segurança](./docs/pt-BR/SECURITY.md )  
+- [Política de Privacidade](./docs/pt-BR/PRIVACY_POLICY.md)
+- [Política de Segurança](./docs/pt-BR/SECURITY.md )
 
 ## Nosso compromisso com a Comunidade Open Source
 
@@ -114,4 +114,4 @@ Queremos que a participação seja acessível a todos e que todos se sintam bem-
 
 ---
 
-![own-your-freedom](./portal/static/img/pt-br/own-your-freedom.png)
+![own-your-freedom](./static/img/pt-br/own-your-freedom.png)
