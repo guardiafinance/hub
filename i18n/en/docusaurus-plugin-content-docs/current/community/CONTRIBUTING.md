@@ -154,7 +154,7 @@ When a commit or tag contains a GPG signature that can be cryptographically veri
 
 <br />
 
->**IMPORTANT:** Only Pull Requests with all commits signed and marked as "Verified" will be accepted. See how to configure Git to automatically sign commits in [Signing commits](../../tutorials/en/signing-commits.md).
+>**IMPORTANT:** Only Pull Requests with all commits signed and marked as "Verified" will be accepted. See how to configure Git to automatically sign commits in [Signing commits](../tutorials/signing-commits.md).
 
 ## Languages
 

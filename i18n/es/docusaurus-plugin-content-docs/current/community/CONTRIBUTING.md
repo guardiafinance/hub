@@ -154,7 +154,7 @@ Cuando un commit o una tag contiene una firma GPG que puede ser verificada cript
 
 <br />
 
->**IMPORTANTE:** Solo se aceptarán Pull Requests con todos los commits firmados y marcados como "Verificado". Consulta cómo configurar Git para firmar commits automáticamente en [Firmando commits](../../tutorials/es/signing-commits.md).
+>**IMPORTANTE:** Solo se aceptarán Pull Requests con todos los commits firmados y marcados como "Verificado". Consulta cómo configurar Git para firmar commits automáticamente en [Firmando commits](../tutorials/signing-commits.md).
 
 ## Idiomas
 

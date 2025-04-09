@@ -167,7 +167,7 @@ Quando um commit ou uma tag contém uma assinatura GPG que possa ser verificada 
 | Não    | Sem status de verificação | O commit não foi assinado.                                                                                                                                                                                  |
 <br />
 
->**IMPORTANTE:** Serão aceitos apenas Pull Requests com todos os commits assinados e marcados como "Verificado". Veja como configurar o Git para assinar commits automaticamente em [Assinando commits](../../tutorials/pt-BR/signing-commits.md).
+>**IMPORTANTE:** Serão aceitos apenas Pull Requests com todos os commits assinados e marcados como "Verificado". Veja como configurar o Git para assinar commits automaticamente em [Assinando commits](../tutorials/signing-commits.md).
 
 ## Idiomas
 
