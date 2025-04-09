@@ -6,5 +6,9 @@
   "sidebar.tutorialSidebar.category.Modules": {
     "message": "Modules",
     "description": "The label for category Modules in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Specifications": {
+    "message": "Specifications",
+    "description": "The label for category Specifications in sidebar tutorialSidebar"
   }
-} 
+}

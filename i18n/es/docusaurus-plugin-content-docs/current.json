@@ -1,10 +1,14 @@
 {
   "sidebar.tutorialSidebar.doc.Start": {
     "message": "Comenzar",
-    "description": "The label for the doc item Start in sidebar tutorialSidebar, linking to the doc intro"
+    "description": "La etiqueta para el elemento de documento Comenzar en la barra lateral tutorialSidebar, enlazando a la introducción del documento"
   },
   "sidebar.tutorialSidebar.category.Modules": {
     "message": "Módulos",
-    "description": "The label for category Modules in sidebar tutorialSidebar"
+    "description": "La etiqueta para la categoría Módulos en la barra lateral tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Specifications": {
+    "message": "Especificaciones",
+    "description": "La etiqueta para la categoría Especificaciones en la barra lateral tutorialSidebar"
   }
 }
