@@ -58,6 +58,7 @@ Considere participar de nossa comunidade no [Whatsapp](#) para compartilhar idei
 - Preste atenção a quaisquer falhas de CI automatizadas relatadas no pull request e mantenha-se envolvido na conversa.
 - Depois de enviar seus commits para o GitHub, certifique-se de que seu branch pode ser mesclado automaticamente (não há conflitos de merge). Se não, no seu computador, mescle o branch main no seu branch, resolva quaisquer conflitos de merge, certifique-se de que tudo ainda funciona corretamente e passe em todos os testes, e então envie essas alterações.
 - Uma vez que a alteração tenha sido aprovada e mesclada, nós o informaremos em um comentário.
+- Faça o sync com o branch main do repositório original
 
 ```mermaid
 graph LR
@@ -83,6 +84,7 @@ graph LR
         L --> M{Aprovado?}
         M -->|Sim| N[Merge]
         M -->|Não| D
+        N --> O[Sync com Main]
     end
 
     class J,M decision;

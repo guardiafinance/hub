@@ -82,6 +82,7 @@ graph LR
         L --> M{Aprovado?}
         M -->|Sim| N[Merge]
         M -->|Não| D
+        N --> O[Sync com Main]
     end
 
     class J,M decision;
