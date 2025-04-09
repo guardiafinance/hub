@@ -62,24 +62,28 @@ Considere participar de nossa comunidade no [Whatsapp](#) para compartilhar idei
 ```mermaid
 graph LR
     %%{init: {'theme': 'neutral', 'themeVariables': { 'fontSize': '36px', 'fontFamily': 'arial', 'nodeSpacing': 120, 'rankSpacing': 100, 'lineColor': '#999999'}}}%%
-    classDef default fill:#f9f9f9,stroke:#333,stroke-width:2px,font-size:36px,font-family:arial,padding:20px;
-    classDef decision fill:#ffe5cc,stroke:#ff9933,stroke-width:2px,font-size:36px,font-family:arial,padding:20px;
+    classDef default fill:#37104c,stroke:#2b6cb0,stroke-width:2px,font-size:36px,font-family:arial,padding:20px,color:#fff;
+    classDef decision fill:#e07400,stroke:#2b6cb0,stroke-width:2px,font-size:36px,font-family:arial,padding:20px,color:#fff;
 
-    A[Fork Repositório] --> B[Clonar Localmente]
-    B --> C[Criar Branch]
-    C --> D[Fazer Alterações]
-    D --> E[Executar Testes]
-    E --> F[Commit com Assinatura]
-    F --> G[Push para GitHub]
-    G --> H[Criar Pull Request]
-    H --> I[Verificar CI/CD]
-    I --> J{Conflitos?}
-    J -->|Sim| K[Resolver Conflitos]
-    K --> E
-    J -->|Não| L[Aguardar Review]
-    L --> M{Aprovado?}
-    M -->|Sim| N[Merge]
-    M -->|Não| D
+    subgraph Flow[" "]
+      direction LR
+        style Flow fill:#f8f9fa,stroke:#e9ecef,stroke-width:2px
+        A[Fork Repositório] --> B[Clonar Localmente]
+        B --> C[Criar Branch]
+        C --> D[Fazer Alterações]
+        D --> E[Executar Testes]
+        E --> F[Commit com Assinatura]
+        F --> G[Push para GitHub]
+        G --> H[Criar Pull Request]
+        H --> I[Verificar CI/CD]
+        I --> J{Conflitos?}
+        J -->|Sim| K[Resolver Conflitos]
+        K --> E
+        J -->|Não| L[Aguardar Review]
+        L --> M{Aprovado?}
+        M -->|Sim| N[Merge]
+        M -->|Não| D
+    end
 
     class J,M decision;
 ```
