@@ -4,7 +4,7 @@ sidebar_position: 0
 
 import OptimizedImage from '@site/src/components/OptimizedImage';
 
-# Compromisso
+# Nosso Compromisso
 
 A Guardia é uma empresa que valoriza a comunidade open source e está firmemente comprometida em contribuir para o desenvolvimento de software de código aberto. Acreditamos que o open source é a melhor forma de criar software de alta qualidade, de maneira eficiente, segura e colaborativa, impulsionando a inovação e a evolução contínua.
 
