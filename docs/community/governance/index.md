@@ -180,7 +180,7 @@ Todas as resoluções de conflitos devem ser documentadas e comunicadas, reforç
 
 Todos os membros e contribuidores devem seguir as diretrizes da Guardia:
 
-- [Código de Conduta](./CODE_OF_CONDUCT.md)
-- [Compliance by Design](./COMPLIANCE.md)
+- [Código de Conduta](CODE_OF_CONDUCT.md)
+- [Compliance by Design](COMPLIANCE.md)
 
 Além disso, todos os contribuidores devem assinar o CNCF [Contributor License Agreement (CLA)](CLA.md), conforme descrito no documento oficial.
