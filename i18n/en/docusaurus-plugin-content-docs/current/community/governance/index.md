@@ -65,7 +65,7 @@ LICENSE @guardia/compliance
 ### Colaboradores
 Colaboradores são membros da comunidade que contribuem regularmente para o projeto. Eles submetem pull requests para revisão, auxiliam na resolução de problemas e são reconhecidos por suas contribuições consistentes.
 
-Os interessados devem seguir as diretrizes descritas no [Guia de Contribuição](../../docs/pt-BR/CONTRIBUTING.md).
+Os interessados devem seguir as diretrizes descritas no [Guia de Contribuição](../CONTRIBUTING.md).
 
 ### Comitê Diretor
 O Comitê Diretor é responsável por garantir o alinhamento estratégico do projeto e mediar discussões organizacionais. Ele resolve disputas técnicas ou organizacionais, reavalia processos e políticas quando necessário e atua como instância final para decisões escaladas.
