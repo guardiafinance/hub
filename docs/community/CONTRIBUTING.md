@@ -1,5 +1,6 @@
 ---
 sidebar_position: 1
+sidebar_class_name: sidebar-item
 ---
 
 # Contribuindo com o Guardia
@@ -82,6 +83,8 @@ graph LR
 
     class J,M decision;
 ```
+
+## Fluxo de Trabalho para Pair Programming
 
 Caso esteja trabalhando em um fluxo de pair programming, veja também o [Fluxo de Trabalho para Pair Programming com Forks Individuais](./PAIR_PROGRAM_WORKFLOW.md) para mais informações.
 
