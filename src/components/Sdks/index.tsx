@@ -1,17 +1,11 @@
 import React from 'react';
 import styles from './styles.module.css';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import ptBR from '../../translations/pt-BR.json';
-import en from '../../translations/en.json';
-import es from '../../translations/es.json';
+import { translations } from '../../translations';
 
 const Sdks = () => {
   const { i18n } = useDocusaurusContext();
-  const translations = {
-    'pt-BR': ptBR,
-    'en': en,
-    'es': es
-  };
+
   const { sdks } = translations[i18n.currentLocale];
   return (
     <div className={styles.container}>
@@ -23,7 +17,7 @@ const Sdks = () => {
           <div className={styles.tags}>
             <span className={styles.sdkStatus}>WIP</span>
             <span className={styles.sdkVersion}>v0.1.0-alpha</span>
-          </div>          
+          </div>
         </a>
         <a href="https://golang.org" target="_blank" rel="noopener noreferrer" className={styles.sdkCard}>
           <i className="fab fa-golang"></i>
@@ -31,7 +25,7 @@ const Sdks = () => {
           <div className={styles.tags}>
             <span className={styles.sdkStatus}>WIP</span>
             <span className={styles.sdkVersion}>v0.1.0-alpha</span>
-          </div>          
+          </div>
         </a>
         <a href="https://www.rust-lang.org" target="_blank" rel="noopener noreferrer" className={styles.sdkCard}>
           <i className="fab fa-rust"></i>
@@ -39,7 +33,7 @@ const Sdks = () => {
           <div className={styles.tags}>
             <span className={styles.sdkStatus}>WIP</span>
             <span className={styles.sdkVersion}>v0.1.0-alpha</span>
-          </div>          
+          </div>
         </a>
         <a href="https://nodejs.org" target="_blank" rel="noopener noreferrer" className={styles.sdkCard}>
           <i className="fab fa-node-js"></i>
@@ -47,7 +41,7 @@ const Sdks = () => {
           <div className={styles.tags}>
             <span className={styles.sdkStatus}>WIP</span>
             <span className={styles.sdkVersion}>v0.1.0-alpha</span>
-          </div>      
+          </div>
         </a>
         <a href="https://dotnet.microsoft.com" target="_blank" rel="noopener noreferrer" className={styles.sdkCard}>
             <svg viewBox="0 0 128 128" width="50" height="50">
@@ -57,7 +51,7 @@ const Sdks = () => {
           <div className={styles.tags}>
             <span className={styles.sdkStatus}>WIP</span>
             <span className={styles.sdkVersion}>v0.1.0-alpha</span>
-          </div>          
+          </div>
         </a>
         <a href="https://www.ruby-lang.org" target="_blank" rel="noopener noreferrer" className={styles.sdkCard}>
           <i className="fas fa-gem"></i>
@@ -65,7 +59,7 @@ const Sdks = () => {
           <div className={styles.tags}>
             <span className={styles.sdkStatus}>WIP</span>
             <span className={styles.sdkVersion}>v0.1.0-alpha</span>
-          </div>          
+          </div>
         </a>
         <a href="https://www.java.com" target="_blank" rel="noopener noreferrer" className={styles.sdkCard}>
           <i className="fab fa-java"></i>
@@ -73,11 +67,11 @@ const Sdks = () => {
           <div className={styles.tags}>
             <span className={styles.sdkStatus}>WIP</span>
             <span className={styles.sdkVersion}>v0.1.0-alpha</span>
-          </div>          
+          </div>
         </a>
       </div>
     </div>
   );
 };
 
-export default Sdks; 
+export default Sdks;

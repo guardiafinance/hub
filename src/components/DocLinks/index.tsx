@@ -2,9 +2,7 @@ import React, { ReactNode } from 'react';
 import styles from './styles.module.css';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import ptBR from '../../translations/pt-BR.json';
-import en from '../../translations/en.json';
-import es from '../../translations/es.json';
+import { translations } from '../../translations';
 import { ApiDogIcon, PostmanIcon } from './SvgIcon';
 import { EXTERNAL_LINKS } from '@site/src/components/ExternalLink/external-links';
 
@@ -20,11 +18,6 @@ interface DocSection {
 
 export default function DocLinks() {
   const { i18n } = useDocusaurusContext();
-  const translations = {
-    'pt-BR': ptBR,
-    'en': en,
-    'es': es
-  };
 
   const { resources } = translations[i18n.currentLocale];
   const {patterns, documentation, community } = resources;
@@ -96,4 +89,4 @@ export default function DocLinks() {
       </div>
     </div>
   );
-} 
+}

@@ -2,9 +2,7 @@ import React, { ReactNode } from 'react';
 import styles from './styles.module.css';
 import clsx from 'clsx';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import ptBR from '../../translations/pt-BR.json';
-import en from '../../translations/en.json';
-import es from '../../translations/es.json';
+import { translations } from '../../translations';
 import { EXTERNAL_LINKS } from '@site/src/components/ExternalLink/external-links';
 
 interface ProductCardProps {
@@ -22,15 +20,11 @@ interface ProductCardProps {
 
 function ProductCard({ title, description, status, version, links }: ProductCardProps) {
   const { i18n } = useDocusaurusContext();
-  const translations = {
-    'pt-BR': ptBR,
-    'en': en,
-    'es': es
-  };
+
   const { products } = translations[i18n.currentLocale];
   return (
     <div className={styles.card}>
-      <div className={styles.cardHeader}>        
+      <div className={styles.cardHeader}>
         <span className={clsx(styles.status, {
           [styles.statusDevelopment]: status === products.status.development
         })}>
@@ -72,11 +66,7 @@ function ProductCard({ title, description, status, version, links }: ProductCard
 
 export default function ProductCards() {
   const { i18n } = useDocusaurusContext();
-  const translations = {
-    'pt-BR': ptBR,
-    'en': en,
-    'es': es
-  };
+
   const { products } = translations[i18n.currentLocale] || translations['en'];
   return (
     <div className={styles.container}>
@@ -108,4 +98,4 @@ export default function ProductCards() {
       </div>
     </div>
   );
-} 
+}

@@ -38,7 +38,7 @@
       },
       "base": {
         "description": "Core de plataforma de Banking com integração a LKE ou ledgers externas via contratos low code. Gerencie contas com múltiplos titulares, saldos em moedas fiat e não-fiat, exibidos de forma agregada ou individual. Transacione por diversos rails, gerencie contrapartes e conecte-se a múltiplos provedores bancários com multi-roteamento."
-      }      
+      }
     },
     "resources": {
       "patterns": {
@@ -75,4 +75,4 @@
       "privacyPolicy": "Política de Privacidade",
       "securityPolicy": "Política de Segurança"
     }
-  } 
+  }

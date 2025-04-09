@@ -8,9 +8,7 @@ import ProductCards from '@site/src/components/ProductCards';
 import DocLinks from '@site/src/components/DocLinks';
 import Sdks from '@site/src/components/Sdks';
 import CommunityChannel from '@site/src/components/CommunityChannel';
-import ptBR from '../translations/pt-BR.json';
-import en from '../translations/en.json';
-import es from '../translations/es.json';
+import { translations } from '../translations';
 import { useColorMode } from '@docusaurus/theme-common';
 
 import styles from './index.module.css';
@@ -18,18 +16,14 @@ import styles from './index.module.css';
 function HomepageHeader() {
   const { i18n } = useDocusaurusContext();
   const { isDarkTheme } = useColorMode();
-  const translations = {
-    'pt-BR': ptBR,
-    'en': en,
-    'es': es
-  };
+
   const { title, subtitle, getStarted } = translations[i18n.currentLocale].hero || translations['en'].hero;
   return (
     <div className={styles.container}>
       <div className="container">
-        <img 
+        <img
           src={isDarkTheme ? '/img/logotipo-white.png' : '/img/logotipo-purple.png'}
-          className={styles.heroLogo} 
+          className={styles.heroLogo}
           alt="Guardia Logo"
         />
         <Heading as="h1" className="hero__title">
@@ -55,15 +49,15 @@ export default function Home(): ReactNode {
   return (
     <>
       <Layout
-        title={`${siteConfig.tagline}`}>      
+        title={`${siteConfig.tagline}`}>
         <div className={styles.background}>
-          <HomepageHeader />             
+          <HomepageHeader />
           <ProductCards />
           <DocLinks />
           <Sdks />
           <CommunityChannel />
-        </div >        
+        </div >
       </Layout>
-    </>    
+    </>
   );
 }

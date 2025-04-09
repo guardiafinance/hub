@@ -1,18 +1,12 @@
 import React from 'react';
 import styles from './styles.module.css';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import ptBR from '../../translations/pt-BR.json';
-import en from '../../translations/en.json';
-import es from '../../translations/es.json';
+import { translations } from '../../translations';
 import { EXTERNAL_LINKS } from '../ExternalLink/external-links';
 
 const CommunityChannel = () => {
   const { i18n } = useDocusaurusContext();
-  const translations = {
-    'pt-BR': ptBR,
-    'en': en,
-    'es': es
-  };
+
   const { communityChannel } = translations[i18n.currentLocale];
   return (
     <section className={styles.communityChannelInvite}>
@@ -21,10 +15,10 @@ const CommunityChannel = () => {
         <i className="fab fa-whatsapp"></i>
         <h2>{communityChannel.title}</h2>
         <p>{communityChannel.description}</p>
-        <a 
-          href={EXTERNAL_LINKS.WHATSAPP_COMMUNITY} 
-          className={styles.communityChannelButton} 
-          target="_blank" 
+        <a
+          href={EXTERNAL_LINKS.WHATSAPP_COMMUNITY}
+          className={styles.communityChannelButton}
+          target="_blank"
           rel="noopener noreferrer"
         >
           <i className="fab fa-whatsapp"></i>
@@ -35,4 +29,4 @@ const CommunityChannel = () => {
   );
 };
 
-export default CommunityChannel; 
+export default CommunityChannel;

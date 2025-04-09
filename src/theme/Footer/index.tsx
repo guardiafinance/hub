@@ -3,23 +3,17 @@ import type FooterType from '@theme/Footer';
 import type {WrapperProps} from '@docusaurus/types';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import styles from './styles.module.css';
-import ptBR from '../../translations/pt-BR.json';
-import en from '../../translations/en.json';
-import es from '../../translations/es.json';
+import { translations } from '../../translations';
 import { EXTERNAL_LINKS } from '../../components/ExternalLink/external-links';
 
 type Props = WrapperProps<typeof FooterType>;
 
 export default function FooterWrapper(props: Props): ReactNode {
   const { i18n } = useDocusaurusContext();
-  const translations = {
-    'pt-BR': ptBR,
-    'en': en,
-    'es': es
-  };
+
   const { copyright, privacyPolicy, securityPolicy } = translations[i18n.currentLocale].footer;
   return (
-    <>      
+    <>
       <footer>
         <p>{copyright}</p>
         <div className={styles.socialLinks}>
