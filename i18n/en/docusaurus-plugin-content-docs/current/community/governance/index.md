@@ -2,37 +2,37 @@
 sidebar_position: 2
 ---
 
-# Governança da Guardia
+# Guardia Governance
 
-Este documento estabelece a estrutura e os processos de governança da **Guardia**, refletindo nossos valores fundamentais e promovendo um ambiente transparente, eficiente e colaborativo.
+This document establishes the governance structure and processes of **Guardia**, reflecting our core values and promoting a transparent, efficient, and collaborative environment.
 
-## Princípios de Governança
+## Governance Principles
 
-A governança da **Guardia** é baseada nos seguintes princípios:
+Guardia's governance is based on the following principles:
 
-### Consenso e Comprometimento
-Decisões são tomadas com base no consenso entre os participantes, garantindo alinhamento entre os objetivos do projeto e os interesses da comunidade. O comprometimento com a excelência e a participação ativa são incentivados para fortalecer o ecossistema.
+### Consensus and Commitment
+Decisions are made based on consensus among participants, ensuring alignment between project goals and community interests. Commitment to excellence and active participation are encouraged to strengthen the ecosystem.
 
-### Transparência e Responsabilidade
-A confiança é construída por meio da transparência em todos os processos e interações. Compartilhamos abertamente diretrizes, decisões e evoluções do projeto, garantindo que todos os stakeholders tenham clareza sobre suas responsabilidades.
+### Transparency and Accountability
+Trust is built through transparency in all processes and interactions. We openly share guidelines, decisions, and project developments, ensuring all stakeholders have clarity about their responsibilities.
 
-### Inclusão e Diversidade
-Valorizamos a diversidade de pensamento, experiência e perspectivas. Criamos um ambiente inclusivo onde todas as vozes são ouvidas e consideradas no processo decisório.
+### Inclusion and Diversity
+We value diversity of thought, experience, and perspectives. We create an inclusive environment where all voices are heard and considered in the decision-making process.
 
-### Segurança e Confiabilidade
-A integridade do sistema e a proteção dos dados são fundamentais para a estabilidade da plataforma. Seguimos práticas rigorosas para garantir que cada componente seja seguro e confiável.
+### Security and Reliability
+System integrity and data protection are fundamental to platform stability. We follow rigorous practices to ensure each component is secure and reliable.
 
-### Eficiência e Agilidade
-Adotamos uma abordagem pragmática e dinâmica, garantindo processos eficientes que permitem respostas ágeis às mudanças do mercado e às necessidades dos usuários.
+### Efficiency and Agility
+We adopt a pragmatic and dynamic approach, ensuring efficient processes that allow agile responses to market changes and user needs.
 
-## Estrutura de Governança
+## Governance Structure
 
-A governança da **Guardia** é baseada em três pilares: **Mantenedores, Colaboradores e Comitê Diretor**.
+Guardia's governance is based on three pillars: **Maintainers, Contributors, and Steering Committee**.
 
-### **Mantenedores**
-Os Mantenedores são responsáveis pela execução tática, evolução do projeto e tomada de decisões técnicas. Eles definem o roadmap e as diretrizes do projeto, revisam e aprovam contribuições e garantem conformidade com as melhores práticas.
+### **Maintainers**
+Maintainers are responsible for tactical execution, project evolution, and technical decision-making. They define the project roadmap and guidelines, review and approve contributions, and ensure compliance with best practices.
 
-A lista de Mantenedores pode ser encontrada no arquivo `CODEOWNERS` do repositório do projeto.
+The list of Maintainers can be found in the project repository's `CODEOWNERS` file.
 
 ```
 # CODEOWNERS - Responsible for code review
@@ -41,20 +41,20 @@ A lista de Mantenedores pode ser encontrada no arquivo `CODEOWNERS` do repositó
 * @guardia/{squad name}
 
 # Documentation
-docs/ @usuario1 @usuario2
+docs/ @user1 @user2
 
 # Source Code
-backend/ @usuario3 @usuario4
-frontend/ @usuario5 @usuario6
-database/ @usuario7
+backend/ @user3 @user4
+frontend/ @user5 @user6
+database/ @user7
 
 # Configuration and Infrastructure
-.github/ @guardia/mantenedores
+.github/ @guardia/maintainers
 infra/ @devops1 @devops2
-Dockerfile @usuario9
-*.yml @usuario9
+Dockerfile @user9
+*.yml @user9
 
-# Políticas e Governança
+# Policies and Governance
 GOVERNANCE @guardia/governance
 COMPLIANCE @guardia/compliance
 SECURITY @guardia/security
@@ -62,125 +62,125 @@ CODE_OF_CONDUCT @guardia/compliance
 LICENSE @guardia/compliance
 ```
 
-### Colaboradores
-Colaboradores são membros da comunidade que contribuem regularmente para o projeto. Eles submetem pull requests para revisão, auxiliam na resolução de problemas e são reconhecidos por suas contribuições consistentes.
+### Contributors
+Contributors are community members who regularly contribute to the project. They submit pull requests for review, assist in problem resolution, and are recognized for their consistent contributions.
 
-Os interessados devem seguir as diretrizes descritas no [Guia de Contribuição](../CONTRIBUTING.md).
+Interested parties should follow the guidelines described in the [Contribution Guide](../CONTRIBUTING.md).
 
-### Comitê Diretor
-O Comitê Diretor é responsável por garantir o alinhamento estratégico do projeto e mediar discussões organizacionais. Ele resolve disputas técnicas ou organizacionais, reavalia processos e políticas quando necessário e atua como instância final para decisões escaladas.
+### Steering Committee
+The Steering Committee is responsible for ensuring project strategic alignment and mediating organizational discussions. It resolves technical or organizational disputes, reassesses processes and policies when necessary, and serves as the final instance for escalated decisions.
 
-O Comitê Diretor pode ser composto por Mantenedores ativos, representantes da comunidade com histórico consistente de contribuição e outros membros que tenham se destacado como liderança ou especialistas em tecnologia do mercado financeiro. A inclusão de novos integrantes está sujeita à aprovação dos membros atuais do Comitê.
+The Steering Committee may be composed of active Maintainers, community representatives with a consistent contribution history, and other members who have distinguished themselves as leaders or experts in financial technology. The inclusion of new members is subject to approval by current Committee members.
 
-## Processos de Governança
+## Governance Processes
 
-### Tomada de Decisão
+### Decision Making
 
-A **Guardia** adota um processo estruturado para garantir que todas as decisões sejam tomadas de maneira **transparente, eficiente e documentada**. Utilizamos três mecanismos principais: **ADRs** para decisões arquiteturais que impactam a evolução técnica do projeto, **PDRs** para decisões sobre a continuidade e direcionamento de produtos, e **RFCs** para mudanças estratégicas de interesse interno e comunitário.
+Guardia adopts a structured process to ensure all decisions are made in a **transparent, efficient, and documented** manner. We use three main mechanisms: **ADRs** for architectural decisions impacting technical project evolution, **PDRs** for product continuity and direction decisions, and **RFCs** for strategic changes of internal and community interest.
 
-- Qualquer pessoa da comunidade pode abrir uma [Discussão](#) para propor ideias, levantar dúvidas ou sugerir melhorias.
-- A equipe é constantemente incentivada a participar com opiniões, questionamentos e feedback construtivo.
-- Valorizamos a diversidade de pensamento como um diferencial para alcançar soluções mais robustas, inclusivas e inovadoras.
+- Anyone in the community can open a [Discussion](#) to propose ideas, raise questions, or suggest improvements.
+- The team is constantly encouraged to participate with opinions, questions, and constructive feedback.
+- We value diversity of thought as a differentiator to achieve more robust, inclusive, and innovative solutions.
 
-As decisões devem ser formalizadas por meio de um dos seguintes mecanismos:
+Decisions must be formalized through one of the following mechanisms:
 
-#### Registros de Decisão Arquitetural (ADR)
-As decisões técnicas devem ser documentadas em **Registros de Decisão Arquitetural (ADR)**, garantindo um registro histórico claro.
-Cada ADR deve conter:
-- **Título**: Nome da decisão.
-- **Data**: Data em que a decisão foi tomada
-- **Status**: (Proposto, Aprovado, Rejeitado, Em Revisão, Em Discussão)
-- **Contexto**: O problema ou necessidade que levou à decisão.
-- **Decisão**: A escolha feita e seu detalhamento.
-- **Justificativa**: As razões para a escolha e opções consideradas.
-- **Consequências**: Impactos positivos e negativos esperados.
-- **(Opcional) PoC**: Caso a decisão seja embasada por Prova de Conceito (PoC), este deve ser informado.
+#### Architectural Decision Records (ADR)
+Technical decisions must be documented in **Architectural Decision Records (ADR)**, ensuring a clear historical record.
+Each ADR must contain:
+- **Title**: Name of the decision
+- **Date**: Date the decision was made
+- **Status**: (Proposed, Approved, Rejected, Under Review, Under Discussion)
+- **Context**: The problem or need that led to the decision
+- **Decision**: The choice made and its details
+- **Rationale**: Reasons for the choice and considered options
+- **Consequences**: Expected positive and negative impacts
+- **(Optional) PoC**: If the decision is based on a Proof of Concept (PoC), it must be informed
 
-Os ADRs devem ser armazenados no repositório do projeto e revisados periodicamente.
+ADRs must be stored in the project repository and reviewed periodically.
 
 ---
 
-#### Registros de Decisão de Produto (PDR)
-As decisões relacionadas à evolução de produtos devem ser formalizadas por meio de um **PDR**.
-Cada PDR deve conter:
-- **Título**: Nome da decisão.
-- **Data**: Data em que a decisão foi tomada
-- **Status**: (Proposto, Aprovado, Rejeitado, Em Revisão, Em Discussão)
-- **Contexto**: O problema ou necessidade que levou à decisão.
-- **Decisão**: A escolha feita e seu detalhamento.
-- **Justificativa**: As razões para a escolha e opções consideradas.
-- **Consequências**: Impactos positivos e negativos esperados.
-- **(Opcional) Benchmark**: Caso a decisão seja embasada por um benchmark, este deve ser informado.
+#### Product Decision Records (PDR)
+Decisions related to product evolution must be formalized through a **PDR**.
+Each PDR must contain:
+- **Title**: Name of the decision
+- **Date**: Date the decision was made
+- **Status**: (Proposed, Approved, Rejected, Under Review, Under Discussion)
+- **Context**: The problem or need that led to the decision
+- **Decision**: The choice made and its details
+- **Rationale**: Reasons for the choice and considered options
+- **Consequences**: Expected positive and negative impacts
+- **(Optional) Benchmark**: If the decision is based on a benchmark, it must be informed
 
-Os PDRs devem ser armazenados no repositório do projeto e revisados periodicamente.
+PDRs must be stored in the project repository and reviewed periodically.
 
 ---
 
 #### Requests for Comments (RFCs)
-Mudanças significativas em processos, tecnologias ou estratégias devem ser discutidas por meio de **RFCs**.
+Significant changes in processes, technologies, or strategies must be discussed through **RFCs**.
 
-O processo segue os seguintes passos:
-1. **Proposta**: Qualquer membro pode propor uma RFC, documentando o problema e possíveis soluções.
-2. **Discussão**: A proposta é aberta à comunidade interna para contribuições e refinamento.
-3. **Avaliação**: O Comitê Diretor analisa o feedback e decide sobre a adoção ou rejeição da proposta.
-4. **Implementação**: Se aprovada, a decisão é documentada e um plano de execução é definido.
-
----
-
-#### Busca por Consenso
-- Sempre que possível, busca-se um acordo entre os envolvidos, garantindo que todas as perspectivas sejam consideradas.
-- As decisões devem priorizar eficiência e agilidade, sem comprometer a qualidade.
-- A transparência é garantida por meio da documentação detalhada e da comunicação aberta com os stakeholders.
-
-#### Submissão para o Comitê Diretor
-Caso o consenso não seja alcançado em uma decisão técnica (ADR), de produto (PDR) ou estratégica (RFC), a questão será formalmente submetida ao Comitê Diretor. Ele tomará a decisão final com base nos Princípios da Guardia e no direcionamento estratégico do projeto.
-
-Todas as resoluções devem ser documentadas e comunicadas, reforçando a transparência e a confiabilidade da governança da Guardia.
+The process follows these steps:
+1. **Proposal**: Any member can propose an RFC, documenting the problem and possible solutions
+2. **Discussion**: The proposal is opened to the internal community for contributions and refinement
+3. **Evaluation**: The Steering Committee analyzes feedback and decides on proposal adoption or rejection
+4. **Implementation**: If approved, the decision is documented and an execution plan is defined
 
 ---
 
-### Inclusão de Novos Membros
+#### Consensus Seeking
+- Whenever possible, agreement is sought among involved parties, ensuring all perspectives are considered
+- Decisions must prioritize efficiency and agility without compromising quality
+- Transparency is ensured through detailed documentation and open communication with stakeholders
 
-#### Critérios para Convite
-- Ter pelo menos 1 contribuição significativa nos últimos 3 meses e demonstrar alinhamento com os valores e práticas do projeto.
-- O convite para se tornar Mantenedor deve partir de um Mantenedor e ser aprovado por pelo menos 1 membro do Comitê Diretor.
-- A entrada no Comitê Diretor exige aprovação unânime dos seus membros.
+#### Submission to Steering Committee
+If consensus is not reached on a technical (ADR), product (PDR), or strategic (RFC) decision, the matter will be formally submitted to the Steering Committee. It will make the final decision based on Guardia's Principles and project strategic direction.
 
-#### Convite e Aceitação
-- O Comitê Diretor avalia o candidato e, se aprovado, ele recebe um e-mail de convite para se tornar Mantenedor.
-- O candidato tem 7 dias para aceitar o convite.
-- Se o convite expirar, ele poderá ser considerado novamente no futuro.
-
-#### Integração e Boas-Vindas
-- Se o convite for aceito, o novo Mantenedor recebe um e-mail de boas-vindas com diretrizes e responsabilidades.
-- Ele terá acesso à documentação e suporte de outros membros para sua integração no projeto.
+All resolutions must be documented and communicated, reinforcing the transparency and reliability of Guardia's governance.
 
 ---
 
-### Resolução de Conflitos
+### New Member Inclusion
 
-A resolução de conflitos deve sempre estar alinhada aos Princípios de Governança da Guardia, garantindo que as decisões sejam tomadas de forma transparente, inclusiva e responsável.
+#### Invitation Criteria
+- Have at least 1 significant contribution in the last 3 months and demonstrate alignment with project values and practices
+- The invitation to become a Maintainer must come from a Maintainer and be approved by at least 1 Steering Committee member
+- Entry into the Steering Committee requires unanimous approval from its members
 
-#### Disputas Técnicas
-- Devem ser analisadas e resolvidas pelos Mantenedores, seguindo os princípios de Eficiência e Agilidade.
-- As discussões devem buscar Consenso e Comprometimento, garantindo participação ativa.
-- Sempre que possível, deve-se incentivar a Inclusão e Diversidade, acolhendo diferentes perspectivas.
-- Caso não haja consenso, o conflito pode ser escalado ao Comitê Diretor, que tomará a decisão final.
+#### Invitation and Acceptance
+- The Steering Committee evaluates the candidate and, if approved, they receive an email invitation to become a Maintainer
+- The candidate has 7 days to accept the invitation
+- If the invitation expires, they may be considered again in the future
 
-#### Questões Organizacionais e Estratégicas
-- São avaliadas pelo Comitê Diretor, considerando os princípios de Transparência e Responsabilidade.
-- As decisões devem priorizar Segurança e Confiabilidade e garantir estabilidade à plataforma.
-- Todo processo deve reforçar Estabilidade e Integridade, promovendo um ambiente de governança confiável.
-
-Todas as resoluções de conflitos devem ser documentadas e comunicadas, reforçando o compromisso da Guardia com a transparência e a confiança na governança do projeto.
+#### Integration and Welcome
+- If the invitation is accepted, the new Maintainer receives a welcome email with guidelines and responsibilities
+- They will have access to documentation and support from other members for their project integration
 
 ---
 
-## Diretrizes Complementares
+### Conflict Resolution
 
-Todos os membros e contribuidores devem seguir as diretrizes da Guardia:
+Conflict resolution must always align with Guardia's Governance Principles, ensuring decisions are made transparently, inclusively, and responsibly.
 
-- [Código de Conduta](CODE_OF_CONDUCT.md)
+#### Technical Disputes
+- Must be analyzed and resolved by Maintainers, following Efficiency and Agility principles
+- Discussions should seek Consensus and Commitment, ensuring active participation
+- Whenever possible, Inclusion and Diversity should be encouraged, welcoming different perspectives
+- If consensus is not reached, the conflict may be escalated to the Steering Committee, which will make the final decision
+
+#### Organizational and Strategic Issues
+- Are evaluated by the Steering Committee, considering Transparency and Accountability principles
+- Decisions must prioritize Security and Reliability and ensure platform stability
+- Every process must reinforce Stability and Integrity, promoting a reliable governance environment
+
+All conflict resolutions must be documented and communicated, reinforcing Guardia's commitment to transparency and trust in project governance.
+
+---
+
+## Complementary Guidelines
+
+All members and contributors must follow Guardia's guidelines:
+
+- [Code of Conduct](CODE_OF_CONDUCT.md)
 - [Compliance by Design](COMPLIANCE.md)
 
-Além disso, todos os contribuidores devem assinar o CNCF [Contributor License Agreement (CLA)](CLA.md), conforme descrito no documento oficial.
+Additionally, all contributors must sign the CNCF [Contributor License Agreement (CLA)](CLA.md), as described in the official document.
