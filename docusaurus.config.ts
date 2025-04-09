@@ -2,6 +2,7 @@ import {themes as prismThemes} from 'prism-react-renderer';
 import type {Config, ThemeConfig} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 import { EXTERNAL_LINKS } from './src/components/ExternalLink/external-links';
+import { getLocaleConfigs } from './src/translations/locales';
 
 const config: Config = {
   title: 'Guardia',
@@ -17,24 +18,8 @@ const config: Config = {
 
   i18n: {
     defaultLocale: 'pt-BR',
-    locales: ['pt-BR','en','es'],
-    localeConfigs: {
-      'pt-BR': {
-        label: 'Português (Brasil)',
-        direction: 'ltr',
-        htmlLang: 'pt-BR',
-      },
-      'en': {
-        label: 'English',
-        direction: 'ltr',
-        htmlLang: 'en',
-      },
-      'es': {
-        label: 'Español',
-        direction: 'ltr',
-        htmlLang: 'es',
-      },
-    },
+    locales: ['pt-BR', 'en', 'es'],
+    localeConfigs: getLocaleConfigs(),
   },
 
   markdown: {
