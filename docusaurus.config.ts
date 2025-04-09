@@ -14,20 +14,25 @@ const config: Config = {
 
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
-  
+
   i18n: {
     defaultLocale: 'pt-BR',
     locales: ['pt-BR','en','es'],
   },
+
+  markdown: {
+    mermaid: true,
+  },
+  themes: ['@docusaurus/theme-mermaid'],
 
   presets: [
     [
       'classic',
       {
         docs: {
-          sidebarPath: require.resolve("./sidebars.ts"),    
-        },  
-        blog: false,      
+          sidebarPath: require.resolve("./sidebars.ts"),
+        },
+        blog: false,
         theme: {
           customCss: [
             require.resolve("./src/css/custom.css"),
@@ -47,7 +52,7 @@ const config: Config = {
     ],
   ],
 
-  themeConfig: { 
+  themeConfig: {
     description: 'Documentação técnica, guias e recursos para a comunidade de desenvolvedores da Guardia',
     metadata: [
       {name: 'description', content: 'Documentação técnica, guias e recursos para a comunidade de desenvolvedores da Guardia'},
@@ -94,6 +99,9 @@ const config: Config = {
     prism: {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
+    },
+    mermaid: {
+      theme: {light: 'neutral', dark: 'forest'},
     },
     colorMode: {
       disableSwitch: false,
@@ -188,7 +196,7 @@ const config: Config = {
   titleDelimiter: '|',
   noIndex: false,
   trailingSlash: true,
-  
+
   plugins: [
     [
       '@docusaurus/plugin-ideal-image',
