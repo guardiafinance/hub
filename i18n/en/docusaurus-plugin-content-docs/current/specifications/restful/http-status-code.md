@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# HTTP Status Code
+# Status Codes
 
 Este documento define diretrizes de uso para os principais códigos de status HTTP no contexto de APIs RESTful da Guardia. O objetivo é promover consistência entre os times e evitar ambiguidades em integrações, garantindo uma experiência previsível para consumidores internos e externos.
 
