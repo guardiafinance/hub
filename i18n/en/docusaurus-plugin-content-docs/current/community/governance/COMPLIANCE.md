@@ -24,6 +24,8 @@ For questions or requests related to the application of these standards, consult
 
 - **Reversibility and Traceability** – Any state change in the system is recorded immutably. Reversions generate new auditable events, ensuring a complete history of decisions and changes.
 
+- **Efficiency** – Guardia is a technology company that uses technology to offer high-quality and efficient services, therefore, the adoption of practices that ensure the efficiency of systems and processes is necessary to maintain competitiveness and the quality of the services offered.
+
 - **Continuous Governance** – Policies and controls undergo periodic review and monitoring. This ensures constant alignment with new regulations and the evolution of risks.
 
 - **Interdisciplinary Engagement** – Governance, Legal, Engineering, and Security areas work in an integrated manner from the conception of new products, promoting shared responsibility for compliance.

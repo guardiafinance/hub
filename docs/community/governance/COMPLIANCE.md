@@ -24,6 +24,8 @@ Para dúvidas ou solicitações relacionadas à aplicação dessas normas, consu
 
 - **Reversibilidade e Rastreabilidade** – Qualquer alteração de estado no sistema é registrada de forma imutável. Reversões geram novos eventos auditáveis, assegurando histórico completo de decisões e mudanças.
 
+- **Eficiência** – A Guardia é uma empresa de tecnologia que utiliza a tecnologia para oferecer serviços de alta qualidade e eficiência, portanto, a adoção de práticas que asseguram a eficiência dos sistemas e processos se faz necessária para manter a competitividade e a qualidade dos serviços oferecidos.
+
 - **Governança Contínua** – As políticas e controles passam por revisão e monitoramento periódicos. Isso garante alinhamento constante com novas regulamentações e evolução dos riscos.
 
 - **Engajamento Interdisciplinar** – As áreas de Governança, Jurídico, Engenharia e Segurança trabalham de forma integrada desde a concepção de novos produtos, promovendo responsabilidade compartilhada pela conformidade.
