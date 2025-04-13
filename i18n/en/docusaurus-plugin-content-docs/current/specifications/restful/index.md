@@ -20,5 +20,5 @@ The RESTful specification is structured into reusable and versionable modules th
 | [Compression](./http-compression.md) *(in development)* | Standard for payload compression. |
 
 
-> IMPORTANT:
+> **IMPORTANT:**
 > All rules described here MUST be applied to any HTTP endpoint implemented on the platform, except for justified and documented exceptions in ADR.

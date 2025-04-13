@@ -10,8 +10,6 @@ Su objetivo es promover la consistencia entre interfaces, garantizar la previsib
 
 La estandarización de headers contribuye a una trazabilidad eficiente, depuración segura y escalabilidad de las integraciones.
 
-## Resumen
-
 | Header                  | Tipo     | Categoría | Dirección | Obligatorio | Propósito                                 |
 |-------------------------|----------|-----------|-----------|-------------|--------------------------------------------|
 | [Cache-Control](#cache-control)           | string   | estándar  | Response  | Opcional    | Directivas de control de caché            |
@@ -66,7 +64,8 @@ X-Grd-Debug: true
 
 **Valor predeterminado:** `false`
 
-**Advertencia:** el uso en entornos de producción DEBE ser restringido, ya que puede exponer información sensible.
+> **ATENCIÓN:**
+> El uso en entornos de producción DEBE ser restringido, ya que puede hacer que el payload de respuesta sea más verboso y consuma más recursos.
 
 ---
 

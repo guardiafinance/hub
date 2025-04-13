@@ -10,8 +10,6 @@ Seu objetivo é promover consistência entre interfaces, garantir previsibilidad
 
 A padronização dos headers contribui para rastreabilidade eficiente, depuração segura e escalabilidade das integrações.
 
-## Sumário
-
 | Header                  | Tipo     | Categoria | Direção   | Obrigatoriedade | Finalidade                                 |
 |-------------------------|----------|-----------|-----------|-----------------|--------------------------------------------|
 | [Cache-Control](#cache-control)           | string   | padrão    | Response  | Opcional        | Diretivas de controle de cache            |
@@ -58,7 +56,7 @@ Os headers customizados utilizados pela Guardia seguem o prefixo `X-Grd-*`, conf
 
 ### X-Grd-Debug
 
-Header booleano opcional. Quando presente com o valor `true`, a resposta DEVE incluir o campo `debug` no payload, contendo informações adicionais conforme [especificação de payloads de resposta](./http-response-payloads.md#debug).
+Header booleano opcional. Quando presente com o valor `true`, a resposta DEVE incluir o campo `debug` no payload, contendo informações adicionais conforme [especificação de payloads de resposta](./http-response-payloads.md#em-caso-de-debug).
 
 ```http
 X-Grd-Debug: true
@@ -66,7 +64,8 @@ X-Grd-Debug: true
 
 **Valor padrão:** `false`
 
-**Atenção:** o uso em ambientes de produção DEVE ser restrito, pois pode expor informações sensíveis.
+> **ATENÇÃO:**
+> O uso em ambientes de produção DEVE ser restrito, pois pode tornar o payload de resposta mais verboso e consumir mais recursos.
 
 ---
 

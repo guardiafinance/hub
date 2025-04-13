@@ -20,5 +20,5 @@ La especificación RESTful está estructurada en módulos reutilizables y versio
 | [Compresión](./http-compression.md) *(en desarrollo)* | Estándar para compresión de payloads. |
 
 
-> IMPORTANTE:
+> **IMPORTANTE:**
 > Todas las reglas descritas aquí DEBEN ser aplicadas a cualquier endpoint HTTP implementado en la plataforma, excepto por excepciones justificadas y documentadas en ADR.

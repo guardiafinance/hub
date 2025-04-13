@@ -10,8 +10,6 @@ Its goal is to promote consistency between interfaces, ensure predictability in 
 
 Header standardization contributes to efficient traceability, secure debugging, and integration scalability.
 
-## Summary
-
 | Header                  | Type     | Category | Direction | Mandatory | Purpose                                 |
 |-------------------------|----------|-----------|-----------|-----------|--------------------------------------------|
 | [Cache-Control](#cache-control)           | string   | standard  | Response  | Optional  | Cache control directives            |
@@ -66,7 +64,8 @@ X-Grd-Debug: true
 
 **Default value:** `false`
 
-**Warning:** usage in production environments MUST be restricted, as it may expose sensitive information.
+> **WARNING:**
+> Usage in production environments MUST be restricted, as it may make the response payload more verbose and consume more resources.
 
 ---
 
