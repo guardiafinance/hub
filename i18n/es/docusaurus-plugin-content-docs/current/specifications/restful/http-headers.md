@@ -57,10 +57,11 @@ El header `Link` PUEDE ser usado para proporcionar enlaces relacionados con la p
 Ejemplo para paginación:
 
 ```http
-Link: <https://{tenant_id}.guardia.finance/api/v1/ledgers?page_token={previous_page_token}>; rel="previous",
-<https://{tenant_id}.guardia.finance/api/v1/ledgers?page_token={next_page_token}>; rel="next",
-<https://{tenant_id}.guardia.finance/api/v1/ledgers?page_token={last_page_token}>; rel="last",
-<https://{tenant_id}.guardia.finance/api/v1/ledgers?page_token={first_page_token}>; rel="first"
+link:
+</api/v1/ledgers?page_token={previous_page_token}>; rel="previous",
+</api/v1/ledgers?page_token={next_page_token}>; rel="next",
+</api/v1/ledgers?page_token={last_page_token}>; rel="last",
+</api/v1/ledgers?page_token={first_page_token}>; rel="first"
 ```
 
 Ejemplo para estado de entidad:
