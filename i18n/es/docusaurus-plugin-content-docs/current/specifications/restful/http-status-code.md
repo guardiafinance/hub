@@ -6,38 +6,11 @@ sidebar_position: 1
 
 Este documento define directrices de uso para los principales códigos de estado HTTP en el contexto de las APIs RESTful de Guardia. El objetivo es promover la consistencia entre los equipos y evitar ambigüedades en integraciones, garantizando una experiencia predecible para consumidores internos y externos.
 
+Estas directrices deben ser aplicadas en todos los módulos y servicios de Guardia, sea en la capa de API pública o en integraciones internas. La consistencia en los códigos de estado mejora la trazabilidad, reduce errores de consumo y facilita diagnósticos.
+
 Cada código tiene dos secciones:
 - **Cuándo usar**: casos apropiados para aplicar el código.
 - **Cuándo no usar**: trampas comunes o situaciones donde el uso sería inadecuado.
-
-### 2xx - Respuestas de Éxito
-- `200 OK`: Solicitud procesada con éxito
-- `201 Created`: Entidad creada con éxito
-- `202 Accepted`: Solicitud aceptada para procesamiento asíncrono
-- `204 No Content`: Solicitud sin contenido de retorno
-
-### 3xx - Redirecciones
-- `301 Moved Permanently`: Recurso movido permanentemente
-- `304 Not Modified`: Recurso no modificado desde la última solicitud
-- `307 Temporary Redirect`: Redirección temporal
-
-### 4xx - Errores del Cliente
-- `400 Bad Request`: Error de validación o solicitud malformada
-- `401 Unauthorized`: Cliente no está autenticado
-- `402 Payment Required`: Acceso al recurso está condicionado a pago
-- `403 Forbidden`: Cliente no tiene permiso para acceder al recurso
-- `404 Not Found`: Recurso no encontrado
-- `408 Request Timeout`: Timeout en la solicitud
-- `409 Conflict`: Conflicto de estado de la entidad
-- `422 Unprocessable Entity`: Errores de negocio o validación
-- `429 Too Many Requests`: Límite de solicitudes excedido
-
-### 5xx - Errores del Servidor
-- `500 Internal Server Error`: Error interno inesperado
-- `501 Not Implemented`: Funcionalidad no implementada
-- `502 Bad Gateway`: Error en gateway o proxy
-- `503 Service Unavailable`: Sistema temporalmente indisponible
-- `504 Gateway Timeout`: Timeout en gateway o proxy
 
 ## 2xx - Respuestas de Éxito
 
@@ -238,11 +211,7 @@ Cada código tiene dos secciones:
 **Cuándo no usar:**
 - Cuando el timeout ocurrió del cliente al servidor (use `408`).
 
-## Consideraciones Finales
-
-Estas directrices deben ser aplicadas en todos los módulos y servicios de Guardia, sea en la capa de API pública o en integraciones internas. La consistencia en los códigos de estado mejora la trazabilidad, reduce errores de consumo y facilita diagnósticos.
-
 ## Referencias
 
-[RFC 9110 – HTTP Semantics](https://datatracker.ietf.org/doc/html/rfc9110#name-status-codes)
-[Códigos de estado de respuestas HTTP - HTTP | MDN](https://developer.mozilla.org/es/docs/Web/HTTP/Status)
+- [RFC 9110 – HTTP Semantics](https://datatracker.ietf.org/doc/html/rfc9110#name-status-codes)
+- [Códigos de estado de respuestas HTTP - HTTP | MDN](https://developer.mozilla.org/es/docs/Web/HTTP/Status)

@@ -4,216 +4,213 @@ sidebar_position: 1
 
 # Status Codes
 
-Este documento define diretrizes de uso para os principais códigos de status HTTP no contexto de APIs RESTful da Guardia. O objetivo é promover consistência entre os times e evitar ambiguidades em integrações, garantindo uma experiência previsível para consumidores internos e externos.
+This document defines usage guidelines for the main HTTP status codes in the context of Guardia's RESTful APIs. The goal is to promote consistency between teams and avoid ambiguities in integrations, ensuring a predictable experience for internal and external consumers.
 
-Cada código possui duas seções:
-- **Quando usar**: casos apropriados para aplicar o código.
-- **Quando não usar**: armadilhas comuns ou situações onde o uso seria inadequado.
+These guidelines should be applied to all Guardia modules and services, whether in the public API layer or internal integrations. Consistency in status codes improves traceability, reduces consumption errors, and facilitates diagnostics.
 
-## 2xx - Respostas de Sucesso
+Each code has two sections:
+- **When to use**: appropriate cases to apply the code.
+- **When not to use**: common pitfalls or situations where usage would be inappropriate.
+
+## 2xx - Success Responses
 
 ### 200 OK
 
-**Quando usar:**
-- Requisição processada com sucesso.
-- Resposta inclui dados ou confirmação da operação.
+**When to use:**
+- Request successfully processed.
+- Response includes data or operation confirmation.
 
-**Quando não usar:**
-- Quando uma nova entidade foi criada (use `201`).
-- Quando o processamento ainda está pendente (use `202`).
-- Quando não há conteúdo relevante para retornar (use `204`).
+**When not to use:**
+- When a new entity was created (use `201`).
+- When processing is still pending (use `202`).
+- When there is no relevant content to return (use `204`).
 
 ### 201 Created
 
-**Quando usar:**
-- Uma nova entidade foi criada com sucesso.
-- Requisição do tipo `POST` ou `PUT` resultou na criação de recurso.
+**When to use:**
+- A new entity was successfully created.
+- `POST` or `PUT` request resulted in resource creation.
 
-**Quando não usar:**
-- Quando o recurso já existia e apenas foi atualizado.
-- Quando o processo de criação ainda não terminou (use `202`).
+**When not to use:**
+- When the resource already existed and was only updated.
+- When the creation process is not yet complete (use `202`).
 
 ### 202 Accepted
 
-**Quando usar:**
-- A requisição foi aceita, mas o processamento ocorrerá de forma assíncrona.
-- O resultado final será notificado posteriormente ou estará disponível em outro endpoint.
+**When to use:**
+- The request was accepted, but processing will occur asynchronously.
+- The final result will be notified later or will be available in another endpoint.
 
-**Quando não usar:**
-- Quando o resultado da operação já está disponível.
-- Quando não há intenção de processar a requisição.
+**When not to use:**
+- When the operation result is already available.
+- When there is no intention to process the request.
 
 ### 204 No Content
 
-**Quando usar:**
-- Operação foi concluída com sucesso, mas não há conteúdo a retornar.
-- Casos como deleção, confirmação de update, ou resposta vazia de consulta.
+**When to use:**
+- Operation was completed successfully, but there is no content to return.
+- Cases such as deletion, update confirmation, or empty query response.
 
-**Quando não usar:**
-- Quando é esperado retorno de conteúdo.
-- Quando a ausência de
+**When not to use:**
+- When content return is expected.
+- When the absence of content indicates an error.
 
-## 3xx - Redirecionamentos
+## 3xx - Redirections
 
 ### 301 Moved Permanently
 
-**Quando usar:**
-- Quando um endpoint ou recurso foi movido permanentemente para uma nova URL.
-- Deve ser usado em APIs que estão em processo de descontinuação de rotas antigas.
+**When to use:**
+- When an endpoint or resource has been permanently moved to a new URL.
+- Should be used in APIs that are in the process of discontinuing old routes.
 
-**Quando não usar:**
-- Quando a mudança de rota é temporária (use 307).
-- Quando o cliente ainda deve utilizar a URL atual.
+**When not to use:**
+- When the route change is temporary (use 307).
+- When the client should still use the current URL.
 
 ### 304 Not Modified
 
-**Quando usar:**
-- Quando o recurso solicitado não mudou desde a última requisição com cache (usando If-Modified-Since ou ETag).
-- Útil para otimizar consumo de rede em APIs com cache forte.
+**When to use:**
+- When the requested resource has not changed since the last cached request (using If-Modified-Since or ETag).
+- Useful for optimizing network consumption in APIs with strong caching.
 
-**Quando não usar:**
-- Quando a resposta não utiliza mecanismos de cache ou controle de versão.
-- Quando o conteúdo do recurso foi alterado e precisa ser retornado (use 200).
+**When not to use:**
+- When the response does not use caching or version control mechanisms.
+- When the resource content has changed and needs to be returned (use 200).
 
 ### 307 Temporary Redirect
 
-**Quando usar:**
-- Quando um recurso está temporariamente acessível em outra URL.
-- O método HTTP e o corpo da requisição original devem ser preservados.
-- Casos de redirecionamento temporário após autenticação ou delegação.
+**When to use:**
+- When a resource is temporarily accessible at another URL.
+- The HTTP method and original request body must be preserved.
+- Cases of temporary redirection after authentication or delegation.
 
-**Quando não usar:**
-- Quando a mudança é permanente (use 301).
-- Quando a intenção é forçar o cliente a mudar a URL de forma definitiva.
-- Quando o método deve ser convertido para GET (nunca use 307 nesse caso).
+**When not to use:**
+- When the change is permanent (use 301).
+- When the intention is to force the client to change the URL definitively.
+- When the method should be converted to GET (never use 307 in this case).
 
-
-## 4xx - Erros do Cliente
+## 4xx - Client Errors
 
 ### 400 Bad Request
 
-**Quando usar:**
-- Requisição malformada ou com dados inválidos.
-- Falha de validação sintática ou semântica simples.
+**When to use:**
+- Malformed request or invalid data.
+- Simple syntactic or semantic validation failure.
 
-**Quando não usar:**
-- Quando os dados estão corretos, mas não fazem sentido no contexto (use `422`).
+**When not to use:**
+- When the data is correct but doesn't make sense in the context (use `422`).
 
 ### 401 Unauthorized
 
-**Quando usar:**
-- Autenticação obrigatória não fornecida ou token inválido.
+**When to use:**
+- Required authentication not provided or invalid token.
 
-**Quando não usar:**
-- Quando o cliente está autenticado, mas não tem permissão (use `403`).
+**When not to use:**
+- When the client is authenticated but doesn't have permission (use `403`).
 
 ### 402 Payment Required
 
-**Quando usar:**
-- Acesso ao recurso condicionado a pagamento ou assinatura ativa.
+**When to use:**
+- Access to the resource is conditional on payment or active subscription.
 
-**Quando não usar:**
-- Quando o problema está relacionado a permissões (use `403`).
-- Quando não há relação com cobrança ou planos.
+**When not to use:**
+- When the issue is related to permissions (use `403`).
+- When there is no relation to billing or plans.
 
 ### 403 Forbidden
 
-**Quando usar:**
-- Cliente está autenticado, mas não tem autorização para o recurso.
+**When to use:**
+- Client is authenticated but not authorized for the resource.
 
-**Quando não usar:**
-- Quando o usuário não está autenticado (use `401`).
+**When not to use:**
+- When the user is not authenticated (use `401`).
 
 ### 404 Not Found
 
-**Quando usar:**
-- O recurso solicitado não foi encontrado.
-- O ID fornecido não corresponde a nenhum item conhecido.
+**When to use:**
+- The requested resource was not found.
+- The provided ID does not correspond to any known item.
 
-**Quando não usar:**
-- Quando o recurso existe, mas o acesso é restrito (use `403`).
+**When not to use:**
+- When the resource exists but access is restricted (use `403`).
 
 ### 408 Request Timeout
 
-**Quando usar:**
-- Cliente demorou para enviar a requisição completa.
+**When to use:**
+- Client took too long to send the complete request.
 
-**Quando não usar:**
-- Quando o timeout ocorreu entre servidores (use `504`).
+**When not to use:**
+- When the timeout occurred between servers (use `504`).
 
 ### 409 Conflict
 
-**Quando usar:**
-- Conflito com o estado atual do recurso (ex: duplicidade, versão desatualizada).
+**When to use:**
+- Conflict with the current state of the resource (e.g., duplication, outdated version).
 
-**Quando não usar:**
-- Quando o erro é de validação (use `400` ou `422`).
+**When not to use:**
+- When the error is validation-related (use `400` or `422`).
 
 ### 422 Unprocessable Entity
 
-**Quando usar:**
-- Dados sintaticamente corretos, mas semanticamente inválidos (ex: CPF inválido, saldo insuficiente).
+**When to use:**
+- Data is syntactically correct but semantically invalid (e.g., invalid CPF, insufficient balance).
 
-**Quando não usar:**
-- Quando o problema é de formatação ou falta de campos (use `400`).
+**When not to use:**
+- When the problem is formatting or missing fields (use `400`).
 
 ### 429 Too Many Requests
 
-**Quando usar:**
-- O cliente excedeu limites de requisições por tempo (rate limit).
+**When to use:**
+- Client exceeded request limits per time period (rate limit).
 
-**Quando não usar:**
-- Quando o erro não está relacionado a volume ou limite de uso.
+**When not to use:**
+- When the error is not related to volume or usage limits.
 
-## 5xx - Erros do Servidor
+## 5xx - Server Errors
 
 ### 500 Internal Server Error
 
-**Quando usar:**
-- Falhas inesperadas ou exceções não tratadas.
-- Problemas internos do sistema.
+**When to use:**
+- Unexpected failures or unhandled exceptions.
+- Internal system problems.
 
-**Quando não usar:**
-- Quando o erro é previsível ou tratável pelo cliente.
+**When not to use:**
+- When the error is predictable or treatable by the client.
 
 ### 501 Not Implemented
 
-**Quando usar:**
-- Método HTTP válido mas não suportado.
-- Funcionalidade ainda não implementada.
+**When to use:**
+- Valid HTTP method but not supported.
+- Functionality not yet implemented.
 
-**Quando não usar:**
-- Quando o recurso existe mas há falha interna ao processar (use `500`).
+**When not to use:**
+- When the resource exists but there is an internal failure in processing (use `500`).
 
 ### 502 Bad Gateway
 
-**Quando usar:**
-- Gateway recebeu resposta inválida de outro servidor.
+**When to use:**
+- Gateway received invalid response from another server.
 
-**Quando não usar:**
-- Quando o erro está no próprio serviço e não no intermediário (use `500`).
+**When not to use:**
+- When the error is in the service itself and not in the intermediary (use `500`).
 
 ### 503 Service Unavailable
 
-**Quando usar:**
-- Serviço temporariamente indisponível por manutenção ou sobrecarga.
+**When to use:**
+- Service temporarily unavailable due to maintenance or overload.
 
-**Quando não usar:**
-- Quando o serviço está ativo mas falhou internamente (use `500`).
+**When not to use:**
+- When the service is active but failed internally (use `500`).
 
 ### 504 Gateway Timeout
 
-**Quando usar:**
-- Gateway ou proxy não recebeu resposta a tempo de outro servidor.
+**When to use:**
+- Gateway or proxy did not receive response in time from another server.
 
-**Quando não usar:**
-- Quando o timeout ocorreu do cliente para o servidor (use `408`).
+**When not to use:**
+- When the timeout occurred from client to server (use `408`).
 
-## Considerações Finais
+## References
 
-Essas diretrizes devem ser aplicadas em todos os módulos e serviços da Guardia, seja na camada de API pública ou em integrações internas. Consistência nos códigos de status melhora a rastreabilidade, reduz erros de consumo e facilita diagnósticos.
-
-## Referências
-
-[RFC 9110 – HTTP Semantics](https://datatracker.ietf.org/doc/html/rfc9110#name-status-codes)
-[Códigos de status de respostas HTTP - HTTP | MDN](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Reference/Status)
+- [RFC 9110 – HTTP Semantics](https://datatracker.ietf.org/doc/html/rfc9110#name-status-codes)
+- [HTTP Status Codes - HTTP | MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status)
