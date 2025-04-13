@@ -113,14 +113,14 @@ Conozca más sobre los headers HTTP que utiliza Guardia [aquí](./http-headers.m
 
 ## Errores Conocidos
 
-| Escenario | Código HTTP | Motivo | Código |
+| Escenario | Código HTTP | Código | Motivo |
 |--------|---------------------|--------|------|
-| `page_token` inválido | `400` | `INVALID_ARGUMENT` | `ERR400_INVALID_PAGE_TOKEN` |
-| `page_token` expirado | `400` | `INVALID_ARGUMENT` | `ERR400_EXPIRED_PAGE_TOKEN` |
-| `page_size` inválido | `400` | `INVALID_ARGUMENT` | `ERR400_INVALID_PAGE_SIZE` |
-| `page_size` por encima del límite | `400` | `INVALID_ARGUMENT` | `ERR400_PAGE_SIZE_TOO_LARGE` |
-| `order_by` inválido | `400` | `INVALID_ARGUMENT` | `ERR400_INVALID_ORDER_BY` |
-| `sort` inválido | `400` | `INVALID_ARGUMENT` | `ERR400_INVALID_SORT` |
+| `page_token` inválido | `400` | `ERR400_INVALID_ARGUMENT` | `PAGE_TOKEN_INVALID` |
+| `page_token` expirado | `400` | `ERR400_INVALID_ARGUMENT` | `PAGE_TOKEN_EXPIRED` |
+| `page_size` inválido | `400` | `ERR400_INVALID_ARGUMENT` | `PAGE_SIZE_INVALID` |
+| `page_size` acima do limite | `400` | `ERR400_INVALID_ARGUMENT` | `PAGE_SIZE_TOO_LARGE` |
+| `order_by` inválido | `400` | `ERR400_INVALID_ARGUMENT` | `ORDER_BY_INVALID` |
+| `sort` inválido | `400` | `ERR400_INVALID_ARGUMENT` | `SORT_INVALID` |
 
 
 #### Ejemplo de error (JSON)
@@ -128,9 +128,9 @@ Conozca más sobre los headers HTTP que utiliza Guardia [aquí](./http-headers.m
 {
   "errors": [
     {
-      "code": "ERR400_INVALID_PAGE_TOKEN",
-      "reason": "INVALID_ARGUMENT",
-      "message": "El token de página proporcionado tiene un formato incorrecto"
+      "code": "ERR400_INVALID_ARGUMENT",
+      "reason": "PAGE_TOKEN_INVALID",
+      "message": "The page token provided has an incorrect format. Please check the token before trying again."
     }
   ]
 }
