@@ -12,11 +12,11 @@ Header standardization contributes to efficient traceability, secure debugging, 
 
 | Header                  | Type     | Category | Direction | Mandatory | Purpose                                 |
 |-------------------------|----------|-----------|-----------|-----------|--------------------------------------------|
-| [Cache-Control](#cache-control)           | string   | standard  | Response  | Optional  | Cache control directives            |
-| [X-Grd-Debug](#x-grd-debug)             | boolean  | custom    | Request   | Optional  | Enables debug information return     |
-| [X-Grd-Trace-Id](#x-grd-trace-id)          | uuid     | custom    | Response  | Mandatory | Internal traceability                   |
-| [X-Grd-Correlation-Id](#x-grd-correlation-id)    | uuid     | custom    | Req/Resp  | Optional  | External context propagation            |
-
+| [Cache-Control](#cache-control)           | string   | standard  | Response  | Optional  | Cache control directives.            |
+| [Link](#link)             | string   | standard  | Response  | Optional  | Links referente a paginação de resultados ou estado de uma entidade. |
+| [X-Grd-Debug](#x-grd-debug)             | boolean  | custom    | Request   | Optional  | Enables debug information return.     |
+| [X-Grd-Trace-Id](#x-grd-trace-id)          | uuid     | custom    | Response  | Mandatory | Internal traceability.                   |
+| [X-Grd-Correlation-Id](#x-grd-correlation-id)    | uuid     | custom    | Req/Resp  | Optional  | External context propagation.            |
 
 ## Standard Headers
 
@@ -47,6 +47,27 @@ Cache-Control: no-store
 ```
 
 Other directives may be added as needed, following [RFC 9111: HTTP Caching](https://datatracker.ietf.org/doc/html/rfc9111#section-5.2).
+
+---
+
+### Link
+
+The `Link` header MAY be used to provide links related to result pagination or entity state, indicated by the `rel` parameter, following the [HATEOAS](https://restfulapi.net/hateoas) directives of the RESTful specification.
+
+Example for pagination:
+
+```http
+Link: <https://{tenant_id}.guardia.finance/api/v1/ledgers?page_token={previous_page_token}>; rel="previous",
+<https://{tenant_id}.guardia.finance/api/v1/ledgers?page_token={next_page_token}>; rel="next",
+<https://{tenant_id}.guardia.finance/api/v1/ledgers?page_token={last_page_token}>; rel="last",
+<https://{tenant_id}.guardia.finance/api/v1/ledgers?page_token={first_page_token}>; rel="first"
+```
+
+Example for entity state:
+
+```http
+Link: <https://{tenant_id}.guardia.finance/api/v1/ledgers/{entity_id}>; rel="ledger"
+```
 
 ---
 
@@ -109,3 +130,4 @@ X-Grd-Correlation-Id: <uuid>
 - [RFC 9110: HTTP Semantics](https://datatracker.ietf.org/doc/html/rfc9110)
 - [RFC 9111: HTTP Caching](https://datatracker.ietf.org/doc/html/rfc9111)
 - [HTTP Headers - HTTP | MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers)
+- [HATEOAS](https://restfulapi.net/hateoas)

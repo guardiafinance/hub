@@ -74,7 +74,7 @@ Para mais detalhes sobre convenções gerais de resposta, consulte a [especifica
 
 Exemplo:
 ```
-links:
+link:
 <https://{tenant_id}.guardia.finance/api/v1/ledgers?page_token={previous_page_token}>; rel="previous",
 <https://{tenant_id}.guardia.finance/api/v1/ledgers?page_token={next_page_token}>; rel="next",
 <https://{tenant_id}.guardia.finance/api/v1/ledgers?page_token={last_page_token}>; rel="last",
@@ -143,4 +143,5 @@ Saiba mais sobre os headers HTTP que a Guardia utiliza [aqui](./http-headers.md)
 
 ## Referências
 - [GitHub - Paginação REST API](https://docs.github.com/en/rest/using-the-rest-api/using-pagination-in-the-rest-api)
+- [HATEOAS](https://restfulapi.net/hateoas)
 

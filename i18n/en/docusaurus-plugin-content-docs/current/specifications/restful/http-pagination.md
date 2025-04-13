@@ -74,13 +74,12 @@ For more details about general response conventions, see the [Response Payloads 
 
 Example:
 ```
-links:
+link:
 <https://{tenant_id}.guardia.finance/api/v1/ledgers?page_token={previous_page_token}>; rel="previous",
 <https://{tenant_id}.guardia.finance/api/v1/ledgers?page_token={next_page_token}>; rel="next",
 <https://{tenant_id}.guardia.finance/api/v1/ledgers?page_token={last_page_token}>; rel="last",
 <https://{tenant_id}.guardia.finance/api/v1/ledgers?page_token={first_page_token}>; rel="first"
 ```
-
 
 Learn more about the HTTP headers that Guardia uses [here](./http-headers.md).
 
@@ -143,4 +142,4 @@ Learn more about the HTTP headers that Guardia uses [here](./http-headers.md).
 
 ## References
 - [GitHub - REST API Pagination](https://docs.github.com/en/rest/using-the-rest-api/using-pagination-in-the-rest-api)
-
+- [HATEOAS](https://restfulapi.net/hateoas)

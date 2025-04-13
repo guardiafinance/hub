@@ -12,11 +12,11 @@ La estandarización de headers contribuye a una trazabilidad eficiente, depuraci
 
 | Header                  | Tipo     | Categoría | Dirección | Obligatorio | Propósito                                 |
 |-------------------------|----------|-----------|-----------|-------------|--------------------------------------------|
-| [Cache-Control](#cache-control)           | string   | estándar  | Response  | Opcional    | Directivas de control de caché            |
-| [X-Grd-Debug](#x-grd-debug)             | booleano | personalizado | Request   | Opcional    | Habilita el retorno de información de depuración     |
-| [X-Grd-Trace-Id](#x-grd-trace-id)          | uuid     | personalizado | Response  | Obligatorio | Trazabilidad interna                   |
-| [X-Grd-Correlation-Id](#x-grd-correlation-id)    | uuid     | personalizado | Req/Resp  | Opcional    | Propagación de contexto externo            |
-
+| [Cache-Control](#cache-control)           | string   | estándar  | Response  | Opcional    | Directivas de control de caché.            |
+| [Link](#link)             | string   | estándar  | Response  | Opcional    | Links referente a paginação de resultados ou estado de una entidad. |
+| [X-Grd-Debug](#x-grd-debug)             | booleano | personalizado | Request   | Opcional    | Habilita el retorno de información de depuración.     |
+| [X-Grd-Trace-Id](#x-grd-trace-id)          | uuid     | personalizado | Response  | Obligatorio | Trazabilidad interna.                   |
+| [X-Grd-Correlation-Id](#x-grd-correlation-id)    | uuid     | personalizado | Req/Resp  | Opcional    | Propagación de contexto externo.            |
 
 ## Headers Estándar
 
@@ -50,6 +50,27 @@ Otras directivas pueden ser añadidas según sea necesario, siguiendo [RFC 9111:
 
 ---
 
+### Link
+
+El header `Link` PUEDE ser usado para proporcionar enlaces relacionados con la paginación de resultados o el estado de una entidad, indicado por el parámetro `rel`, siguiendo las directivas [HATEOAS](https://restfulapi.net/hateoas) de la especificación RESTful.
+
+Ejemplo para paginación:
+
+```http
+Link: <https://{tenant_id}.guardia.finance/api/v1/ledgers?page_token={previous_page_token}>; rel="previous",
+<https://{tenant_id}.guardia.finance/api/v1/ledgers?page_token={next_page_token}>; rel="next",
+<https://{tenant_id}.guardia.finance/api/v1/ledgers?page_token={last_page_token}>; rel="last",
+<https://{tenant_id}.guardia.finance/api/v1/ledgers?page_token={first_page_token}>; rel="first"
+```
+
+Ejemplo para estado de entidad:
+
+```http
+Link: <https://{tenant_id}.guardia.finance/api/v1/ledgers/{entity_id}>; rel="ledger"
+```
+
+---
+
 ## Headers Personalizados
 
 Los headers personalizados utilizados por Guardia siguen la convención del prefijo `X-Grd-*`. Abordan necesidades específicas de trazabilidad, depuración y correlación entre sistemas.
@@ -64,7 +85,7 @@ X-Grd-Debug: true
 
 **Valor predeterminado:** `false`
 
-> **ATENCIÓN:**
+> **ADVERTENCIA:**
 > El uso en entornos de producción DEBE ser restringido, ya que puede hacer que el payload de respuesta sea más verboso y consuma más recursos.
 
 ---
@@ -109,3 +130,4 @@ X-Grd-Correlation-Id: <uuid>
 - [RFC 9110: HTTP Semantics](https://datatracker.ietf.org/doc/html/rfc9110)
 - [RFC 9111: HTTP Caching](https://datatracker.ietf.org/doc/html/rfc9111)
 - [Headers HTTP - HTTP | MDN](https://developer.mozilla.org/es/docs/Web/HTTP/Headers)
+- [HATEOAS](https://restfulapi.net/hateoas)

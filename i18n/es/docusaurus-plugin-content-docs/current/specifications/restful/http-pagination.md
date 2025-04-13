@@ -143,4 +143,4 @@ Conozca más sobre los headers HTTP que utiliza Guardia [aquí](./http-headers.m
 
 ## Referencias
 - [GitHub - Paginación REST API](https://docs.github.com/en/rest/using-the-rest-api/using-pagination-in-the-rest-api)
-
+- [HATEOAS](https://restfulapi.net/hateoas)

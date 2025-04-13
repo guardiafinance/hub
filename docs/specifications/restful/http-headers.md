@@ -12,11 +12,11 @@ A padronização dos headers contribui para rastreabilidade eficiente, depuraç�
 
 | Header                  | Tipo     | Categoria | Direção   | Obrigatoriedade | Finalidade                                 |
 |-------------------------|----------|-----------|-----------|-----------------|--------------------------------------------|
-| [Cache-Control](#cache-control)           | string   | padrão    | Response  | Opcional        | Diretivas de controle de cache            |
-| [X-Grd-Debug](#x-grd-debug)             | booleano | custom    | Request   | Opcional        | Ativa retorno de informações de debug     |
-| [X-Grd-Trace-Id](#x-grd-trace-id)          | uuid     | custom    | Response  | Obrigatório     | Rastreabilidade interna                   |
-| [X-Grd-Correlation-Id](#x-grd-correlation-id)    | uuid     | custom    | Req/Resp  | Opcional        | Propagação de contexto externo            |
-
+| [Cache-Control](#cache-control)           | string   | padrão    | Response  | Opcional        | Diretivas de controle de cache.            |
+| [Link](#link)             | string   | padrão    | Response  | Opcional        | Links referente a paginação de resultados ou estado de uma entidade. |
+| [X-Grd-Debug](#x-grd-debug)             | booleano | custom    | Request   | Opcional        | Ativa retorno de informações de debug.     |
+| [X-Grd-Trace-Id](#x-grd-trace-id)          | uuid     | custom    | Response  | Obrigatório     | Rastreabilidade interna.                   |
+| [X-Grd-Correlation-Id](#x-grd-correlation-id)    | uuid     | custom    | Req/Resp  | Opcional        | Propagação de contexto externo.            |
 
 ## Headers Padrões
 
@@ -47,6 +47,27 @@ Cache-Control: no-store
 ```
 
 Outras diretivas podem ser adicionadas conforme a necessidade, seguindo a [RFC 9111: HTTP Caching](https://datatracker.ietf.org/doc/html/rfc9111#section-5.2).
+
+---
+
+### Link
+
+O cabeçalho `Link` PODE ser usado para fornecer links referente a paginação de resultados ou estado de uma entidade, indicado pelo parametro `rel`, seguindo as diretivas de [HATEOAS](https://restfulapi.net/hateoas) da especificação RESTful.
+
+Exemplo em caso de paginação:
+
+```http
+Link: <https://{tenant_id}.guardia.finance/api/v1/ledgers?page_token={previous_page_token}>; rel="previous",
+<https://{tenant_id}.guardia.finance/api/v1/ledgers?page_token={next_page_token}>; rel="next",
+<https://{tenant_id}.guardia.finance/api/v1/ledgers?page_token={last_page_token}>; rel="last",
+<https://{tenant_id}.guardia.finance/api/v1/ledgers?page_token={first_page_token}>; rel="first"
+```
+
+Exemplo em caso de estado de uma entidade:
+
+```http
+Link: <https://{tenant_id}.guardia.finance/api/v1/ledgers/{entity_id}>; rel="ledger"
+```
 
 ---
 
@@ -109,3 +130,4 @@ X-Grd-Correlation-Id: <uuid>
 - [RFC 9110: HTTP Semantics](https://datatracker.ietf.org/doc/html/rfc9110)
 - [RFC 9111: HTTP Caching](https://datatracker.ietf.org/doc/html/rfc9111)
 - [Cabeçalhos HTTP - HTTP | MDN](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers)
+- [HATEOAS](https://restfulapi.net/hateoas)
