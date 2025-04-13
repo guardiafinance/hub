@@ -6,7 +6,7 @@ sidebar_position: 1
 
 This document defines usage guidelines for the main HTTP status codes in the context of Guardia's RESTful APIs. The goal is to promote consistency between teams and avoid ambiguities in integrations, ensuring a predictable experience for internal and external consumers.
 
-These guidelines should be applied to all Guardia modules and services, whether in the public API layer or internal integrations. Consistency in status codes improves traceability, reduces consumption errors, and facilitates diagnostics.
+These guidelines MUST be applied to all Guardia modules and services, whether in the public API layer or internal integrations. Consistency in status codes improves traceability, reduces consumption errors, and facilitates diagnostics.
 
 Each code has two sections:
 - **When to use**: appropriate cases to apply the code.
@@ -61,7 +61,7 @@ Each code has two sections:
 
 **When to use:**
 - When an endpoint or resource has been permanently moved to a new URL.
-- Should be used in APIs that are in the process of discontinuing old routes.
+- MUST be used in APIs that are in the process of discontinuing old routes.
 
 **When not to use:**
 - When the route change is temporary (use 307).
@@ -81,7 +81,7 @@ Each code has two sections:
 
 **When to use:**
 - When a resource is temporarily accessible at another URL.
-- The HTTP method and original request body must be preserved.
+- The HTTP method and original request body MUST be preserved.
 - Cases of temporary redirection after authentication or delegation.
 
 **When not to use:**
@@ -209,6 +209,11 @@ Each code has two sections:
 
 **When not to use:**
 - When the timeout occurred from client to server (use `408`).
+
+## Additional notes
+
+- The status codes used in each endpoint MUST be documented in the API OAS contract.
+- The status codes described here are considered the **minimum standard** for any Guardia RESTful API.
 
 ## References
 

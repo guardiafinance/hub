@@ -4,7 +4,9 @@ sidebar_position: 3
 
 # Response Payload
 
-The response structure should be as follows:
+This specification defines the mandatory requirements for the HTTP response structure of the Guardia platform with the goal of ensuring interoperability between systems and ease of API consumption.
+
+This specification MUST be applicable to all HTTP requests of the Guardia platform. The response structure MUST be as follows:
 
 | Field | Type | Description |
 |-------|------|-------------|
@@ -15,7 +17,7 @@ The response structure should be as follows:
 
 ## In case of Success
 
-The `data` field should be returned when the request is successful, and should contain the data related to the manipulated entity, including `entity_id`, `external_entity_id` and `entity_type`, according to the [Entities](../entities.md) specification.
+The `data` field MUST be returned when the request is successful, and MUST contain the data related to the manipulated entity, including `entity_id`, `external_entity_id` and `entity_type`, according to the [Entities](../entities.md) specification.
 
 ### Payload with data
 
@@ -56,7 +58,7 @@ The `data` field should be returned when the request is successful, and should c
 
 ## In case of Error
 
-The error payload should be returned when an error occurs in the request, whether from the client side `4xx` or server side `5xx`.
+The error payload MUST be returned when an error occurs in the request, whether from the client side `4xx` or server side `5xx`.
 
 | Field | Type | Description |
 |-------|------|-------------|
@@ -77,11 +79,11 @@ The error payload should be returned when an error occurs in the request, whethe
 ```
 
 > **IMPORTANT:**
-> The `message` field is informative for the developer to understand how to handle the error and SHOULD NOT be used for end-user error messages.
+> The `message` field is informative for the developer to understand how to handle the error and MUST NOT be used for end-user error messages.
 
 ## In case of Debug
 
-The debug payload should be returned when the `X-Grd-Debug` header is present and set to `true`.
+The debug payload MUST be returned when the `X-Grd-Debug` header is present and set to `true`.
 
 | Field | Type | Description |
 |-------|------|-------------|
@@ -119,6 +121,11 @@ The debug payload should be returned when the `X-Grd-Debug` header is present an
   }
 }
 ```
+
+## Additional notes
+
+- The payloads used in each endpoint MUST be documented in the API OAS contract.
+- The payloads described here are considered the **minimum standard** for any Guardia RESTful API.
 
 References:
 - [RFC 7807: Problem Details for HTTP APIs](https://datatracker.ietf.org/doc/html/rfc7807)

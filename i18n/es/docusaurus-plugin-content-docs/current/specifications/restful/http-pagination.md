@@ -68,7 +68,7 @@ Para más detalles sobre las convenciones generales de respuesta, consulte la [e
 
 | Header         | Tipo | Descripción                                     |
 |----------------|---------|------------------------------------------------|
-| `Cache-Control`  | string | Indica que la respuesta puede ser almacenada temporalmente en el lado del cliente, según la especificación del header [Cache-Control](./headers.md#cache-control). El tiempo de expiración del caché debe ser compatible con el tiempo de vida del `page_token`. |
+| `Cache-Control`  | string | Indica que la respuesta puede ser almacenada temporalmente en el lado del cliente, según la especificación del header [Cache-Control](./headers.md#cache-control). El tiempo de expiración del caché DEBE ser compatible con el tiempo de vida del `page_token`. |
 | `Link` | string | Contiene enlaces para las páginas siguientes y anteriores de resultados. |
 
 
@@ -95,7 +95,7 @@ Conozca más sobre los headers HTTP que utiliza Guardia [aquí](./http-headers.m
 
 ### Tokens de Página
 - `page_token` DEBE expirar de forma segura o ser validado por tiempo de uso.
-- El tiempo de vida del page_token debe ser compatible con el tiempo de caché del header `Cache-Control` de la respuesta.
+- El tiempo de vida del page_token DEBE ser compatible con el tiempo de caché del header `Cache-Control` de la respuesta.
 - Los campos `first_page_token` y `last_page_token` DEBEN ser devueltos siempre que sea técnicamente posible, pero PUEDEN ser omitidos para optimización de payload o rendimiento.
 - Campos como `previous_page_token`, `next_page_token`, `first_page_token` y `last_page_token` son EXCLUSIVOS de la respuesta y NO DEBEN ser utilizados como entrada.
 
@@ -119,7 +119,7 @@ Conozca más sobre los headers HTTP que utiliza Guardia [aquí](./http-headers.m
 | `page_token` inválido | `400` | `ERR400_INVALID_ARGUMENT` | `PAGE_TOKEN_INVALID` |
 | `page_token` expirado | `400` | `ERR400_INVALID_ARGUMENT` | `PAGE_TOKEN_EXPIRED` |
 | `page_size` inválido | `400` | `ERR400_INVALID_ARGUMENT` | `PAGE_SIZE_INVALID` |
-| `page_size` acima do limite | `400` | `ERR400_INVALID_ARGUMENT` | `PAGE_SIZE_TOO_LARGE` |
+| `page_size` por encima del límite | `400` | `ERR400_INVALID_ARGUMENT` | `PAGE_SIZE_TOO_LARGE` |
 | `order_by` inválido | `400` | `ERR400_INVALID_ARGUMENT` | `ORDER_BY_INVALID` |
 | `sort` inválido | `400` | `ERR400_INVALID_ARGUMENT` | `SORT_INVALID` |
 
@@ -141,6 +141,11 @@ Conozca más sobre los headers HTTP que utiliza Guardia [aquí](./http-headers.m
 - Esta especificación DEBE ser aplicada a cualquier API REST que devuelva listas de recursos.
 - Incluso cuando la API devuelve una lista de recursos con un solo elemento, la especificación DEBE ser aplicada.
 - Las APIs y contratos existentes DEBEN ser adaptados progresivamente según la evolución de versión o migración.
+
+### Notas adicionales
+
+- La paginación DEBE ser documentada en el contrato OAS de la API.
+- La paginación aquí descrita es considerada el estándar mínimo para cualquier API RESTful de Guardia.
 
 ## Referencias
 - [GitHub - Paginación REST API](https://docs.github.com/en/rest/using-the-rest-api/using-pagination-in-the-rest-api)

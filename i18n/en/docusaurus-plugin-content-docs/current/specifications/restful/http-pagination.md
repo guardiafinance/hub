@@ -68,7 +68,7 @@ For more details about general response conventions, see the [Response Payloads 
 
 | Header         | Type | Description                                     |
 |----------------|---------|------------------------------------------------|
-| `Cache-Control`  | string | Indicates that the response can be temporarily stored on the client side, according to the [Cache-Control](./headers.md#cache-control) header specification. The cache expiration time must be compatible with the `page_token` lifetime. |
+| `Cache-Control`  | string | Indicates that the response can be temporarily stored on the client side, according to the [Cache-Control](./headers.md#cache-control) header specification. The cache expiration time MUST be compatible with the `page_token` lifetime. |
 | `Link` | string | Contains links for the next and previous pages of results. |
 
 
@@ -94,7 +94,7 @@ Learn more about the HTTP headers that Guardia uses [here](./http-headers.md).
 
 ### Page Tokens
 - `page_token` MUST expire securely or be validated by usage time.
-- The page_token lifetime must be compatible with the response's `Cache-Control` header cache time.
+- The page_token lifetime MUST be compatible with the response's `Cache-Control` header cache time.
 - The fields `first_page_token` and `last_page_token` MUST be returned whenever technically possible, but MAY be omitted for payload or performance optimization.
 - Fields such as `previous_page_token`, `next_page_token`, `first_page_token`, and `last_page_token` are EXCLUSIVE to the response and MUST NOT be used as input.
 
@@ -115,12 +115,12 @@ Learn more about the HTTP headers that Guardia uses [here](./http-headers.md).
 
 | Scenario | HTTP Code | Code | Reason |
 |--------|---------------------|--------|------|
-| `page_token` inválido | `400` | `ERR400_INVALID_ARGUMENT` | `PAGE_TOKEN_INVALID` |
-| `page_token` expirado | `400` | `ERR400_INVALID_ARGUMENT` | `PAGE_TOKEN_EXPIRED` |
-| `page_size` inválido | `400` | `ERR400_INVALID_ARGUMENT` | `PAGE_SIZE_INVALID` |
-| `page_size` acima do limite | `400` | `ERR400_INVALID_ARGUMENT` | `PAGE_SIZE_TOO_LARGE` |
-| `order_by` inválido | `400` | `ERR400_INVALID_ARGUMENT` | `ORDER_BY_INVALID` |
-| `sort` inválido | `400` | `ERR400_INVALID_ARGUMENT` | `SORT_INVALID` |
+| Invalid `page_token` | `400` | `ERR400_INVALID_ARGUMENT` | `PAGE_TOKEN_INVALID` |
+| Expired `page_token` | `400` | `ERR400_INVALID_ARGUMENT` | `PAGE_TOKEN_EXPIRED` |
+| Invalid `page_size` | `400` | `ERR400_INVALID_ARGUMENT` | `PAGE_SIZE_INVALID` |
+| `page_size` above limit | `400` | `ERR400_INVALID_ARGUMENT` | `PAGE_SIZE_TOO_LARGE` |
+| Invalid `order_by` | `400` | `ERR400_INVALID_ARGUMENT` | `ORDER_BY_INVALID` |
+| Invalid `sort` | `400` | `ERR400_INVALID_ARGUMENT` | `SORT_INVALID` |
 
 
 #### JSON Example
@@ -140,6 +140,11 @@ Learn more about the HTTP headers that Guardia uses [here](./http-headers.md).
 - This specification MUST be applied to any REST API that returns resource lists.
 - Even when the API returns a resource list with only one item, the specification MUST be applied.
 - Existing APIs and contracts MUST be adapted progressively according to version evolution or migration.
+
+### Additional notes
+
+- Pagination MUST be documented in the API OAS contract.
+- Pagination described here is considered the minimum standard for any Guardia RESTful API.
 
 ## References
 - [GitHub - REST API Pagination](https://docs.github.com/en/rest/using-the-rest-api/using-pagination-in-the-rest-api)

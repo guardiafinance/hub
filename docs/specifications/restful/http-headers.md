@@ -40,7 +40,7 @@ Cache-Control: public, max-age=<seconds>
 Cache-Control: private, max-age=<seconds>
 ```
 
-Para respostas que **NÃO DEVEM** ser armazenadas em cache, o cabeçalho abaixo DEVE ser usado:
+Para respostas que NÃO DEVEM ser armazenadas em cache, o cabeçalho abaixo DEVE ser usado:
 
 ```http
 Cache-Control: no-store
@@ -121,10 +121,13 @@ X-Grd-Correlation-Id: <uuid>
 ## Considerações de Segurança
 
 - O uso de `X-Grd-Debug: true` em ambientes de produção DEVE ser controlado por escopo ou autenticação.
-- Headers de rastreamento **NÃO DEVEM** conter dados sensíveis, PII ou segredos.
+- Headers de rastreamento NÃO DEVEM conter dados sensíveis, PII ou segredos.
 - Requisições devem ser validadas independentemente do status de autenticação.
 
----
+### Notas adicionais
+
+- Os headers utilizados em cada endpoint DEVE ser documentado no contrato OAS da API.
+- Os headers aqui descritos são considerados **padrão mínimo** para qualquer API RESTful da Guardia.
 
 ## Referências
 

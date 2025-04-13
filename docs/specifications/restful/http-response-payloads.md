@@ -4,18 +4,20 @@ sidebar_position: 3
 
 # Payload de Resposta
 
-A estrutura de resposta deve ser a seguinte:
+Esta especificação define os requisitos obrigatórios para a estrutura de resposta de requisições HTTP da plataforma Guardia com o objetivo de garantir a interoperabilidade entre sistemas e a facilidade de consumo das APIs.
+
+Esta especificação DEVE ser aplicável a todas as requisições HTTP da plataforma Guardia. A estrutura de resposta DEVE ser a seguinte:
 
 | Campo | Tipo | Descrição |
 |-------|------|-----------|
 | `data` | object \| array | Dados retornados pela operação, quando a requisição é bem sucedida. |
 | `errors` | array | Lista de erros, quando a requisição não é bem sucedida. |
 | `pagination` | object | Informações de paginação, quando aplicável. |
-| `debug` | object | Informações para debug, quando solicitado o header `X-Grg-Debug`. |
+| `debug` | object | Informações para debug, quando solicitado o header `X-Grd-Debug`. |
 
 ## Em caso de Sucesso
 
-O `data` deve ser retornado quando a requisição é bem sucedida, e deve conter os dados relativos a entidade manipulada, incluindo o `entity_id`, o `external_entity_id` e o `entity_type`, conforme a especificação de [Entidades](../entities.md).
+O `data` DEVE ser retornado quando a requisição é bem sucedida, e DEVE conter os dados relativos a entidade manipulada, incluindo o `entity_id`, o `external_entity_id` e o `entity_type`, conforme a especificação de [Entidades](../entities.md).
 
 ### Payload com os dados
 
@@ -56,7 +58,7 @@ O `data` deve ser retornado quando a requisição é bem sucedida, e deve conter
 
 ## Em caso de Erro
 
-O payload de erro deve ser retornado quando ocorrer um erro na requisição, seja por parte do cliente `4xx` ou do servidor `5xx`.
+O payload de erro DEVE ser retornado quando ocorrer um erro na requisição, seja por parte do cliente `4xx` ou do servidor `5xx`.
 
 | Campo | Tipo | Descrição |
 |-------|------|-----------|
@@ -81,12 +83,12 @@ O payload de erro deve ser retornado quando ocorrer um erro na requisição, sej
 
 ## Em caso de Debug
 
-O payload de debug deve ser retornado quando o header `X-Grg-Debug` estiver presente e com o valor `true`.
+O payload de debug DEVE ser retornado quando o header `X-Grd-Debug` estiver presente e com o valor `true`.
 
 | Campo | Tipo | Descrição |
 |-------|------|-----------|
 | `trace_id` | string | ID de rastreio da requisição. Também retornado no header `X-Grd-Trace-Id`. |
-| `correlation_id` | string | Id de correlação da requisição. Também retornado no header `X-Grg-Correlation-Id`. |
+| `correlation_id` | string | Id de correlação da requisição. Também retornado no header `X-Grd-Correlation-Id`. |
 | `instance` | string | Identificador único da instância. |
 | `timestamp` | string | Timestamp da requisição em UNIX Epoch. |
 | `duration` | string | Tempo de resposta da requisição em milissegundos. |
@@ -119,6 +121,11 @@ O payload de debug deve ser retornado quando o header `X-Grg-Debug` estiver pres
   }
 }
 ```
+
+## Notas adicionais
+
+- Os payloads utilizados em cada endpoint DEVE ser documentado no contrato OAS da API.
+- Os payloads aqui descritos são considerados **padrão mínimo** para qualquer API RESTful da Guardia.
 
 Referências:
 - [RFC 7807: Problem Details for HTTP APIs](https://datatracker.ietf.org/doc/html/rfc7807)

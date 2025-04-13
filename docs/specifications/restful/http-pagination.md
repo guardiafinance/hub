@@ -68,7 +68,7 @@ Para mais detalhes sobre convenções gerais de resposta, consulte a [especifica
 
 | Header         | Tipo | Descrição                                     |
 |----------------|---------|------------------------------------------------|
-| `Cache-Control`  | string | Indica que a resposta pode ser armazenada temporariamente do lado do cliente, conforme a especificação do header [Cache-Control](./headers.md#cache-control). O tempo de expiração do cache deve ser compatível com o tempo de vida do `page_token`. |
+| `Cache-Control`  | string | Indica que a resposta pode ser armazenada temporariamente do lado do cliente, conforme a especificação do header [Cache-Control](./headers.md#cache-control). O tempo de expiração do cache DEVE ser compatível com o tempo de vida do `page_token`. |
 | `Link` | string | Contém links para as próximas e anteriores páginas de resultados. |
 
 
@@ -95,7 +95,7 @@ Saiba mais sobre os headers HTTP que a Guardia utiliza [aqui](./http-headers.md)
 
 ### Tokens de Página
 - `page_token` DEVE expirar de forma segura ou ser validado por tempo de uso.
-- O tempo de vida do page_token deve ser compatível com tempo de cache do header `Cache-Control` da resposta.
+- O tempo de vida do page_token DEVE ser compatível com tempo de cache do header `Cache-Control` da resposta.
 - Os campos `first_page_token` e `last_page_token` DEVEM ser retornados sempre que tecnicamente possível, mas PODEM ser omitidos para otimização de payload ou performance.
 - Campos como `previous_page_token`, `next_page_token`, `first_page_token` e `last_page_token` SÃO EXCLUSIVOS de resposta e NÃO DEVEM ser utilizados como entrada.
 
@@ -141,6 +141,11 @@ Saiba mais sobre os headers HTTP que a Guardia utiliza [aqui](./http-headers.md)
 - Esta especificação DEVE ser aplicada a qualquer API REST que retorne listas de recursos.
 - Mesmo quando a API retorna uma lista de recursos com apenas um item, a especificação DEVE ser aplicada.
 - APIs e contratos existentes DEVEM ser adaptados de forma progressiva conforme evolução de versão ou migração.
+
+## Notas adicionais
+
+- A paginação DEVE ser documentada no contrato OAS da API.
+- A paginação aqui descrita é considerada **padrão mínimo** para qualquer API RESTful da Guardia.
 
 ## Referências
 - [GitHub - Paginação REST API](https://docs.github.com/en/rest/using-the-rest-api/using-pagination-in-the-rest-api)

@@ -4,7 +4,9 @@ sidebar_position: 3
 
 # Payload de Respuesta
 
-La estructura de respuesta debe ser la siguiente:
+Esta especificación define los requisitos obligatorios para la estructura de respuesta de solicitudes HTTP de la plataforma Guardia con el objetivo de garantizar la interoperabilidad entre sistemas y la facilidad de consumo de las APIs.
+
+Esta especificación DEBE ser aplicable a todas las solicitudes HTTP de la plataforma Guardia. La estructura de respuesta DEBE ser la siguiente:
 
 | Campo | Tipo | Descripción |
 |-------|------|-------------|
@@ -15,7 +17,7 @@ La estructura de respuesta debe ser la siguiente:
 
 ## En caso de Éxito
 
-El campo `data` debe ser devuelto cuando la solicitud es exitosa, y debe contener los datos relacionados con la entidad manipulada, incluyendo `entity_id`, `external_entity_id` y `entity_type`, según la especificación de [Entidades](../entities.md).
+El campo `data` DEBE ser devuelto cuando la solicitud es exitosa, y DEBE contener los datos relacionados con la entidad manipulada, incluyendo `entity_id`, `external_entity_id` y `entity_type`, según la especificación de [Entidades](../entities.md).
 
 ### Payload con datos
 
@@ -56,7 +58,7 @@ El campo `data` debe ser devuelto cuando la solicitud es exitosa, y debe contene
 
 ## En caso de Error
 
-El payload de error debe ser devuelto cuando ocurre un error en la solicitud, ya sea del lado del cliente `4xx` o del servidor `5xx`.
+El payload de error DEBE ser devuelto cuando ocurre un error en la solicitud, ya sea del lado del cliente `4xx` o del servidor `5xx`.
 
 | Campo | Tipo | Descripción |
 |-------|------|-------------|
@@ -81,7 +83,7 @@ El payload de error debe ser devuelto cuando ocurre un error en la solicitud, ya
 
 ## En caso de Depuración
 
-El payload de depuración debe ser devuelto cuando el header `X-Grd-Debug` está presente y establecido en `true`.
+El payload de depuración DEBE ser devuelto cuando el header `X-Grd-Debug` está presente y establecido en `true`.
 
 | Campo | Tipo | Descripción |
 |-------|------|-------------|
@@ -119,6 +121,11 @@ El payload de depuración debe ser devuelto cuando el header `X-Grd-Debug` está
   }
 }
 ```
+
+## Notas adicionales
+
+- Los payloads utilizados en cada endpoint DEBEN ser documentados en el contrato OAS de la API.
+- Los payloads aquí descritos son considerados el **estándar mínimo** para cualquier API RESTful de Guardia.
 
 Referencias:
 - [RFC 7807: Problem Details for HTTP APIs](https://datatracker.ietf.org/doc/html/rfc7807)

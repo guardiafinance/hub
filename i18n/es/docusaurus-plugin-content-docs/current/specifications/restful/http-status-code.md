@@ -6,7 +6,7 @@ sidebar_position: 1
 
 Este documento define directrices de uso para los principales códigos de estado HTTP en el contexto de las APIs RESTful de Guardia. El objetivo es promover la consistencia entre los equipos y evitar ambigüedades en integraciones, garantizando una experiencia predecible para consumidores internos y externos.
 
-Estas directrices deben ser aplicadas en todos los módulos y servicios de Guardia, sea en la capa de API pública o en integraciones internas. La consistencia en los códigos de estado mejora la trazabilidad, reduce errores de consumo y facilita diagnósticos.
+Estas directrices DEBEN ser aplicadas en todos los módulos y servicios de Guardia, sea en la capa de API pública o en integraciones internas. La consistencia en los códigos de estado mejora la trazabilidad, reduce errores de consumo y facilita diagnósticos.
 
 Cada código tiene dos secciones:
 - **Cuándo usar**: casos apropiados para aplicar el código.
@@ -53,7 +53,7 @@ Cada código tiene dos secciones:
 
 **Cuándo no usar:**
 - Cuando se espera retorno de contenido.
-- Cuando la ausencia de
+- Cuando la ausencia de contenido indica un error.
 
 ## 3xx - Redirecciones
 
@@ -61,11 +61,11 @@ Cada código tiene dos secciones:
 
 **Cuándo usar:**
 - Cuando un endpoint o recurso ha sido movido permanentemente a una nueva URL.
-- Debe ser usado en APIs que están en proceso de descontinuación de rutas antiguas.
+- DEBE ser usado en APIs que están en proceso de descontinuación de rutas antiguas.
 
 **Cuándo no usar:**
 - Cuando el cambio de ruta es temporal (use 307).
-- Cuando el cliente aún debe utilizar la URL actual.
+- Cuando el cliente aún DEBE utilizar la URL actual.
 
 ### 304 Not Modified
 
@@ -81,14 +81,13 @@ Cada código tiene dos secciones:
 
 **Cuándo usar:**
 - Cuando un recurso está temporalmente accesible en otra URL.
-- El método HTTP y el cuerpo de la solicitud original deben ser preservados.
+- El método HTTP y el cuerpo de la solicitud original DEBE ser preservados.
 - Casos de redirección temporal después de autenticación o delegación.
 
 **Cuándo no usar:**
 - Cuando el cambio es permanente (use 301).
 - Cuando la intención es forzar al cliente a cambiar la URL de forma definitiva.
-- Cuando el método debe ser convertido a GET (nunca use 307 en ese caso).
-
+- Cuando el método DEBE ser convertido a GET (nunca use 307 en ese caso).
 
 ## 4xx - Errores del Cliente
 
@@ -210,6 +209,11 @@ Cada código tiene dos secciones:
 
 **Cuándo no usar:**
 - Cuando el timeout ocurrió del cliente al servidor (use `408`).
+
+## Notas adicionales
+
+- Los códigos de estado utilizados en cada endpoint DEBEN ser documentados en el contrato OAS de la API.
+- Los códigos de estado aquí descritos son considerados el **estándar mínimo** para cualquier API RESTful de Guardia.
 
 ## Referencias
 

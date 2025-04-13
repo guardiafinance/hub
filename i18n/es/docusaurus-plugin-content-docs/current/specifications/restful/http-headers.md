@@ -13,7 +13,7 @@ La estandarización de headers contribuye a una trazabilidad eficiente, depuraci
 | Header                  | Tipo     | Categoría | Dirección | Obligatorio | Propósito                                 |
 |-------------------------|----------|-----------|-----------|-------------|--------------------------------------------|
 | [Cache-Control](#cache-control)           | string   | estándar  | Response  | Opcional    | Directivas de control de caché.            |
-| [Link](#link)             | string   | estándar  | Response  | Opcional    | Links referente a paginação de resultados ou estado de una entidad. |
+| [Link](#link)             | string   | estándar  | Response  | Opcional    | Enlaces relacionados con la paginación de resultados o estado de una entidad. |
 | [X-Grd-Debug](#x-grd-debug)             | booleano | personalizado | Request   | Opcional    | Habilita el retorno de información de depuración.     |
 | [X-Grd-Trace-Id](#x-grd-trace-id)          | uuid     | personalizado | Response  | Obligatorio | Trazabilidad interna.                   |
 | [X-Grd-Correlation-Id](#x-grd-correlation-id)    | uuid     | personalizado | Req/Resp  | Opcional    | Propagación de contexto externo.            |
@@ -40,13 +40,13 @@ Cache-Control: public, max-age=<seconds>
 Cache-Control: private, max-age=<seconds>
 ```
 
-Para respuestas que **NO DEBEN** ser almacenadas en caché, se DEBE usar el siguiente header:
+Para respuestas que NO DEBEN ser almacenadas en caché, se DEBE usar el siguiente header:
 
 ```http
 Cache-Control: no-store
 ```
 
-Otras directivas pueden ser añadidas según sea necesario, siguiendo [RFC 9111: HTTP Caching](https://datatracker.ietf.org/doc/html/rfc9111#section-5.2).
+Otras directivas PUEDEN ser añadidas según sea necesario, siguiendo [RFC 9111: HTTP Caching](https://datatracker.ietf.org/doc/html/rfc9111#section-5.2).
 
 ---
 
@@ -93,7 +93,7 @@ X-Grd-Debug: true
 
 ### X-Grd-Trace-Id
 
-Header obligatorio devuelto en **todas las respuestas** de las APIs de Guardia. Representa el identificador único de la solicitud.
+Header obligatorio devuelto en todas las respuestas de las APIs de Guardia. Representa el identificador único de la solicitud.
 
 - Generado por la infraestructura de Guardia.
 - Facilita la correlación de logs y eventos entre servicios.
@@ -121,10 +121,13 @@ X-Grd-Correlation-Id: <uuid>
 ## Consideraciones de Seguridad
 
 - El uso de `X-Grd-Debug: true` en entornos de producción DEBE ser controlado por alcance o autenticación.
-- Los headers de seguimiento **NO DEBEN** contener datos sensibles, PII o secretos.
-- Las solicitudes deben ser validadas independientemente del estado de autenticación.
+- Los headers de seguimiento NO DEBEN contener datos sensibles, PII o secretos.
+- Las solicitudes DEBEN ser validadas independientemente del estado de autenticación.
 
----
+### Notas adicionales
+
+- Los headers utilizados en cada endpoint DEBEN ser documentados en el contrato OAS de la API.
+- Los headers aquí descritos son considerados el estándar mínimo para cualquier API RESTful de Guardia.
 
 ## Referencias
 
