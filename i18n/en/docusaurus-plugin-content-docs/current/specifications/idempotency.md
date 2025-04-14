@@ -51,7 +51,8 @@ In the context of Guardia, idempotency is essential to preserve data consistency
 - Endpoints that modify state (e.g., `POST`, `PUT`, `PATCH`) MUST be idempotent.
 - The `Idempotency-Key` header MUST be mandatory in these endpoints.
 - WHEN not provided, the system MUST return `400 BAD REQUEST`, with code `ERR400_INVALID_ARGUMENT` and reason `IDEMPOTENCY_KEY_REQUIRED`.
-- The response MUST include the same `Idempotency-Key` header.
+- The response MUST include the same `Idempotency-Key` header received in the request and the `Content-Digest` with the payload hash.
+- The idempotency key MUST be propagated through all system layers, including domain events and webhook notifications.
 - The first execution MUST store:
   - The operation result.
   - The payload hash.

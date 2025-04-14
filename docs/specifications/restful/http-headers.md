@@ -20,10 +20,13 @@ Todos os headers DEVEM seguir o padrão de nomenclatura definido nesta especific
 ## Headers Padrões
 
 
-| Header                                            | Tipo     | Categoria | Direção   | Obrigatoriedade | Descrição                         |
-|---------------------------------------------------|----------|-----------|-----------|-----------------|-----------------------------------|
-| [Cache-Control](#cache-control)                   | string   | padrão    | Response  | Opcional        | Diretivas para controle de cache. |
-| [Link](#link)                                     | string   | padrão    | Response  | Opcional        | Links de navegação.               |
+| Header                                              | Tipo     | Categoria | Direção   | Obrigatoriedade | Descrição                         |
+|-----------------------------------------------------|----------|-----------|-----------|-----------------|-----------------------------------|
+| [Cache-Control](#cache-control)                     | string   | padrão    | Response  | Opcional        | Diretivas para controle de cache. |
+| [Link](#link)                                       | string   | padrão    | Response  | Opcional        | Links de navegação.               |
+| [Idempotency-Key](#idempotency-key)                 | string   | padrão    | Request/Response  | Opcional        | Chave de idempotência.            |
+| [Content-Digest](#content-digest)                   | string   | padrão    | Response  | Opcional        | Hash do payload.                  |
+| [Last-Modified](#last-modified)                     | timestamp | padrão    | Response  | Opcional        | Data da última modificação.       |
 
 ---
 
@@ -76,6 +79,52 @@ Exemplo em caso de estado de uma entidade:
 ```http
 Link: <https://{tenant_id}.guardia.finance/api/v1/ledgers/{entity_id}>; rel="ledger"
 ```
+
+---
+
+### Idempotency-Key
+
+O cabeçalho `Idempotency-Key` DEVE ser usado para identificar uma requisição idempotente.
+
+
+```http
+Idempotency-Key: <uuid>
+```
+
+#### Validação
+
+- DEVE ser utilizado conforme [especificação de idempotência](../idempotency.md#implementação-em-apis).
+
+
+---
+
+### Content-Digest
+
+O cabeçalho `Content-Digest` DEVE ser usado para fornecer o hash do payload da requisição em uma requisição idempotente.
+
+```http
+Content-Digest: <algorithm>=<hash>
+```
+
+#### Validação
+
+- DEVE ser utilizado conforme [especificação de idempotência](../idempotency.md#implementação-em-apis).
+
+
+---
+
+### Last-Modified
+
+O cabeçalho `Last-Modified` DEVE ser usado para fornecer a data da última modificação da entidade.
+
+```http
+Last-Modified: <http-date>
+```
+
+#### Validação
+
+- DEVE ser um valor válido de data e hora conforme [RFC 7232](https://datatracker.ietf.org/doc/html/rfc7232#autoid-6).
+- DEVE ser utilizado conforme [especificação de idempotência](../idempotency.md#implementação-em-apis).
 
 ---
 
@@ -172,5 +221,6 @@ X-Grd-Correlation-Id: <uuid>
 
 - [RFC 9110: HTTP Semantics](https://datatracker.ietf.org/doc/html/rfc9110)
 - [RFC 9111: HTTP Caching](https://datatracker.ietf.org/doc/html/rfc9111)
+- [RFC 7232: Conditional Requests](https://datatracker.ietf.org/doc/html/rfc7232)
 - [Cabeçalhos HTTP - HTTP | MDN](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers)
 - [HATEOAS](https://restfulapi.net/hateoas)

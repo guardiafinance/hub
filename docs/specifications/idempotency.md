@@ -51,7 +51,8 @@ No contexto da Guardia, a idempotência é essencial para preservar a consistên
 - Endpoints que modificam estado (ex: `POST`, `PUT`, `PATCH`) DEVEM ser idempotentes.
 - O cabeçalho `Idempotency-Key` DEVE ser obrigatório nesses endpoints.
 - QUANDO não informado, o sistema DEVE retornar `400 BAD REQUEST`, com código `ERR400_INVALID_ARGUMENT` e motivo `IDEMPOTENCY_KEY_REQUIRED`.
-- A resposta DEVE incluir o mesmo cabeçalho `Idempotency-Key`.
+- A resposta DEVE incluir o mesmo cabeçalho `Idempotency-Key` recebido na requisição e o `Content-Digest` com o hash do payload.
+- A chave de idempotência DEVE ser propagada por todas as camadas do sistema, incluindo eventos de dominio e notificações por webhooks.
 - A primeira execução DEVE armazenar:
   - O resultado da operação.
   - O hash do payload.

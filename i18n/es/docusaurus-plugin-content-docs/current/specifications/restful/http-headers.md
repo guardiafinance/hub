@@ -23,6 +23,9 @@ Todos los headers DEBEN seguir el patrón de nomenclatura definido en esta espec
 |---------------------------------------------------|----------|------------------|--------------|----------------|----------------------------------------------------------|
 | [Cache-Control](#cache-control)                   | string   | estándar         | Response     | Opcional       | Direcciones para el control de caché.                    |
 | [Link](#link)                                     | string   | estándar         | Response     | Opcional       | Enlaces para la paginación o el estado de las entidades. |
+| [Idempotency-Key](#idempotency-key)               | string   | estándar         | Ambos        | Opcional       | Clave de idempotencia.                                   |
+| [Content-Digest](#content-digest)                 | string   | estándar         | Response     | Opcional       | Hash del payload.                                        |
+| [Last-Modified](#last-modified)                   | timestamp| estándar         | Response     | Opcional       | Fecha de última modificación.                            |
 
 
 ---
@@ -76,6 +79,51 @@ link:
 ```http
 Link: <https://{tenant_id}.guardia.finance/api/v1/ledgers/{entity_id}>; rel="ledger"
 ```
+
+---
+
+### Idempotency-Key
+
+El header `Idempotency-Key` DEBE ser usado para identificar una solicitud idempotente.
+
+```http
+Idempotency-Key: <uuid>
+```
+
+#### Validación
+
+- DEBE ser usado según la [especificación de idempotencia](../idempotency.md#implementación-en-apis).
+
+---
+
+### Content-Digest
+
+El header `Content-Digest` DEBE ser usado para proporcionar el hash del payload de la solicitud en una solicitud idempotente.
+
+```http
+Content-Digest: <algorithm>=<hash>
+```
+
+#### Validación
+
+- DEBE ser usado según la [especificación de idempotencia](../idempotency.md#implementación-en-apis).
+
+---
+
+### Last-Modified
+
+El header `Last-Modified` DEBE ser usado para proporcionar la fecha de última modificación de la entidad.
+
+```http
+Last-Modified: <http-date>
+```
+
+#### Validación
+
+- DEBE ser un valor válido de fecha y hora según [RFC 7232](https://datatracker.ietf.org/doc/html/rfc7232#autoid-6).
+- DEBE ser usado según la [especificación de idempotencia](../idempotency.md#implementación-en-apis).
+
+---
 
 ## Headers Personalizados
 
@@ -170,5 +218,6 @@ X-Grd-Correlation-Id: <uuid>
 
 - [RFC 9110: HTTP Semantics](https://datatracker.ietf.org/doc/html/rfc9110)
 - [RFC 9111: HTTP Caching](https://datatracker.ietf.org/doc/html/rfc9111)
+- [RFC 7232: Conditional Requests](https://datatracker.ietf.org/doc/html/rfc7232)
 - [Headers HTTP - HTTP | MDN](https://developer.mozilla.org/es/docs/Web/HTTP/Headers)
 - [HATEOAS](https://restfulapi.net/hateoas)

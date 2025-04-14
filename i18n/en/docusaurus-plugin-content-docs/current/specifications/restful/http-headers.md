@@ -23,6 +23,9 @@ All headers MUST follow the naming pattern defined in this specification.
 |---------------------------------------------------|----------|-----------|-------------|-----------|----------------------------------------|
 | [Cache-Control](#cache-control)                   | string   | standard  | Response    | Optional  | Cache control directives.              |
 | [Link](#link)                                     | string   | standard  | Response    | Optional  | Links for pagination or entity state.  |
+| [Idempotency-Key](#idempotency-key)               | string   | standard  | Both        | Optional  | Idempotency key.                       |
+| [Content-Digest](#content-digest)                 | string   | standard  | Response    | Optional  | Payload hash.                          |
+| [Last-Modified](#last-modified)                   | timestamp| standard  | Response    | Optional  | Last modification date.                |
 
 ---
 
@@ -75,6 +78,51 @@ link:
 ```http
 Link: <https://{tenant_id}.guardia.finance/api/v1/ledgers/{entity_id}>; rel="ledger"
 ```
+
+---
+
+### Idempotency-Key
+
+The `Idempotency-Key` header MUST be used to identify an idempotent request.
+
+```http
+Idempotency-Key: <uuid>
+```
+
+#### Validation
+
+- MUST be used according to the [idempotency specification](../idempotency.md#implementation-in-apis).
+
+---
+
+### Content-Digest
+
+The `Content-Digest` header MUST be used to provide the hash of the request payload in an idempotent request.
+
+```http
+Content-Digest: <algorithm>=<hash>
+```
+
+#### Validation
+
+- MUST be used according to the [idempotency specification](../idempotency.md#implementation-in-apis).
+
+---
+
+### Last-Modified
+
+The `Last-Modified` header MUST be used to provide the last modification date of the entity.
+
+```http
+Last-Modified: <http-date>
+```
+
+#### Validation
+
+- MUST be a valid date and time value according to [RFC 7232](https://datatracker.ietf.org/doc/html/rfc7232#autoid-6).
+- MUST be used according to the [idempotency specification](../idempotency.md#implementation-in-apis).
+
+---
 
 ## Custom Headers
 
@@ -169,5 +217,6 @@ X-Grd-Correlation-Id: <uuid>
 
 - [RFC 9110: HTTP Semantics](https://datatracker.ietf.org/doc/html/rfc9110)
 - [RFC 9111: HTTP Caching](https://datatracker.ietf.org/doc/html/rfc9111)
+- [RFC 7232: Conditional Requests](https://datatracker.ietf.org/doc/html/rfc7232)
 - [HTTP Headers - HTTP | MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers)
 - [HATEOAS](https://restfulapi.net/hateoas)
