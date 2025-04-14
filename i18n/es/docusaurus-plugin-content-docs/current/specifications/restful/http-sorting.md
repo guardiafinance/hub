@@ -52,15 +52,15 @@ GET https://{tenant_id}.guardia.finance/api/v1/ledgers?order_by=reference_date&s
 
 | Escenario | Código HTTP | Code | Reason |
 |-----------|-------------|------|--------|
-| `order_by` inválido | `400` | `ERR400_INVALID_ARGUMENT` | `ORDER_BY_INVALID` |
-| `sort` inválido | `400` | `ERR400_INVALID_ARGUMENT` | `SORT_INVALID` |
+| `order_by` inválido | `400` | `ERR400_INVALID_PARAMETER` | `ORDER_BY_INVALID` |
+| `sort` inválido | `400` | `ERR400_INVALID_PARAMETER` | `SORT_INVALID` |
 
 #### Ejemplo de error (JSON)
 ```json
 {
   "errors": [
     {
-      "code": "ERR400_INVALID_ARGUMENT",
+      "code": "ERR400_INVALID_PARAMETER",
       "reason": "ORDER_BY_INVALID",
       "message": "The order_by provided has an incorrect format. Please check the order_by before trying again."
     }

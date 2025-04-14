@@ -156,9 +156,8 @@ Conozca más sobre los headers HTTP que utiliza Guardia [aquí](./http-headers.m
 
 ### Respuesta
 - Si no hay resultados, la API DEBE devolver `200 OK` con lista vacía y `pagination.total_count = 0`.
-- Si hay parámetros de paginación inválidos, la API DEBE resultar en `400 Bad Request` con el motivo `INVALID_ARGUMENT` y el respectivo código de error.
+- Si hay parámetros de paginación inválidos, la API DEBE resultar en `400 Bad Request` con el código `ERR400_INVALID_PARAMETER` y el respectivo motivo de error.
 - La respuesta DEBE contener un cuerpo según la [especificación de response payloads de Guardia](../response-payloads) tanto para éxito como para error.
-- Los errores estructurales o de parámetros DEBEN seguir la [especificación de error codes de Guardia](../error_codes).
 
 ## Seguridad, Expiración y Cumplimiento
 - Todos las propiedades `*_page_token` DEBEN ser tokens opacos (encriptados o firmados), sin contener ninguna estructura legible o decodificable por el cliente.
@@ -168,21 +167,21 @@ Conozca más sobre los headers HTTP que utiliza Guardia [aquí](./http-headers.m
 
 ## Errores Conocidos
 
-| Escenario                           | Código HTTP | Código                    | Motivo                |
-|-------------------------------------|-------------|---------------------------|-----------------------|
-| `page_token` inválido               | `400`       | `ERR400_INVALID_ARGUMENT` | `PAGE_TOKEN_INVALID`  |
-| `page_token` expirado               | `400`       | `ERR400_INVALID_ARGUMENT` | `PAGE_TOKEN_EXPIRED`  |
-| `page_size` inválido                | `400`       | `ERR400_INVALID_ARGUMENT` | `PAGE_SIZE_INVALID`   |
-| `page_size` por encima del límite   | `400`       | `ERR400_INVALID_ARGUMENT` | `PAGE_SIZE_TOO_LARGE` |
-| `order_by` inválido                 | `400`       | `ERR400_INVALID_ARGUMENT` | `ORDER_BY_INVALID`    |
-| `sort` inválido                     | `400`       | `ERR400_INVALID_ARGUMENT` | `SORT_INVALID`        |
+| Escenario                           | Código HTTP | Código                     | Motivo                |
+|-------------------------------------|-------------|----------------------------|-----------------------|
+| `page_token` inválido               | `400`       | `ERR400_INVALID_PARAMETER` | `PAGE_TOKEN_INVALID`  |
+| `page_token` expirado               | `400`       | `ERR400_INVALID_PARAMETER` | `PAGE_TOKEN_EXPIRED`  |
+| `page_size` inválido                | `400`       | `ERR400_INVALID_PARAMETER` | `PAGE_SIZE_INVALID`   |
+| `page_size` por encima del límite   | `400`       | `ERR400_INVALID_PARAMETER` | `PAGE_SIZE_TOO_LARGE` |
+| `order_by` inválido                 | `400`       | `ERR400_INVALID_PARAMETER` | `ORDER_BY_INVALID`    |
+| `sort` inválido                     | `400`       | `ERR400_INVALID_PARAMETER` | `SORT_INVALID`        |
 
 #### Ejemplo de Error (JSON)
 ```json
 {
   "errors": [
     {
-      "code": "ERR400_INVALID_ARGUMENT",
+      "code": "ERR400_INVALID_PARAMETER",
       "reason": "PAGE_TOKEN_INVALID",
       "message": "The page token provided has an incorrect format. Please check the token before trying again."
     }

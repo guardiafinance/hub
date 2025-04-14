@@ -27,6 +27,7 @@ Todos os headers DEVEM seguir o padrão de nomenclatura definido nesta especific
 | [Idempotency-Key](#idempotency-key)                 | string   | padrão    | Request/Response  | Opcional        | Chave de idempotência.            |
 | [Content-Digest](#content-digest)                   | string   | padrão    | Response  | Opcional        | Hash do payload.                  |
 | [Last-Modified](#last-modified)                     | timestamp | padrão    | Response  | Opcional        | Data da última modificação.       |
+| [Retry-After](#retry-after)                         | integer   | padrão    | Response  | Opcional        | Tempo em segundos para aguardar antes de retentar a requisição. |
 
 ---
 
@@ -128,6 +129,20 @@ Last-Modified: <http-date>
 
 ---
 
+### Retry-After
+
+O cabeçalho `Retry-After` DEVE ser retornado em caso de erro 429 (Too Many Requests) para indicar o tempo em segundos para aguardar antes de retentar a requisição.
+
+```http
+Retry-After: <seconds>
+```
+
+#### Validação
+
+- DEVE ser um valor inteiro positivo.
+- DEVE ser utilizado conforme [especificação de erro](../error-handling.md#erros-comuns).
+
+
 ## Headers Customizados
 
 Os headers customizados utilizados pela Guardia seguem o prefixo `X-Grd-*`, conforme convenção. Eles atendem a necessidades específicas de rastreabilidade e correlação entre sistemas.
@@ -150,7 +165,7 @@ X-Grd-Debug: true
 
 #### Validação
 - DEVE aceitar apenas os valores `true` ou `false` (case insensitive).
-- Qualquer outro valor DEVE resultar em `400 Bad Request` com o reason `INVALID_HEADER_VALUE`.
+- Qualquer outro valor DEVE resultar em `400 Bad Request` com o codigo `ERR400_MISSING_OR_MALFORMED_HEADER` e o reason `INVALID_DEBUG_HEADER_VALUE`.
 - O uso em ambientes de produção DEVE ser controlado por:
   - Escopo de permissão específico.
   - Tempo maximo de uso restrito a 10 minutos por cliente,

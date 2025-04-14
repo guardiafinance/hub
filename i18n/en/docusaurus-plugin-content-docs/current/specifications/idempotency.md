@@ -50,7 +50,7 @@ In the context of Guardia, idempotency is essential to preserve data consistency
 
 - Endpoints that modify state (e.g., `POST`, `PUT`, `PATCH`) MUST be idempotent.
 - The `Idempotency-Key` header MUST be mandatory in these endpoints.
-- WHEN not provided, the system MUST return `400 BAD REQUEST`, with code `ERR400_INVALID_ARGUMENT` and reason `IDEMPOTENCY_KEY_REQUIRED`.
+- WHEN not provided, the system MUST return `400 BAD REQUEST`, with code `ERR400_MISSING_OR_MALFORMED_HEADER` and reason `IDEMPOTENCY_KEY_REQUIRED`.
 - The response MUST include the same `Idempotency-Key` header received in the request and the `Content-Digest` with the payload hash.
 - The idempotency key MUST be propagated through all system layers, including domain events and webhook notifications.
 - The first execution MUST store:
@@ -62,7 +62,7 @@ In the context of Guardia, idempotency is essential to preserve data consistency
   - MUST NOT execute the operation again.
   - MUST include the `Last-Modified` header with the original execution date.
 - WHEN the key is already registered, BUT the payload hash is different:
-  - The system MUST reject the request with error `409 CONFLICT`, code `ERR409_CONFLICT` and reason `CONFLICTING_IDEMPOTENT_REQUEST`.
+  - The system MUST reject the request with error `409 CONFLICT`, code `ERR409_SERVER_STATE_CONFLICT` and reason `CONFLICTING_IDEMPOTENT_REQUEST`.
 
 ---
 
@@ -93,7 +93,7 @@ In the context of Guardia, idempotency is essential to preserve data consistency
 
 #### Request with same key but different payload hash:
 - System REJECTS with `409 CONFLICT` error.
-- Must return clear message with code `ERR409_CONFLICT` and reason `CONFLICTING_IDEMPOTENT_REQUEST`.
+- Must return clear message with code `ERR409_SERVER_STATE_CONFLICT` and reason `CONFLICTING_IDEMPOTENT_REQUEST`.
 
 ### In Events
 

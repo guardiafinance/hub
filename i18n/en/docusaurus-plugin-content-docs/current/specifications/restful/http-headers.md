@@ -146,7 +146,7 @@ X-Grd-Debug: true
 
 #### Validation
 - MUST accept only `true` or `false` values (case insensitive)
-- Any other value MUST result in `400 Bad Request` with reason `INVALID_HEADER_VALUE`
+- Any other value MUST result in `400 Bad Request` with code `ERR400_MISSING_OR_MALFORMED_HEADER` and reason `INVALID_DEBUG_HEADER_VALUE`
 - Usage in production environments MUST be controlled by:
   - Specific permission scope
   - Maximum usage time restricted to 10 minutes per client

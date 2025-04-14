@@ -50,7 +50,7 @@ En el contexto de Guardia, la idempotencia es esencial para preservar la consist
 
 - Los endpoints que modifican estado (ej: `POST`, `PUT`, `PATCH`) DEBEN ser idempotentes.
 - El encabezado `Idempotency-Key` DEBE ser obligatorio en estos endpoints.
-- CUANDO no se proporcione, el sistema DEBE retornar `400 BAD REQUEST`, con código `ERR400_INVALID_ARGUMENT` y motivo `IDEMPOTENCY_KEY_REQUIRED`.
+- CUANDO no se proporcione, el sistema DEBE retornar `400 BAD REQUEST`, con código `ERR400_MISSING_OR_MALFORMED_HEADER` y motivo `IDEMPOTENCY_KEY_REQUIRED`.
 - La respuesta DEBE incluir el mismo encabezado `Idempotency-Key` recibido en la solicitud y el `Content-Digest` con el hash del payload.
 - La clave de idempotencia DEBE ser propagada por todas las capas del sistema, incluyendo eventos de dominio y notificaciones por webhooks.
 - La primera ejecución DEBE almacenar:
@@ -62,7 +62,7 @@ En el contexto de Guardia, la idempotencia es esencial para preservar la consist
   - NO DEBE ejecutar la operación nuevamente.
   - DEBE incluir el encabezado `Last-Modified` con la fecha original de ejecución.
 - CUANDO la clave ya esté registrada, PERO el hash del payload sea diferente:
-  - El sistema DEBE rechazar la solicitud con error `409 CONFLICT`, código `ERR409_CONFLICT` y motivo `CONFLICTING_IDEMPOTENT_REQUEST`.
+  - El sistema DEBE rechazar la solicitud con error `409 CONFLICT`, código `ERR409_SERVER_STATE_CONFLICT` y motivo `CONFLICTING_IDEMPOTENT_REQUEST`.
 
 ---
 
@@ -93,7 +93,7 @@ En el contexto de Guardia, la idempotencia es esencial para preservar la consist
 
 #### Solicitud con misma clave pero hash del payload diferente:
 - El sistema RECHAZA con error `409 CONFLICT`.
-- Debe retornar mensaje claro con código `ERR409_CONFLICT` y motivo `CONFLICTING_IDEMPOTENT_REQUEST`.
+- Debe retornar mensaje claro con código `ERR409_SERVER_STATE_CONFLICT` y motivo `CONFLICTING_IDEMPOTENT_REQUEST`.
 
 ### En Eventos
 
