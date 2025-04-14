@@ -8,6 +8,8 @@ This specification defines the mandatory requirements for **sorting resources** 
 
 Sorting will be done through the `order_by` and `sort` parameters, provided in the HTTP request query string.
 
+## General Rules
+
 Sorting MUST:
 
 - Be limited to the following temporal fields such as: `created_at`, `updated_at` or `reference_date`.

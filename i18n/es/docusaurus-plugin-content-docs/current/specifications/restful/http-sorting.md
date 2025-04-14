@@ -8,6 +8,8 @@ Esta especificación define los requisitos obligatorios para **ordenar recursos*
 
 El ordenamiento se realizará a través de los parámetros `order_by` y `sort`, proporcionados en la query string de la solicitud HTTP.
 
+## Reglas Generales
+
 El ordenamiento DEBE:
 
 - Estar limitado a los siguientes campos temporales como: `created_at`, `updated_at` o `reference_date`.

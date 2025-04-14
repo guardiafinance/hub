@@ -6,7 +6,7 @@ sidebar_position: 4
 
 Esta especificação define um padrão unificado de **paginação** para todos os endpoints de APIs RESTful da Guardia que retornam listas de recursos. O objetivo é garantir consistência entre interfaces, previsibilidade no consumo de dados e interoperabilidade entre sistemas internos e externos.
 
-Padronizar a paginação **evita sobrecargas sistêmicas**, melhora o tempo de resposta e reduz o uso de recursos computacionais. Está alinhada aos princípios de **Compliance by Design**, como:
+Padronizar a paginação **evita sobrecargas sistêmicas**, melhora o tempo de resposta e reduz o uso de recursos computacionais. Está alinhada aos princípios de [Compliance by Design](../../community/governance/COMPLIANCE.md), como:
 
   - *Eficiência*: por meio de mecanismos de paginação eficientes, com minimização de dados, evitando retornos excessivos.
   - *Transparência e auditabilidade*: proporcionando respostas estruturadas e rastreáveis.

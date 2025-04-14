@@ -6,7 +6,7 @@ sidebar_position: 4
 
 This specification defines a unified **pagination** standard for all Guardia RESTful API endpoints that return resource lists. The goal is to ensure consistency between interfaces, predictability in data consumption, and interoperability between internal and external systems.
 
-Standardizing pagination **prevents systemic overloads**, improves response time, and reduces computational resource usage. It aligns with **Compliance by Design** principles, such as:
+Standardizing pagination **prevents systemic overloads**, improves response time, and reduces computational resource usage. It aligns with [Compliance by Design](../../community/governance/COMPLIANCE.md) principles, such as:
 
   - *Efficiency*: through efficient pagination mechanisms, with data minimization, avoiding excessive returns.
   - *Transparency and auditability*: providing structured and traceable responses.

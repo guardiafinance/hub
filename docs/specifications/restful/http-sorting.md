@@ -8,6 +8,8 @@ Esta especificação define os requisitos obrigatórios para **ordenar recursos*
 
 A ordenação será feita por meio dos parâmetros `order_by` e `sort`, fornecidos na query string da requisição HTTP.
 
+## Regras Gerais
+
 A ordenação DEVE:
 
 - Ser limitada aos seguintes campos temporais como por exemplo: `created_at`, `updated_at` ou `reference_date`.
@@ -16,7 +18,7 @@ A ordenação DEVE:
 - Ser **estável**: registros com o mesmo valor em `order_by` DEVEM manter ordem relativa consistente (ex: por `entity_id` como critério secundário).
 - Produzir resultados consistentes com os parâmetros recebidos e com a lógica de [paginação](./http-pagination.md) associada.
 
-Essas diretrizes reduzem ambiguidades entre sistemas consumidores, promovem previsibilidade nos retornos e estão alinhadas aos princípios de [Compliance by Design](../../community/governance/COMPLIANCE.md), especialmente em auditoria, rastreabilidade e governança.
+Essas diretrizes reduzem ambiguidades entre sistemas consumidores, promovem previsibilidade nos retornos e estão alinhadas aos princípios de [Compliance by Design](../../community/governance/COMPLIANCE.md), especialmente em eficiência.
 
 ### Parâmetros de ordenação
 
