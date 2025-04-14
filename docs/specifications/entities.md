@@ -89,6 +89,7 @@ A estrutura base de uma entidade na Guardia DEVE conter os seguintes campos:
 - Utilizado para auditoria, rollback e investigação.
 - Por padrão, armazena as últimas 10 versões mais recentes por até 365 dias.
 - O histórico DEVE ser omitido das respostas temporais (create, update, delete e get).
+- DEVE ser omitido dos eventos de domínio.
 - O histórico DEVE ser fornecido nas respostas de leitura (get) quando solicitado pelo cliente no endpoint `api/v1/<entity_type>/<entity_id>/history`.
 - O endpoint de histórico retorna uma lista de até 10 registros históricos da mesma entidade.
 - Valores PODEM ser armazenados criptografados, com impacto na performance.

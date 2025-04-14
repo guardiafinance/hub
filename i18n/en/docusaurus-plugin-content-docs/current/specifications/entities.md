@@ -89,6 +89,7 @@ The base structure of an entity in Guardia MUST contain the following fields:
 - Used for audit, rollback, and investigation.
 - By default, stores the last 10 most recent versions for up to 365 days.
 - History MUST be omitted from temporal responses (create, update, delete, and get).
+- MUST be omitted from domain events.
 - History MUST be provided in read responses (get) when requested by the client at the endpoint `api/v1/<entity_type>/<entity_id>/history`.
 - The history endpoint returns a list of up to 10 historical records of the same entity.
 - Values MAY be stored encrypted, with performance impact.
