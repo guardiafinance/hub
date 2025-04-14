@@ -46,10 +46,6 @@ As respostas das APIs DEVEM seguir uma estrutura unificada, que permita manuseio
 - Os dados DEVEM conter identificadores de rastreamento (ex: request_id, tempo de execução, serviço de origem)
 - NUNCA DEVEM expor dados sensíveis.
 
----
-
-Se quiser, posso sugerir um schema JSON de exemplo para essa estrutura de resposta, ou aplicar em uma especificação de endpoint. Deseja seguir com isso?
-
 ## Em caso de Sucesso
 
 O `data` DEVE ser retornado quando a requisição é bem sucedida, e DEVE conter os dados relativos a entidade manipulada, incluindo o `entity_id`, o `external_entity_id` e o `entity_type`, conforme a especificação de [Entidades](../entities.md).
@@ -75,6 +71,7 @@ O `data` DEVE ser retornado quando a requisição é bem sucedida, e DEVE conter
     {
       "entity_id": "uint64",
       "external_entity_id": "string",
+      "entity_type": "string",
       //...
     }
   ],
@@ -97,9 +94,9 @@ O payload de erro DEVE ser retornado quando ocorrer um erro na requisição, sej
 
 | Propridade                      | Tipo   | Descrição                        |
 |---------------------------------|--------|----------------------------------|
-| `code`                          | string | Código padronizado para o erro.  |
-| `reason`                        | string | Motivo do erro.                  |
-| `message`                       | string | Mensagem informativa do erro.    |
+| [`code`](#code)                 | string | Código padronizado para o erro.  |
+| [`reason`](#reason)             | string | Motivo do erro.                  |
+| [`message`](#message)           | string | Mensagem informativa do erro.    |
 
 ### Estrutura da lista `errors`
 
