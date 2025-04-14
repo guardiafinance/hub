@@ -32,9 +32,9 @@ A estrutura base de uma entidade na Guardia DEVE conter os seguintes campos:
 | [`entity_id`](#entity_id)          | UUID v7      | Sim         | Identificador único global. Garante unicidade e ordenação temporal.       |
 | [`entity_type`](#entity_type)        | string       | Sim         | Tipo lógico da entidade (ex: ledger, chapter, asset).                      |
 | [`external_entity_id`](#external_entity_id) | string       | Não         | ID externo fornecido por sistemas clientes (máx. 36 caracteres).          |
-| [`created_at`](#created_at)         | datetime     | Sim         | Data/hora de criação em UTC (ISO 8601).                                   |
-| [`updated_at`](#updated_at)         | datetime     | Sim         | Última alteração registrada em UTC (ISO 8601).                            |
-| [`discarded_at`](#discarded_at)       | datetime     | Não         | Marca lógica de descarte em UTC (ISO 8601).                               |
+| [`created_at`](#created_at)         | datetime     | Sim         | Data/hora de criação em UTC.                                   |
+| [`updated_at`](#updated_at)         | datetime     | Sim         | Última alteração registrada em UTC.                            |
+| [`discarded_at`](#discarded_at)       | datetime     | Não         | Marca lógica de descarte em UTC.                               |
 | [`metadata`](#metadata)           | JSON         | Não         | Parâmetros chave e valor (máx. 10KB).                                     |
 | [`version`](#version)            | integer      | Sim         | Número sequencial de controle de versão.                                  |
 | [`history`](#history)            | array        | Não         | Registro completo de alterações e versões anteriores.                     |

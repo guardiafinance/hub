@@ -32,9 +32,9 @@ The base structure of an entity in Guardia MUST contain the following fields:
 | [`entity_id`](#entity_id)          | UUID v7      | Yes      | Global unique identifier. Ensures uniqueness and temporal ordering.       |
 | [`entity_type`](#entity_type)        | string       | Yes      | Logical entity type (e.g., ledger, chapter, asset).                      |
 | [`external_entity_id`](#external_entity_id) | string       | No       | External ID provided by client systems (max. 36 characters).             |
-| [`created_at`](#created_at)         | datetime     | Yes      | Creation date/time in UTC (ISO 8601).                                   |
-| [`updated_at`](#updated_at)         | datetime     | Yes      | Last recorded modification in UTC (ISO 8601).                           |
-| [`discarded_at`](#discarded_at)       | datetime     | No       | Logical deletion mark in UTC (ISO 8601).                                |
+| [`created_at`](#created_at)         | datetime     | Yes      | Creation date/time in UTC.                                   |
+| [`updated_at`](#updated_at)         | datetime     | Yes      | Last recorded modification in UTC.                           |
+| [`discarded_at`](#discarded_at)       | datetime     | No       | Logical deletion mark in UTC.                                |
 | [`metadata`](#metadata)           | JSON         | No       | Key-value parameters (max. 10KB).                                       |
 | [`version`](#version)            | integer      | Yes      | Sequential version control number.                                      |
 | [`history`](#history)            | array        | No       | Complete record of changes and previous versions.                       |
