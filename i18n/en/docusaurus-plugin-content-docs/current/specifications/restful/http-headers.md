@@ -28,7 +28,7 @@ All headers MUST follow the naming pattern defined in this specification.
 
 ### Cache-Control
 
-The `Cache-Control` header field MUST be used to guide caching mechanisms in both requests and responses.
+The `Cache-Control` header MUST be used to guide caching mechanisms in both requests and responses.
 
 #### Response
 
@@ -90,7 +90,7 @@ Custom headers used by Guardia follow the `X-Grd-*` prefix convention. They addr
 
 ### X-Grd-Debug
 
-Optional boolean header. When present with the value `true`, the response MUST include the `debug` field in the payload, containing additional information according to the [response payloads specification](./http-response-payloads.md#debug).
+Optional boolean header. When present with the value `true`, the response MUST include the `debug` object in the payload, containing additional information according to the [response payloads specification](./http-response-payloads.md#debug).
 
 ```http
 X-Grd-Debug: true

@@ -8,8 +8,8 @@ Esta especificación define los requisitos obligatorios para la estructura de re
 
 Esta especificación DEBE ser aplicable a todas las solicitudes HTTP de la plataforma Guardia. La estructura de respuesta DEBE ser la siguiente:
 
-| Campo | Tipo | Descripción |
-|-------|------|-------------|
+| Propiedad | Tipo | Descripción |
+|-----------|------|-------------|
 | [`data`](#payload-con-datos) | object \| array | Datos devueltos por la operación cuando la solicitud es exitosa. |
 | [`errors`](#en-caso-de-error) | array | Lista de errores cuando la solicitud no es exitosa. |
 | [`pagination`](#payload-con-datos-y-paginación) | object | Información de paginación cuando es aplicable. |
@@ -17,7 +17,7 @@ Esta especificación DEBE ser aplicable a todas las solicitudes HTTP de la plata
 
 ## En caso de Éxito
 
-El campo `data` DEBE ser devuelto cuando la solicitud es exitosa, y DEBE contener los datos relacionados con la entidad manipulada, incluyendo `entity_id`, `external_entity_id` y `entity_type`, según la especificación de [Entidades](../entities.md).
+La propiedad `data` DEBE ser devuelta cuando la solicitud es exitosa, y DEBE contener los datos relacionados con la entidad manipulada, incluyendo `entity_id`, `external_entity_id` y `entity_type`, según la especificación de [Entidades](../entities.md).
 
 ### Payload con datos
 
@@ -60,8 +60,8 @@ El campo `data` DEBE ser devuelto cuando la solicitud es exitosa, y DEBE contene
 
 El payload de error DEBE ser devuelto cuando ocurre un error en la solicitud, ya sea del lado del cliente `4xx` o del servidor `5xx`.
 
-| Campo | Tipo | Descripción |
-|-------|------|-------------|
+| Propiedad | Tipo | Descripción |
+|-----------|------|-------------|
 | `code` | string | Código de error, según se define en [Manejo de Errores](../errors-handling.md). |
 | `reason` | string | Razón del error, según se define en [Manejo de Errores](../errors-handling.md). |
 | `message` | string | Mensaje informativo del error para que el desarrollador entienda cómo manejar el error. |
@@ -79,14 +79,14 @@ El payload de error DEBE ser devuelto cuando ocurre un error en la solicitud, ya
 ```
 
 > **IMPORTANTE:**
-> El campo `message` es informativo para que el desarrollador entienda cómo manejar el error y NO DEBE utilizarse para mensajes de error al usuario final.
+> La propiedad `message` es informativo para que el desarrollador entienda cómo manejar el error y NO DEBE utilizarse para mensajes de error al usuario final.
 
 ## En caso de Depuración
 
 El payload de depuración DEBE ser devuelto cuando el header `X-Grd-Debug` está presente y establecido en `true`.
 
-| Campo | Tipo | Descripción |
-|-------|------|-------------|
+| Propiedad | Tipo | Descripción |
+|-----------|------|-------------|
 | `trace_id` | string | ID de seguimiento de la solicitud. También devuelto en el header `X-Grd-Trace-Id`. |
 | `correlation_id` | string | ID de correlación de la solicitud. También devuelto en el header `X-Grd-Correlation-Id`. |
 | `instance` | string | Identificador único de la instancia. |

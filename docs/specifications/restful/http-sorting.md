@@ -4,7 +4,7 @@ sidebar_position: 5
 
 # Ordenação
 
-Esta especificação define os requisitos obrigatórios para **ordenar recursos** em endpoints que retornam listas na plataforma Guardia, utilizando exclusivamente **campos temporais** como critério de ordenação.
+Esta especificação define os requisitos obrigatórios para **ordenar recursos** em endpoints que retornam listas na plataforma Guardia, utilizando exclusivamente **propriedades temporais** como critério de ordenação.
 
 A ordenação será feita por meio dos parâmetros `order_by` e `sort`, fornecidos na query string da requisição HTTP.
 
@@ -12,7 +12,7 @@ A ordenação será feita por meio dos parâmetros `order_by` e `sort`, fornecid
 
 A ordenação DEVE:
 
-- Ser limitada aos seguintes campos temporais como por exemplo: `created_at`, `updated_at` ou `reference_date`.
+- Ser limitada aos seguintes propriedades temporais como por exemplo: `created_at`, `updated_at` ou `reference_date`.
 - Utilizar **índices** disponíveis no banco de dados para otimizar desempenho e evitar varreduras completas (full scan).
 - Considerar particionamento por faixa temporal, quando aplicável, para ganhos de performance em grandes volumes.
 - Ser **estável**: registros com o mesmo valor em `order_by` DEVEM manter ordem relativa consistente (ex: por `entity_id` como critério secundário).

@@ -8,12 +8,12 @@ Esta especificação define os requisitos obrigatórios para a estrutura de resp
 
 Esta especificação DEVE ser aplicável a todas as requisições HTTP da plataforma Guardia. A estrutura de resposta DEVE ser a seguinte:
 
-| Campo                         | Tipo            | Descrição                                                           |
-|-------------------------------|-----------------|---------------------------------------------------------------------|
-| [`data`](#data)               | object \| array | Dados retornados pela operação, quando a requisição é bem sucedida. |
-| [`pagination`](#pagination)   | object          | Informações de paginação, quando aplicável.                         |
-| [`errors`](#errors)           | array           | Lista de erros, quando a requisição não é bem sucedida.             |
-| [`debug`](#debug)             | object          | Informações para debug, quando solicitado o header `X-Grd-Debug`.   |
+| Propriedade                     | Tipo            | Descrição                                                           |
+|---------------------------------|-----------------|---------------------------------------------------------------------|
+| [`data`](#data)                 | object \| array | Dados retornados pela operação, quando a requisição é bem sucedida. |
+| [`pagination`](#pagination)     | object          | Informações de paginação, quando aplicável.                         |
+| [`errors`](#errors)             | array           | Lista de erros, quando a requisição não é bem sucedida.             |
+| [`debug`](#debug)               | object          | Informações para debug, quando solicitado o header `X-Grd-Debug`.   |
 
 ### Estrutura Padrão
 
@@ -95,15 +95,15 @@ O `data` DEVE ser retornado quando a requisição é bem sucedida, e DEVE conter
 
 O payload de erro DEVE ser retornado quando ocorrer um erro na requisição, seja por parte do cliente `4xx` ou do servidor `5xx`.
 
-| Campo                         | Tipo   | Descrição                        |
-|-------------------------------|--------|----------------------------------|
-| `code`                        | string | Código padronizado para o erro.  |
-| `reason`                      | string | Motivo do erro.                  |
-| `message`                     | string | Mensagem informativa do erro.    |
+| Propridade                      | Tipo   | Descrição                        |
+|---------------------------------|--------|----------------------------------|
+| `code`                          | string | Código padronizado para o erro.  |
+| `reason`                        | string | Motivo do erro.                  |
+| `message`                       | string | Mensagem informativa do erro.    |
 
 ### Estrutura da lista `errors`
 
-Quando a requisição falhar (`4xx` ou `5xx`), a resposta DEVE conter o campo `errors` com uma lista de objetos descrevendo os erros ocorridos. Cada item da lista DEVE seguir a estrutura abaixo.
+Quando a requisição falhar (`4xx` ou `5xx`), a resposta DEVE conter a lista `errors` com uma lista de objetos descrevendo os erros ocorridos. Cada item da lista DEVE seguir a estrutura abaixo.
 
 #### `code`
 - DEVE ser uma string contendo o código de erro padronizado.
@@ -120,7 +120,7 @@ Quando a requisição falhar (`4xx` ou `5xx`), a resposta DEVE conter o campo `e
 - DEVE auxiliar no diagnóstico da falha e no entendimento de como resolvê-la.
 - PODE conter informações adicionais sobre parâmetros inválidos, formatos incorretos ou requisitos não atendidos.
 
-Exemplo de payload de erro:
+### Payload de erro
 
 ```json
 {
@@ -135,13 +135,13 @@ Exemplo de payload de erro:
 ```
 
 > **IMPORTANTE:**
-> O campo `message` tem caráter informativo para o desenvolvedor compreender como lidar com o erro e NÃO DEVE ser utilizado para mensagens de erro ao cliente final.
+> A propriedade `message` tem caráter informativo para o desenvolvedor compreender como lidar com o erro e NÃO DEVE ser utilizada para mensagens de erro ao cliente final.
 
 ## Em caso de Debug
 
 O payload de debug DEVE ser retornado quando o header `X-Grd-Debug` estiver presente e com o valor `true`.
 
-| Campo                               | Tipo   | Descrição                                          |
+| Propridade                          | Tipo   | Descrição                                          |
 |-------------------------------------|--------|----------------------------------------------------|
 | [`trace_id`](#trace_id)             | string | ID de rastreio da requisição.                      |
 | [`correlation_id`](#correlation_id) | string | Id de correlação da requisição.                    |
@@ -154,9 +154,9 @@ O payload de debug DEVE ser retornado quando o header `X-Grd-Debug` estiver pres
 | [`internal_ip`](#internal_ip)       | string | IP interno do pod.                                 |
 | [`external_ip`](#external_ip)       | string | IP externo do proxy ou gateway da requisição.      |
 
-### Estrutura do Objeto `debug`
+### Estrutura do objeto `debug`
 
-Quando presente, o campo `debug` DEVE conter um objeto com metainformações úteis para rastreabilidade e depuração de requisições. Ele SÓ DEVE ser retornado se a requisição incluir o cabeçalho `X-Grd-Debug: true`.
+Quando presente, o objeto `debug` DEVE conter um objeto com metainformações úteis para rastreabilidade e depuração de requisições. Ele SÓ DEVE ser retornado se a requisição incluir o cabeçalho `X-Grd-Debug: true`.
 
 #### `trace_id`
 - DEVE ser uma string única representando o identificador global de rastreamento da requisição.
@@ -194,7 +194,7 @@ Quando presente, o campo `debug` DEVE conter um objeto com metainformações út
 
 ---
 
-Se quiser consolidar todas essas seções (estrutura de resposta padrão, debug, paginação) em um único bloco reutilizável para OpenAPI/Swagger ou referência interna da plataforma, posso compilar isso para você. Deseja?
+### Payload de erro com debug
 
 ```json
 {

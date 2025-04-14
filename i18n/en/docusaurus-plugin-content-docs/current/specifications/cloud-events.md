@@ -15,7 +15,7 @@ In modern architectures, this approach addresses challenges such as:
 
 ## Event Structure
 
-The following structure presents a visual summary of the expected fields in an event. Detailed rules and descriptions can be found in the [Properties](#properties) section.
+The following structure presents a visual summary of the expected properties in an event. Detailed rules and descriptions can be found in the [Properties](#properties) section.
 
 | Property                               | Type       | Default            |
 |---------------------------------------|------------|-------------------|
@@ -65,7 +65,7 @@ The following structure presents a visual summary of the expected fields in an e
 
 #### `data`
 - MUST be a JSON object containing the data of the [entity](../specifications/entities.md) associated with the event.
-- **Common Fields**:
+- **Common Properties**:
   - `entity_id`: Entity UUID
   - `entity_type`: Entity type
   - `external_entity_id`: External entity ID (optional)

@@ -4,7 +4,7 @@ sidebar_position: 5
 
 # Sorting
 
-This specification defines the mandatory requirements for **sorting resources** in endpoints that return lists on the Guardia platform, using exclusively **temporal fields** as sorting criteria.
+This specification defines the mandatory requirements for **sorting resources** in endpoints that return lists on the Guardia platform, using exclusively **temporal properties** as sorting criteria.
 
 Sorting will be done through the `order_by` and `sort` parameters, provided in the HTTP request query string.
 
@@ -12,7 +12,7 @@ Sorting will be done through the `order_by` and `sort` parameters, provided in t
 
 Sorting MUST:
 
-- Be limited to the following temporal fields such as: `created_at`, `updated_at` or `reference_date`.
+- Be limited to the following temporal properties such as: `created_at`, `updated_at` or `reference_date`.
 - Use available **indexes** in the database to optimize performance and avoid full scans.
 - Consider temporal range partitioning, when applicable, for performance gains with large volumes.
 - Be **stable**: records with the same value in `order_by` MUST maintain consistent relative order (e.g., by `entity_id` as a secondary criterion).

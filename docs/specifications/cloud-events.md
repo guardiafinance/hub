@@ -15,8 +15,6 @@ Em arquiteturas modernas, essa abordagem resolve desafios como:
 
 ## Estrutura do Evento
 
-A estrutura a seguir apresenta um resumo visual dos campos esperados em um evento. As regras e descrições detalhadas encontram-se na seção [Propriedades](#propriedades).
-
 | Propriedade                               | Tipo       | Padrão            |
 |-------------------------------------------|------------|-------------------|
 | [`id`](#id)                               | UUID v7    | -                 |
@@ -65,7 +63,7 @@ A estrutura a seguir apresenta um resumo visual dos campos esperados em um event
 
 #### `data`
 - DEVE ser um JSON object contendo os dados da [entidade](../specifications/entities.md) associada ao evento.
-- **Campos Comuns**:
+- **Propriedades Comuns**:
   - `entity_id`: UUID da entidade.
   - `entity_type`: Tipo da entidade.
   - `external_entity_id`: ID externo da entidade (opcional).

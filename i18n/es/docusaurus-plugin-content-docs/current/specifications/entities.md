@@ -25,9 +25,9 @@ Además, el modelo refuerza los principios de **Compliance by Design**, aseguran
 
 ### Estructura Base
 
-La estructura base de una entidad en Guardia DEBE contener los siguientes campos:
+La estructura base de una entidad en Guardia DEBE contener los siguientes propiedades:
 
-| Campo                                         | Tipo         | Obligatorio | Descripción                                              |
+| Propiedad                                     | Tipo         | Obligatorio | Descripción                                              |
 |-----------------------------------------------|--------------|-------------|----------------------------------------------------------|
 | [`entity_id`](#entity_id)                     | UUID v7      | Sí          | Identificador único de la entidad.                       |
 | [`entity_type`](#entity_type)                 | string       | Sí          | Tipo de entidad.                                         |

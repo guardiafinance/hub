@@ -41,7 +41,7 @@ Los sistemas que exponen recursos paginables DEBEN implementar los siguientes pa
 - El formato y semántica del token son responsabilidad del sistema y DEBEN ser tratados como opacos por el cliente.
 
 #### `order_by`
-- DEBE ser una cadena que indique el campo base para la ordenación de resultados.
+- DEBE ser una cadena que indique la propiedad base para la ordenación de resultados.
 - CUANDO no se informe, DEBE asumir el valor predeterminado `created_at`.
 - VALORES permitidos incluyen `created_at`, `updated_at` y `reference_date`.
 - CUALQUIER otro valor informado DEBE ser rechazado con error de validación.
@@ -53,9 +53,9 @@ Los sistemas que exponen recursos paginables DEBEN implementar los siguientes pa
 
 ## Respuesta
 
-La respuesta DEBE contener los siguientes campos:
+La respuesta DEBE contener los siguientes propiedades:
 
-| Campo                                                                 | Tipo   |
+| Propiedad                                                             | Tipo   |
 |-----------------------------------------------------------------------|--------|
 | [`data`](#data)                                                       | array  |
 | [`pagination`](#pagination)                                           | object |
@@ -76,7 +76,7 @@ Las respuestas de endpoints que implementan paginación DEBEN seguir la estructu
 
 #### `pagination`
 - DEBE ser un objeto que contenga los metadatos de paginación.
-- Todos los campos de `pagination` DEBEN estar presentes, incluso si son nulos cuando no son aplicables.
+- Todos las propiedades de `pagination` DEBEN estar presentes, incluso si son nulos cuando no son aplicables.
 
 ##### `pagination.page_size`
 - DEBE ser un entero positivo (`uint32`) que represente el número de elementos por página en la respuesta.
@@ -150,9 +150,9 @@ Conozca más sobre los headers HTTP que utiliza Guardia [aquí](./http-headers.m
 
 ### Tokens de Página
 - `page_token` DEBE expirar de forma segura o ser validado por tiempo de uso.
-- El tiempo de vida del page_token DEBE ser compatible con el tiempo de caché del header `Cache-Control` de la respuesta.
-- Los campos `first_page_token` y `last_page_token` DEBEN ser devueltos siempre que sea técnicamente posible, pero PUEDEN ser omitidos para optimización de payload o rendimiento.
-- Campos como `previous_page_token`, `next_page_token`, `first_page_token` y `last_page_token` son EXCLUSIVOS de la respuesta y NO DEBEN ser utilizados como entrada.
+- El tiempo de vida del page_token DEBEN ser compatible con el tiempo de caché del header `Cache-Control` de la respuesta.
+- Las propiedades `first_page_token` y `last_page_token` DEBEN ser devueltos siempre que sea técnicamente posible, pero PUEDEN ser omitidos para optimización de payload o rendimiento.
+- Las propiedades como `previous_page_token`, `next_page_token`, `first_page_token` y `last_page_token` son EXCLUSIVAS de la respuesta y NO DEBEN ser utilizadas como entrada.
 
 ### Respuesta
 - Si no hay resultados, la API DEBE devolver `200 OK` con lista vacía y `pagination.total_count = 0`.
@@ -161,7 +161,7 @@ Conozca más sobre los headers HTTP que utiliza Guardia [aquí](./http-headers.m
 - Los errores estructurales o de parámetros DEBEN seguir la [especificación de error codes de Guardia](../error_codes).
 
 ## Seguridad, Expiración y Cumplimiento
-- Todos los campos `*_page_token` DEBEN ser tokens opacos (encriptados o firmados), sin contener ninguna estructura legible o decodificable por el cliente.
+- Todos las propiedades `*_page_token` DEBEN ser tokens opacos (encriptados o firmados), sin contener ninguna estructura legible o decodificable por el cliente.
 - Los tokens de paginación DEBEN expirar en un tiempo razonable (ej: 10 minutos) para evitar uso indebido.
 - Toda solicitud DEBE ser registrada en log con `X-Grd-Trace-Id`.
 - La implementación DEBE respetar los alcances de autorización del cliente.

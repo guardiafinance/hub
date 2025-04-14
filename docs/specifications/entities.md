@@ -25,9 +25,9 @@ Além disso, o modelo reforça os princípios do **Compliance by Design**, asseg
 
 ### Estrutura base
 
-A estrutura base de uma entidade na Guardia DEVE conter os seguintes campos:
+A estrutura base de uma entidade na Guardia DEVE conter os seguintes propriedades:
 
-| Campo                                         | Tipo         | Obrigatório | Descrição                                              |
+| Propriedade                                   | Tipo         | Obrigatório | Descrição                                              |
 |-----------------------------------------------|--------------|-------------|--------------------------------------------------------|
 | [`entity_id`](#entity_id)                     | UUID v7      | Sim         | Identificador único da entidade.                       |
 | [`entity_type`](#entity_type)                 | string       | Sim         | Tipo de entidade.                                      |
@@ -36,8 +36,8 @@ A estrutura base de uma entidade na Guardia DEVE conter os seguintes campos:
 | [`updated_at`](#updated_at)                   | datetime     | Sim         | Data e hora da última atualização da entidade.         |
 | [`discarded_at`](#discarded_at)               | datetime     | Não         | Data e hora de descarte da entidade.                   |
 | [`metadata`](#metadata)                       | Json Object  | Não         | Metadados da entidade.                                 |
-| [`version`](#version)                         | integer      | Sim         | Versão da entidade. |
-| [`history`](#history)                         | array        | Não         | Histórico de versões da entidade. |
+| [`version`](#version)                         | integer      | Sim         | Versão da entidade.                                    |
+| [`history`](#history)                         | array        | Não         | Histórico de versões da entidade.                      |
 
 ### Propriedades detalhadas
 

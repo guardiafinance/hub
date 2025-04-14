@@ -15,7 +15,7 @@ En arquitecturas modernas, este enfoque resuelve desafíos como:
 
 ## Estructura del Evento
 
-La siguiente estructura presenta un resumen visual de los campos esperados en un evento. Las reglas y descripciones detalladas se encuentran en la sección [Propiedades](#propiedades).
+La siguiente estructura presenta un resumen visual de las propiedades esperadas en un evento. Las reglas y descripciones detalladas se encuentran en la sección [Propiedades](#propiedades).
 
 | Propiedad                               | Tipo       | Predeterminado     |
 |-----------------------------------------|------------|-------------------|
@@ -65,7 +65,7 @@ La siguiente estructura presenta un resumen visual de los campos esperados en un
 
 #### `data`
 - DEBE ser un objeto JSON conteniendo los datos de la [entidad](../specifications/entities.md) asociada al evento.
-- **Campos Comunes**:
+- **Propiedades Comunes**:
   - `entity_id`: UUID de la entidad
   - `entity_type`: Tipo de la entidad
   - `external_entity_id`: ID externo de la entidad (opcional)

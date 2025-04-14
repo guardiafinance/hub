@@ -41,7 +41,7 @@ Systems that expose paginable resources MUST implement the following pagination 
 - The token format and semantics are the system's responsibility and MUST be treated as opaque by the client.
 
 #### `order_by`
-- MUST be a string indicating the base field for ordering results.
+- MUST be a string indicating the base property for ordering results.
 - WHEN not informed, MUST assume the default value `created_at`.
 - ALLOWED values include `created_at`, `updated_at` and `reference_date`.
 - ANY other value provided MUST be rejected with a validation error.
@@ -53,9 +53,9 @@ Systems that expose paginable resources MUST implement the following pagination 
 
 ## Response
 
-The response MUST contain the following fields:
+The response MUST contain the following properties:
 
-| Field                                                                 | Type   |
+| Property                                                              | Type   |
 |-----------------------------------------------------------------------|--------|
 | [`data`](#data)                                                       | array  |
 | [`pagination`](#pagination)                                           | object |
@@ -76,7 +76,7 @@ Responses from endpoints that implement pagination MUST follow the structure bel
 
 #### `pagination`
 - MUST be an object containing pagination metadata.
-- All `pagination` fields MUST be present, even if null when not applicable.
+- All `pagination` properties MUST be present, even if null when not applicable.
 
 ##### `pagination.page_size`
 - MUST be a positive integer (`uint32`) representing the number of items per page in the response.
@@ -151,8 +151,8 @@ Learn more about the HTTP headers that Guardia uses [here](./http-headers.md).
 ### Page Tokens
 - `page_token` MUST expire securely or be validated by usage time.
 - The page_token lifetime MUST be compatible with the response's `Cache-Control` header cache time.
-- The fields `first_page_token` and `last_page_token` MUST be returned whenever technically possible, but MAY be omitted for payload or performance optimization.
-- Fields such as `previous_page_token`, `next_page_token`, `first_page_token`, and `last_page_token` are EXCLUSIVE to the response and MUST NOT be used as input.
+- The properties `first_page_token` and `last_page_token` MUST be returned whenever technically possible, but MAY be omitted for payload or performance optimization.
+- Properties such as `previous_page_token`, `next_page_token`, `first_page_token`, and `last_page_token` are EXCLUSIVE to the response and MUST NOT be used as input.
 
 ### Response
 - If there are no results, the API MUST return `200 OK` with an empty list and `pagination.total_count = 0`.
@@ -161,7 +161,7 @@ Learn more about the HTTP headers that Guardia uses [here](./http-headers.md).
 - Structural or parameter errors MUST follow the [Guardia error codes specification](../error_codes).
 
 ## Security, Expiration, and Compliance
-- All `*_page_token` fields MUST be opaque tokens (encrypted or signed), without containing any readable or decodable structure by the client.
+- All `*_page_token` properties MUST be opaque tokens (encrypted or signed), without containing any readable or decodable structure by the client.
 - Pagination tokens MUST expire within a reasonable time (e.g., 10 minutes) to prevent misuse.
 - Every request MUST be logged with `X-Grd-Trace-Id`.
 - Implementation MUST respect client authorization scopes.

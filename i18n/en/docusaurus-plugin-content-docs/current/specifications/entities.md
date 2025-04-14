@@ -25,9 +25,9 @@ Furthermore, the model reinforces **Compliance by Design** principles, ensuring:
 
 ### Base Structure
 
-The base structure of an entity in Guardia MUST contain the following fields:
+The base structure of an entity in Guardia MUST contain the following properties:
 
-| Field                                         | Type         | Required | Description                                            |
+| Property                                      | Type         | Required | Description                                            |
 |-----------------------------------------------|--------------|----------|--------------------------------------------------------|
 | [`entity_id`](#entity_id)                     | UUID v7      | Yes      | Identificador único da entidade.                       |
 | [`entity_type`](#entity_type)                 | string       | Yes      | Tipo de entidade.                                      |

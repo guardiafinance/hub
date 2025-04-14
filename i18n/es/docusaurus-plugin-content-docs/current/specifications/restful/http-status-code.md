@@ -179,7 +179,7 @@ Estas directrices DEBEN aplicarse a todos los módulos y servicios de Guardia, y
 - Datos sintácticamente correctos, pero semánticamente inválidos (ej: CPF inválido, saldo insuficiente).
 
 **Cuándo no usar:**
-- Cuando el problema es de formato o falta de campos (use `400`).
+- Cuando el problema es de formato o falta de propiedades (use `400`).
 
 ### 429 Too Many Requests
 

@@ -29,7 +29,7 @@ Todos los headers DEBEN seguir el patrón de nomenclatura definido en esta espec
 
 ### Cache-Control
 
-El campo de header `Cache-Control` DEBE ser usado para guiar los mecanismos de caché tanto en solicitudes como en respuestas.
+El header `Cache-Control` DEBE ser usado para guiar los mecanismos de caché tanto en solicitudes como en respuestas.
 
 #### Respuesta
 
@@ -91,7 +91,7 @@ Los headers personalizados utilizados por Guardia siguen la convención del pref
 
 ### X-Grd-Debug
 
-Header booleano opcional. Cuando está presente con el valor `true`, la respuesta DEBE incluir el campo `debug` en el payload, conteniendo información adicional según la [especificación de payloads de respuesta](./http-response-payloads.md#debug).
+Header booleano opcional. Cuando está presente con el valor `true`, la respuesta DEBE incluir la propiedad `debug` en el payload, conteniendo información adicional según la [especificación de payloads de respuesta](./http-response-payloads.md#debug).
 
 ```http
 X-Grd-Debug: true

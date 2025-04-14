@@ -41,7 +41,7 @@ Os sistemas que expõem recursos pagináveis DEVEM implementar os seguintes par�
 - O formato e semântica do token são de responsabilidade do sistema e DEVEM ser tratados como opacos pelo cliente.
 
 #### `order_by`
-- DEVE ser uma string indicando o campo base da ordenação dos resultados.
+- DEVE ser uma string indicando o modo de ordenação dos resultados.
 - QUANDO não informado, DEVE assumir o valor padrão `created_at`.
 - VALORES permitidos incluem `created_at`, `updated_at` e `reference_date`.
 - QUALQUER outro valor informado DEVE ser rejeitado com erro de validação.
@@ -53,18 +53,18 @@ Os sistemas que expõem recursos pagináveis DEVEM implementar os seguintes par�
 
 ## Resposta
 
-A resposta DEVE conter os seguintes campos:
+A resposta DEVE conter os seguintes propriedades:
 
-| Campo                                                                 | Tipo   |
-|-----------------------------------------------------------------------|--------|
-| [`data`](#data)                                                       | array  |
-| [`pagination`](#pagination)                                           | object |
-| [`pagination.page_size`](#pagination.page_size)                       | uint32 |
-| [`pagination.next_page_token`](#pagination.next_page_token)           | string |
-| [`pagination.previous_page_token`](#pagination.previous_page_token)   | string |
-| [`pagination.first_page_token`](#pagination.first_page_token)         | string |
-| [`pagination.last_page_token`](#pagination.last_page_token)           | string |
-| [`pagination.total_count`](#pagination.total_count)                   | uint32 |
+| Propriedade                                                                 | Tipo   |
+|-----------------------------------------------------------------------------|--------|
+| [`data`](#data)                                                             | array  |
+| [`pagination`](#pagination)                                                 | object |
+| [`pagination.page_size`](#pagination.page_size)                             | uint32 |
+| [`pagination.next_page_token`](#pagination.next_page_token)                 | string |
+| [`pagination.previous_page_token`](#pagination.previous_page_token)         | string |
+| [`pagination.first_page_token`](#pagination.first_page_token)               | string |
+| [`pagination.last_page_token`](#pagination.last_page_token)                 | string |
+| [`pagination.total_count`](#pagination.total_count)                         | uint32 |
 
 
 ### Estrutura do Payload
@@ -77,7 +77,7 @@ As respostas de endpoints que implementam paginação DEVEM seguir a estrutura a
 
 #### `pagination`
 - DEVE ser um objeto contendo os metadados de paginação.
-- Todos os campos de `pagination` DEVEM estar presentes, ainda que nulos quando não aplicáveis.
+- Todas as propriedades de `pagination` DEVEM estar presentes, ainda que nulas quando não aplicáveis.
 
 ##### `pagination.page_size`
 - DEVE ser um inteiro positivo (`uint32`) representando o número de itens por página na resposta.
@@ -154,8 +154,8 @@ Saiba mais sobre os headers HTTP que a Guardia utiliza [aqui](./http-headers.md)
 ### Tokens de Página
 - `page_token` DEVE expirar de forma segura ou ser validado por tempo de uso.
 - O tempo de vida do page_token DEVE ser compatível com tempo de cache do header `Cache-Control` da resposta.
-- Os campos `first_page_token` e `last_page_token` DEVEM ser retornados sempre que tecnicamente possível, mas PODEM ser omitidos para otimização de payload ou performance.
-- Campos como `previous_page_token`, `next_page_token`, `first_page_token` e `last_page_token` SÃO EXCLUSIVOS de resposta e NÃO DEVEM ser utilizados como entrada.
+- As propriedades `first_page_token` e `last_page_token` DEVEM ser retornadas sempre que tecnicamente possível, mas PODEM ser omitidas para otimização de payload ou performance.
+- As propriedades `previous_page_token`, `next_page_token`, `first_page_token` e `last_page_token` SÃO EXCLUSIVAS de resposta e NÃO DEVEM ser utilizadas como entrada.
 
 
 ### Resposta
@@ -165,7 +165,7 @@ Saiba mais sobre os headers HTTP que a Guardia utiliza [aqui](./http-headers.md)
 - Erros estruturais ou de parâmetros DEVEM seguir a [especificação de error codes da Guardia](../error_codes).
 
 ## Segurança, Expiração e Conformidade
-- Todos os campos `*_page_token` DEVEM ser tokens opacos (criptografados ou assinados), sem conter qualquer estrutura legível ou decodificável pelo cliente.
+- Todos as propriedades `*_page_token` DEVEM ser tokens opacos (criptografados ou assinados), sem conter qualquer estrutura legível ou decodificável pelo cliente.
 - Tokens de paginação DEVEM expirar em tempo razoável (ex: 10 minutos) para evitar uso indevido.
 - Toda requisição DEVE ser registrada em log com `X-Grd-Trace-Id`.
 - A implementação DEVE respeitar escopos de autorização do cliente.

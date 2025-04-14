@@ -179,7 +179,7 @@ These guidelines MUST be applied to all Guardia modules and services, whether in
 - Syntactically correct data but semantically invalid (e.g., invalid CPF, insufficient balance).
 
 **When not to use:**
-- When the problem is formatting or missing fields (use `400`).
+- When the problem is formatting or missing properties (use `400`).
 
 ### 429 Too Many Requests
 

@@ -8,16 +8,16 @@ This specification defines the mandatory requirements for the HTTP response stru
 
 This specification MUST be applicable to all HTTP requests of the Guardia platform. The response structure MUST be as follows:
 
-| Field | Type | Description |
-|-------|------|-------------|
-| [`data`](#payload-with-data) | object \| array | Data returned by the operation when the request is successful. |
-| [`errors`](#in-case-of-error) | array | List of errors when the request is not successful. |
-| [`pagination`](#payload-with-data-and-pagination) | object | Pagination information when applicable. |
-| [`debug`](#in-case-of-debug) | object | Debug information when the `X-Grd-Debug` header is requested. |
+| Property                                           | Type            | Description                                                    |
+|----------------------------------------------------|-----------------|----------------------------------------------------------------|
+| [`data`](#payload-with-data)                       | object \| array | Data returned by the operation when the request is successful. |
+| [`errors`](#in-case-of-error)                      | array           | List of errors when the request is not successful.             |
+| [`pagination`](#payload-with-data-and-pagination)  | object          | Pagination information when applicable.                        |
+| [`debug`](#in-case-of-debug)                       | object          | Debug information when the `X-Grd-Debug` header is requested.  |
 
 ## In case of Success
 
-The `data` field MUST be returned when the request is successful, and MUST contain the data related to the manipulated entity, including `entity_id`, `external_entity_id` and `entity_type`, according to the [Entities](../entities.md) specification.
+The `data` property MUST be returned when the request is successful, and MUST contain the data related to the manipulated entity, including `entity_id`, `external_entity_id` and `entity_type`, according to the [Entities](../entities.md) specification.
 
 ### Payload with data
 
@@ -60,9 +60,9 @@ The `data` field MUST be returned when the request is successful, and MUST conta
 
 The error payload MUST be returned when an error occurs in the request, whether from the client side `4xx` or server side `5xx`.
 
-| Field | Type | Description |
-|-------|------|-------------|
-| `code` | string | Error code, as defined in [Error Handling](../errors-handling.md). |
+| Property | Type | Description |
+|----------|------|-------------|
+| `code`   | string | Error code, as defined in [Error Handling](../errors-handling.md). |
 | `reason` | string | Error reason, as defined in [Error Handling](../errors-handling.md). |
 | `message` | string | Informative error message for the developer to understand how to handle the error. |
 
@@ -79,18 +79,18 @@ The error payload MUST be returned when an error occurs in the request, whether 
 ```
 
 > **IMPORTANT:**
-> The `message` field is informative for the developer to understand how to handle the error and MUST NOT be used for end-user error messages.
+> The `message` property is informative for the developer to understand how to handle the error and MUST NOT be used for end-user error messages.
 
 ## In case of Debug
 
 The debug payload MUST be returned when the `X-Grd-Debug` header is present and set to `true`.
 
-| Field | Type | Description |
-|-------|------|-------------|
-| `trace_id` | string | Request trace ID. Also returned in the `X-Grd-Trace-Id` header. |
-| `correlation_id` | string | Request correlation ID. Also returned in the `X-Grd-Correlation-Id` header. |
-| `instance` | string | Unique instance identifier. |
-| `timestamp` | string | Request timestamp in UNIX Epoch. |
+| Property                                           | Type            | Description                                                    |
+|----------------------------------------------------|-----------------|----------------------------------------------------------------|
+| `trace_id`                                         | string          | Request trace ID. Also returned in the `X-Grd-Trace-Id` header. |
+| `correlation_id`                                   | string          | Request correlation ID. Also returned in the `X-Grd-Correlation-Id` header. |
+| `instance`                                         | string          | Unique instance identifier.                                    |
+| `timestamp`                                        | string          | Request timestamp in UNIX Epoch.                                |
 | `duration` | string | Request response time in milliseconds. |
 | `memory` | string | Memory used by the request in bytes. |
 | `query` | string | Request query when applicable. |
