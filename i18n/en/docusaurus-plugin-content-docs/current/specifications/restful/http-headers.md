@@ -8,17 +8,23 @@ This specification describes the standard and custom headers adopted by Guardia 
 
 Its goal is to promote consistency between interfaces, ensure predictability in data consumption, and facilitate interoperability between internal modules, external services, and partner integrations.
 
-Header standardization contributes to efficient traceability, secure debugging, and integration scalability.
+Header standardization contributes to:
+- Efficient request traceability
+- Secure debugging in controlled environments
+- Integration scalability
+- Compliance with security standards
+- Better development experience
+
+All headers MUST follow the naming pattern defined in this specification.
+
+## Standard Headers
 
 | Header                  | Type     | Category | Direction | Mandatory | Purpose                                 |
 |-------------------------|----------|-----------|-----------|-----------|--------------------------------------------|
-| [Cache-Control](#cache-control)           | string   | standard  | Response  | Optional  | Cache control directives.            |
-| [Link](#link)             | string   | standard  | Response  | Optional  | Links related to result pagination or entity state. |
-| [X-Grd-Debug](#x-grd-debug)             | boolean  | custom    | Request   | Optional  | Enables debug information return.     |
-| [X-Grd-Trace-Id](#x-grd-trace-id)          | uuid     | custom    | Response  | Mandatory | Internal traceability.                   |
-| [X-Grd-Correlation-Id](#x-grd-correlation-id)    | uuid     | custom    | Req/Resp  | Optional  | External context propagation.            |
+| [Cache-Control](#cache-control) | string   | standard  | Response  | Optional  | Cache control directives            |
+| [Link](#link)           | string   | standard  | Response  | Optional  | Links for pagination and entity state |
 
-## Standard Headers
+---
 
 ### Cache-Control
 
@@ -28,19 +34,19 @@ The `Cache-Control` header field MUST be used to guide caching mechanisms in bot
 
 The cache MUST be configured with the `max-age=<seconds>` directive, preceded by:
 
-- `public`, when the cache can be shared among multiple users;
+- `public`, when the cache can be shared among multiple users:
 
 ```http
 Cache-Control: public, max-age=<seconds>
 ```
 
-- `private`, when the cache is exclusive to the end user.
+- `private`, when the cache is exclusive to the end user:
 
 ```http
 Cache-Control: private, max-age=<seconds>
 ```
 
-For responses that MUST NOT be cached, the following header MUST be used:
+For responses that MUST NOT be cached:
 
 ```http
 Cache-Control: no-store
@@ -52,9 +58,9 @@ Other directives MAY be added as needed, following [RFC 9111: HTTP Caching](http
 
 ### Link
 
-The `Link` header MAY be used to provide links related to result pagination or entity state, indicated by the `rel` parameter, following the [HATEOAS](https://restfulapi.net/hateoas) directives of the RESTful specification.
+The `Link` header MAY be used to provide links for pagination or entity state, following the [HATEOAS](https://restfulapi.net/hateoas) directives.
 
-Example for pagination:
+#### Pagination
 
 ```http
 link:
@@ -64,17 +70,23 @@ link:
 </api/v1/ledgers?page_token={first_page_token}>; rel="first"
 ```
 
-Example for entity state:
+#### Entity State
 
 ```http
 Link: <https://{tenant_id}.guardia.finance/api/v1/ledgers/{entity_id}>; rel="ledger"
 ```
 
----
-
 ## Custom Headers
 
-Custom headers used by Guardia follow the `X-Grd-*` prefix convention. They address specific needs for traceability, debugging, and correlation between systems.
+Custom headers used by Guardia follow the `X-Grd-*` prefix convention. They address specific needs for traceability and correlation between systems.
+
+| Header                  | Type     | Category | Direction | Mandatory | Purpose                                 |
+|-------------------------|----------|-----------|-----------|-----------|--------------------------------------------|
+| [X-Grd-Debug](#x-grd-debug) | boolean  | custom    | Request   | Optional  | Enables debug information return      |
+| [X-Grd-Trace-Id](#x-grd-trace-id) | uuid     | custom    | Response  | Mandatory | Internal traceability                    |
+| [X-Grd-Correlation-Id](#x-grd-correlation-id) | uuid     | custom    | Req/Resp  | Optional  | External context propagation             |
+
+---
 
 ### X-Grd-Debug
 
@@ -84,14 +96,15 @@ Optional boolean header. When present with the value `true`, the response MUST i
 X-Grd-Debug: true
 ```
 
-**Default value:** `false`
-
-**Validation:**
-- MUST accept only `true` or `false` values (case insensitive).
-- Any other value MUST result in `400 Bad Request` with reason `INVALID_HEADER_VALUE`.
-
-> **WARNING:**
-> Usage in production environments MUST be restricted, as it may make the response payload more verbose and consume more resources.
+#### Validation
+- MUST accept only `true` or `false` values (case insensitive)
+- Any other value MUST result in `400 Bad Request` with reason `INVALID_HEADER_VALUE`
+- Usage in production environments MUST be controlled by:
+  - Specific permission scope
+  - Maximum usage time restricted to 10 minutes per client
+  - Limit of 10 requests per minute
+  - Usage interval restricted to at least 1 minute between requests
+  - Audit logging of usage
 
 ---
 
@@ -99,17 +112,17 @@ X-Grd-Debug: true
 
 Mandatory header returned in all responses from Guardia APIs. Represents the unique request identifier.
 
-- Generated by Guardia's infrastructure.
-- Facilitates log and event correlation between services.
-- The value MUST follow the UUIDv7 standard, with temporal marking as specified in [RFC 9562](https://datatracker.ietf.org/doc/html/rfc9562#name-uuid-version-7).
+- MUST be generated by Guardia's infrastructure
+- MUST track the request and response across all system layers, including domain events and webhook notifications
+- The value MUST follow the UUIDv7 standard, with temporal marking as specified in [RFC 9562](https://datatracker.ietf.org/doc/html/rfc9562#name-uuid-version-7)
 
 ```http
 X-Grd-Trace-Id: <uuid>
 ```
 
-**Validation:**
-- MUST be a valid UUIDv7.
-- MUST be included in all responses, including errors.
+#### Validation
+- MUST be a valid UUIDv7
+- MUST be included in all responses, including errors
 
 ---
 
@@ -117,29 +130,40 @@ X-Grd-Trace-Id: <uuid>
 
 Optional header sent by external systems. Used to propagate tracking context throughout distributed calls.
 
-- If present in the request, it MUST be included in the response.
-- The value MUST follow the standard proposed by [RFC 9562](https://datatracker.ietf.org/doc/html/rfc9562).
+- If present in the request, MUST be included in the response
+- If present in the request, MUST be propagated across all system layers, including domain events and webhook notifications
+- The value MUST follow the standard proposed by [RFC 9562](https://datatracker.ietf.org/doc/html/rfc9562)
 
 ```http
 X-Grd-Correlation-Id: <uuid>
 ```
 
-**Validation:**
-- If present, MUST be a valid UUIDv7.
-- If invalid, MUST be ignored and a new value MUST be generated.
+#### Validation
+- If present, MUST be a valid UUID
+- If invalid, MUST be ignored and a new value MUST be generated
 
 ---
 
 ## Security Considerations
 
-- The use of `X-Grd-Debug: true` in production environments MUST be controlled by scope or authentication.
-- Tracking headers MUST NOT contain sensitive data, PII, or secrets.
-- Requests MUST be validated regardless of authentication status.
+- Tracking headers MUST NOT contain:
+  - Sensitive data
+  - PII (Personally Identifiable Information)
+  - Secrets or credentials
+  - Confidential business information
+- Requests MUST be validated:
+  - Regardless of authentication status
+  - Considering the tenant's security context
+  - Respecting configured rate limits
+- Custom headers MUST:
+  - Be validated for maximum size
+  - Be sanitized to prevent code injection
+  - Be limited in quantity per request
 
-### Additional notes
+## Additional notes
 
-- Headers used in each endpoint MUST be documented in the API OAS contract.
-- Headers described here are considered the minimum standard for any Guardia RESTful API.
+- Headers used in each endpoint MUST be documented in the API OAS contract
+- Headers described here are considered the minimum standard for any Guardia RESTful API
 
 ## References
 

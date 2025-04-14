@@ -8,17 +8,23 @@ Esta especificación describe los headers estándar y personalizados adoptados p
 
 Su objetivo es promover la consistencia entre interfaces, garantizar la previsibilidad en el consumo de datos y facilitar la interoperabilidad entre módulos internos, servicios externos e integraciones de socios.
 
-La estandarización de headers contribuye a una trazabilidad eficiente, depuración segura y escalabilidad de las integraciones.
+La estandarización de headers contribuye a:
+- Trazabilidad eficiente de solicitudes
+- Depuración segura en entornos controlados
+- Escalabilidad de las integraciones
+- Cumplimiento de estándares de seguridad
+- Mejor experiencia de desarrollo
+
+Todos los headers DEBEN seguir el patrón de nomenclatura definido en esta especificación.
+
+## Headers Estándar
 
 | Header                  | Tipo     | Categoría | Dirección | Obligatorio | Propósito                                 |
 |-------------------------|----------|-----------|-----------|-------------|--------------------------------------------|
-| [Cache-Control](#cache-control)           | string   | estándar  | Response  | Opcional    | Directivas de control de caché.            |
-| [Link](#link)             | string   | estándar  | Response  | Opcional    | Enlaces relacionados con la paginación de resultados o estado de una entidad. |
-| [X-Grd-Debug](#x-grd-debug)             | booleano | personalizado | Request   | Opcional    | Habilita el retorno de información de depuración.     |
-| [X-Grd-Trace-Id](#x-grd-trace-id)          | uuid     | personalizado | Response  | Obligatorio | Trazabilidad interna.                   |
-| [X-Grd-Correlation-Id](#x-grd-correlation-id)    | uuid     | personalizado | Req/Resp  | Opcional    | Propagación de contexto externo.            |
+| [Cache-Control](#cache-control) | string   | estándar  | Response  | Opcional    | Directivas de control de caché            |
+| [Link](#link)           | string   | estándar  | Response  | Opcional    | Enlaces para paginación y estado de entidades |
 
-## Headers Estándar
+---
 
 ### Cache-Control
 
@@ -28,19 +34,19 @@ El campo de header `Cache-Control` DEBE ser usado para guiar los mecanismos de c
 
 El caché DEBE ser configurado con la directiva `max-age=<seconds>`, precedida por:
 
-- `public`, cuando el caché puede ser compartido entre múltiples usuarios;
+- `public`, cuando el caché puede ser compartido entre múltiples usuarios:
 
 ```http
 Cache-Control: public, max-age=<seconds>
 ```
 
-- `private`, cuando el caché es exclusivo del usuario final.
+- `private`, cuando el caché es exclusivo del usuario final:
 
 ```http
 Cache-Control: private, max-age=<seconds>
 ```
 
-Para respuestas que NO DEBEN ser almacenadas en caché, se DEBE usar el siguiente header:
+Para respuestas que NO DEBEN ser almacenadas en caché:
 
 ```http
 Cache-Control: no-store
@@ -52,9 +58,9 @@ Otras directivas PUEDEN ser añadidas según sea necesario, siguiendo [RFC 9111:
 
 ### Link
 
-El header `Link` PUEDE ser usado para proporcionar enlaces relacionados con la paginación de resultados o el estado de una entidad, indicado por el parámetro `rel`, siguiendo las directivas [HATEOAS](https://restfulapi.net/hateoas) de la especificación RESTful.
+El header `Link` PUEDE ser usado para proporcionar enlaces para paginación o estado de entidades, siguiendo las directivas [HATEOAS](https://restfulapi.net/hateoas).
 
-Ejemplo para paginación:
+#### Paginación
 
 ```http
 link:
@@ -64,17 +70,23 @@ link:
 </api/v1/ledgers?page_token={first_page_token}>; rel="first"
 ```
 
-Ejemplo para estado de entidad:
+#### Estado de Entidad
 
 ```http
 Link: <https://{tenant_id}.guardia.finance/api/v1/ledgers/{entity_id}>; rel="ledger"
 ```
 
----
-
 ## Headers Personalizados
 
-Los headers personalizados utilizados por Guardia siguen la convención del prefijo `X-Grd-*`. Abordan necesidades específicas de trazabilidad, depuración y correlación entre sistemas.
+Los headers personalizados utilizados por Guardia siguen la convención del prefijo `X-Grd-*`. Abordan necesidades específicas de trazabilidad y correlación entre sistemas.
+
+| Header                  | Tipo     | Categoría | Dirección | Obligatorio | Propósito                                 |
+|-------------------------|----------|-----------|-----------|-------------|--------------------------------------------|
+| [X-Grd-Debug](#x-grd-debug) | booleano | personalizado | Request   | Opcional    | Habilita el retorno de información de depuración      |
+| [X-Grd-Trace-Id](#x-grd-trace-id) | uuid     | personalizado | Response  | Obligatorio | Trazabilidad interna                    |
+| [X-Grd-Correlation-Id](#x-grd-correlation-id) | uuid     | personalizado | Req/Resp  | Opcional    | Propagación de contexto externo             |
+
+---
 
 ### X-Grd-Debug
 
@@ -84,14 +96,15 @@ Header booleano opcional. Cuando está presente con el valor `true`, la respuest
 X-Grd-Debug: true
 ```
 
-**Valor predeterminado:** `false`
-
-**Validación:**
-- DEBE aceptar solo los valores `true` o `false` (sin distinción de mayúsculas/minúsculas).
-- Cualquier otro valor DEBE resultar en `400 Bad Request` con el motivo `INVALID_HEADER_VALUE`.
-
-> **ADVERTENCIA:**
-> El uso en entornos de producción DEBE ser restringido, ya que puede hacer que el payload de respuesta sea más verboso y consuma más recursos.
+#### Validación
+- DEBE aceptar solo los valores `true` o `false` (sin distinción de mayúsculas/minúsculas)
+- Cualquier otro valor DEBE resultar en `400 Bad Request` con el motivo `INVALID_HEADER_VALUE`
+- El uso en entornos de producción DEBE ser controlado por:
+  - Ámbito de permiso específico
+  - Tiempo máximo de uso restringido a 10 minutos por cliente
+  - Límite de 10 solicitudes por minuto
+  - Intervalo de uso restringido a al menos 1 minuto entre solicitudes
+  - Registro de auditoría de uso
 
 ---
 
@@ -99,17 +112,17 @@ X-Grd-Debug: true
 
 Header obligatorio devuelto en todas las respuestas de las APIs de Guardia. Representa el identificador único de la solicitud.
 
-- Generado por la infraestructura de Guardia.
-- Facilita la correlación de logs y eventos entre servicios.
-- El valor DEBE seguir el estándar UUIDv7, con marcación temporal según lo especificado en [RFC 9562](https://datatracker.ietf.org/doc/html/rfc9562#name-uuid-version-7).
+- DEBE ser generado por la infraestructura de Guardia
+- DEBE rastrear la solicitud y respuesta a través de todas las capas del sistema, incluyendo eventos de dominio y notificaciones por webhooks
+- El valor DEBE seguir el estándar UUIDv7, con marcación temporal según lo especificado en [RFC 9562](https://datatracker.ietf.org/doc/html/rfc9562#name-uuid-version-7)
 
 ```http
 X-Grd-Trace-Id: <uuid>
 ```
 
-**Validación:**
-- DEBE ser un UUIDv7 válido.
-- DEBE incluirse en todas las respuestas, incluyendo errores.
+#### Validación
+- DEBE ser un UUIDv7 válido
+- DEBE incluirse en todas las respuestas, incluyendo errores
 
 ---
 
@@ -117,29 +130,40 @@ X-Grd-Trace-Id: <uuid>
 
 Header opcional enviado por sistemas externos. Utilizado para propagar el contexto de seguimiento a lo largo de llamadas distribuidas.
 
-- Si está presente en la solicitud, DEBE ser incluido en la respuesta.
-- El valor DEBE seguir el estándar propuesto por [RFC 9562](https://datatracker.ietf.org/doc/html/rfc9562).
+- Si está presente en la solicitud, DEBE ser incluido en la respuesta
+- Si está presente en la solicitud, DEBE ser propagado a través de todas las capas del sistema, incluyendo eventos de dominio y notificaciones por webhooks
+- El valor DEBE seguir el estándar propuesto por [RFC 9562](https://datatracker.ietf.org/doc/html/rfc9562)
 
 ```http
 X-Grd-Correlation-Id: <uuid>
 ```
 
-**Validación:**
-- Si está presente, DEBE ser un UUIDv7 válido.
-- Si es inválido, DEBE ser ignorado y se DEBE generar un nuevo valor.
+#### Validación
+- Si está presente, DEBE ser un UUID válido
+- Si es inválido, DEBE ser ignorado y se DEBE generar un nuevo valor
 
 ---
 
 ## Consideraciones de Seguridad
 
-- El uso de `X-Grd-Debug: true` en entornos de producción DEBE ser controlado por alcance o autenticación.
-- Los headers de seguimiento NO DEBEN contener datos sensibles, PII o secretos.
-- Las solicitudes DEBEN ser validadas independientemente del estado de autenticación.
+- Los headers de seguimiento NO DEBEN contener:
+  - Datos sensibles
+  - Información PII (Información Personalmente Identificable)
+  - Secretos o credenciales
+  - Información confidencial de negocio
+- Las solicitudes DEBEN ser validadas:
+  - Independientemente del estado de autenticación
+  - Considerando el contexto de seguridad del tenant
+  - Respetando los límites de tasa configurados
+- Los headers personalizados DEBEN:
+  - Ser validados por tamaño máximo
+  - Ser sanitizados para prevenir inyección de código
+  - Ser limitados en cantidad por solicitud
 
-### Notas adicionales
+## Notas adicionales
 
-- Los headers utilizados en cada endpoint DEBEN ser documentados en el contrato OAS de la API.
-- Los headers aquí descritos son considerados el estándar mínimo para cualquier API RESTful de Guardia.
+- Los headers utilizados en cada endpoint DEBEN ser documentados en el contrato OAS de la API
+- Los headers aquí descritos son considerados el estándar mínimo para cualquier API RESTful de Guardia
 
 ## Referencias
 
