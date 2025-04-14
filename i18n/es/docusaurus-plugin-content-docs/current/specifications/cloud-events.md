@@ -2,9 +2,9 @@
 sidebar_position: 4
 ---
 
-# Cloud Events
+# CloudEvents
 
-[Cloud Events](https://cloudevents.io) es una especificación estandarizada para representar eventos — es decir, ocurrencias significativas en sistemas distribuidos — en un formato común. Esta estandarización permite la interoperabilidad entre servicios y plataformas, garantizando trazabilidad, auditabilidad y resiliencia mediante comunicación asíncrona basada en eventos.
+[CloudEvents](https://cloudevents.io) es una especificación estandarizada para representar eventos — es decir, ocurrencias significativas en sistemas distribuidos — en un formato común. Esta estandarización permite la interoperabilidad entre servicios y plataformas, garantizando trazabilidad, auditabilidad y resiliencia mediante comunicación asíncrona basada en eventos.
 
 En arquitecturas modernas, este enfoque resuelve desafíos como:
 - **Interoperabilidad** entre servicios en diferentes lenguajes y plataformas
@@ -17,18 +17,18 @@ En arquitecturas modernas, este enfoque resuelve desafíos como:
 
 La siguiente estructura presenta un resumen visual de las propiedades esperadas en un evento. Las reglas y descripciones detalladas se encuentran en la sección [Propiedades](#propiedades).
 
-| Propiedad                               | Tipo       | Predeterminado     |
-|-----------------------------------------|------------|-------------------|
-| [`id`](#id)                             | UUID v7    | -                 |
-| [`source`](#source)                     | URI        | -                 |
-| [`specversion`](#specversion)           | string     | `1.0`             |
-| [`type`](#type)                         | string     | -                 |
-| [`time`](#time)                         | datetime   | -                 |
-| [`datacontenttype`](#datacontenttype)   | string     | `application/json`|
-| [`dataschema`](#dataschema)             | URI        | -                 |
-| [`subject`](#subject)                   | string     | -                 |
-| [`idempotencykey`](#idempotencykey)     | UUID       | -                 |
-| [`data`](#data)                         | Object     | -                 |
+| Propiedad                               | Tipo       | Predeterminado     | Descripción                                                                           |
+|-----------------------------------------|------------|--------------------|---------------------------------------------------------------------------------------|
+| [`id`](#id)                             | UUID v7    | -                  | Identificador único del evento.                                                       |
+| [`source`](#source)                     | URI        | -                  | Fuente del evento.                                                                    |
+| [`specversion`](#specversion)           | string     | `1.0`              | Versión de la especificación CloudEvents.                                             |
+| [`type`](#type)                         | string     | -                  | Tipo de evento, en el formato `event.{provider}.{module}.{entity_type}.{event_name}`. |
+| [`time`](#time)                         | datetime   | -                  | Timestamp del evento.                                                                 |
+| [`datacontenttype`](#datacontenttype)   | string     | `application/json` | Tipo de contenido del evento.                                                         |
+| [`dataschema`](#dataschema)             | URI        | -                  | Esquema del contenido del evento.                                                     |
+| [`subject`](#subject)                   | string     | -                  | Identificador de la entidad asociada al evento.                                       |
+| [`idempotencykey`](#idempotencykey)     | UUID       | -                  | Clave de idempotencia del evento.                                                     |
+| [`data`](#data)                         | Object     | -                  | Datos de la entidad asociada al evento.                                               |
 
 ### Propiedades
 
@@ -45,6 +45,7 @@ La siguiente estructura presenta un resumen visual de las propiedades esperadas 
 
 #### `type`
 - DEBE ser una cadena en el formato `event.guardia.{entity_type}.{event_name}`.
+- DEBE ser un tipo de evento catalogado en [Hub Guardia](https://hub.guardia.com/schemas).
 
 #### `time`
 - DEBE ser un timestamp en formato [RFC3339](https://datatracker.ietf.org/doc/html/rfc3339).

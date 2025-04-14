@@ -2,9 +2,9 @@
 sidebar_position: 4
 ---
 
-# Cloud Events
+# CloudEvents
 
-[Cloud Events](https://cloudevents.io) é uma especificação padronizada para representar eventos — ou seja, ocorrências significativas em sistemas distribuídos — em um formato comum. Essa padronização permite interoperabilidade entre serviços e plataformas, garantindo rastreabilidade, auditabilidade e resiliência por meio de comunicação assíncrona baseada em eventos.
+[CloudEvents](https://cloudevents.io) é uma especificação padronizada para representar eventos — ou seja, ocorrências significativas em sistemas distribuídos — em um formato comum. Essa padronização permite interoperabilidade entre serviços e plataformas, garantindo rastreabilidade, auditabilidade e resiliência por meio de comunicação assíncrona baseada em eventos.
 
 Em arquiteturas modernas, essa abordagem resolve desafios como:
 - **Interoperabilidade** entre serviços em diferentes linguagens e plataformas
@@ -15,18 +15,18 @@ Em arquiteturas modernas, essa abordagem resolve desafios como:
 
 ## Estrutura do Evento
 
-| Propriedade                               | Tipo       | Padrão            |
-|-------------------------------------------|------------|-------------------|
-| [`id`](#id)                               | UUID v7    | -                 |
-| [`source`](#source)                       | URI        | -                 |
-| [`specversion`](#specversion)             | string     | `1.0`             |
-| [`type`](#type)                           | string     | -                 |
-| [`time`](#time)                           | datetime   | -                 |
-| [`datacontenttype`](#datacontenttype)     | string     | `application/json`|
-| [`dataschema`](#dataschema)               | URI        | -                 |
-| [`subject`](#subject)                     | string     | -                 |
-| [`idempotencykey`](#idempotencykey)       | UUID       | -                 |
-| [`data`](#data)                           | Object     | -                 |
+| Propriedade                               | Tipo       | Padrão            | Descrição                                                                          |
+|-------------------------------------------|------------|-------------------|------------------------------------------------------------------------------------|
+| [`id`](#id)                               | UUID v7    | -                 | Identificador único do evento.                                                     |
+| [`source`](#source)                       | URI        | -                 | Origem do evento.                                                                  |
+| [`specversion`](#specversion)             | string     | `1.0`             | Versão da especificação CloudEvents.                                               |
+| [`type`](#type)                           | string     | -                 | Tipo do evento.                                                                    |
+| [`time`](#time)                           | datetime   | -                 | Timestamp da ocorrência do evento.                                                 |
+| [`datacontenttype`](#datacontenttype)     | string     | `application/json`| Tipo do conteúdo do evento.                                                        |
+| [`dataschema`](#dataschema)               | URI        | -                 | Schema do conteúdo do evento.                                                      |
+| [`subject`](#subject)                     | string     | -                 | Identificador da entidade associada ao evento.                                     |
+| [`idempotencykey`](#idempotencykey)       | UUID       | -                 | Chave de idempotência do evento.                                                   |
+| [`data`](#data)                           | Object     | -                 | Dados da entidade associada ao evento.                                             |
 
 ### Propriedades
 
@@ -42,7 +42,8 @@ Em arquiteturas modernas, essa abordagem resolve desafios como:
 - DEVE ser uma string fixa com o valor `1.0`.
 
 #### `type`
-- DEVE ser uma string no formato `event.guardia.{entity_type}.{event_name}`.
+- DEVE ser uma string no formato `event.{provider}.{module}.{entity_type}.{event_name}`.
+- DEVE ser um tipo de evento catalogado no [Hub Guardia](https://hub.guardia.com/schemas).
 
 #### `time`
 - DEVE ser um timestamp no formato [RFC3339](https://datatracker.ietf.org/doc/html/rfc3339).
@@ -79,7 +80,7 @@ Em arquiteturas modernas, essa abordagem resolve desafios como:
 ```json
 {
   "specversion" : "1.0",
-  "type" : "event.guardia.ledger.created",
+  "type" : "event.guardia.lke.ledger.created",
   "datacontenttype" : "application/json",
   "source" : "https://my_tenant.guardia.finance/lke/api/v1/ledgers/019634679e5a708f8205e54411ba3200",
   "subject" : "ledger/019634679e5a708f8205e54411ba3200",
