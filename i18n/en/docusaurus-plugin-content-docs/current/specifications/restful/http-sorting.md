@@ -74,7 +74,7 @@ GET /api/v1/ledgers?order_by=reference_date&sort=DESC // case insensitive
 
 **Allowed exceptions**
 
-- Endpoints with fixed ordering by business rule MAY omit `order_by`, as long as it is recorded in a [Product Decision Record (PDR)](../../community/governance/COMPLIANCE.md#product-decision-records-pdr).
+- Endpoints with fixed ordering by business rule MAY omit `order_by`, as long as it is recorded in a [Product Decision Record (PDR)](../../community/governance/index.md#product-decision-records-pdr).
 
 ## Additional notes
 

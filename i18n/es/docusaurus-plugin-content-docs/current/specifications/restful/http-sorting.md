@@ -74,7 +74,7 @@ GET /api/v1/ledgers?order_by=reference_date&sort=DESC // insensible a mayúscula
 
 **Excepciones permitidas**
 
-- Los endpoints con ordenamiento fijo por regla de negocio PUEDEN omitir `order_by`, siempre que esté registrado en un [Registro de Decisión de Producto (PDR)](../../community/governance/COMPLIANCE.md#registros-de-decisión-de-producto-pdr).
+- Los endpoints con ordenamiento fijo por regla de negocio PUEDEN omitir `order_by`, siempre que esté registrado en un [Registro de Decisión de Producto (PDR)](../../community/governance/index.md#registros-de-decisión-de-producto-pdr).
 
 ## Notas adicionales
 
