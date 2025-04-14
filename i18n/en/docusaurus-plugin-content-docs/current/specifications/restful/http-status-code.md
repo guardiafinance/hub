@@ -10,11 +10,11 @@ These guidelines MUST be applied to all Guardia modules and services, whether in
 
 ## 2xx - Success Responses
 
-| Code                       | Status                    | Methods                        | Notes                                           |
+| Code                         | Status                    | Methods                        | Description                                           |
 |------------------------------|---------------------------|--------------------------------|-------------------------------------------------------|
-| [200](#200-ok)               | OK                        | `GET`, `POST`, `PUT`, `PATCH`  | Successful operations that return data.           |
-| [201](#201-created)          | Created                   | `POST`, `PUT`                  | When a new resource is created.                      |
-| [202](#202-accepted)         | Accepted                  | `POST`, `PUT`, `PATCH`         | Asynchronous processing.                             |
+| [200](#200-ok)               | OK                        | `GET`, `POST`, `PUT`, `PATCH`  | Successful operations that return data.               |
+| [201](#201-created)          | Created                   | `POST`, `PUT`                  | When a new resource is created.                       |
+| [202](#202-accepted)         | Accepted                  | `POST`, `PUT`, `PATCH`         | Asynchronous processing.                              |
 | [204](#204-no-content)       | No Content                | `DELETE`, `PUT`, `PATCH`       | Success without response content.                     |
 
 ### 200 OK
@@ -62,11 +62,11 @@ These guidelines MUST be applied to all Guardia modules and services, whether in
 
 ## 3xx - Redirections
 
-| Code                       | Status                    | Methods                        | Notes                                           |
-|------------------------------|---------------------------|--------------------------------|-------------------------------------------------------|
-| [301](#301-moved-permanently) | Moved Permanently        | `GET`, `HEAD`                  | Permanent route redirection.                 |
-| [304](#304-not-modified)     | Not Modified              | `GET`, `HEAD`                  | Cache response when no changes occurred.         |
-| [307](#307-temporary-redirect) | Temporary Redirect      | All                          | Redirects maintaining the original method and body.       |
+| Code                              | Status                   | Methods                | Description                                           |
+|-----------------------------------|--------------------------|------------------------|-------------------------------------------------------|
+| [301](#301-moved-permanently)     | Moved Permanently        | `GET`                  | Permanent route redirection.                          |
+| [304](#304-not-modified)          | Not Modified             | `GET`                  | Cache response when no changes occurred.              |
+| [307](#307-temporary-redirect)    | Temporary Redirect       | All                    | Redirects maintaining the original method and body.   |
 
 ### 301 Moved Permanently
 
@@ -102,17 +102,17 @@ These guidelines MUST be applied to all Guardia modules and services, whether in
 
 ## 4xx - Client Errors
 
-| Code                       | Status                    | Methods                        | Notes                                           |
-|------------------------------|---------------------------|--------------------------------|-------------------------------------------------------|
-| [400](#400-bad-request)      | Bad Request               | All                          | Malformed or invalid request.                    |
-| [401](#401-unauthorized)     | Unauthorized              | All                          | Missing or invalid authentication.                     |
-| [402](#402-payment-required) | Payment Required         | All                          | Payment required for access.                      |
-| [403](#403-forbidden)        | Forbidden                 | All                          | Access denied even with authentication.                 |
-| [404](#404-not-found)        | Not Found                 | All                          | Non-existent resource.                                  |
-| [408](#408-request-timeout)  | Request Timeout           | All                          | Client took too long to complete the request.          |
-| [409](#409-conflict)         | Conflict                  | `PUT`, `PATCH`, `POST`         | Conflict with current resource state.               |
-| [422](#422-unprocessable-entity)  | Unprocessable Entity | `POST`, `PUT`, `PATCH`         | Valid data, but with semantic error.                |
-| [429](#429-too-many-requests)   | Too Many Requests      | All                          | Request limit exceeded.                       |
+| Code                                 | Status                     | Methods                      | Description                                      |
+|--------------------------------------|----------------------------|------------------------------|--------------------------------------------------|
+| [400](#400-bad-request)              | Bad Request                | All                          | Malformed or invalid request.                    |
+| [401](#401-unauthorized)             | Unauthorized               | All                          | Missing or invalid authentication.               |
+| [402](#402-payment-required)         | Payment Required           | All                          | Payment required for access.                     |
+| [403](#403-forbidden)                | Forbidden                  | All                          | Access denied even with authentication.          |
+| [404](#404-not-found)                | Not Found                  | All                          | Non-existent resource.                           |
+| [408](#408-request-timeout)          | Request Timeout            | All                          | Client took too long to complete the request.    |
+| [409](#409-conflict)                 | Conflict                   | `PUT`, `PATCH`, `POST`       | Conflict with current resource state.            |
+| [422](#422-unprocessable-entity)     | Unprocessable Entity       | `POST`, `PUT`, `PATCH`       | Valid data, but with semantic error.             |
+| [429](#429-too-many-requests)        | Too Many Requests          | All                          | Request limit exceeded.                          |
 
 ### 400 Bad Request
 
@@ -191,13 +191,13 @@ These guidelines MUST be applied to all Guardia modules and services, whether in
 
 ## 5xx - Server Errors
 
-| Code                       | Status                    | Methods                        | Notes                                           |
-|------------------------------|---------------------------|--------------------------------|-------------------------------------------------------|
-| [500](#500-internal-server-error)   | Internal Server Error     | All                   | Unexpected internal error.                              |
-| [501](#501-not-implemented)  | Not Implemented           | Any unsupported         | Valid method but not implemented on server.      |
-| [502](#502-bad-gateway)      | Bad Gateway               | All                          | Error receiving response from another server.           |
-| [503](#503-service-unavailable)   | Service Unavailable  | All                          | Service temporarily down.                   |
-| [504](#504-gateway-timeout)  | Gateway Timeout           | All                          | No response in time from another server.               |
+| Code                                | Status                      | Methods                      | Description                                      |
+|-------------------------------------|-----------------------------|------------------------------|--------------------------------------------------|
+| [500](#500-internal-server-error)   | Internal Server Error       | All                          | Unexpected internal error.                       |
+| [501](#501-not-implemented)         | Not Implemented             | Any unsupported              | Valid method but not implemented on server.      |
+| [502](#502-bad-gateway)             | Bad Gateway                 | All                          | Error receiving response from another server.    |
+| [503](#503-service-unavailable)     | Service Unavailable         | All                          | Service temporarily down.                        |
+| [504](#504-gateway-timeout)         | Gateway Timeout             | All                          | No response in time from another server.         |
 
 ### 500 Internal Server Error
 

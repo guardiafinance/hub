@@ -10,7 +10,7 @@ Estas diretrizes DEVEM ser aplicadas em todos os módulos e serviços da Guardia
 
 ## 2xx - Respostas de Sucesso
 
-| Código                       | Status                    | Métodos                        | Observações                                           |
+| Código                       | Status                    | Métodos                        | Descrição                                           |
 |------------------------------|---------------------------|--------------------------------|-------------------------------------------------------|
 | [200](#200-ok)               | OK                        | `GET`, `POST`, `PUT`, `PATCH`  | Operações bem-sucedidas que retornam dados.           |
 | [201](#201-created)          | Created                   | `POST`, `PUT`                  | Quando um novo recurso é criado.                      |
@@ -62,10 +62,10 @@ Estas diretrizes DEVEM ser aplicadas em todos os módulos e serviços da Guardia
 
 ## 3xx - Redirecionamentos
 
-| Código                       | Status                    | Métodos                        | Observações                                           |
+| Código                       | Status                    | Métodos                        | Descrição                                             |
 |------------------------------|---------------------------|--------------------------------|-------------------------------------------------------|
-| [301](#301-moved-permanently) | Moved Permanently        | `GET`, `HEAD`                  | Redirecionamento permanente de rotas.                 |
-| [304](#304-not-modified)     | Not Modified              | `GET`, `HEAD`                  | Resposta de cache quando não houve alteração.         |
+| [301](#301-moved-permanently) | Moved Permanently        | `GET`                          | Redirecionamento permanente de rotas.                 |
+| [304](#304-not-modified)     | Not Modified              | `GET`                          | Resposta de cache quando não houve alteração.         |
 | [307](#307-temporary-redirect) | Temporary Redirect      | Todos                          | Redireciona mantendo o método e corpo original.       |
 
 ### 301 Moved Permanently
@@ -102,11 +102,11 @@ Estas diretrizes DEVEM ser aplicadas em todos os módulos e serviços da Guardia
 
 ## 4xx - Erros do Cliente
 
-| Código                       | Status                    | Métodos                        | Observações                                           |
+| Código                       | Status                    | Métodos                        | Descrição                                             |
 |------------------------------|---------------------------|--------------------------------|-------------------------------------------------------|
 | [400](#400-bad-request)      | Bad Request               | Todos                          | Requisição malformada ou inválida.                    |
 | [401](#401-unauthorized)     | Unauthorized              | Todos                          | Autenticação ausente ou inválida.                     |
-| [402](#402-payment-required) | Payment Required         | Todos                          | Cobrança necessária para acesso.                      |
+| [402](#402-payment-required) | Payment Required          | Todos                          | Cobrança necessária para acesso.                      |
 | [403](#403-forbidden)        | Forbidden                 | Todos                          | Acesso negado mesmo com autenticação.                 |
 | [404](#404-not-found)        | Not Found                 | Todos                          | Recurso inexistente.                                  |
 | [408](#408-request-timeout)  | Request Timeout           | Todos                          | Cliente demorou para completar a requisição.          |
@@ -191,7 +191,7 @@ Estas diretrizes DEVEM ser aplicadas em todos os módulos e serviços da Guardia
 
 ## 5xx - Erros do Servidor
 
-| Código                       | Status                    | Métodos                        | Observações                                           |
+| Código                       | Status                    | Métodos                        | Descrição                                           |
 |------------------------------|---------------------------|--------------------------------|-------------------------------------------------------|
 | [500](#500-internal-server-error)   | Internal Server Error     | Todos                          | Erro interno inesperado.                              |
 | [501](#501-not-implemented)  | Not Implemented           | Qualquer não suportado         | Método válido, mas não implementado no servidor.      |

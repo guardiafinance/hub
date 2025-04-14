@@ -10,12 +10,12 @@ Estas directrices DEBEN aplicarse a todos los módulos y servicios de Guardia, y
 
 ## 2xx - Respuestas de Éxito
 
-| Código                       | Estado                    | Métodos                        | Observaciones                                           |
+| Código                       | Estado                    | Métodos                        | Descripción                                           |
 |------------------------------|---------------------------|--------------------------------|-------------------------------------------------------|
-| [200](#200-ok)               | OK                        | `GET`, `POST`, `PUT`, `PATCH`  | Operaciones exitosas que retornan datos.           |
+| [200](#200-ok)               | OK                        | `GET`, `POST`, `PUT`, `PATCH`  | Operaciones exitosas que retornan datos.              |
 | [201](#201-created)          | Created                   | `POST`, `PUT`                  | Cuando se crea un nuevo recurso.                      |
-| [202](#202-accepted)         | Accepted                  | `POST`, `PUT`, `PATCH`         | Procesamiento asíncrono.                             |
-| [204](#204-no-content)       | No Content                | `DELETE`, `PUT`, `PATCH`       | Éxito sin contenido en la respuesta.                     |
+| [202](#202-accepted)         | Accepted                  | `POST`, `PUT`, `PATCH`         | Procesamiento asíncrono.                              |
+| [204](#204-no-content)       | No Content                | `DELETE`, `PUT`, `PATCH`       | Éxito sin contenido en la respuesta.                  |
 
 ### 200 OK
 
@@ -62,11 +62,11 @@ Estas directrices DEBEN aplicarse a todos los módulos y servicios de Guardia, y
 
 ## 3xx - Redireccionamientos
 
-| Código                       | Estado                    | Métodos                        | Observaciones                                           |
-|------------------------------|---------------------------|--------------------------------|-------------------------------------------------------|
-| [301](#301-moved-permanently) | Moved Permanently        | `GET`, `HEAD`                  | Redireccionamiento permanente de rutas.                 |
-| [304](#304-not-modified)     | Not Modified              | `GET`, `HEAD`                  | Respuesta de caché cuando no hubo cambios.         |
-| [307](#307-temporary-redirect) | Temporary Redirect      | Todos                          | Redirecciona manteniendo el método y cuerpo original.       |
+| Código                              | Estado                    | Métodos                        | Descripción                                           |
+|-------------------------------------|---------------------------|--------------------------------|-------------------------------------------------------|
+| [301](#301-moved-permanently)       | Moved Permanently         | `GET`                          | Redireccionamiento permanente de rutas.               |
+| [304](#304-not-modified)            | Not Modified              | `GET`                          | Respuesta de caché cuando no hubo cambios.            |
+| [307](#307-temporary-redirect)      | Temporary Redirect        | Todos                          | Redirecciona manteniendo el método y cuerpo original. |
 
 ### 301 Moved Permanently
 
@@ -102,17 +102,17 @@ Estas directrices DEBEN aplicarse a todos los módulos y servicios de Guardia, y
 
 ## 4xx - Errores del Cliente
 
-| Código                       | Estado                    | Métodos                        | Observaciones                                           |
-|------------------------------|---------------------------|--------------------------------|-------------------------------------------------------|
-| [400](#400-bad-request)      | Bad Request               | Todos                          | Solicitud malformada o inválida.                    |
-| [401](#401-unauthorized)     | Unauthorized              | Todos                          | Autenticación ausente o inválida.                     |
-| [402](#402-payment-required) | Payment Required         | Todos                          | Pago requerido para acceso.                      |
-| [403](#403-forbidden)        | Forbidden                 | Todos                          | Acceso denegado incluso con autenticación.                 |
-| [404](#404-not-found)        | Not Found                 | Todos                          | Recurso inexistente.                                  |
-| [408](#408-request-timeout)  | Request Timeout           | Todos                          | Cliente demoró para completar la solicitud.          |
-| [409](#409-conflict)         | Conflict                  | `PUT`, `PATCH`, `POST`         | Conflicto con el estado actual del recurso.               |
-| [422](#422-unprocessable-entity)  | Unprocessable Entity | `POST`, `PUT`, `PATCH`         | Datos válidos, pero con error semántico.                |
-| [429](#429-too-many-requests)   | Too Many Requests      | Todos                          | Límite de solicitudes excedido.                       |
+| Código                              | Estado                    | Métodos                        | Descripción                                       |
+|-------------------------------------|---------------------------|--------------------------------|---------------------------------------------------|
+| [400](#400-bad-request)             | Bad Request               | Todos                          | Solicitud malformada o inválida.                  |
+| [401](#401-unauthorized)            | Unauthorized              | Todos                          | Autenticación ausente o inválida.                 |
+| [402](#402-payment-required)        | Payment Required          | Todos                          | Pago requerido para acceso.                       |
+| [403](#403-forbidden)               | Forbidden                 | Todos                          | Acceso denegado incluso con autenticación.        |
+| [404](#404-not-found)               | Not Found                 | Todos                          | Recurso inexistente.                              |
+| [408](#408-request-timeout)         | Request Timeout           | Todos                          | Cliente demoró para completar la solicitud.       |
+| [409](#409-conflict)                | Conflict                  | `PUT`, `PATCH`, `POST`         | Conflicto con el estado actual del recurso.       |
+| [422](#422-unprocessable-entity)    | Unprocessable Entity      | `POST`, `PUT`, `PATCH`         | Datos válidos, pero con error semántico.          |
+| [429](#429-too-many-requests)       | Too Many Requests         | Todos                          | Límite de solicitudes excedido.                   |
 
 ### 400 Bad Request
 
@@ -191,13 +191,13 @@ Estas directrices DEBEN aplicarse a todos los módulos y servicios de Guardia, y
 
 ## 5xx - Errores del Servidor
 
-| Código                       | Estado                    | Métodos                        | Observaciones                                           |
-|------------------------------|---------------------------|--------------------------------|-------------------------------------------------------|
-| [500](#500-internal-server-error)   | Internal Server Error     | Todos                   | Error interno inesperado.                              |
-| [501](#501-not-implemented)  | Not Implemented           | Cualquier no soportado         | Método válido, pero no implementado en el servidor.      |
-| [502](#502-bad-gateway)      | Bad Gateway               | Todos                          | Error al recibir respuesta de otro servidor.           |
-| [503](#503-service-unavailable)   | Service Unavailable  | Todos                          | Servicio fuera de línea temporalmente.                   |
-| [504](#504-gateway-timeout)  | Gateway Timeout           | Todos                          | Sin respuesta a tiempo de otro servidor.               |
+| Código                              | Estado                    | Métodos                        | Descripción                                           |
+|-------------------------------------|---------------------------|--------------------------------|-------------------------------------------------------|
+| [500](#500-internal-server-error)   | Internal Server Error     | Todos                          | Error interno inesperado.                             |
+| [501](#501-not-implemented)         | Not Implemented           | Cualquier no soportado         | Método válido, pero no implementado en el servidor.   |
+| [502](#502-bad-gateway)             | Bad Gateway               | Todos                          | Error al recibir respuesta de otro servidor.          |
+| [503](#503-service-unavailable)     | Service Unavailable       | Todos                          | Servicio fuera de línea temporalmente.                |
+| [504](#504-gateway-timeout)         | Gateway Timeout           | Todos                          | Sin respuesta a tiempo de otro servidor.              |
 
 ### 500 Internal Server Error
 
