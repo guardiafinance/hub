@@ -8,10 +8,6 @@ Este documento define directrices de uso para los principales códigos de estado
 
 Estas directrices DEBEN aplicarse a todos los módulos y servicios de Guardia, ya sea en la capa de API pública o en integraciones internas. La consistencia en los códigos de estado mejora la trazabilidad, reduce errores de consumo y facilita los diagnósticos.
 
-Cada código tiene dos secciones:
-- **Cuándo usar**: casos apropiados para aplicar el código.
-- **Cuándo no usar**: trampas comunes o situaciones donde el uso sería inadecuado.
-
 ## 2xx - Respuestas de Éxito
 
 | Código                       | Estado                    | Métodos                        | Observaciones                                           |

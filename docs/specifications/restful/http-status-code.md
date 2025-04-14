@@ -6,11 +6,7 @@ sidebar_position: 1
 
 Este documento define diretrizes de uso para os principais códigos de status HTTP no contexto de APIs RESTful da Guardia. O objetivo é promover consistência entre os times e evitar ambiguidades em integrações, garantindo uma experiência previsível para consumidores internos e externos.
 
-Estas diretrizes DEVE ser aplicadas em todos os módulos e serviços da Guardia, seja na camada de API pública ou em integrações internas. Consistência nos códigos de status melhora a rastreabilidade, reduz erros de consumo e facilita diagnósticos.
-
-Cada código possui duas seções:
-- **Quando usar**: casos apropriados para aplicar o código.
-- **Quando não usar**: armadilhas comuns ou situações onde o uso seria inadequado.
+Estas diretrizes DEVEM ser aplicadas em todos os módulos e serviços da Guardia, seja na camada de API pública ou em integrações internas. Consistência nos códigos de status melhora a rastreabilidade, reduz erros de consumo e facilita diagnósticos.
 
 ## 2xx - Respostas de Sucesso
 

@@ -8,10 +8,6 @@ This document defines usage guidelines for the main HTTP status codes in the con
 
 These guidelines MUST be applied to all Guardia modules and services, whether in the public API layer or internal integrations. Consistency in status codes improves traceability, reduces consumption errors, and facilitates diagnostics.
 
-Each code has two sections:
-- **When to use**: appropriate cases to apply the code.
-- **When not to use**: common pitfalls or situations where usage would be inappropriate.
-
 ## 2xx - Success Responses
 
 | Code                       | Status                    | Methods                        | Notes                                           |
