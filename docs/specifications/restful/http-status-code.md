@@ -43,6 +43,7 @@ Cada código possui duas seções:
 **Quando usar:**
 - Requisição processada com sucesso.
 - Resposta inclui dados ou confirmação da operação.
+- Listagens que não retornam resultados (ex: array vazio), mas foram processadas com sucesso.
 
 **Quando não usar:**
 - Quando uma nova entidade foi criada (use `201`).
@@ -78,6 +79,7 @@ Cada código possui duas seções:
 **Quando não usar:**
 - Quando é esperado retorno de conteúdo.
 - Quando a ausência de conteúdo indica um erro.
+- Em situações onde a resposta será usada para validação de cache, pois `204` não transporta cabeçalhos de controle de cache aplicáveis ao corpo.
 
 ## 3xx - Redirecionamentos
 
