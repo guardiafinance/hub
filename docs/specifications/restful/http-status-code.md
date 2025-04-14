@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# HTTP Status Codes
+# Status Codes
 
 Este documento define diretrizes de uso para os principais códigos de status HTTP no contexto de APIs RESTful da Guardia. O objetivo é promover consistência entre os times e evitar ambiguidades em integrações, garantindo uma experiência previsível para consumidores internos e externos.
 
@@ -12,31 +12,16 @@ Cada código possui duas seções:
 - **Quando usar**: casos apropriados para aplicar o código.
 - **Quando não usar**: armadilhas comuns ou situações onde o uso seria inadequado.
 
+## 2xx - Respostas de Sucesso
+
 | Código                       | Status                    | Métodos                        | Observações                                           |
 |------------------------------|---------------------------|--------------------------------|-------------------------------------------------------|
 | [200](#200-ok)               | OK                        | `GET`, `POST`, `PUT`, `PATCH`  | Operações bem-sucedidas que retornam dados.           |
 | [201](#201-created)          | Created                   | `POST`, `PUT`                  | Quando um novo recurso é criado.                      |
 | [202](#202-accepted)         | Accepted                  | `POST`, `PUT`, `PATCH`         | Processamento assíncrono.                             |
 | [204](#204-no-content)       | No Content                | `DELETE`, `PUT`, `PATCH`       | Sucesso sem conteúdo na resposta.                     |
-| [301](#301-moved-permanently) | Moved Permanently        | `GET`, `HEAD`                  | Redirecionamento permanente de rotas.                 |
-| [304](#304-not-modified)     | Not Modified              | `GET`, `HEAD`                  | Resposta de cache quando não houve alteração.         |
-| [307](#307-temporary-redirect) | Temporary Redirect      | Todos                          | Redireciona mantendo o método e corpo original.       |
-| [400](#400-bad-request)      | Bad Request               | Todos                          | Requisição malformada ou inválida.                    |
-| [401](#401-unauthorized)     | Unauthorized              | Todos                          | Autenticação ausente ou inválida.                     |
-| [402](#402-payment-required) |  Payment Required         | Todos                          | Cobrança necessária para acesso.                      |
-| [403](#403-forbidden)        | Forbidden                 | Todos                          | Acesso negado mesmo com autenticação.                 |
-| [404](#404-not-found)        | Not Found                 | Todos                          | Recurso inexistente.                                  |
-| [408](#408-request-timeout)  | Request Timeout           | Todos                          | Cliente demorou para completar a requisição.          |
-| [409](#409-conflict)         | Conflict                  | `PUT`, `PATCH`, `POST`         | Conflito com o estado atual do recurso.               |
-| [422](#422-unprocessable-entity)  | Unprocessable Entity | `POST`, `PUT`, `PATCH`         | Dados válidos, mas com erro semântico.                |
-| [429](#429-too-many-requests)   | Too Many Requests      | Todos                          | Limite de requisições excedido.                       |
-| [500](#500-internal-server-error)   | Internal Server Error     | Todos                   | Erro interno inesperado.                              |
-| [501](#501-not-implemented)  | Not Implemented           | Qualquer não suportado         | Método válido, mas não implementado no servidor.      |
-| [502](#502-bad-gateway)      | Bad Gateway               | Todos                          | Erro ao receber resposta de outro servidor.           |
-| [503](#503-service-unavailable)   | Service Unavailable  | Todos                          | Serviço fora do ar temporariamente.                   |
-| [504](#504-gateway-timeout)  | Gateway Timeout           | Todos                          | Sem resposta a tempo de outro servidor.               |
 
-## 2xx - Respostas de Sucesso
+
 
 ### 200 OK
 
@@ -83,6 +68,12 @@ Cada código possui duas seções:
 
 ## 3xx - Redirecionamentos
 
+| Código                       | Status                    | Métodos                        | Observações                                           |
+|------------------------------|---------------------------|--------------------------------|-------------------------------------------------------|
+| [301](#301-moved-permanently) | Moved Permanently        | `GET`, `HEAD`                  | Redirecionamento permanente de rotas.                 |
+| [304](#304-not-modified)     | Not Modified              | `GET`, `HEAD`                  | Resposta de cache quando não houve alteração.         |
+| [307](#307-temporary-redirect) | Temporary Redirect      | Todos                          | Redireciona mantendo o método e corpo original.       |
+
 ### 301 Moved Permanently
 
 **Quando usar:**
@@ -116,6 +107,18 @@ Cada código possui duas seções:
 - Quando o método DEVE ser convertido para GET (nunca use 307 nesse caso).
 
 ## 4xx - Erros do Cliente
+
+| Código                       | Status                    | Métodos                        | Observações                                           |
+|------------------------------|---------------------------|--------------------------------|-------------------------------------------------------|
+| [400](#400-bad-request)      | Bad Request               | Todos                          | Requisição malformada ou inválida.                    |
+| [401](#401-unauthorized)     | Unauthorized              | Todos                          | Autenticação ausente ou inválida.                     |
+| [402](#402-payment-required) |  Payment Required         | Todos                          | Cobrança necessária para acesso.                      |
+| [403](#403-forbidden)        | Forbidden                 | Todos                          | Acesso negado mesmo com autenticação.                 |
+| [404](#404-not-found)        | Not Found                 | Todos                          | Recurso inexistente.                                  |
+| [408](#408-request-timeout)  | Request Timeout           | Todos                          | Cliente demorou para completar a requisição.          |
+| [409](#409-conflict)         | Conflict                  | `PUT`, `PATCH`, `POST`         | Conflito com o estado atual do recurso.               |
+| [422](#422-unprocessable-entity)  | Unprocessable Entity | `POST`, `PUT`, `PATCH`         | Dados válidos, mas com erro semântico.                |
+| [429](#429-too-many-requests)   | Too Many Requests      | Todos                          | Limite de requisições excedido.                       |
 
 ### 400 Bad Request
 
@@ -195,6 +198,14 @@ Cada código possui duas seções:
 ## 5xx - Erros do Servidor
 
 ### 500 Internal Server Error
+
+| Código                       | Status                    | Métodos                        | Observações                                           |
+|------------------------------|---------------------------|--------------------------------|-------------------------------------------------------|
+| [500](#500-internal-server-error)   | Internal Server Error     | Todos                   | Erro interno inesperado.                              |
+| [501](#501-not-implemented)  | Not Implemented           | Qualquer não suportado         | Método válido, mas não implementado no servidor.      |
+| [502](#502-bad-gateway)      | Bad Gateway               | Todos                          | Erro ao receber resposta de outro servidor.           |
+| [503](#503-service-unavailable)   | Service Unavailable  | Todos                          | Serviço fora do ar temporariamente.                   |
+| [504](#504-gateway-timeout)  | Gateway Timeout           | Todos                          | Sem resposta a tempo de outro servidor.               |
 
 **Quando usar:**
 - Falhas inesperadas ou exceções não tratadas.
