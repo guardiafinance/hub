@@ -31,13 +31,13 @@ The base structure of an entity in Guardia MUST contain the following fields:
 |----------------------|--------------|----------|---------------------------------------------------------------------------|
 | `entity_id`          | UUID v7      | Yes      | Global unique identifier. Ensures uniqueness and temporal ordering.       |
 | `entity_type`        | string       | Yes      | Logical entity type (e.g., ledger, chapter, asset).                      |
-| `external_entity_id` | string       | No       | External ID provided by client systems.                               |
-| `created_at`         | datetime     | Yes      | Creation date/time (ISO 8601).                                          |
-| `updated_at`         | datetime     | No       | Last recorded modification (ISO 8601).                                   |
-| `discarded_at`       | datetime     | No       | Logical deletion mark (soft delete).                                   |
-| `metadata`           | JSON         | No       | Customizable key-value parameters (max. 10KB).          |
-| `version`            | integer      | Yes      | Sequential version control number.                                  |
-| `history`            | array        | No       | Complete record of changes and previous versions.                     |
+| `external_entity_id` | string       | No       | External ID provided by client systems (max. 36 characters).             |
+| `created_at`         | datetime     | Yes      | Creation date/time in UTC (ISO 8601).                                   |
+| `updated_at`         | datetime     | Yes      | Last recorded modification in UTC (ISO 8601).                           |
+| `discarded_at`       | datetime     | No       | Logical deletion mark in UTC (ISO 8601).                                |
+| `metadata`           | JSON         | No       | Key-value parameters (max. 10KB).                                       |
+| `version`            | integer      | Yes      | Sequential version control number.                                      |
+| `history`            | array        | No       | Complete record of changes and previous versions.                       |
 
 ### Detailed Requirements
 
@@ -50,7 +50,7 @@ The base structure of an entity in Guardia MUST contain the following fields:
 
 #### `external_entity_id`
 - MAY be null.
-- MAY implement any version of UUID or hash up to 36 characters.
+- MUST have a maximum of 36 characters.
 - WHEN present, MUST be unique within the `entity_type`.
 - Ideal for cross-references with legacy or external systems.
 
@@ -62,6 +62,8 @@ The base structure of an entity in Guardia MUST contain the following fields:
 #### `updated_at`
 - MUST be a datetime in UTC formatted according to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601).
 - MUST be updated with each persistent modification.
+- Upon creation, MUST assume the same value as `created_at`.
+- Upon discard, MUST assume the same value as `discarded_at`.
 - Used for concurrency control and synchronization.
 
 #### `discarded_at`
@@ -75,15 +77,21 @@ The base structure of an entity in Guardia MUST contain the following fields:
 - SHOULD follow the ideal size of 4KB whenever possible and MUST NOT exceed 10KB.
 - Updates MUST be done via JSON Merge Patch (RFC 7386).
 - MUST NOT contain sensitive or personal data without legal provision.
+- Values MAY be stored encrypted, with performance impact.
 
 #### `version`
 - Initializes at 1 and is automatically incremented along with `updated_at`.
+- NEVER resets, even after restoring a discarded entity.
+- In case of version conflict, the latest version is preserved, discarding the conflicting one.
 
 #### `history`
 - Stores snapshots of previous versions.
 - Used for audit, rollback, and investigation.
+- By default, stores the last 10 most recent versions for up to 365 days.
 - History MUST be omitted from temporal responses (create, update, delete, and get).
 - History MUST be provided in read responses (get) when requested by the client at the endpoint `api/v1/<entity_type>/<entity_id>/history`.
+- The history endpoint returns a list of up to 10 historical records of the same entity.
+- Values MAY be stored encrypted, with performance impact.
 
 ### When to apply
 

@@ -86,6 +86,10 @@ X-Grd-Debug: true
 
 **Valor padrão:** `false`
 
+**Validação:**
+- DEVE aceitar apenas os valores `true` ou `false` (case insensitive).
+- Qualquer outro valor DEVE resultar em `400 Bad Request` com o reason `INVALID_HEADER_VALUE`.
+
 > **ATENÇÃO:**
 > O uso em ambientes de produção DEVE ser restrito, pois pode tornar o payload de resposta mais verboso e consumir mais recursos.
 
@@ -103,6 +107,10 @@ Header obrigatório retornado em **todas as respostas** das APIs da Guardia. Rep
 X-Grd-Trace-Id: <uuid>
 ```
 
+**Validação:**
+- DEVE ser um UUIDv7 válido.
+- DEVE ser incluído em todas as respostas, incluindo erros.
+
 ---
 
 ### X-Grd-Correlation-Id
@@ -110,11 +118,15 @@ X-Grd-Trace-Id: <uuid>
 Header opcional enviado por sistemas externos. Utilizado para propagar contexto de rastreamento ao longo de chamadas distribuídas.
 
 - Se presente na requisição, DEVE ser incluído na resposta.
-- O valor DEVE seguir o padrão proposto pela [RFC 9562](https://datatracker.ietf.org/doc/html/rfc9562).
+- O valor DEVE seguir o padrão UUIDv7 proposto pela [RFC 9562](https://datatracker.ietf.org/doc/html/rfc9562).
 
 ```http
 X-Grd-Correlation-Id: <uuid>
 ```
+
+**Validação:**
+- Se presente, DEVE ser um UUIDv7 válido.
+- Se inválido, DEVE ser ignorado e um novo valor DEVE ser gerado.
 
 ---
 
@@ -124,7 +136,7 @@ X-Grd-Correlation-Id: <uuid>
 - Headers de rastreamento NÃO DEVEM conter dados sensíveis, PII ou segredos.
 - Requisições devem ser validadas independentemente do status de autenticação.
 
-### Notas adicionais
+## Notas adicionais
 
 - Os headers utilizados em cada endpoint DEVE ser documentado no contrato OAS da API.
 - Os headers aqui descritos são considerados **padrão mínimo** para qualquer API RESTful da Guardia.

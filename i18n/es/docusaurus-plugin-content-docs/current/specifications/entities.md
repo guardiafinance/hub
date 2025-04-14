@@ -31,12 +31,12 @@ La estructura base de una entidad en Guardia DEBE contener los siguientes campos
 |----------------------|--------------|-------------|---------------------------------------------------------------------------|
 | `entity_id`          | UUID v7      | Sí          | Identificador único global. Garantiza unicidad y ordenación temporal.       |
 | `entity_type`        | string       | Sí          | Tipo lógico de entidad (ej: ledger, chapter, asset).                      |
-| `external_entity_id` | string       | No          | ID externo proporcionado por sistemas clientes.                               |
-| `created_at`         | datetime     | Sí          | Fecha/hora de creación (ISO 8601).                                          |
-| `updated_at`         | datetime     | No          | Última modificación registrada (ISO 8601).                                   |
-| `discarded_at`       | datetime     | No          | Marca lógica de eliminación (soft delete).                                   |
-| `metadata`           | JSON         | No          | Parámetros personalizables por clave-valor (máx. 10KB).          |
-| `version`            | integer      | Sí          | Número secuencial de control de versión.                                  |
+| `external_entity_id` | string       | No          | ID externo proporcionado por sistemas clientes (máx. 36 caracteres).      |
+| `created_at`         | datetime     | Sí          | Fecha/hora de creación en UTC (ISO 8601).                                |
+| `updated_at`         | datetime     | Sí          | Última modificación registrada en UTC (ISO 8601).                        |
+| `discarded_at`       | datetime     | No          | Marca lógica de eliminación en UTC (ISO 8601).                           |
+| `metadata`           | JSON         | No          | Parámetros clave y valor (máx. 10KB).                                    |
+| `version`            | integer      | Sí          | Número secuencial de control de versión.                                 |
 | `history`            | array        | No          | Registro completo de cambios y versiones anteriores.                     |
 
 ### Requisitos Detallados
@@ -50,7 +50,7 @@ La estructura base de una entidad en Guardia DEBE contener los siguientes campos
 
 #### `external_entity_id`
 - PUEDE ser nulo.
-- PUEDE implementar cualquier versión de UUID o hash de hasta 36 caracteres.
+- DEBE tener un máximo de 36 caracteres.
 - CUANDO esté presente, DEBE ser único dentro del `entity_type`.
 - Ideal para referencias cruzadas con sistemas heredados o externos.
 
@@ -62,6 +62,8 @@ La estructura base de una entidad en Guardia DEBE contener los siguientes campos
 #### `updated_at`
 - DEBE ser un datetime en UTC formateado según [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601).
 - DEBE ser actualizado con cada modificación persistente.
+- En la creación, DEBE asumir el mismo valor que `created_at`.
+- En el descarte, DEBE asumir el mismo valor que `discarded_at`.
 - Utilizado para control de concurrencia y sincronización.
 
 #### `discarded_at`
@@ -75,15 +77,21 @@ La estructura base de una entidad en Guardia DEBE contener los siguientes campos
 - DEBE seguir el tamaño ideal de 4KB siempre que sea posible y NO DEBE exceder 10KB.
 - Las actualizaciones DEBEN realizarse mediante JSON Merge Patch (RFC 7386).
 - NO DEBE contener datos sensibles o personales sin previsión legal.
+- Los valores PUEDEN ser almacenados cifrados, con impacto en el rendimiento.
 
 #### `version`
 - Se inicializa en 1 y se incrementa automáticamente junto con `updated_at`.
+- NUNCA se reinicia, incluso después de restaurar una entidad descartada.
+- En caso de conflicto de versión, se preserva la última versión, descartando la que entró en conflicto.
 
 #### `history`
 - Almacena instantáneas de versiones anteriores.
 - Utilizado para auditoría, rollback e investigación.
+- Por defecto, almacena las últimas 10 versiones más recientes por hasta 365 días.
 - El historial DEBE ser omitido de las respuestas temporales (create, update, delete y get).
 - El historial DEBE ser proporcionado en las respuestas de lectura (get) cuando sea solicitado por el cliente en el endpoint `api/v1/<entity_type>/<entity_id>/history`.
+- El endpoint de historial devuelve una lista de hasta 10 registros históricos de la misma entidad.
+- Los valores PUEDEN ser almacenados cifrados, con impacto en el rendimiento.
 
 ### Cuándo aplicar
 

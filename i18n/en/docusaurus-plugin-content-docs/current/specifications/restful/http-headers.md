@@ -86,6 +86,10 @@ X-Grd-Debug: true
 
 **Default value:** `false`
 
+**Validation:**
+- MUST accept only `true` or `false` values (case insensitive).
+- Any other value MUST result in `400 Bad Request` with reason `INVALID_HEADER_VALUE`.
+
 > **WARNING:**
 > Usage in production environments MUST be restricted, as it may make the response payload more verbose and consume more resources.
 
@@ -103,6 +107,10 @@ Mandatory header returned in all responses from Guardia APIs. Represents the uni
 X-Grd-Trace-Id: <uuid>
 ```
 
+**Validation:**
+- MUST be a valid UUIDv7.
+- MUST be included in all responses, including errors.
+
 ---
 
 ### X-Grd-Correlation-Id
@@ -115,6 +123,10 @@ Optional header sent by external systems. Used to propagate tracking context thr
 ```http
 X-Grd-Correlation-Id: <uuid>
 ```
+
+**Validation:**
+- If present, MUST be a valid UUIDv7.
+- If invalid, MUST be ignored and a new value MUST be generated.
 
 ---
 

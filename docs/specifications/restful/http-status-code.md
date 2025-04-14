@@ -17,8 +17,6 @@ Estas diretrizes DEVEM ser aplicadas em todos os módulos e serviços da Guardia
 | [202](#202-accepted)         | Accepted                  | `POST`, `PUT`, `PATCH`         | Processamento assíncrono.                             |
 | [204](#204-no-content)       | No Content                | `DELETE`, `PUT`, `PATCH`       | Sucesso sem conteúdo na resposta.                     |
 
-
-
 ### 200 OK
 
 **Quando usar:**
@@ -108,7 +106,7 @@ Estas diretrizes DEVEM ser aplicadas em todos os módulos e serviços da Guardia
 |------------------------------|---------------------------|--------------------------------|-------------------------------------------------------|
 | [400](#400-bad-request)      | Bad Request               | Todos                          | Requisição malformada ou inválida.                    |
 | [401](#401-unauthorized)     | Unauthorized              | Todos                          | Autenticação ausente ou inválida.                     |
-| [402](#402-payment-required) |  Payment Required         | Todos                          | Cobrança necessária para acesso.                      |
+| [402](#402-payment-required) | Payment Required         | Todos                          | Cobrança necessária para acesso.                      |
 | [403](#403-forbidden)        | Forbidden                 | Todos                          | Acesso negado mesmo com autenticação.                 |
 | [404](#404-not-found)        | Not Found                 | Todos                          | Recurso inexistente.                                  |
 | [408](#408-request-timeout)  | Request Timeout           | Todos                          | Cliente demorou para completar a requisição.          |
@@ -193,15 +191,15 @@ Estas diretrizes DEVEM ser aplicadas em todos os módulos e serviços da Guardia
 
 ## 5xx - Erros do Servidor
 
-### 500 Internal Server Error
-
 | Código                       | Status                    | Métodos                        | Observações                                           |
 |------------------------------|---------------------------|--------------------------------|-------------------------------------------------------|
-| [500](#500-internal-server-error)   | Internal Server Error     | Todos                   | Erro interno inesperado.                              |
+| [500](#500-internal-server-error)   | Internal Server Error     | Todos                          | Erro interno inesperado.                              |
 | [501](#501-not-implemented)  | Not Implemented           | Qualquer não suportado         | Método válido, mas não implementado no servidor.      |
 | [502](#502-bad-gateway)      | Bad Gateway               | Todos                          | Erro ao receber resposta de outro servidor.           |
 | [503](#503-service-unavailable)   | Service Unavailable  | Todos                          | Serviço fora do ar temporariamente.                   |
 | [504](#504-gateway-timeout)  | Gateway Timeout           | Todos                          | Sem resposta a tempo de outro servidor.               |
+
+### 500 Internal Server Error
 
 **Quando usar:**
 - Falhas inesperadas ou exceções não tratadas.

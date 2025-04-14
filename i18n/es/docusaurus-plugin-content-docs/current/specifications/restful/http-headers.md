@@ -86,6 +86,10 @@ X-Grd-Debug: true
 
 **Valor predeterminado:** `false`
 
+**Validación:**
+- DEBE aceptar solo los valores `true` o `false` (sin distinción de mayúsculas/minúsculas).
+- Cualquier otro valor DEBE resultar en `400 Bad Request` con el motivo `INVALID_HEADER_VALUE`.
+
 > **ADVERTENCIA:**
 > El uso en entornos de producción DEBE ser restringido, ya que puede hacer que el payload de respuesta sea más verboso y consuma más recursos.
 
@@ -103,6 +107,10 @@ Header obligatorio devuelto en todas las respuestas de las APIs de Guardia. Repr
 X-Grd-Trace-Id: <uuid>
 ```
 
+**Validación:**
+- DEBE ser un UUIDv7 válido.
+- DEBE incluirse en todas las respuestas, incluyendo errores.
+
 ---
 
 ### X-Grd-Correlation-Id
@@ -115,6 +123,10 @@ Header opcional enviado por sistemas externos. Utilizado para propagar el contex
 ```http
 X-Grd-Correlation-Id: <uuid>
 ```
+
+**Validación:**
+- Si está presente, DEBE ser un UUIDv7 válido.
+- Si es inválido, DEBE ser ignorado y se DEBE generar un nuevo valor.
 
 ---
 

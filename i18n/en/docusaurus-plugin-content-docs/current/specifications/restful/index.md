@@ -15,9 +15,8 @@ The RESTful specification is structured into reusable and versionable modules th
 | [Status Codes](./http-status-code.md) | List of allowed HTTP status codes and usage rules. |
 | [Response Payloads](./http-response-payloads.md) | Unified format for success and error responses. |
 | [Pagination](./http-pagination.md) | Standard structure for navigating between paginated resources. |
-| [Sorting](./http-sorting.md) *(in development)* | Rules for using `order_by` and `sort` parameters. |
-| [Filtering](./http-filtering.md) *(in development)* | Conventions for query string and metadata filters. |
-| [Compression](./http-compression.md) *(in development)* | Standard for payload compression. |
+| [Sorting](./http-sorting.md) | Rules for using `order_by` and `sort` parameters. |
+| [Headers](./http-headers.md) | Standard and custom headers used in APIs. |
 
 
 > **IMPORTANT:**

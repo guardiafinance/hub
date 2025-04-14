@@ -15,9 +15,8 @@ La especificación RESTful está estructurada en módulos reutilizables y versio
 | [Códigos de Estado](./http-status-code.md) | Lista de códigos de estado HTTP permitidos y reglas de uso. |
 | [Payloads de Respuesta](./http-response-payloads.md) | Formato unificado para respuestas de éxito y error. |
 | [Paginación](./http-pagination.md) | Estructura estándar para navegar entre recursos paginados. |
-| [Ordenamiento](./http-sorting.md) *(en desarrollo)* | Reglas para usar los parámetros `order_by` y `sort`. |
-| [Filtrado](./http-filtering.md) *(en desarrollo)* | Convenciones para filtros en query string y metadatos. |
-| [Compresión](./http-compression.md) *(en desarrollo)* | Estándar para compresión de payloads. |
+| [Ordenamiento](./http-sorting.md) | Reglas para usar los parámetros `order_by` y `sort`. |
+| [Headers](./http-headers.md) | Headers estándar y personalizados utilizados en las APIs. |
 
 
 > **IMPORTANTE:**

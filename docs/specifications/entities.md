@@ -31,11 +31,11 @@ A estrutura base de uma entidade na Guardia DEVE conter os seguintes campos:
 |----------------------|--------------|-------------|---------------------------------------------------------------------------|
 | `entity_id`          | UUID v7      | Sim         | Identificador único global. Garante unicidade e ordenação temporal.       |
 | `entity_type`        | string       | Sim         | Tipo lógico da entidade (ex: ledger, chapter, asset).                      |
-| `external_entity_id` | string       | Não         | ID externo fornecido por sistemas clientes.                               |
-| `created_at`         | datetime     | Sim         | Data/hora de criação (ISO 8601).                                          |
-| `updated_at`         | datetime     | Não         | Última alteração registrada (ISO 8601).                                   |
-| `discarded_at`       | datetime     | Não         | Marca lógica de descarte (soft delete).                                   |
-| `metadata`           | JSON         | Não         | Parâmetros adicionais customizáveis por chave-valor (máx. 10KB).          |
+| `external_entity_id` | string       | Não         | ID externo fornecido por sistemas clientes (máx. 36 caracteres).          |
+| `created_at`         | datetime     | Sim         | Data/hora de criação em UTC (ISO 8601).                                   |
+| `updated_at`         | datetime     | Sim         | Última alteração registrada em UTC (ISO 8601).                            |
+| `discarded_at`       | datetime     | Não         | Marca lógica de descarte em UTC (ISO 8601).                               |
+| `metadata`           | JSON         | Não         | Parâmetros chave e valor (máx. 10KB).                                     |
 | `version`            | integer      | Sim         | Número sequencial de controle de versão.                                  |
 | `history`            | array        | Não         | Registro completo de alterações e versões anteriores.                     |
 
@@ -50,7 +50,7 @@ A estrutura base de uma entidade na Guardia DEVE conter os seguintes campos:
 
 #### `external_entity_id`
 - PODE ser nulo.
-- PODE ser implementado qualquer versao de UUID ou hash de ate 36 caracteres.
+- DEVE ter no máximo 36 caracteres.
 - QUANDO presente, DEVE ser único dentro do `entity_type`.
 - Ideal para referências cruzadas com sistemas legados ou externos.
 
@@ -62,6 +62,8 @@ A estrutura base de uma entidade na Guardia DEVE conter os seguintes campos:
 #### `updated_at`
 - DEVE ser um datetime em UTC formatado conforme a [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601).
 - DEVE ser atualizado a cada modificação persistente.
+- Na criação, DEVE assumir o mesmo valor de `created_at`.
+- No descarte, DEVE assumir o mesmo valor de `discarded_at`.
 - Utilizado para controle de concorrência e sincronização.
 
 #### `discarded_at`
@@ -75,15 +77,21 @@ A estrutura base de uma entidade na Guardia DEVE conter os seguintes campos:
 - DEVE ter seguir o tamanho ideal de 4KB sempre que possível e não DEVE ultrapassar 10KB.
 - Atualizações DEVEM ser feitas via JSON Merge Patch (RFC 7386).
 - NÃO DEVE conter dados sensíveis ou pessoais sem previsão legal.
+- Valores PODEM ser armazenados criptografados, com impacto na performance.
 
 #### `version`
 - Inicializa em 1 e é incrementado automaticamente junto com o `updated_at`.
+- NUNCA é reiniciado, mesmo após restauração de entidade descartada.
+- Em caso de conflito de versão, a última versão é preservada, descartando a que conflitou.
 
 #### `history`
 - Armazena snapshots de versões anteriores.
 - Utilizado para auditoria, rollback e investigação.
+- Por padrão, armazena as últimas 10 versões mais recentes por até 365 dias.
 - O histórico DEVE ser omitido das respostas temporais (create, update, delete e get).
 - O histórico DEVE ser fornecido nas respostas de leitura (get) quando solicitado pelo cliente no endpoint `api/v1/<entity_type>/<entity_id>/history`.
+- O endpoint de histórico retorna uma lista de até 10 registros históricos da mesma entidade.
+- Valores PODEM ser armazenados criptografados, com impacto na performance.
 
 ### Quando aplicar
 

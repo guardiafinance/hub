@@ -20,7 +20,7 @@ Los sistemas de Guardia DEBEN ofrecer los siguientes mecanismos de paginación:
 
 | Parámetro     | Tipo    | Predeterminado | Máximo | Descripción                                    |
 |--------------|---------|----------------|--------|----------------------------------------------|
-| `page_size`   | uint32  | 20     | 100    | Número de elementos por página. Si no se proporciona, se asume el valor predeterminado. |
+| `page_size`   | uint32  | 20     | 100    | Número de elementos por página. Si no se proporciona, se asume el valor predeterminado de 20. El valor máximo permitido es 100. |
 | `page_token` | string  | -      | -      | Token opaco que representa la página actual.    |
 | `order_by`   | string  | created_at  | -      | Campo base para la ordenación. Por defecto, DEBE ser `created_at`. Las opciones `updated_at` o `reference_date` DEBEN ser informadas explícitamente. |
 | `sort`       | string  | asc         | -      | Define si la ordenación es ascendente `asc` o descendente `desc`. |

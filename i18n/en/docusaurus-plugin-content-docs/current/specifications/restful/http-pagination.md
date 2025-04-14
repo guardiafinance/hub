@@ -20,7 +20,7 @@ Guardia systems MUST offer the following pagination mechanisms:
 
 | Parameter     | Type    | Default | Maximum | Description                                    |
 |--------------|---------|---------|---------|----------------------------------------------|
-| `page_size`   | uint32  | 20     | 100    | Number of items per page. If not provided, the default value is assumed. |
+| `page_size`   | uint32  | 20     | 100    | Number of items per page. If not provided, the default value of 20 is assumed. The maximum allowed value is 100. |
 | `page_token` | string  | -      | -      | Opaque token representing the current page.    |
 | `order_by`   | string  | created_at  | -      | Base field for ordering. By default, it MUST be `created_at`. The options `updated_at` or `reference_date` MUST be explicitly informed. |
 | `sort`       | string  | asc         | -      | Defines whether the ordering is ascending `asc` or descending `desc`. |
