@@ -18,31 +18,90 @@ Suporta **integrações eficientes** com ferramentas externas e promove reutiliz
 
 Os sistemas da Guardia DEVEM oferecer os seguintes mecanismos de paginação:
 
-| Parâmetro     | Tipo    | Padrão | Máximo | Descrição                                    |
-|--------------|---------|--------|--------|----------------------------------------------|
-| `page_size`   | uint32  | 20     | 100    | Número de itens por página. Se não informado, assume-se o valor padrão de 20. O valor máximo permitido é 100. |
-| `page_token` | string  | -      | -      | Token opaco representando a página atual.    |
-| `order_by`   | string  | created_at  | -      | Campo base da ordenação. Por padrão, DEVE ser `created_at`. As opções `updated_at` ou `reference_date` DEVEM ser explicitamente informadas. |
-| `sort`       | string  | asc         | -      | Define se a ordenação é crescente `asc` ou decrescente `desc`. |
+| Parâmetro                       | Tipo    | Padrão      | Máximo  |
+|---------------------------------|---------|-------------|---------|
+| [`page_size`](#page_size)       | uint32  | 20          | 100     |
+| [`page_token`](#page_token)     | string  | -           | -       |
+| [`order_by`](#order_by)         | string  | created_at  | -       |
+| [`sort`](#sort)                 | string  | asc         | -       |
 
-<br />
+### Parâmetros de paginação
+
+Os sistemas que expõem recursos pagináveis DEVEM implementar os seguintes parâmetros de controle de paginação. Esses parâmetros DEVEM ser aceitos via query string em endpoints compatíveis com paginação.
+
+#### `page_size`
+- DEVE ser um número inteiro representando a quantidade de itens por página.
+- QUANDO não especificado, DEVE assumir o valor padrão de `20`.
+- NÃO DEVE exceder o valor máximo de `100`.
+- Solicitações com valores acima do limite DEVEM ser rejeitadas com erro de validação.
+
+#### `page_token`
+- DEVE ser um token opaco que represente a posição corrente da paginação.
+- DEVE ser retornado pelo sistema em chamadas anteriores, quando aplicável.
+- O formato e semântica do token são de responsabilidade do sistema e DEVEM ser tratados como opacos pelo cliente.
+
+#### `order_by`
+- DEVE ser uma string indicando o campo base da ordenação dos resultados.
+- QUANDO não informado, DEVE assumir o valor padrão `created_at`.
+- VALORES permitidos incluem `created_at`, `updated_at` e `reference_date`.
+- QUALQUER outro valor informado DEVE ser rejeitado com erro de validação.
+
+#### `sort`
+- DEVE ser uma string indicando a direção da ordenação.
+- VALORES permitidos são `asc` (ordem crescente) e `desc` (ordem decrescente).
+- QUANDO não informado, DEVE assumir `desc`.
 
 ## Resposta
 
 A resposta DEVE conter os seguintes campos:
 
-| Campo | Tipo | Descrição |
-|-------|------|-----------|
-| `data` | array | Lista de itens retornados |
-| `pagination` | object | Objeto contendo informações de paginação |
-| `pagination.page_size` | uint32 | Número de itens por página |
-| `pagination.next_page_token` | string | Token para a próxima página de resultados |
-| `pagination.previous_page_token` | string | Token para a página anterior de resultados |
-| `pagination.first_page_token` | string | Token da primeira página (uso opcional no cliente) |
-| `pagination.last_page_token` | string | Token da última página (uso opcional no cliente) |
-| `pagination.total_count` | uint32 | Número total de registros disponíveis |
+| Campo                                                                 | Tipo   |
+|-----------------------------------------------------------------------|--------|
+| [`data`](#data)                                                       | array  |
+| [`pagination`](#pagination)                                           | object |
+| [`pagination.page_size`](#pagination.page_size)                       | uint32 |
+| [`pagination.next_page_token`](#pagination.next_page_token)           | string |
+| [`pagination.previous_page_token`](#pagination.previous_page_token)   | string |
+| [`pagination.first_page_token`](#pagination.first_page_token)         | string |
+| [`pagination.last_page_token`](#pagination.last_page_token)           | string |
+| [`pagination.total_count`](#pagination.total_count)                   | uint32 |
 
-### Payload de Resposta
+
+### Estrutura do Payload
+
+As respostas de endpoints que implementam paginação DEVEM seguir a estrutura abaixo. O objeto `pagination` DEVE conter os metadados necessários para navegação entre páginas de forma segura, eficiente e independente de estado no servidor.
+
+#### `data`
+- DEVE ser um array contendo os itens da página atual.
+- CADA item DEVE seguir a estrutura de recurso definida para o endpoint consultado.
+
+#### `pagination`
+- DEVE ser um objeto contendo os metadados de paginação.
+- Todos os campos de `pagination` DEVEM estar presentes, ainda que nulos quando não aplicáveis.
+
+##### `pagination.page_size`
+- DEVE ser um inteiro positivo (`uint32`) representando o número de itens por página na resposta.
+
+##### `pagination.next_page_token`
+- PODE ser uma string representando o token da próxima página.
+- QUANDO ausente ou nulo, indica que não há mais páginas seguintes.
+
+##### `pagination.previous_page_token`
+- PODE ser uma string representando o token da página anterior.
+- QUANDO ausente ou nulo, indica que esta é a primeira página da sequência.
+
+##### `pagination.first_page_token`
+- PODE ser uma string representando o token da primeira página.
+- DEVE ser tratado como um recurso auxiliar para clientes que desejem reiniciar a navegação.
+
+##### `pagination.last_page_token`
+- PODE ser uma string representando o token da última página.
+- DEVE ser utilizado opcionalmente por clientes para saltar ao final da sequência.
+
+##### `pagination.total_count`
+- DEVE ser um inteiro positivo (`uint32`) representando o número total de registros disponíveis na consulta original.
+- PODE ser omitido em cenários de paginação altamente escaláveis onde a contagem completa afete a performance.
+
 
 #### Exemplo em JSON
 ```json
@@ -64,13 +123,12 @@ A resposta DEVE conter os seguintes campos:
 
 Para mais detalhes sobre convenções gerais de resposta, consulte a [especificação de Payloads de Resposta](./response-payloads.md).
 
-### Headers de Resposta
+### Headers
 
-| Header         | Tipo | Descrição                                     |
-|----------------|---------|------------------------------------------------|
-| `Cache-Control`  | string | Indica que a resposta pode ser armazenada temporariamente do lado do cliente, conforme a especificação do header [Cache-Control](./headers.md#cache-control). O tempo de expiração do cache DEVE ser compatível com o tempo de vida do `page_token`. |
-| `Link` | string | Contém links para as próximas e anteriores páginas de resultados. |
-
+| Header            | Tipo    | Valor       |
+|-------------------|---------|-------------|
+| `Cache-Control`   | string  | max-age=900 |
+| `Link`            | string  | -           |
 
 Exemplo:
 
@@ -114,15 +172,14 @@ Saiba mais sobre os headers HTTP que a Guardia utiliza [aqui](./http-headers.md)
 
 ## Erros Conhecidos
 
-| Cenário | Código HTTP | Code | Reason |
-|--------|---------------------|--------|------|
-| `page_token` inválido | `400` | `ERR400_INVALID_ARGUMENT` | `PAGE_TOKEN_INVALID` |
-| `page_token` expirado | `400` | `ERR400_INVALID_ARGUMENT` | `PAGE_TOKEN_EXPIRED` |
-| `page_size` inválido | `400` | `ERR400_INVALID_ARGUMENT` | `PAGE_SIZE_INVALID` |
-| `page_size` acima do limite | `400` | `ERR400_INVALID_ARGUMENT` | `PAGE_SIZE_TOO_LARGE` |
-| `order_by` inválido | `400` | `ERR400_INVALID_ARGUMENT` | `ORDER_BY_INVALID` |
-| `sort` inválido | `400` | `ERR400_INVALID_ARGUMENT` | `SORT_INVALID` |
-
+| Cenário                             | Código HTTP | Código                    | Motivo                |
+|-------------------------------------|-------------|---------------------------|-----------------------|
+| `page_token` inválido               | `400`       | `ERR400_INVALID_ARGUMENT` | `PAGE_TOKEN_INVALID`  |
+| `page_token` expirado               | `400`       | `ERR400_INVALID_ARGUMENT` | `PAGE_TOKEN_EXPIRED`  |
+| `page_size` inválido                | `400`       | `ERR400_INVALID_ARGUMENT` | `PAGE_SIZE_INVALID`   |
+| `page_size` acima do limite         | `400`       | `ERR400_INVALID_ARGUMENT` | `PAGE_SIZE_TOO_LARGE` |
+| `order_by` inválido                 | `400`       | `ERR400_INVALID_ARGUMENT` | `ORDER_BY_INVALID`    |
+| `sort` inválido                     | `400`       | `ERR400_INVALID_ARGUMENT` | `SORT_INVALID`        |
 
 #### Exemplo de erro (JSON)
 ```json

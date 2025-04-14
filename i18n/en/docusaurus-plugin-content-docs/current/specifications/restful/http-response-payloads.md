@@ -72,7 +72,7 @@ The error payload MUST be returned when an error occurs in the request, whether 
     {
       "code": "string",
       "reason": "string",
-      "message": "string" // default message in English
+      "message": "string"
     }
   ]
 }
@@ -104,7 +104,7 @@ The debug payload MUST be returned when the `X-Grd-Debug` header is present and 
     {
       "code": "string",
       "reason": "string",
-      "message": "string" // default message in English
+      "message": "string"
     }
   ],
   "debug": {

@@ -72,7 +72,7 @@ El payload de error DEBE ser devuelto cuando ocurre un error en la solicitud, ya
     {
       "code": "string",
       "reason": "string",
-      "message": "string" // mensaje predeterminado en inglés
+      "message": "string"
     }
   ]
 }
@@ -104,7 +104,7 @@ El payload de depuración DEBE ser devuelto cuando el header `X-Grd-Debug` está
     {
       "code": "string",
       "reason": "string",
-      "message": "string" // mensaje predeterminado en inglés
+      "message": "string"
     }
   ],
   "debug": {

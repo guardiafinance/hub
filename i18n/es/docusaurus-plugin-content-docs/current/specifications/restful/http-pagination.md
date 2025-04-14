@@ -6,7 +6,7 @@ sidebar_position: 4
 
 Esta especificación define un estándar unificado de **paginación** para todos los endpoints de APIs RESTful de Guardia que devuelven listas de recursos. El objetivo es garantizar la consistencia entre interfaces, la previsibilidad en el consumo de datos y la interoperabilidad entre sistemas internos y externos.
 
-La estandarización de la paginación **previene sobrecargas sistémicas**, mejora el tiempo de respuesta y reduce el uso de recursos computacionales. Está alineada con los principios de **Compliance by Design**, como:
+La estandarización de la paginación **previene sobrecargas sistémicas**, mejora el tiempo de respuesta y reduce el uso de recursos computacionales. Está alineada con los principios de [Compliance by Design](../../community/governance/COMPLIANCE.md), como:
 
   - *Eficiencia*: a través de mecanismos de paginación eficientes, con minimización de datos, evitando retornos excesivos.
   - *Transparencia y auditabilidad*: proporcionando respuestas estructuradas y rastreables.
@@ -18,31 +18,88 @@ Apoya **integración eficiente** con herramientas externas y promueve la reutili
 
 Los sistemas de Guardia DEBEN ofrecer los siguientes mecanismos de paginación:
 
-| Parámetro     | Tipo    | Predeterminado | Máximo | Descripción                                    |
-|--------------|---------|----------------|--------|----------------------------------------------|
-| `page_size`   | uint32  | 20     | 100    | Número de elementos por página. Si no se proporciona, se asume el valor predeterminado de 20. El valor máximo permitido es 100. |
-| `page_token` | string  | -      | -      | Token opaco que representa la página actual.    |
-| `order_by`   | string  | created_at  | -      | Campo base para la ordenación. Por defecto, DEBE ser `created_at`. Las opciones `updated_at` o `reference_date` DEBEN ser informadas explícitamente. |
-| `sort`       | string  | asc         | -      | Define si la ordenación es ascendente `asc` o descendente `desc`. |
+| Parámetro                       | Tipo    | Predeterminado | Máximo |
+|---------------------------------|---------|----------------|--------|
+| [`page_size`](#page_size)       | uint32  | 20             | 100    |
+| [`page_token`](#page_token)     | string  | -              | -      |
+| [`order_by`](#order_by)         | string  | created_at     | -      |
+| [`sort`](#sort)                 | string  | asc            | -      |
 
-<br />
+### Parámetros de Paginación
+
+Los sistemas que exponen recursos paginables DEBEN implementar los siguientes parámetros de control de paginación. Estos parámetros DEBEN ser aceptados vía query string en endpoints compatibles con paginación.
+
+#### `page_size`
+- DEBE ser un número entero que represente la cantidad de elementos por página.
+- CUANDO no se especifique, DEBE asumir el valor predeterminado de `20`.
+- NO DEBE exceder el valor máximo de `100`.
+- Las solicitudes con valores por encima del límite DEBEN ser rechazadas con error de validación.
+
+#### `page_token`
+- DEBE ser un token opaco que represente la posición actual de la paginación.
+- DEBE ser retornado por el sistema en llamadas anteriores, cuando sea aplicable.
+- El formato y semántica del token son responsabilidad del sistema y DEBEN ser tratados como opacos por el cliente.
+
+#### `order_by`
+- DEBE ser una cadena que indique el campo base para la ordenación de resultados.
+- CUANDO no se informe, DEBE asumir el valor predeterminado `created_at`.
+- VALORES permitidos incluyen `created_at`, `updated_at` y `reference_date`.
+- CUALQUIER otro valor informado DEBE ser rechazado con error de validación.
+
+#### `sort`
+- DEBE ser una cadena que indique la dirección de la ordenación.
+- VALORES permitidos son `asc` (orden ascendente) y `desc` (orden descendente).
+- CUANDO no se informe, DEBE asumir `desc`.
 
 ## Respuesta
 
 La respuesta DEBE contener los siguientes campos:
 
-| Campo | Tipo | Descripción |
-|-------|------|-----------|
-| `data` | array | Lista de elementos devueltos |
-| `pagination` | object | Objeto que contiene información de paginación |
-| `pagination.page_size` | uint32 | Número de elementos por página |
-| `pagination.next_page_token` | string | Token para la siguiente página de resultados |
-| `pagination.previous_page_token` | string | Token para la página anterior de resultados |
-| `pagination.first_page_token` | string | Token de la primera página (uso opcional en el cliente) |
-| `pagination.last_page_token` | string | Token de la última página (uso opcional en el cliente) |
-| `pagination.total_count` | uint32 | Número total de registros disponibles |
+| Campo                                                                 | Tipo   |
+|-----------------------------------------------------------------------|--------|
+| [`data`](#data)                                                       | array  |
+| [`pagination`](#pagination)                                           | object |
+| [`pagination.page_size`](#pagination.page_size)                       | uint32 |
+| [`pagination.next_page_token`](#pagination.next_page_token)           | string |
+| [`pagination.previous_page_token`](#pagination.previous_page_token)   | string |
+| [`pagination.first_page_token`](#pagination.first_page_token)         | string |
+| [`pagination.last_page_token`](#pagination.last_page_token)           | string |
+| [`pagination.total_count`](#pagination.total_count)                   | uint32 |
 
-### Payload de Respuesta
+### Estructura del Payload
+
+Las respuestas de endpoints que implementan paginación DEBEN seguir la estructura a continuación. El objeto `pagination` DEBE contener los metadatos necesarios para la navegación entre páginas de forma segura, eficiente e independiente del estado en el servidor.
+
+#### `data`
+- DEBE ser un array que contenga los elementos de la página actual.
+- CADA elemento DEBE seguir la estructura de recurso definida para el endpoint consultado.
+
+#### `pagination`
+- DEBE ser un objeto que contenga los metadatos de paginación.
+- Todos los campos de `pagination` DEBEN estar presentes, incluso si son nulos cuando no son aplicables.
+
+##### `pagination.page_size`
+- DEBE ser un entero positivo (`uint32`) que represente el número de elementos por página en la respuesta.
+
+##### `pagination.next_page_token`
+- PUEDE ser una cadena que represente el token de la siguiente página.
+- CUANDO esté ausente o sea nulo, indica que no hay más páginas siguientes.
+
+##### `pagination.previous_page_token`
+- PUEDE ser una cadena que represente el token de la página anterior.
+- CUANDO esté ausente o sea nulo, indica que esta es la primera página de la secuencia.
+
+##### `pagination.first_page_token`
+- PUEDE ser una cadena que represente el token de la primera página.
+- DEBE ser tratado como un recurso auxiliar para clientes que deseen reiniciar la navegación.
+
+##### `pagination.last_page_token`
+- PUEDE ser una cadena que represente el token de la última página.
+- DEBE ser utilizado opcionalmente por los clientes para saltar al final de la secuencia.
+
+##### `pagination.total_count`
+- DEBE ser un entero positivo (`uint32`) que represente el número total de registros disponibles en la consulta original.
+- PUEDE ser omitido en escenarios de paginación altamente escalables donde el conteo completo afecte el rendimiento.
 
 #### Ejemplo en JSON
 ```json
@@ -64,24 +121,22 @@ La respuesta DEBE contener los siguientes campos:
 
 Para más detalles sobre las convenciones generales de respuesta, consulte la [especificación de Payloads de Respuesta](./response-payloads.md).
 
-### Headers de Respuesta
+### Headers
 
-| Header         | Tipo | Descripción                                     |
-|----------------|---------|------------------------------------------------|
-| `Cache-Control`  | string | Indica que la respuesta puede ser almacenada temporalmente en el lado del cliente, según la especificación del header [Cache-Control](./headers.md#cache-control). El tiempo de expiración del caché DEBE ser compatible con el tiempo de vida del `page_token`. |
-| `Link` | string | Contiene enlaces para las páginas siguientes y anteriores de resultados. |
-
+| Header            | Tipo    | Valor       |
+|-------------------|---------|-------------|
+| `Cache-Control`   | string  | max-age=900 |
+| `Link`            | string  | -           |
 
 Ejemplo:
 
-```http
+```
 link:
 <https://{tenant_id}.guardia.finance/api/v1/ledgers?page_token={previous_page_token}>; rel="previous",
 <https://{tenant_id}.guardia.finance/api/v1/ledgers?page_token={next_page_token}>; rel="next",
 <https://{tenant_id}.guardia.finance/api/v1/ledgers?page_token={last_page_token}>; rel="last",
 <https://{tenant_id}.guardia.finance/api/v1/ledgers?page_token={first_page_token}>; rel="first"
 ```
-
 
 Conozca más sobre los headers HTTP que utiliza Guardia [aquí](./http-headers.md).
 
@@ -99,7 +154,6 @@ Conozca más sobre los headers HTTP que utiliza Guardia [aquí](./http-headers.m
 - Los campos `first_page_token` y `last_page_token` DEBEN ser devueltos siempre que sea técnicamente posible, pero PUEDEN ser omitidos para optimización de payload o rendimiento.
 - Campos como `previous_page_token`, `next_page_token`, `first_page_token` y `last_page_token` son EXCLUSIVOS de la respuesta y NO DEBEN ser utilizados como entrada.
 
-
 ### Respuesta
 - Si no hay resultados, la API DEBE devolver `200 OK` con lista vacía y `pagination.total_count = 0`.
 - Si hay parámetros de paginación inválidos, la API DEBE resultar en `400 Bad Request` con el motivo `INVALID_ARGUMENT` y el respectivo código de error.
@@ -114,17 +168,16 @@ Conozca más sobre los headers HTTP que utiliza Guardia [aquí](./http-headers.m
 
 ## Errores Conocidos
 
-| Escenario | Código HTTP | Código | Motivo |
-|--------|---------------------|--------|------|
-| `page_token` inválido | `400` | `ERR400_INVALID_ARGUMENT` | `PAGE_TOKEN_INVALID` |
-| `page_token` expirado | `400` | `ERR400_INVALID_ARGUMENT` | `PAGE_TOKEN_EXPIRED` |
-| `page_size` inválido | `400` | `ERR400_INVALID_ARGUMENT` | `PAGE_SIZE_INVALID` |
-| `page_size` por encima del límite | `400` | `ERR400_INVALID_ARGUMENT` | `PAGE_SIZE_TOO_LARGE` |
-| `order_by` inválido | `400` | `ERR400_INVALID_ARGUMENT` | `ORDER_BY_INVALID` |
-| `sort` inválido | `400` | `ERR400_INVALID_ARGUMENT` | `SORT_INVALID` |
+| Escenario                           | Código HTTP | Código                    | Motivo                |
+|-------------------------------------|-------------|---------------------------|-----------------------|
+| `page_token` inválido               | `400`       | `ERR400_INVALID_ARGUMENT` | `PAGE_TOKEN_INVALID`  |
+| `page_token` expirado               | `400`       | `ERR400_INVALID_ARGUMENT` | `PAGE_TOKEN_EXPIRED`  |
+| `page_size` inválido                | `400`       | `ERR400_INVALID_ARGUMENT` | `PAGE_SIZE_INVALID`   |
+| `page_size` por encima del límite   | `400`       | `ERR400_INVALID_ARGUMENT` | `PAGE_SIZE_TOO_LARGE` |
+| `order_by` inválido                 | `400`       | `ERR400_INVALID_ARGUMENT` | `ORDER_BY_INVALID`    |
+| `sort` inválido                     | `400`       | `ERR400_INVALID_ARGUMENT` | `SORT_INVALID`        |
 
-
-#### Ejemplo de error (JSON)
+#### Ejemplo de Error (JSON)
 ```json
 {
   "errors": [
@@ -142,10 +195,10 @@ Conozca más sobre los headers HTTP que utiliza Guardia [aquí](./http-headers.m
 - Incluso cuando la API devuelve una lista de recursos con un solo elemento, la especificación DEBE ser aplicada.
 - Las APIs y contratos existentes DEBEN ser adaptados progresivamente según la evolución de versión o migración.
 
-### Notas adicionales
+## Notas Adicionales
 
 - La paginación DEBE ser documentada en el contrato OAS de la API.
-- La paginación aquí descrita es considerada el estándar mínimo para cualquier API RESTful de Guardia.
+- La paginación aquí descrita es considerada el **estándar mínimo** para cualquier API RESTful de Guardia.
 
 ## Referencias
 - [GitHub - Paginación REST API](https://docs.github.com/en/rest/using-the-rest-api/using-pagination-in-the-rest-api)

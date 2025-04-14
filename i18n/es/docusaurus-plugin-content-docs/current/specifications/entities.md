@@ -27,17 +27,17 @@ Además, el modelo refuerza los principios de **Compliance by Design**, aseguran
 
 La estructura base de una entidad en Guardia DEBE contener los siguientes campos:
 
-| Campo                | Tipo         | Obligatorio | Propósito                                                                 |
-|----------------------|--------------|-------------|---------------------------------------------------------------------------|
-| [`entity_id`](#entity_id)          | UUID v7      | Sí          | Identificador único global. Garantiza unicidad y ordenación temporal.       |
-| [`entity_type`](#entity_type)        | string       | Sí          | Tipo lógico de entidad (ej: ledger, chapter, asset).                      |
-| [`external_entity_id`](#external_entity_id) | string       | No          | ID externo proporcionado por sistemas clientes (máx. 36 caracteres).      |
-| [`created_at`](#created_at)         | datetime     | Sí          | Fecha/hora de creación en UTC.                                |
-| [`updated_at`](#updated_at)         | datetime     | Sí          | Última modificación registrada en UTC.                        |
-| [`discarded_at`](#discarded_at)       | datetime     | No          | Marca lógica de eliminación en UTC.                           |
-| [`metadata`](#metadata)           | JSON         | No          | Parámetros clave y valor (máx. 10KB).                                    |
-| [`version`](#version)            | integer      | Sí          | Número secuencial de control de versión.                                 |
-| [`history`](#history)            | array        | No          | Registro completo de cambios y versiones anteriores.                     |
+| Campo                                         | Tipo         | Obligatorio | Descripción                                              |
+|-----------------------------------------------|--------------|-------------|----------------------------------------------------------|
+| [`entity_id`](#entity_id)                     | UUID v7      | Sí          | Identificador único de la entidad.                       |
+| [`entity_type`](#entity_type)                 | string       | Sí          | Tipo de entidad.                                         |
+| [`external_entity_id`](#external_entity_id)   | string       | No          | Identificador único de la entidad en un sistema externo. |
+| [`created_at`](#created_at)                   | datetime     | Sí          | Data y hora de creación de la entidad.                   |
+| [`updated_at`](#updated_at)                   | datetime     | Sí          | Data y hora de la última actualización de la entidad.    |
+| [`discarded_at`](#discarded_at)               | datetime     | No          | Data y hora de eliminación lógica de la entidad.         |
+| [`metadata`](#metadata)                       | Json Object  | No          | Metadatos de la entidad.                                 |
+| [`version`](#version)                         | integer      | Sí          | Versión de la entidad.                                   |
+| [`history`](#history)                         | array        | No          | Historial de versiones de la entidad.                    |
 
 ### Requisitos Detallados
 

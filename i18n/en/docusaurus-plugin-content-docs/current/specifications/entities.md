@@ -27,17 +27,17 @@ Furthermore, the model reinforces **Compliance by Design** principles, ensuring:
 
 The base structure of an entity in Guardia MUST contain the following fields:
 
-| Field                | Type         | Required | Purpose                                                                 |
-|----------------------|--------------|----------|---------------------------------------------------------------------------|
-| [`entity_id`](#entity_id)          | UUID v7      | Yes      | Global unique identifier. Ensures uniqueness and temporal ordering.       |
-| [`entity_type`](#entity_type)        | string       | Yes      | Logical entity type (e.g., ledger, chapter, asset).                      |
-| [`external_entity_id`](#external_entity_id) | string       | No       | External ID provided by client systems (max. 36 characters).             |
-| [`created_at`](#created_at)         | datetime     | Yes      | Creation date/time in UTC.                                   |
-| [`updated_at`](#updated_at)         | datetime     | Yes      | Last recorded modification in UTC.                           |
-| [`discarded_at`](#discarded_at)       | datetime     | No       | Logical deletion mark in UTC.                                |
-| [`metadata`](#metadata)           | JSON         | No       | Key-value parameters (max. 10KB).                                       |
-| [`version`](#version)            | integer      | Yes      | Sequential version control number.                                      |
-| [`history`](#history)            | array        | No       | Complete record of changes and previous versions.                       |
+| Field                                         | Type         | Required | Description                                            |
+|-----------------------------------------------|--------------|----------|--------------------------------------------------------|
+| [`entity_id`](#entity_id)                     | UUID v7      | Yes      | Identificador único da entidade.                       |
+| [`entity_type`](#entity_type)                 | string       | Yes      | Tipo de entidade.                                      |
+| [`external_entity_id`](#external_entity_id)   | string       | No       | Identificador único da entidade em um sistema externo. |
+| [`created_at`](#created_at)                   | datetime     | Yes      | Data e hora de criação da entidade.                    |
+| [`updated_at`](#updated_at)                   | datetime     | Yes      | Data e hora da última atualização da entidade.         |
+| [`discarded_at`](#discarded_at)               | datetime     | No       | Data e hora de descarte da entidade.                   |
+| [`metadata`](#metadata)                       | Json Object  | No       | Metadados da entidade.                                 |
+| [`version`](#version)                         | integer      | Yes      | Versão da entidade.                                    |
+| [`history`](#history)                         | array        | No       | Histórico de versões da entidade.                      |
 
 ### Detailed Requirements
 

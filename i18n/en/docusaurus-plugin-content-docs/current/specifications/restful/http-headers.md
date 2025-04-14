@@ -19,10 +19,10 @@ All headers MUST follow the naming pattern defined in this specification.
 
 ## Standard Headers
 
-| Header                  | Type     | Category | Direction | Mandatory | Purpose                                 |
-|-------------------------|----------|-----------|-----------|-----------|--------------------------------------------|
-| [Cache-Control](#cache-control) | string   | standard  | Response  | Optional  | Cache control directives            |
-| [Link](#link)           | string   | standard  | Response  | Optional  | Links for pagination and entity state |
+| Header                                            | Type     | Category  | Direction   | Mandatory | Description                            |
+|---------------------------------------------------|----------|-----------|-------------|-----------|----------------------------------------|
+| [Cache-Control](#cache-control)                   | string   | standard  | Response    | Optional  | Cache control directives.              |
+| [Link](#link)                                     | string   | standard  | Response    | Optional  | Links for pagination or entity state.  |
 
 ---
 
@@ -80,11 +80,11 @@ Link: <https://{tenant_id}.guardia.finance/api/v1/ledgers/{entity_id}>; rel="led
 
 Custom headers used by Guardia follow the `X-Grd-*` prefix convention. They address specific needs for traceability and correlation between systems.
 
-| Header                  | Type     | Category | Direction | Mandatory | Purpose                                 |
-|-------------------------|----------|-----------|-----------|-----------|--------------------------------------------|
-| [X-Grd-Debug](#x-grd-debug) | boolean  | custom    | Request   | Optional  | Enables debug information return      |
-| [X-Grd-Trace-Id](#x-grd-trace-id) | uuid     | custom    | Response  | Mandatory | Internal traceability                    |
-| [X-Grd-Correlation-Id](#x-grd-correlation-id) | uuid     | custom    | Req/Resp  | Optional  | External context propagation             |
+| Header                                            | Type     | Category | Direction    | Mandatory | Description                                            |
+|---------------------------------------------------|----------|-----------|-------------|-----------|--------------------------------------------------------|
+| [X-Grd-Debug](#x-grd-debug)                       | booleano | custom    | Request     | Optional  | Flag for enabling debug mode.                          |
+| [X-Grd-Trace-Id](#x-grd-trace-id)                 | uuid     | custom    | Response    | Mandatory | Unique request identifier for traceability.            |
+| [X-Grd-Correlation-Id](#x-grd-correlation-id)     | uuid     | custom    | Both        | Optional  | External correlation identifier for distributed calls. |
 
 ---
 
