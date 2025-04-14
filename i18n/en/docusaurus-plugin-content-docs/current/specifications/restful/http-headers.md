@@ -64,10 +64,10 @@ The `Link` header MAY be used to provide links for pagination or entity state, f
 
 ```http
 link:
-</api/v1/ledgers?page_token={previous_page_token}>; rel="previous",
-</api/v1/ledgers?page_token={next_page_token}>; rel="next",
-</api/v1/ledgers?page_token={last_page_token}>; rel="last",
-</api/v1/ledgers?page_token={first_page_token}>; rel="first"
+<https://{tenant_id}.guardia.finance/api/v1/ledgers?page_token={previous_page_token}>; rel="previous",
+<https://{tenant_id}.guardia.finance/api/v1/ledgers?page_token={next_page_token}>; rel="next",
+<https://{tenant_id}.guardia.finance/api/v1/ledgers?page_token={last_page_token}>; rel="last",
+<https://{tenant_id}.guardia.finance/api/v1/ledgers?page_token={first_page_token}>; rel="first"
 ```
 
 #### Entity State

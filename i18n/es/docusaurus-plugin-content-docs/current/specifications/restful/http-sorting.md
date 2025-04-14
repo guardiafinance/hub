@@ -32,14 +32,14 @@ Estas directrices reducen ambigüedades entre sistemas consumidores, promueven p
 ### Ejemplos de solicitud
 
 ```http
-GET /api/v1/ledgers?order_by=created_at // asume el ordenamiento predeterminado ascendente
-GET /api/v1/ledgers?order_by=created_at&sort=asc // asume el ordenamiento ascendente
-GET /api/v1/ledgers?order_by=created_at&sort=ASC // insensible a mayúsculas/minúsculas
+GET https://{tenant_id}.guardia.finance/api/v1/ledgers?order_by=created_at // asume el ordenamiento predeterminado ascendente
+GET https://{tenant_id}.guardia.finance/api/v1/ledgers?order_by=created_at&sort=asc // asume el ordenamiento ascendente
+GET https://{tenant_id}.guardia.finance/api/v1/ledgers?order_by=created_at&sort=ASC // insensible a mayúsculas/minúsculas
 ```
 
 ```http
-GET /api/v1/ledgers?order_by=reference_date&sort=desc // asume el ordenamiento descendente
-GET /api/v1/ledgers?order_by=reference_date&sort=DESC // insensible a mayúsculas/minúsculas
+GET https://{tenant_id}.guardia.finance/api/v1/ledgers?order_by=reference_date&sort=desc // asume el ordenamiento descendente
+GET https://{tenant_id}.guardia.finance/api/v1/ledgers?order_by=reference_date&sort=DESC // insensible a mayúsculas/minúsculas
 ```
 
 ### Comportamientos esperados

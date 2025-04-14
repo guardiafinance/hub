@@ -32,14 +32,14 @@ These guidelines reduce ambiguities between consumer systems, promote predictabi
 ### Request examples
 
 ```http
-GET /api/v1/ledgers?order_by=created_at // assumes default ascending order
-GET /api/v1/ledgers?order_by=created_at&sort=asc // assumes ascending order
-GET /api/v1/ledgers?order_by=created_at&sort=ASC // case insensitive
+GET https://{tenant_id}.guardia.finance/api/v1/ledgers?order_by=created_at // assumes default ascending order
+GET https://{tenant_id}.guardia.finance/api/v1/ledgers?order_by=created_at&sort=asc // assumes ascending order
+GET https://{tenant_id}.guardia.finance/api/v1/ledgers?order_by=created_at&sort=ASC // case insensitive
 ```
 
 ```http
-GET /api/v1/ledgers?order_by=reference_date&sort=desc // assumes descending order
-GET /api/v1/ledgers?order_by=reference_date&sort=DESC // case insensitive
+GET https://{tenant_id}.guardia.finance/api/v1/ledgers?order_by=reference_date&sort=desc // assumes descending order
+GET https://{tenant_id}.guardia.finance/api/v1/ledgers?order_by=reference_date&sort=DESC // case insensitive
 ```
 
 ### Expected behaviors

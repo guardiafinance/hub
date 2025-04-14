@@ -32,14 +32,14 @@ Essas diretrizes reduzem ambiguidades entre sistemas consumidores, promovem prev
 ### Exemplos de requisição
 
 ```http
-GET /api/v1/ledgers?order_by=created_at // assume a ordenação padrão ascendente
-GET /api/v1/ledgers?order_by=created_at&sort=asc // assume a ordenação ascendente
-GET /api/v1/ledgers?order_by=created_at&sort=ASC // case insensitive
+GET https://{tenant_id}.guardia.finance/api/v1/ledgers?order_by=created_at // assume a ordenação padrão ascendente
+GET https://{tenant_id}.guardia.finance/api/v1/ledgers?order_by=created_at&sort=asc // assume a ordenação ascendente
+GET https://{tenant_id}.guardia.finance/api/v1/ledgers?order_by=created_at&sort=ASC // case insensitive
 ```
 
 ```http
-GET /api/v1/ledgers?order_by=reference_date&sort=desc // assume a ordenação descendente
-GET /api/v1/ledgers?order_by=reference_date&sort=DESC // case insensitive
+GET https://{tenant_id}.guardia.finance/api/v1/ledgers?order_by=reference_date&sort=desc // assume a ordenação descendente
+GET https://{tenant_id}.guardia.finance/api/v1/ledgers?order_by=reference_date&sort=DESC // case insensitive
 ```
 
 ### Comportamentos esperados
