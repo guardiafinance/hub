@@ -29,15 +29,15 @@ La estructura base de una entidad en Guardia DEBE contener los siguientes campos
 
 | Campo                | Tipo         | Obligatorio | Propósito                                                                 |
 |----------------------|--------------|-------------|---------------------------------------------------------------------------|
-| `entity_id`          | UUID v7      | Sí          | Identificador único global. Garantiza unicidad y ordenación temporal.       |
-| `entity_type`        | string       | Sí          | Tipo lógico de entidad (ej: ledger, chapter, asset).                      |
-| `external_entity_id` | string       | No          | ID externo proporcionado por sistemas clientes (máx. 36 caracteres).      |
-| `created_at`         | datetime     | Sí          | Fecha/hora de creación en UTC (ISO 8601).                                |
-| `updated_at`         | datetime     | Sí          | Última modificación registrada en UTC (ISO 8601).                        |
-| `discarded_at`       | datetime     | No          | Marca lógica de eliminación en UTC (ISO 8601).                           |
-| `metadata`           | JSON         | No          | Parámetros clave y valor (máx. 10KB).                                    |
-| `version`            | integer      | Sí          | Número secuencial de control de versión.                                 |
-| `history`            | array        | No          | Registro completo de cambios y versiones anteriores.                     |
+| [`entity_id`](#entity_id)          | UUID v7      | Sí          | Identificador único global. Garantiza unicidad y ordenación temporal.       |
+| [`entity_type`](#entity_type)        | string       | Sí          | Tipo lógico de entidad (ej: ledger, chapter, asset).                      |
+| [`external_entity_id`](#external_entity_id) | string       | No          | ID externo proporcionado por sistemas clientes (máx. 36 caracteres).      |
+| [`created_at`](#created_at)         | datetime     | Sí          | Fecha/hora de creación en UTC (ISO 8601).                                |
+| [`updated_at`](#updated_at)         | datetime     | Sí          | Última modificación registrada en UTC (ISO 8601).                        |
+| [`discarded_at`](#discarded_at)       | datetime     | No          | Marca lógica de eliminación en UTC (ISO 8601).                           |
+| [`metadata`](#metadata)           | JSON         | No          | Parámetros clave y valor (máx. 10KB).                                    |
+| [`version`](#version)            | integer      | Sí          | Número secuencial de control de versión.                                 |
+| [`history`](#history)            | array        | No          | Registro completo de cambios y versiones anteriores.                     |
 
 ### Requisitos Detallados
 
@@ -55,19 +55,19 @@ La estructura base de una entidad en Guardia DEBE contener los siguientes campos
 - Ideal para referencias cruzadas con sistemas heredados o externos.
 
 #### `created_at`
-- DEBE ser un datetime en UTC formateado según [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601).
+- DEBE ser un datetime en UTC formateado según [RFC 3339](https://datatracker.ietf.org/doc/html/rfc3339).
 - DEBE ser generado automáticamente en la creación.
 - NO PUEDE ser modificado después de la creación.
 
 #### `updated_at`
-- DEBE ser un datetime en UTC formateado según [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601).
+- DEBE ser un datetime en UTC formateado según [RFC 3339](https://datatracker.ietf.org/doc/html/rfc3339).
 - DEBE ser actualizado con cada modificación persistente.
 - En la creación, DEBE asumir el mismo valor que `created_at`.
 - En el descarte, DEBE asumir el mismo valor que `discarded_at`.
 - Utilizado para control de concurrencia y sincronización.
 
 #### `discarded_at`
-- DEBE ser un datetime en UTC formateado según [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601).
+- DEBE ser un datetime en UTC formateado según [RFC 3339](https://datatracker.ietf.org/doc/html/rfc3339).
 - PUEDE ser nulo.
 - Cuando está lleno, indica eliminación lógica. La entidad permanece en el sistema para fines de trazabilidad.
 
@@ -106,3 +106,4 @@ Este modelo DEBE ser adoptado siempre que:
 ### Referencias
 - [RFC 9562: UUID Version 7](https://datatracker.ietf.org/doc/html/rfc9562)
 - [RFC 7386: JSON Merge Patch](https://datatracker.ietf.org/doc/html/rfc7386)
+- [RFC 3339: Date and Time on the Internet: Timestamps](https://datatracker.ietf.org/doc/html/rfc3339)

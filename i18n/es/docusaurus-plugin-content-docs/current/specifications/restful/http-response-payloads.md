@@ -10,10 +10,10 @@ Esta especificación DEBE ser aplicable a todas las solicitudes HTTP de la plata
 
 | Campo | Tipo | Descripción |
 |-------|------|-------------|
-| `data` | object \| array | Datos devueltos por la operación cuando la solicitud es exitosa. |
-| `errors` | array | Lista de errores cuando la solicitud no es exitosa. |
-| `pagination` | object | Información de paginación cuando es aplicable. |
-| `debug` | object | Información para depuración cuando se solicita el header `X-Grd-Debug`. |
+| [`data`](#payload-con-datos) | object \| array | Datos devueltos por la operación cuando la solicitud es exitosa. |
+| [`errors`](#en-caso-de-error) | array | Lista de errores cuando la solicitud no es exitosa. |
+| [`pagination`](#payload-con-datos-y-paginación) | object | Información de paginación cuando es aplicable. |
+| [`debug`](#en-caso-de-depuración) | object | Información para depuración cuando se solicita el header `X-Grd-Debug`. |
 
 ## En caso de Éxito
 

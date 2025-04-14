@@ -29,15 +29,15 @@ The base structure of an entity in Guardia MUST contain the following fields:
 
 | Field                | Type         | Required | Purpose                                                                 |
 |----------------------|--------------|----------|---------------------------------------------------------------------------|
-| `entity_id`          | UUID v7      | Yes      | Global unique identifier. Ensures uniqueness and temporal ordering.       |
-| `entity_type`        | string       | Yes      | Logical entity type (e.g., ledger, chapter, asset).                      |
-| `external_entity_id` | string       | No       | External ID provided by client systems (max. 36 characters).             |
-| `created_at`         | datetime     | Yes      | Creation date/time in UTC (ISO 8601).                                   |
-| `updated_at`         | datetime     | Yes      | Last recorded modification in UTC (ISO 8601).                           |
-| `discarded_at`       | datetime     | No       | Logical deletion mark in UTC (ISO 8601).                                |
-| `metadata`           | JSON         | No       | Key-value parameters (max. 10KB).                                       |
-| `version`            | integer      | Yes      | Sequential version control number.                                      |
-| `history`            | array        | No       | Complete record of changes and previous versions.                       |
+| [`entity_id`](#entity_id)          | UUID v7      | Yes      | Global unique identifier. Ensures uniqueness and temporal ordering.       |
+| [`entity_type`](#entity_type)        | string       | Yes      | Logical entity type (e.g., ledger, chapter, asset).                      |
+| [`external_entity_id`](#external_entity_id) | string       | No       | External ID provided by client systems (max. 36 characters).             |
+| [`created_at`](#created_at)         | datetime     | Yes      | Creation date/time in UTC (ISO 8601).                                   |
+| [`updated_at`](#updated_at)         | datetime     | Yes      | Last recorded modification in UTC (ISO 8601).                           |
+| [`discarded_at`](#discarded_at)       | datetime     | No       | Logical deletion mark in UTC (ISO 8601).                                |
+| [`metadata`](#metadata)           | JSON         | No       | Key-value parameters (max. 10KB).                                       |
+| [`version`](#version)            | integer      | Yes      | Sequential version control number.                                      |
+| [`history`](#history)            | array        | No       | Complete record of changes and previous versions.                       |
 
 ### Detailed Requirements
 
@@ -55,19 +55,19 @@ The base structure of an entity in Guardia MUST contain the following fields:
 - Ideal for cross-references with legacy or external systems.
 
 #### `created_at`
-- MUST be a datetime in UTC formatted according to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601).
+- MUST be a datetime in UTC formatted according to [RFC 3339](https://datatracker.ietf.org/doc/html/rfc3339).
 - MUST be automatically generated upon creation.
 - MUST NOT be modified after creation.
 
 #### `updated_at`
-- MUST be a datetime in UTC formatted according to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601).
+- MUST be a datetime in UTC formatted according to [RFC 3339](https://datatracker.ietf.org/doc/html/rfc3339).
 - MUST be updated with each persistent modification.
 - Upon creation, MUST assume the same value as `created_at`.
 - Upon discard, MUST assume the same value as `discarded_at`.
 - Used for concurrency control and synchronization.
 
 #### `discarded_at`
-- MUST be a datetime in UTC formatted according to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601).
+- MUST be a datetime in UTC formatted according to [RFC 3339](https://datatracker.ietf.org/doc/html/rfc3339).
 - MAY be null.
 - When filled, indicates soft delete. The entity remains in the system for traceability purposes.
 
@@ -106,3 +106,4 @@ This model MUST be adopted whenever:
 ### References
 - [RFC 9562: UUID Version 7](https://datatracker.ietf.org/doc/html/rfc9562)
 - [RFC 7386: JSON Merge Patch](https://datatracker.ietf.org/doc/html/rfc7386)
+- [RFC 3339: Date and Time on the Internet: Timestamps](https://datatracker.ietf.org/doc/html/rfc3339)

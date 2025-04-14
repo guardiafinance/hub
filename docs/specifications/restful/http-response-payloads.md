@@ -10,10 +10,10 @@ Esta especificação DEVE ser aplicável a todas as requisições HTTP da plataf
 
 | Campo | Tipo | Descrição |
 |-------|------|-----------|
-| `data` | object \| array | Dados retornados pela operação, quando a requisição é bem sucedida. |
-| `errors` | array | Lista de erros, quando a requisição não é bem sucedida. |
-| `pagination` | object | Informações de paginação, quando aplicável. |
-| `debug` | object | Informações para debug, quando solicitado o header `X-Grd-Debug`. |
+| [`data`](#payload-com-os-dados) | object \| array | Dados retornados pela operação, quando a requisição é bem sucedida. |
+| [`pagination`](#payload-com-os-dados-e-paginação) | object | Informações de paginação, quando aplicável. |
+| [`errors`](#em-caso-de-erro) | array | Lista de erros, quando a requisição não é bem sucedida. |
+| [`debug`](#em-caso-de-debug) | object | Informações para debug, quando solicitado o header `X-Grd-Debug`. |
 
 ## Em caso de Sucesso
 

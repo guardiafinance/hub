@@ -10,10 +10,10 @@ This specification MUST be applicable to all HTTP requests of the Guardia platfo
 
 | Field | Type | Description |
 |-------|------|-------------|
-| `data` | object \| array | Data returned by the operation when the request is successful. |
-| `errors` | array | List of errors when the request is not successful. |
-| `pagination` | object | Pagination information when applicable. |
-| `debug` | object | Debug information when the `X-Grd-Debug` header is requested. |
+| [`data`](#payload-with-data) | object \| array | Data returned by the operation when the request is successful. |
+| [`errors`](#in-case-of-error) | array | List of errors when the request is not successful. |
+| [`pagination`](#payload-with-data-and-pagination) | object | Pagination information when applicable. |
+| [`debug`](#in-case-of-debug) | object | Debug information when the `X-Grd-Debug` header is requested. |
 
 ## In case of Success
 
