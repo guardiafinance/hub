@@ -2,6 +2,8 @@
 sidebar_position: 1
 ---
 
+import MermaidDiagram from '@site/src/components/MermaidDiagram';
+
 # Contribuyendo a Guardia
 
 Nos complace recibir contribuciones de la comunidad en nuestro proyecto. Ya sea con código, sugerencias, documentación o pruebas, toda ayuda es bienvenida — y marca la diferencia.
@@ -58,6 +60,7 @@ Considera participar en nuestra comunidad en [Whatsapp](#) para compartir ideas,
 - Después de enviar tus commits a GitHub, asegúrate de que tu rama pueda ser fusionada automáticamente (no hay conflictos de merge). Si no, en tu computadora, fusiona la rama main en tu rama, resuelve cualquier conflicto de merge, asegúrate de que todo sigue funcionando correctamente y pasa todas las pruebas, y luego envía esos cambios.
 - Una vez que el cambio haya sido aprobado y fusionado, te informaremos en un comentario.
 
+<MermaidDiagram>
 ```mermaid
 graph LR
     %%{init: {'theme': 'neutral', 'themeVariables': { 'fontSize': '36px', 'fontFamily': 'arial', 'nodeSpacing': 120, 'rankSpacing': 100, 'lineColor': '#999999'}}}%%
@@ -87,7 +90,7 @@ graph LR
 
     class J,M decision;
 ```
-
+</MermaidDiagram>
 Si estás trabajando en un flujo de pair programming, consulta también el [Flujo de Trabajo para Pair Programming con Forks Individuales](../tutorials/pair-program-workflow.md) para más información.
 
 ## Directrices para Mensajes de Commit
@@ -174,7 +177,7 @@ Puedes abrir issues y pull requests en cualquier idioma. Si el issue o pull requ
 **Ejemplo:**
 
 ```
-feat(auth): implementar autenticación via OAuth2
+feat(auth): implement OAuth2 authentication
 
 [en]
 Implement OAuth2 authentication flow with support for multiple providers:

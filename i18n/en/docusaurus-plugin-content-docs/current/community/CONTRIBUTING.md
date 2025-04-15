@@ -2,6 +2,8 @@
 sidebar_position: 1
 ---
 
+import MermaidDiagram from '@site/src/components/MermaidDiagram';
+
 # Contributing to Guardia
 
 We are pleased to receive contributions from the community to our project. Whether it's code, suggestions, documentation, or testing, all help is welcome — and makes a difference.
@@ -58,6 +60,7 @@ Consider joining our community on [Whatsapp](#) to share ideas, clarify doubts, 
 - After pushing your commits to GitHub, make sure your branch can be automatically merged (no merge conflicts). If not, on your computer, merge the main branch into your branch, resolve any merge conflicts, ensure everything still works correctly and passes all tests, and then push those changes.
 - Once the change has been approved and merged, we'll inform you in a comment.
 
+<MermaidDiagram>
 ```mermaid
 graph LR
     %%{init: {'theme': 'neutral', 'themeVariables': { 'fontSize': '36px', 'fontFamily': 'arial', 'nodeSpacing': 120, 'rankSpacing': 100, 'lineColor': '#999999'}}}%%
@@ -87,7 +90,7 @@ graph LR
 
     class J,M decision;
 ```
-
+</MermaidDiagram>
 If you're working in a pair programming flow, also check out the [Pair Programming Workflow with Individual Forks](../tutorials/pair-program-workflow.md) for more information.
 
 ## Commit Message Guidelines

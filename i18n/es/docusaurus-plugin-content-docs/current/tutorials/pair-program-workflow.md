@@ -2,6 +2,8 @@
 sidebar_position: 1.1
 ---
 
+import MermaidDiagram from '@site/src/components/MermaidDiagram';
+
 # Programación en Pareja
 
 Trabajar en programación en pareja es una excelente manera de aprender y mejorar tus habilidades de desarrollo. Sabemos que no siempre es posible trabajar en programación en pareja, pero siempre que sea posible, animamos a todos los desarrolladores a participar en programación en pareja.
@@ -142,6 +144,7 @@ git fetch upstream
 git rebase upstream/main
 ```
 
+<MermaidDiagram>
 ```mermaid
 graph TD
     subgraph RepositorioOrganizacion["Repositorio de la Organización"]
@@ -191,4 +194,4 @@ graph TD
     style ForkDevB fill:#f8f9fa,stroke:#e9ecef,stroke-width:1px
     linkStyle 0,1,2,3,4,5,6,7,8,9 stroke:#adb5bd,stroke-width:1px,stroke-dasharray:3
 ```
-
+</MermaidDiagram>

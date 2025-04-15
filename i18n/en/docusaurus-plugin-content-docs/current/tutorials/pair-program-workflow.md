@@ -2,6 +2,8 @@
 sidebar_position: 1.1
 ---
 
+import MermaidDiagram from '@site/src/components/MermaidDiagram';
+
 # Pair Programming
 
 Working in pair programming is an excellent way to learn and improve your development skills. We know that it's not always possible to work in pair programming, but whenever possible, we encourage all developers to engage in pair programming.
@@ -142,6 +144,7 @@ git fetch upstream
 git rebase upstream/main
 ```
 
+<MermaidDiagram>
 ```mermaid
 graph TD
     subgraph RepositorioOrganizacao["Organization Repository"]
@@ -191,4 +194,4 @@ graph TD
     style ForkDevB fill:#f8f9fa,stroke:#e9ecef,stroke-width:1px
     linkStyle 0,1,2,3,4,5,6,7,8,9 stroke:#adb5bd,stroke-width:1px,stroke-dasharray:3
 ```
-
+</MermaidDiagram>

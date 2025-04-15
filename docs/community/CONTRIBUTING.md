@@ -3,6 +3,8 @@ sidebar_position: 1
 sidebar_class_name: sidebar-item
 ---
 
+import MermaidDiagram from '@site/src/components/MermaidDiagram';
+
 # Contribuindo com o Guardia
 
 Ficamos felizes em receber contribuições da comunidade em nosso projeto. Seja com código, sugestões, documentação ou testes, toda ajuda é bem-vinda — e faz diferença.
@@ -60,6 +62,7 @@ Considere participar de nossa comunidade no [Whatsapp](#) para compartilhar idei
 - Uma vez que a alteração tenha sido aprovada e mesclada, nós o informaremos em um comentário.
 - Faça o sync com o branch main do repositório original
 
+<MermaidDiagram>
 ```mermaid
 graph LR
     %%{init: {'theme': 'neutral', 'themeVariables': { 'fontSize': '36px', 'fontFamily': 'arial', 'nodeSpacing': 120, 'rankSpacing': 100, 'lineColor': '#999999'}}}%%
@@ -89,7 +92,7 @@ graph LR
 
     class J,M decision;
 ```
-
+</MermaidDiagram>
 ## Fluxo de Trabalho para Pair Programming
 
 Caso esteja trabalhando em um fluxo de pair programming, veja também o [Fluxo de Trabalho para Pair Programming com Forks Individuais](../tutorials/pair-program-workflow.md) para mais informações.
@@ -187,7 +190,7 @@ Você pode abrir issues e pull requests em qualquer idioma. Se a issue ou pull r
 **Exemplo:**
 
 ```
-feat(auth): implementar autenticação via OAuth2
+feat(auth): implement OAuth2 authentication
 
 [en]
 Implement OAuth2 authentication flow with support for multiple providers:
