@@ -1,0 +1,254 @@
+.container {
+  position: relative;
+  overflow: hidden;
+  padding: 1rem;
+  background-color: #f8f9fa;
+  border-radius: 0.5rem;
+  margin: 1rem 0;
+}
+
+.container.fullscreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+  margin: 0;
+  padding: 2rem;
+  background-color: #f8f9fa;
+}
+
+.diagram {
+  cursor: move;
+  transition: transform 0.2s ease;
+}
+
+/* Estilos para os nós do diagrama de classes */
+.diagram :global(.classDiagram .node) {
+  fill: #e9ecef !important;
+  stroke: #dee2e6 !important;
+}
+
+.diagram :global(.nodeLabel) {
+  color: #212529 !important;
+}
+
+.diagram :global(.edgeLabel) {
+  color: #6c757d !important;
+}
+
+.diagram :global(.edgePath) {
+  stroke: #6c757d !important;
+}
+
+/* Estilos para as caixas de classe do Mermaid */
+.diagram :global(.classDiagram) {
+  background-color: #f8f9fa;
+}
+
+.diagram :global(.classDiagram .classBox) {
+  fill: #e9ecef !important;
+  stroke: #dee2e6 !important;
+}
+
+.diagram :global(.classDiagram .classText) {
+  fill: #212529 !important;
+}
+
+.diagram :global(.classDiagram .classLine) {
+  stroke: #6c757d !important;
+}
+
+.diagram :global(.classDiagram .classGroup) {
+  fill: #e9ecef !important;
+  stroke: #dee2e6 !important;
+}
+
+.diagram :global(.classDiagram .classGroup text) {
+  fill: #212529 !important;
+}
+
+.diagram :global(.classDiagram .classGroup line) {
+  stroke: #6c757d !important;
+  stroke-width: 1;
+}
+
+.diagram :global(.classDiagram .classGroup rect) {
+  fill: #e9ecef !important;
+  stroke: #dee2e6 !important;
+}
+
+.copyButton {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background-color: var(--ifm-color-primary);
+  color: white;
+  border: none;
+  border-radius: 0.25rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.875rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  z-index: 10;
+}
+
+.copyButton:hover {
+  background-color: var(--ifm-color-primary-dark);
+}
+
+.copyButton.copied {
+  background-color: #4CAF50;
+}
+
+.copyButton svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.controls {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  z-index: 10;
+}
+
+.directionControls {
+  position: absolute;
+  left: 1rem;
+  bottom: 1rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.25rem;
+  z-index: 10;
+}
+
+.directionControls button {
+  background-color: var(--ifm-color-primary);
+  color: white;
+  border: none;
+  border-radius: 0.25rem;
+  padding: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  font-size: 1rem;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.directionControls button:hover {
+  background-color: var(--ifm-color-primary-dark);
+}
+
+.directionControls button:nth-child(1) {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.directionControls button:nth-child(2) {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.directionControls button:nth-child(3) {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.directionControls button:nth-child(4) {
+  grid-column: 3;
+  grid-row: 2;
+}
+
+.directionControls button:nth-child(5) {
+  grid-column: 2;
+  grid-row: 3;
+}
+
+.controls button {
+  background-color: var(--ifm-color-primary);
+  color: white;
+  border: none;
+  border-radius: 0.25rem;
+  padding: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  font-size: 1rem;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.controls button:hover {
+  background-color: var(--ifm-color-primary-dark);
+}
+
+.controls button.fullscreen {
+  background-color: transparent;
+  color: var(--ifm-color-primary);
+  border: 1px solid var(--ifm-color-primary);
+}
+
+.controls button.fullscreen:hover {
+  background-color: var(--ifm-color-primary);
+  color: white;
+}
+
+/* Estilos específicos para tema escuro */
+[data-theme='dark'] .controls button,
+[data-theme='dark'] .directionControls button,
+[data-theme='dark'] .copyButton {
+  background-color: var(--ifm-link-color);
+}
+
+[data-theme='dark'] .controls button:hover,
+[data-theme='dark'] .directionControls button:hover,
+[data-theme='dark'] .copyButton:hover {
+  background-color: var(--ifm-link-hover-color);
+}
+
+[data-theme='dark'] .controls button.fullscreen {
+  background-color: transparent;
+  color: var(--ifm-link-color);
+  border-color: var(--ifm-link-color);
+}
+
+[data-theme='dark'] .controls button.fullscreen:hover {
+  background-color: var(--ifm-link-color);
+  color: white;
+}
+
+/* Estilos específicos para tema claro */
+[data-theme='light'] .controls button,
+[data-theme='light'] .directionControls button,
+[data-theme='light'] .copyButton {
+  background-color: var(--ifm-link-color);
+}
+
+[data-theme='light'] .controls button:hover,
+[data-theme='light'] .directionControls button:hover,
+[data-theme='light'] .copyButton:hover {
+  background-color: var(--ifm-link-hover-color);
+}
+
+[data-theme='light'] .controls button.fullscreen {
+  background-color: transparent;
+  color: var(--ifm-link-color);
+  border-color: var(--ifm-link-color);
+}
+
+[data-theme='light'] .controls button.fullscreen:hover {
+  background-color: var(--ifm-link-color);
+  color: white;
+}

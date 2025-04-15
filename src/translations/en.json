@@ -1,7 +1,7 @@
 {
     "banner": {
       "wip": "🚧 Work in Progress🚧"
-    },  
+    },
     "hero": {
       "title": "Welcome to the beginning. Welcome to Guardia. Enjoy the journey!",
       "subtitle": "Change your core. Maximize your future.",
@@ -74,5 +74,28 @@
       },
       "privacyPolicy": "Privacy Policy",
       "securityPolicy": "Security Policy"
+    },
+    "mermaid": {
+      "copyButton": {
+        "title": "Copy Mermaid code",
+        "copy": "Copy",
+        "copied": "Copied!"
+      },
+      "zoom": {
+        "in": "Zoom in",
+        "out": "Zoom out",
+        "reset": "Reset zoom"
+      },
+      "move": {
+        "up": "Move up",
+        "down": "Move down",
+        "left": "Move left",
+        "right": "Move right",
+        "center": "Center"
+      },
+      "fullscreen": {
+        "enter": "Fullscreen",
+        "exit": "Exit fullscreen"
+      }
     }
-  } 
+  }

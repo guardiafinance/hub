@@ -74,5 +74,28 @@
       },
       "privacyPolicy": "Política de Privacidad",
       "securityPolicy": "Política de Seguridad"
+    },
+    "mermaid": {
+      "copyButton": {
+        "title": "Copiar código Mermaid",
+        "copy": "Copiar",
+        "copied": "¡Copiado!"
+      },
+      "zoom": {
+        "in": "Acercar",
+        "out": "Alejar",
+        "reset": "Restablecer zoom"
+      },
+      "move": {
+        "up": "Mover arriba",
+        "down": "Mover abajo",
+        "left": "Mover izquierda",
+        "right": "Mover derecha",
+        "center": "Centrar"
+      },
+      "fullscreen": {
+        "enter": "Pantalla completa",
+        "exit": "Salir de pantalla completa"
+      }
     }
-  } 
+  }
