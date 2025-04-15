@@ -75,7 +75,7 @@ The base structure of an entity in Guardia MUST contain the following properties
 - MUST be a JSON Object.
 - Key and value MUST be strings.
 - SHOULD follow the ideal size of 4KB whenever possible and MUST NOT exceed 10KB.
-- Updates MUST be done via JSON Merge Patch (RFC 7386).
+- Updates MUST be done via JSON Merge Patch [RFC 7386](https://datatracker.ietf.org/doc/html/rfc7386).
 - MUST NOT contain sensitive or personal data without legal provision.
 - Values MAY be stored encrypted, with performance impact.
 

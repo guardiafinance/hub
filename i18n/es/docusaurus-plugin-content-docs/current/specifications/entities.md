@@ -75,7 +75,7 @@ La estructura base de una entidad en Guardia DEBE contener los siguientes propie
 - DEBE ser un JSON Object.
 - Clave y valor DEBEN ser strings.
 - DEBE seguir el tamaño ideal de 4KB siempre que sea posible y NO DEBE exceder 10KB.
-- Las actualizaciones DEBEN realizarse mediante JSON Merge Patch (RFC 7386).
+- Las actualizaciones DEBEN realizarse mediante JSON Merge Patch [RFC 7386](https://datatracker.ietf.org/doc/html/rfc7386).
 - NO DEBE contener datos sensibles o personales sin previsión legal.
 - Los valores PUEDEN ser almacenados cifrados, con impacto en el rendimiento.
 
