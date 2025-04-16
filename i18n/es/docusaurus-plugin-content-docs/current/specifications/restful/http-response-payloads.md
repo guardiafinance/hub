@@ -104,12 +104,12 @@ Cuando la solicitud falla (`4xx` o `5xx`), la respuesta DEBE contener la lista `
 
 #### `code`
 - DEBE ser una cadena que contenga el código de error estandarizado.
-- El valor DEBE estar conforme a lo definido en la especificación de [Manejo de Errores](../errors-handling.md).
+- El valor DEBE estar conforme a lo definido en la especificación de [Manejo de Errores](../error-handling/index.md).
 - DEBE ser utilizado para el manejo programático del error.
 
 #### `reason`
 - DEBE ser una cadena que describa de forma concisa la razón del error.
-- DEBE corresponder a una de las razones predefinidas en [Manejo de Errores](../errors-handling.md).
+- DEBE corresponder a una de las razones predefinidas en [Manejo de Errores](../error-handling/index.md).
 - Utilizado para categorización y análisis semántico de la falla.
 
 #### `message`

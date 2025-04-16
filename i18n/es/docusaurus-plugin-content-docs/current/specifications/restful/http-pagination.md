@@ -59,12 +59,12 @@ La respuesta DEBE contener los siguientes propiedades:
 |-----------------------------------------------------------------------|--------|
 | [`data`](#data)                                                       | array  |
 | [`pagination`](#pagination)                                           | object |
-| [`pagination.page_size`](#pagination.page_size)                       | uint32 |
-| [`pagination.next_page_token`](#pagination.next_page_token)           | string |
-| [`pagination.previous_page_token`](#pagination.previous_page_token)   | string |
-| [`pagination.first_page_token`](#pagination.first_page_token)         | string |
-| [`pagination.last_page_token`](#pagination.last_page_token)           | string |
-| [`pagination.total_count`](#pagination.total_count)                   | uint32 |
+| [`pagination.page_size`](#paginationpage_size)                       | uint32 |
+| [`pagination.next_page_token`](#paginationnext_page_token)           | string |
+| [`pagination.previous_page_token`](#paginationprevious_page_token)   | string |
+| [`pagination.first_page_token`](#paginationfirst_page_token)         | string |
+| [`pagination.last_page_token`](#paginationlast_page_token)           | string |
+| [`pagination.total_count`](#paginationtotal_count)                   | uint32 |
 
 ### Estructura del Payload
 
@@ -119,7 +119,7 @@ Las respuestas de endpoints que implementan paginación DEBEN seguir la estructu
 }
 ```
 
-Para más detalles sobre las convenciones generales de respuesta, consulte la [especificación de Payloads de Respuesta](./response-payloads.md).
+Para más detalles sobre las convenciones generales de respuesta, consulte la [especificación de Payloads de Respuesta](../restful/http-response-payloads.md).
 
 ### Headers
 
@@ -157,7 +157,7 @@ Conozca más sobre los headers HTTP que utiliza Guardia [aquí](./http-headers.m
 ### Respuesta
 - Si no hay resultados, la API DEBE devolver `200 OK` con lista vacía y `pagination.total_count = 0`.
 - Si hay parámetros de paginación inválidos, la API DEBE resultar en `400 Bad Request` con el código `ERR400_INVALID_PARAMETER` y el respectivo motivo de error.
-- La respuesta DEBE contener un cuerpo según la [especificación de response payloads de Guardia](../response-payloads) tanto para éxito como para error.
+- La respuesta DEBE contener un cuerpo según la [especificación de response payloads de Guardia](../restful/http-response-payloads.md) tanto para éxito como para error.
 
 ## Seguridad, Expiración y Cumplimiento
 - Todos las propiedades `*_page_token` DEBEN ser tokens opacos (encriptados o firmados), sin contener ninguna estructura legible o decodificable por el cliente.

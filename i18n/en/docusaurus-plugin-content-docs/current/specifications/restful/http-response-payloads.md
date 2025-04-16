@@ -104,12 +104,12 @@ When the request fails (`4xx` or `5xx`), the response MUST contain the `errors` 
 
 #### `code`
 - MUST be a string containing the standardized error code.
-- The value MUST be as defined in the [Error Handling](../errors-handling.md) specification.
+- The value MUST be as defined in the [Error Handling](../error-handling/index.md) specification.
 - MUST be used for programmatic error handling.
 
 #### `reason`
 - MUST be a string concisely describing the reason for the error.
-- MUST correspond to one of the predefined reasons in [Error Handling](../errors-handling.md).
+- MUST correspond to one of the predefined reasons in [Error Handling](../error-handling/index.md).
 - Used for categorization and semantic analysis of the failure.
 
 #### `message`

@@ -32,7 +32,7 @@ export default function DocLinks() {
         { label: patterns.semanticVersioning, to: '/', icon: 'fa-solid fa-code-branch' },
         { label: 'Style Guide', to: '/', icon: 'fa-solid fa-palette' },
         { label: 'Cloud Events', to: '/docs/specifications/cloud-events', icon: 'fa-solid fa-cloud' },
-        { label: 'Status Codes', to: '/docs/specifications/status-codes', icon: 'fa-solid fa-list-ol' },
+        { label: 'Status Codes', to: '/docs/specifications/restful/http-status-code', icon: 'fa-solid fa-list-ol' },
       ],
     },
     {

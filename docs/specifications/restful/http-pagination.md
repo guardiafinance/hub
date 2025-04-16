@@ -59,12 +59,12 @@ A resposta DEVE conter os seguintes propriedades:
 |-----------------------------------------------------------------------------|--------|
 | [`data`](#data)                                                             | array  |
 | [`pagination`](#pagination)                                                 | object |
-| [`pagination.page_size`](#pagination.page_size)                             | uint32 |
-| [`pagination.next_page_token`](#pagination.next_page_token)                 | string |
-| [`pagination.previous_page_token`](#pagination.previous_page_token)         | string |
-| [`pagination.first_page_token`](#pagination.first_page_token)               | string |
-| [`pagination.last_page_token`](#pagination.last_page_token)                 | string |
-| [`pagination.total_count`](#pagination.total_count)                         | uint32 |
+| [`pagination.page_size`](#paginationpage_size)                             | uint32 |
+| [`pagination.next_page_token`](#paginationnext_page_token)                 | string |
+| [`pagination.previous_page_token`](#paginationprevious_page_token)         | string |
+| [`pagination.first_page_token`](#paginationfirst_page_token)               | string |
+| [`pagination.last_page_token`](#paginationlast_page_token)                 | string |
+| [`pagination.total_count`](#paginationtotal_count)                         | uint32 |
 
 
 ### Estrutura do Payload
@@ -121,7 +121,7 @@ As respostas de endpoints que implementam paginação DEVEM seguir a estrutura a
 }
 ```
 
-Para mais detalhes sobre convenções gerais de resposta, consulte a [especificação de Payloads de Resposta](./response-payloads.md).
+Para mais detalhes sobre convenções gerais de resposta, consulte a [especificação de Payloads de Resposta](../restful/http-response-payloads.md).
 
 ### Headers
 
@@ -161,7 +161,7 @@ Saiba mais sobre os headers HTTP que a Guardia utiliza [aqui](./http-headers.md)
 ### Resposta
 - Se não houver resultados, a API DEVE retornar `200 OK` com lista vazia e `pagination.total_count = 0`.
 - Se haver parâmetros de paginação inválidos, a API DEVE resultar em `400 Bad Request` com o código `ERR400_INVALID_PARAMETER` e o respectivo motivo de erro.
-- A resposta DEVE conter corpo conforme a [especificação de response payloads da Guardia](../response-payloads) tanto para sucesso quanto para erro.
+- A resposta DEVE conter corpo conforme a [especificação de response payloads da Guardia](../restful/http-response-payloads.md) tanto para sucesso quanto para erro.
 
 
 ## Segurança, Expiração e Conformidade

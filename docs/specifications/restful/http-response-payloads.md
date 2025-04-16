@@ -104,12 +104,12 @@ Quando a requisição falhar (`4xx` ou `5xx`), a resposta DEVE conter a lista `e
 
 #### `code`
 - DEVE ser uma string contendo o código de erro padronizado.
-- O valor DEVE estar conforme definido na especificação de [Manipulação de Erros](../errors-handling.md).
+- O valor DEVE estar conforme definido na especificação de [Manipulação de Erros](../error-handling/index.md).
 - DEVE ser utilizado para tratamento programático da falha.
 
 #### `reason`
 - DEVE ser uma string descrevendo de forma concisa o motivo do erro.
-- DEVE corresponder a uma das razões pré-definidas na [Manipulação de Erros](../errors-handling.md).
+- DEVE corresponder a uma das razões pré-definidas na [Manipulação de Erros](../error-handling/index.md).
 - Utilizado para categorização e análise semântica da falha.
 
 #### `message`

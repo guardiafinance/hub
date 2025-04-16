@@ -59,12 +59,12 @@ The response MUST contain the following properties:
 |-----------------------------------------------------------------------|--------|
 | [`data`](#data)                                                       | array  |
 | [`pagination`](#pagination)                                           | object |
-| [`pagination.page_size`](#pagination.page_size)                       | uint32 |
-| [`pagination.next_page_token`](#pagination.next_page_token)           | string |
-| [`pagination.previous_page_token`](#pagination.previous_page_token)   | string |
-| [`pagination.first_page_token`](#pagination.first_page_token)         | string |
-| [`pagination.last_page_token`](#pagination.last_page_token)           | string |
-| [`pagination.total_count`](#pagination.total_count)                   | uint32 |
+| [`pagination.page_size`](#paginationpage_size)                       | uint32 |
+| [`pagination.next_page_token`](#paginationnext_page_token)           | string |
+| [`pagination.previous_page_token`](#paginationprevious_page_token)   | string |
+| [`pagination.first_page_token`](#paginationfirst_page_token)         | string |
+| [`pagination.last_page_token`](#paginationlast_page_token)           | string |
+| [`pagination.total_count`](#paginationtotal_count)                   | uint32 |
 
 ### Payload Structure
 
@@ -119,7 +119,7 @@ Responses from endpoints that implement pagination MUST follow the structure bel
 }
 ```
 
-For more details about general response conventions, see the [Response Payloads specification](./response-payloads.md).
+For more details about general response conventions, see the [Response Payloads specification](../restful/http-response-payloads.md).
 
 ### Headers
 
@@ -157,7 +157,7 @@ Learn more about the HTTP headers that Guardia uses [here](./http-headers.md).
 ### Response
 - If there are no results, the API MUST return `200 OK` with an empty list and `pagination.total_count = 0`.
 - If there are invalid pagination parameters, the API MUST result in `400 Bad Request` with the code `ERR400_INVALID_PARAMETER` and the respective error reason.
-- The response MUST contain a body according to the [Guardia response payloads specification](../response-payloads) for both success and error.
+- The response MUST contain a body according to the [Guardia response payloads specification](../restful/http-response-payloads.md) for both success and error.
 
 ## Security, Expiration, and Compliance
 - All `*_page_token` properties MUST be opaque tokens (encrypted or signed), without containing any readable or decodable structure by the client.

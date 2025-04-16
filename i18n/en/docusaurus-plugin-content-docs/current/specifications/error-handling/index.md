@@ -16,7 +16,7 @@ Each error object MUST contain the following properties:
 | ---------- | ------ | ----------------------------------------------------------------------- |
 | [`code`](#error-codes-code)     | string | Semantic and descriptive code, in UPPER_SNAKE_CASE, unique in the domain. |
 | [`reason`](#error-reason-reason)   | string | Semantic error category, used for programmatic handling.                 |
-| [`message`](#error-message-message)  | string | Developer-oriented description, without revealing sensitive details.     |
+| [`message`](#message-message)  | string | Developer-oriented description, without revealing sensitive details.     |
 
 ### Payload Example
 

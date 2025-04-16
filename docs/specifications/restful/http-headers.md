@@ -140,7 +140,7 @@ Retry-After: <seconds>
 #### Validação
 
 - DEVE ser um valor inteiro positivo.
-- DEVE ser utilizado conforme [especificação de erro](../error-handling.md#erros-comuns).
+- DEVE ser utilizado conforme [especificação de erros comuns](../error-handling/index.md#erros-comuns).
 
 
 ## Headers Customizados
