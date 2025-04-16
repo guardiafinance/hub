@@ -1,6 +1,7 @@
 import {themes as prismThemes} from 'prism-react-renderer';
-import type {Config, ThemeConfig} from '@docusaurus/types';
+import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
+import type * as OpenApiPlugin from "docusaurus-plugin-openapi-docs";
 import { EXTERNAL_LINKS } from './src/components/ExternalLink/external-links';
 import { getLocaleConfigs } from './src/translations/locales';
 
@@ -25,14 +26,17 @@ const config: Config = {
   markdown: {
     mermaid: true,
   },
-  themes: ['@docusaurus/theme-mermaid'],
-
+  themes: [
+    '@docusaurus/theme-mermaid',
+    'docusaurus-theme-openapi-docs'
+  ],
   presets: [
     [
       'classic',
       {
         docs: {
           sidebarPath: require.resolve("./sidebars.ts"),
+          docItemComponent: "@theme/ApiItem",
         },
         blog: false,
         theme: {
@@ -80,6 +84,12 @@ const config: Config = {
           sidebarId: 'tutorialSidebar',
           position: 'left',
           label: 'Docs',
+        },
+        {
+          type: 'docSidebar',
+          sidebarId: 'apiSidebar',
+          position: 'left',
+          label: 'API Reference',
         },
         {
           type: 'docSidebar',
@@ -222,6 +232,35 @@ const config: Config = {
         disableInDev: false,
       },
     ],
+    [
+      'docusaurus-plugin-openapi-docs',
+      {
+        id: "api", // plugin id
+        docsPluginId: "classic", // configured for preset-classic
+        config: {
+          lke: {
+            specPath: "openapi/lke.openapi.yaml",
+            outputDir: "docs/api/lke",
+            sidebarOptions: {
+              groupPathsBy: "tag",
+              categoryLinkSource: "tag",
+              sidebarCollapsible: true,
+              sidebarCollapsed: true,
+            },
+            template: "templates/api.mustache",
+            infoTemplate: "templates/info.mustache",
+            tagTemplate: "templates/tag.mustache",
+            schemaTemplate: "templates/schema.mustache",
+            version: "1.0.0",
+            label: "v1.0.0.",
+            downloadUrl: "openapi/lke.openapi.yaml",
+            showSchemas: true,
+            hideSendButton: false,
+            showExtensions: false,
+          } satisfies OpenApiPlugin.Options,
+        }
+      },
+    ]
   ],
 
   scripts: [
@@ -229,7 +268,7 @@ const config: Config = {
       src: `https://www.googletagmanager.com/gtag/js?id=${process.env.GA_TRACKING_ID}`,
       async: true,
     },
-  ],
+  ]
 };
 
 export default config;

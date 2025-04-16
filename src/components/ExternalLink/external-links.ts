@@ -9,6 +9,7 @@ export const EXTERNAL_LINKS = {
   HUB: 'https://hub.guardia.finance',
   DOCKER_HUB: 'https://hub.docker.com/u/guardiafinance',
   CONTACT_FORM: 'https://guardia.finance/#contact-us',
-  API_DOG: 'https://docs.guardia.finance',
+  LKE_API_DOG: 'https://guardia-lke.apidog.io/',
+  BASE_API_DOG: 'https://guardia-base.apidog.io/',
   POSTMAN_COLLECTION: '#',
 } as const; 

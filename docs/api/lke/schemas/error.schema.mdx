@@ -1,0 +1,32 @@
+---
+id: error
+title: "Error"
+description: ""
+sidebar_label: "Error"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"code":"string","reason":"string","message":"string"}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Error"}
+>
+</Heading>
+
+
+
+
+
+<Schema
+  schema={{"type":"object","properties":{"code":{"type":"string","description":"O codigo do erro. Ex.: ERR400001"},"reason":{"type":"string","description":"O movito do erro, quando conhecido. Ex.: INVALID_PARAMETER"},"message":{"type":"string","description":"A mensagem que descreve o erro. "}},"x-apidog-orders":["code","reason","message"],"required":["code","message","reason"],"x-apidog-ignore-properties":[],"x-apidog-folder":"Schemas/VOs","title":"Error"}}
+  schemaType={"response"}
+>
+  
+</Schema>

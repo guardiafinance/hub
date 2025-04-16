@@ -1,0 +1,32 @@
+---
+id: chapter
+title: "Chapter"
+description: ""
+sidebar_label: "Chapter"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"entity_id":"string","entity_type":"string","external_entity_id":"string","version":0,"name":"string","description":"string","created_at":"2024-07-29T15:51:28.071Z","updated_at":"2024-07-29T15:51:28.071Z","discarded_at":"2024-07-29T15:51:28.071Z","metadata":{"foo":"string"}}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Chapter"}
+>
+</Heading>
+
+
+
+
+
+<Schema
+  schema={{"type":"object","properties":{"entity_id":{"description":"Identificador único do ledger.","type":"string","format":"snowflake","examples":["6683756247371778"],"x-apidog-folder":"Schemas/VOs","title":"EntityID"},"entity_type":{"type":"string","description":"Tipo da entidade.","examples":["CHAPTER"]},"external_entity_id":{"type":"string","description":"Um ID externo único do chapter. Pode ser associado para uso externo. Recomendado o formato UUID.","title":"","examples":["fff78a0d3b5146a1ae80007e3d316714"],"maxLength":36,"nullable":true},"version":{"description":"Versao da entidade. Inicia em 0 e incrementa 1 a cada alteração realizada.","type":"integer","minimum":0,"maximum":128,"examples":[0],"x-apidog-folder":"Schemas/VOs","title":"Version"},"name":{"type":"string","description":"Nome único dentro do chapter.","examples":["Investiments","Payables","Receivables"]},"description":{"type":"string","description":"Descrição do chapter.","examples":["Unidade de Negocio para produtos de Investimentos."],"nullable":true},"created_at":{"description":"Data e hora de criação do ledger no formato ISO 8601 (UTC).","type":"string","format":"date-time","examples":["2024-11-17T00:00:00.000Z"],"pattern":"^(?<year>[0-9]{4})-?(?<month>1[0-2]|0[1-9])-?(?<day>3[01]|0[1-9]|[12][0-9])T(?<hour>2[0-3]|[01][0-9]):?(?<minute>[0-5][0-9]):?(?<second>[0-5][0-9])(?:\\.(?<fraction>[0-9]{1,9}))?Z$","nullable":true,"x-apidog-folder":"Schemas/VOs","title":"DateTime (ISO 8601 / RFC 3339)"},"updated_at":{"description":"Data e hora da última atualização do chapter no formato ISO 8601 (UTC).","anyOf":[{"description":"Data e hora de criação do ledger no formato ISO 8601 (UTC).","type":"string","format":"date-time","examples":["2024-11-17T00:00:00.000Z"],"pattern":"^(?<year>[0-9]{4})-?(?<month>1[0-2]|0[1-9])-?(?<day>3[01]|0[1-9]|[12][0-9])T(?<hour>2[0-3]|[01][0-9]):?(?<minute>[0-5][0-9]):?(?<second>[0-5][0-9])(?:\\.(?<fraction>[0-9]{1,9}))?Z$","nullable":true,"x-apidog-folder":"Schemas/VOs","title":"DateTime (ISO 8601 / RFC 3339)"},{"type":"null"}]},"discarded_at":{"description":"Data e hora de descarte do chapter no formato ISO 8601 (UTC).","anyOf":[{"description":"Data e hora de criação do ledger no formato ISO 8601 (UTC).","type":"string","format":"date-time","examples":["2024-11-17T00:00:00.000Z"],"pattern":"^(?<year>[0-9]{4})-?(?<month>1[0-2]|0[1-9])-?(?<day>3[01]|0[1-9]|[12][0-9])T(?<hour>2[0-3]|[01][0-9]):?(?<minute>[0-5][0-9]):?(?<second>[0-5][0-9])(?:\\.(?<fraction>[0-9]{1,9}))?Z$","nullable":true,"x-apidog-folder":"Schemas/VOs","title":"DateTime (ISO 8601 / RFC 3339)"},{"type":"null"}]},"metadata":{"description":"Os metadados a serem adicionados à entidade devem ser fornecidos como pares de chave-valor em um formato de objeto JSON, com chave e valor como strings. O tamanho maximo do objeto deve ser 1MB.","anyOf":[{"description":"Os metadados a serem adicionados à entidade devem ser fornecidos como pares de chave-valor em um formato de objeto JSON, com chave e valor como strings. O tamanho maximo do objeto deve ser 1MB.","type":"object","properties":{"foo":{"type":"string","x-apidog-mock":"bar","examples":["bar"],"nullable":true}},"x-apidog-orders":["foo"],"x-apidog-ignore-properties":[],"x-apidog-folder":"Schemas/VOs","title":"Metadata"},{"type":"null"}]}},"x-apidog-orders":["entity_id","entity_type","external_entity_id","version","name","description","created_at","updated_at","discarded_at","metadata"],"x-apidog-refs":{},"required":["entity_id","entity_type","name","created_at","updated_at","version","discarded_at"],"x-apidog-ignore-properties":[],"x-apidog-folder":"Schemas/Entities","title":"Chapter"}}
+  schemaType={"response"}
+>
+  
+</Schema>
