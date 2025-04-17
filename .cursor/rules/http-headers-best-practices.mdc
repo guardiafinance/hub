@@ -68,7 +68,7 @@ pattern: Idempotency-Key
 description: Identifies a request that should not be processed more than once.
 when: 
   - request: true
-    - condition: only in transactional endpoints
+    - required: true
   - response: true
     - required: true
     - condition: when success response
@@ -185,7 +185,8 @@ actions:
 pattern: X-Grd-Correlation-Id
 description: Correlates external calls in a distributed trace context.
 when: 
-  - request: false
+  - request: true
+    - required: false
   - response: true
     - required: true
     - condition: only if received X-Grd-Correlation-Id in request
