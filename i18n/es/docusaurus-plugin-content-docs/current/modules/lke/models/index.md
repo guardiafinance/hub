@@ -17,7 +17,7 @@ import MermaidDiagram from '@site/src/components/MermaidDiagram';
 | `entity_type` | `string` | - | `LEDGER` | `LEDGER` | Response | Tipo de la entidad. |
 | `version` | `integer` | `1 byte` | - | `1` | Response | Versión de la entidad (incrementada en cada actualización). |
 | `name` | `string` | `3 a 128 caracteres` | - | - | Request/Response | Nombre del ledger (único dentro de la organización y tenant). |
-| `description` | `string` | `3 a 255 caracteres` | - | - | Request/Response | Descripción del ledger para uso en informes. |
+| `description` | `string` | `3 a 256 caracteres` | - | - | Request/Response | Descripción del ledger para uso en informes. |
 | `created_at` | `datetime` | - | - | - | Response | Fecha de creación del ledger. |
 | `updated_at` | `datetime` | - | - | `created_at` | Response | Fecha de la última actualización del ledger. |
 | `discarded_at` | `datetime` | - | - | `null` | Response | Fecha de descarte. |
@@ -33,7 +33,7 @@ import MermaidDiagram from '@site/src/components/MermaidDiagram';
 | `entity_type` | `string` | `10` | `CHAPTER` | `CHAPTER` | Response | Tipo de la entidad. |
 | `version` | `integer` | `10` | - | `1` | Response | Versión de la entidad (incrementada en cada actualización) |
 | `name` | `string` | `3 a 128 caracteres` | - | - | Request/Response | Nombre del chapter (único dentro del ledger) |
-| `description` | `string` | `3 a 255 caracteres` | - | - | Request/Response | Descripción del chapter para uso en informes. |
+| `description` | `string` | `3 a 256 caracteres` | - | - | Request/Response | Descripción del chapter para uso en informes. |
 | `ledger` | [`Ledger`](#ledger) | - | - | - | Response | Relación con el ledger. |
 | `created_at` | `datetime` | - | - | - | Response | Fecha de creación del chapter. |
 | `updated_at` | `datetime` | - | - | - | Response | Fecha de la última actualización del chapter. |

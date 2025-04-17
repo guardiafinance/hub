@@ -17,7 +17,7 @@ import MermaidDiagram from '@site/src/components/MermaidDiagram';
 | `entity_type` | `string` | - | `LEDGER` | `LEDGER` | Response | Entity type. |
 | `version` | `integer` | `1 byte` | - | `1` | Response | Entity version (incremented with each update). |
 | `name` | `string` | `3 to 128 characters` | - | - | Request/Response | Ledger name (unique within organization and tenant). |
-| `description` | `string` | `3 to 255 characters` | - | - | Request/Response | Ledger description for use in reports. |
+| `description` | `string` | `3 to 256 characters` | - | - | Request/Response | Ledger description for use in reports. |
 | `created_at` | `datetime` | - | - | - | Response | Ledger creation date. |
 | `updated_at` | `datetime` | - | - | `created_at` | Response | Last ledger update date. |
 | `discarded_at` | `datetime` | - | - | `null` | Response | Discard date. |
@@ -33,7 +33,7 @@ import MermaidDiagram from '@site/src/components/MermaidDiagram';
 | `entity_type` | `string` | `10` | `CHAPTER` | `CHAPTER` | Response | Entity type. |
 | `version` | `integer` | `10` | - | `1` | Response | Entity version (incremented with each update) |
 | `name` | `string` | `3 to 128 characters` | - | - | Request/Response | Chapter name (unique within ledger) |
-| `description` | `string` | `3 to 255 characters` | - | - | Request/Response | Chapter description for use in reports. |
+| `description` | `string` | `3 to 256 characters` | - | - | Request/Response | Chapter description for use in reports. |
 | `ledger` | [`Ledger`](#ledger) | - | - | - | Response | Relationship with ledger. |
 | `created_at` | `datetime` | - | - | - | Response | Chapter creation date. |
 | `updated_at` | `datetime` | - | - | - | Response | Last chapter update date. |
