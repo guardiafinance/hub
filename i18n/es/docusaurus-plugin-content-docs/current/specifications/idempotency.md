@@ -48,7 +48,7 @@ En el contexto de Guardia, la idempotencia es esencial para preservar la consist
 
 ## Implementación en APIs
 
-- Los endpoints que modifican estado (ej: `POST`, `PUT`, `PATCH`) DEBEN ser idempotentes.
+- Los endpoints que modifican estado (ej: `POST`, `PATCH`) DEBEN ser idempotentes.
 - El encabezado `Idempotency-Key` DEBE ser obligatorio en estos endpoints.
 - CUANDO no se proporcione, el sistema DEBE retornar `400 BAD REQUEST`, con código `ERR400_MISSING_OR_MALFORMED_HEADER` y motivo `IDEMPOTENCY_KEY_REQUIRED`.
 - La respuesta DEBE incluir el mismo encabezado `Idempotency-Key` recibido en la solicitud y el `Content-Digest` con el hash del payload.
