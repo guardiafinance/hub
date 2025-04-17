@@ -1,0 +1,15 @@
+---
+description: 
+globs: *.ts,*.tsx
+alwaysApply: false
+---
+---
+name: json-schema-ref-parser-best-practices.mdc
+description: Best practices for parsing JSON Schema references
+globs: **/*.{ts,js}
+---
+
+- Use the parser to resolve $ref pointers in JSON Schema
+- Implement caching for improved performance
+- Use the `dereference` option to fully resolve all references
+- Handle circular references properly with the `circular` option

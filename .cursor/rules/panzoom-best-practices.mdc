@@ -1,0 +1,15 @@
+---
+description: 
+globs: *.ts,*.tsx,*.js,*.jsx
+alwaysApply: false
+---
+---
+name: panzoom-best-practices.mdc
+description: Best practices for using Panzoom for zoomable elements
+globs: **/*.{ts,tsx,js,jsx}
+---
+
+- Use Panzoom for interactive diagrams or maps
+- Implement smooth transitions with the `smoothScroll` option
+- Customize the zoom bounds for better user experience
+- Use the `onPan` and `onZoom` callbacks for custom behavior

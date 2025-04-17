@@ -1,0 +1,18 @@
+---
+description: 
+globs: *.ts,*.tsx,*.js,*.jsx,*.md,*.mdx
+alwaysApply: false
+---
+---
+name: docusaurus-best-practices.mdc
+description: Best practices for Docusaurus documentation sites
+globs: **/*.{ts,tsx,js,jsx,md,mdx}
+---
+
+- Use the classic preset for a streamlined setup
+- Organize documentation into categories and subcategories
+- Implement versioning for documentation
+- Use the `docusaurus swizzle` command to customize components
+- Optimize images with the ideal-image plugin
+- Generate sitemaps for better SEO with the sitemap plugin
+- Utilize Mermaid diagrams for visual documentation

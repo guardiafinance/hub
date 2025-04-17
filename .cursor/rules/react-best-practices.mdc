@@ -1,0 +1,17 @@
+---
+description: 
+globs: *.ts,*.tsx,*.jsx,*.js
+alwaysApply: false
+---
+---
+name: react-best-practices.mdc
+description: Best practices for React applications
+globs: **/*.{ts,tsx,js,jsx}
+---
+
+- Use functional components with hooks
+- Implement proper state management (e.g., Context API, Redux)
+- Optimize performance with memoization and useCallback
+- Use PropTypes or TypeScript for type checking
+- Implement error boundaries for graceful error handling
+- Follow component composition patterns
