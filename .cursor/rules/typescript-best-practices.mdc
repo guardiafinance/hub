@@ -1,0 +1,17 @@
+---
+description: 
+globs: *.ts,*.tsx
+alwaysApply: false
+---
+---
+name: typescript-best-practices.mdc
+description: TypeScript coding standards and type safety guidelines
+globs: **/*.{ts,tsx}
+---
+
+- Use strict null checks
+- Prefer interface over type when possible
+- Use type guards and assertions for runtime type checking
+- Implement proper type inference
+- Use enums for a set of named constants
+- Utilize utility types like Partial, Readonly, and Pick

@@ -1,0 +1,208 @@
+---
+description: 
+globs: *.openapi.yaml
+alwaysApply: false
+---
+---
+name: http-headers-best-practices.mdc
+description: Best practices for using HTTP status codes in APIs
+globs: **/*.{openapi.yaml}
+---
+
+categories:
+  - http
+  - api
+  - rest
+  - headers
+  - security
+  - observability
+
+# Standard Headers
+
+pattern: Cache-Control
+description: Controls caching behavior for HTTP responses.
+when: 
+  - request: false
+  - response: true
+    - required: true
+    - condition: always
+  - methods: POST, PATCH
+  - status codes: 2xx
+examples:
+  - 'Cache-Control: public, max-age=<timestamp>'
+  - 'Cache-Control: private, max-age=<timestamp>'
+  - 'Cache-Control: no-store'
+actions:
+  - include: 
+     - Use `no-store` for sensitive data or error response.
+     - Use includes `public` for all success response that not return sentitive data and cache can be shared.
+     - Use includes `private` for all success response that not return sentitive data and cache can not be shared.
+     - Use `max-age=<timestamp>` for all success response that no return sentitive data.
+  - validate: 
+     - If using `max-age`, value must be numeric in seconds.
+  - follow:
+     - ./docs/specifications/restful/http-headers.md#cache-control  
+     - RFC 9111, Section 5.2 Cache-Control
+
+pattern: Link
+description: Provides pagination or resource navigation links using HATEOAS.
+when: 
+  - request: false
+  - response: true
+    - required: true
+    - condition: when listing or navigating entities
+  - methods: POST, PATCH
+  - status codes: 2xx
+examples:
+  - link:\
+  <https://{tenant_id}.guardia.finance/api/v1/ledgers?page_token={previous_page_token}>; rel="previous",\
+  <https://{tenant_id}.guardia.finance/api/v1/ledgers?page_token={next_page_token}>; rel="next",\
+  <https://{tenant_id}.guardia.finance/api/v1/ledgers?page_token={last_page_token}>; rel="last",\
+  <https://{tenant_id}.guardia.finance/api/v1/ledgers?page_token={first_page_token}>; rel="first"
+
+actions:
+  - include: Use HATEOAS links when listing or navigating entities.
+  - follow: https://restfulapi.net/hateoas
+
+pattern: Idempotency-Key
+description: Identifies a request that should not be processed more than once.
+when: 
+  - request: true
+    - condition: only in transactional endpoints
+  - response: true
+    - required: true
+    - condition: when success response
+  - methods: POST, PATCH
+  - status codes: 2xx
+examples:
+  - 'Idempotency-Key: 5f47ab1e-7b0a-4bfb-a2a4-623bd242b31c'
+actions:
+  - validate: 
+    - Ensure uniqueness for sensitive methods (e.g., POST, PATCH).
+  - follow: 
+    - ./docs/specifications/restful/http-headers.md#idempotency-key  
+    - ./docs/specifications/idempotency.md#implementação-em-apis
+    - draft-ietf-httpapi-idempotency-key-header-01, Internet Engineering Task Force (IETF), 8 May 2022.
+
+pattern: Content-Digest
+description: Hash of the payload used to guarantee integrity for idempotent requests.
+when: 
+  - request: false
+  - response: true
+    - required: true
+    - condition: when received Idempotency-Key in request
+  - methods: POST, PATCH
+  - status codes: 2xx
+examples:
+  - 'Content-Digest: sha-256=<hash>'
+actions:
+  - validate: 
+    - Hash must be a sha-265 valid.
+    - Hash must match the actual request body.
+  - follow: 
+    - ./docs/specifications/restful/http-headers.md#idempotency-key  
+    - ./docs/specifications/idempotency.md#implementação-em-apis
+    - draft-ietf-httpapi-idempotency-key-header-01, Internet Engineering Task Force (IETF), 8 May 2022.
+
+pattern: Last-Modified
+description: Indicates the last modification date of a given entity.
+when: 
+  - request: false
+  - response: true
+    - required: true
+    - condition: only if received Idempotency-Key in request
+  - methods: POST, PATCH
+  - status codes: 2xx
+examples:
+  - 'Last-Modified: Wed, 21 Oct 2015 07:28:00 GMT'
+actions:
+  - validate: 
+    - Must follow  date format.
+  - follow: 
+    - ./docs/specifications/restful/http-headers.md#idempotency-key  
+    - ./docs/specifications/idempotency.md#implementação-em-apis
+    - draft-ietf-httpapi-idempotency-key-header-01, Internet Engineering Task Force (IETF), 8 May 2022.
+    - RFC 7232, Section 2.2. Last-Modified
+
+pattern: Retry-After
+description: Informs how long (in seconds) the client should wait before retrying after a 429 error.
+when: 
+  - request: false
+  - response: true
+    - required: true
+    - condition: when return 429
+  - methods: ALL
+  - status codes: 429
+examples:
+  - 'Retry-After: <timestamp>'
+actions:
+  - validate: 
+    - Must be a positive integer in seconds.
+  - follow: 
+    - ./docs/specifications/restful/http-headers.md#retry-after  
+
+# Custom Headers (X-Grd-* by Guardia)
+
+pattern: X-Grd-Debug
+description: Enables extended debug information in the response payload.
+when: 
+  - request: false
+  - response: true
+    - required: true
+    - condition: only if received X-Grd-Debug in request
+  - methods: ALL
+  - status codes: ALL
+examples:
+  - 'X-Grd-Debug: true'
+actions:
+  - validate: 
+    - Only accepts "true" or "false" (case-insensitive). Other values trigger a 400 error.
+  - security: 
+    - Apply limits — 10 requests per minute, minimum 1-minute interval, 10-minute max duration.
+  - follow: 
+    - ./docs/specifications/http-response-payloads.md#em-caso-de-debug
+    - ./docs/specifications/restful/http-headers.md#x-grd-debug
+
+pattern: X-Grd-Trace-Id
+description: Unique request identifier generated by Guardia infrastructure.
+when: 
+  - request: false
+  - response: true
+    - required: true
+    - condition: always
+  - methods: ALL
+  - status codes: ALL
+examples:
+  - 'X-Grd-Trace-Id: <uuid>'
+actions:
+  - validate: 
+    - Must be a valid UUIDv7 (RFC 9562).
+  - enforce: 
+    - Always include in all responses, including errors.
+  - follow: 
+    - ./docs/specifications/restful/http-headers.md#x-grd-trace-id  
+
+pattern: X-Grd-Correlation-Id
+description: Correlates external calls in a distributed trace context.
+when: 
+  - request: false
+  - response: true
+    - required: true
+    - condition: only if received X-Grd-Correlation-Id in request
+  - methods: ALL
+  - status codes: ALL
+examples:
+  - 'X-Grd-Correlation-Id: 018f74a6-e3b2-70cc-bf24-8a4b012f5f3e'
+actions:
+  - enforce: if-present, propagate to logs and events.
+  - validate: If invalid, ignore and generate a new one.
+
+# Security Considerations
+
+pattern: header validation
+description: General rules for header validation.
+actions:
+  - sanitize: Headers must never contain PII, secrets, credentials, or sensitive business data.
+  - enforce: Limit maximum header size and total number per request.
+  - isolate: Custom headers prefixed with `X-Grd-*` must be validated in isolation.
+  - follow: RFC 9110 and OWASP secure headers best practices.

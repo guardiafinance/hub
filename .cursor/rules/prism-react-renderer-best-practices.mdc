@@ -1,0 +1,15 @@
+---
+description: 
+globs: *.ts,*.tsx,*.js,*.jsx
+alwaysApply: false
+---
+---
+name: prism-react-renderer-best-practices.mdc
+description: Best practices for syntax highlighting with Prism React Renderer
+globs: **/*.{ts,tsx,js,jsx}
+---
+
+- Customize the theme to match your site's design
+- Use line highlighting for better code readability
+- Implement line numbers for longer code blocks
+- Optimize performance by memoizing the highlight component

@@ -1,0 +1,13 @@
+---
+description: 
+globs: *.openapi.yaml
+alwaysApply: false
+---
+---
+name: testing-apidocs.mdc
+description: Best practices for using HTTP status codes in APIs
+globs: **/*.{openapi.yaml}
+---
+
+
+exec `npm run apidocs` to test api reference building.

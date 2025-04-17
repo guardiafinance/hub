@@ -1,0 +1,31 @@
+---
+description: 
+globs: *.openapi.yaml
+alwaysApply: false
+---
+---
+name: http-status-codes-best-practices.mdc
+description: Best practices for using HTTP status codes in APIs
+globs: **/*.{openapi.yaml}
+---
+
+- Use 200 OK for successful operations that return data
+- Use 201 Created when a new resource is created
+- Use 202 Accepted for asynchronous processing
+- Use 204 No Content for successful operations without a response body
+- Use 301 Moved Permanently for permanent URL changes
+- Use 304 Not Modified for cache validation
+- Use 307 Temporary Redirect for temporary URL changes
+- Use 400 Bad Request for malformed or invalid requests
+- Use 401 Unauthorized for authentication failures
+- Use 403 Forbidden for authorization failures
+- Use 404 Not Found for non-existent resources
+- Use 408 Request Timeout for client-side timeouts
+- Use 409 Conflict for resource state conflicts
+- Use 422 Unprocessable Entity for semantic validation errors
+- Use 429 Too Many Requests for rate limiting
+- Use 500 Internal Server Error for unexpected server errors
+- Use 501 Not Implemented for unimplemented methods
+- Use 502 Bad Gateway for invalid upstream responses
+- Use 503 Service Unavailable for temporary service downtime
+- Use 504 Gateway Timeout for upstream timeouts

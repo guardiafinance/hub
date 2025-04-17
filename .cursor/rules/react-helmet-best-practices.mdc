@@ -1,0 +1,16 @@
+---
+description: 
+globs: *.ts,*.tsx,*.js,*.jsx
+alwaysApply: false
+---
+---
+name: react-helmet-best-practices.mdc
+description: Best practices for managing document head with React Helmet
+globs: **/*.{ts,tsx,js,jsx}
+---
+
+- Use Helmet only once at the top level of your app
+- Nest Helmet components for child routes
+- Use the `defaultTitle` prop for setting a default page title
+- Implement proper meta tags for SEO
+- Use the `onChangeClientState` prop for handling changes in the document head

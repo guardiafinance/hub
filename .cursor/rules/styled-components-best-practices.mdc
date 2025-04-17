@@ -1,0 +1,17 @@
+---
+description: 
+globs: *.ts,*.tsx,*.js,*.jsx
+alwaysApply: false
+---
+---
+name: styled-components-best-practices.mdc
+description: Best practices for styling with Styled Components
+globs: **/*.{ts,tsx,js,jsx}
+---
+
+- Use the `css` prop for conditional styling
+- Implement theming with the ThemeProvider
+- Use keyframes for animations
+- Optimize performance by using the `shouldForwardProp` option
+- Create global styles with createGlobalStyle
+- Use polished for utility functions in styling

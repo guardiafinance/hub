@@ -1,0 +1,15 @@
+---
+description: 
+globs: *.ts,*.tsx,*.js,*.jsx
+alwaysApply: false
+---
+---
+name: clsx-best-practices.mdc
+description: Best practices for conditionally applying class names with clsx
+globs: **/*.{ts,tsx,js,jsx}
+---
+
+- Use clsx for conditional class names in JSX
+- Combine multiple class name sources efficiently
+- Utilize the spread operator for dynamic class names
+- Use clsx with Tailwind CSS for utility-first styling
