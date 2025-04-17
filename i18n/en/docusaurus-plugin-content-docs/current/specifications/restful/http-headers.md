@@ -100,12 +100,24 @@ Idempotency-Key: <uuid>
 The `Content-Digest` header MUST be used to provide the hash of the request payload in an idempotent request.
 
 ```http
-Content-Digest: <algorithm>=<hash>
+Content-Digest: sha-256=<hash>
 ```
 
 #### Validation
 
 - MUST be used according to the [idempotency specification](../idempotency.md#implementation-in-apis).
+- The algorithm MUST be `sha-256`.
+- The hash MUST be calculated over the request payload JSON, after serialization and before any compression.
+- The hash MUST be represented in hexadecimal, in lowercase, without prefix (ex: `0x`).
+- The hash MUST have exactly 64 characters.
+- The hash MUST be calculated after normalizing the JSON (removing whitespace, sorting properties).
+- The hash MUST be recalculated and validated in each idempotent request.
+
+#### Exemplos
+
+```http
+Content-Digest: sha-256=2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824
+```
 
 ---
 

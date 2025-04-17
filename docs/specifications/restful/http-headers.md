@@ -104,13 +104,25 @@ Idempotency-Key: <uuid>
 O cabeçalho `Content-Digest` DEVE ser usado para fornecer o hash do payload da requisição em uma requisição idempotente.
 
 ```http
-Content-Digest: <algorithm>=<hash>
+Content-Digest: sha-256=<hash>
 ```
 
 #### Validação
 
 - DEVE ser utilizado conforme [especificação de idempotência](../idempotency.md#implementação-em-apis).
+- O algoritmo DEVE ser `sha-256`.
+- O hash DEVE ser calculado sobre o payload JSON da requisição, após serialização e antes de qualquer compressão.
+- O hash DEVE ser representado em hexadecimal, em minúsculas, sem prefixo (ex: `0x`).
+- O hash DEVE ter exatamente 64 caracteres.
+- O hash DEVE ser calculado após a normalização do JSON (remoção de espaços em branco, ordenação de propriedades).
+- O hash DEVE ser recalculado e validado em cada requisição idempotente.
+- Em caso de falha na validação, o sistema DEVE retornar `400 Bad Request` com código `ERR400_MISSING_OR_MALFORMED_HEADER` e motivo `INVALID_CONTENT_DIGEST`.
 
+#### Exemplos
+
+```http
+Content-Digest: sha-256=2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824
+```
 
 ---
 
