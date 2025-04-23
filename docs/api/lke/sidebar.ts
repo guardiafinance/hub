@@ -152,8 +152,8 @@ const sidebar: SidebarsConfig = {
         },
         {
           type: "doc",
-          id: "api/lke/schemas/ledgerresponse",
-          label: "LedgerResponse",
+          id: "api/lke/schemas/listofledgers",
+          label: "ListOfLedgers",
           className: "schema",
         },
         {
@@ -200,8 +200,8 @@ const sidebar: SidebarsConfig = {
         },
         {
           type: "doc",
-          id: "api/lke/schemas/chapterresponse",
-          label: "ChapterResponse",
+          id: "api/lke/schemas/listofchapters",
+          label: "ListOfChapters",
           className: "schema",
         },
         {
@@ -224,12 +224,6 @@ const sidebar: SidebarsConfig = {
         },
         {
           type: "doc",
-          id: "api/lke/schemas/assetresponse",
-          label: "AssetResponse",
-          className: "schema",
-        },
-        {
-          type: "doc",
           id: "api/lke/schemas/uuid",
           label: "UUID",
           className: "schema",
@@ -244,6 +238,12 @@ const sidebar: SidebarsConfig = {
           type: "doc",
           id: "api/lke/schemas/debug",
           label: "Debug",
+          className: "schema",
+        },
+        {
+          type: "doc",
+          id: "api/lke/schemas/listofassets",
+          label: "ListOfAssets",
           className: "schema",
         },
         {

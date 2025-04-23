@@ -79,9 +79,7 @@ paths:
                 type: object
                 properties:
                   data:
-                    type: array
-                    items:
-                      $ref: './components.openapi.yaml#/components/schemas/LedgerResponse'
+                    $ref: './components.openapi.yaml#/components/schemas/ListOfLedgers'
                   pagination:
                     $ref: './components.openapi.yaml#/components/schemas/Pagination'
           headers:
@@ -180,7 +178,7 @@ paths:
                 type: object
                 properties:
                   data:
-                    $ref: './components.openapi.yaml#/components/schemas/LedgerResponse'
+                    $ref: './components.openapi.yaml#/components/schemas/Ledger'
         '400':
           $ref: './components.openapi.yaml#/components/responses/Error400'
         '401':
@@ -222,7 +220,7 @@ paths:
                 type: object
                 properties:
                   data:
-                    $ref: './components.openapi.yaml#/components/schemas/LedgerResponse'
+                    $ref: './components.openapi.yaml#/components/schemas/Ledger'
           headers:
             Cache-Control:
               $ref: './components.openapi.yaml#/components/headers/Cache-Control'
@@ -324,7 +322,7 @@ paths:
                 type: object
                 properties:
                   data:
-                    $ref: './components.openapi.yaml#/components/schemas/LedgerResponse'
+                    $ref: './components.openapi.yaml#/components/schemas/Ledger'
         '400':
           $ref: './components.openapi.yaml#/components/responses/Error400'
         '401':
@@ -442,9 +440,7 @@ paths:
                 type: object
                 properties:
                   data:
-                    type: array
-                    items:
-                      $ref: './components.openapi.yaml#/components/schemas/ChapterResponse'
+                    $ref: './components.openapi.yaml#/components/schemas/ListOfChapters'
                   pagination:
                     $ref: './components.openapi.yaml#/components/schemas/Pagination'
           headers:
@@ -552,7 +548,7 @@ paths:
                 type: object
                 properties:
                   data:
-                    $ref: './components.openapi.yaml#/components/schemas/ChapterResponse'
+                    $ref: './components.openapi.yaml#/components/schemas/Chapter'
               example:
                 data:
                   entity_id: '6683756247371778'
@@ -609,7 +605,7 @@ paths:
                 type: object
                 properties:
                   data:
-                    $ref: './components.openapi.yaml#/components/schemas/ChapterResponse'
+                    $ref: './components.openapi.yaml#/components/schemas/Chapter'
           headers:
             Cache-Control:
               $ref: './components.openapi.yaml#/components/headers/Cache-Control'
@@ -692,7 +688,7 @@ paths:
                 type: object
                 properties:
                   data:
-                    $ref: './components.openapi.yaml#/components/schemas/ChapterResponse'
+                    $ref: './components.openapi.yaml#/components/schemas/Chapter'
               example:
                 data:
                   entity_id: '6683756247371778'
@@ -917,7 +913,7 @@ paths:
                 type: object
                 properties:
                   data:
-                    $ref: './components.openapi.yaml#/components/schemas/AssetResponse'
+                    $ref: './components.openapi.yaml#/components/schemas/Asset'
               example:
                 data:
                   entity_id: '6683756247371778'

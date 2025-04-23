@@ -516,17 +516,20 @@ components:
           type: string
           description: Token para ir para a última página.
 
-    LedgerResponse:
-      allOf:
-        - $ref: '#/components/schemas/Ledger'
+    ListOfLedgers:
+      type: array
+      items:
+        $ref: '#/components/schemas/Ledger'
 
-    ChapterResponse:
-      allOf:
-        - $ref: '#/components/schemas/Chapter'
+    ListOfChapters:
+      type: array
+      items:
+        $ref: '#/components/schemas/Chapter'
 
-    AssetResponse:
-      allOf:
-        - $ref: '#/components/schemas/Asset'
+    ListOfAssets:
+      type: array
+      items:
+        $ref: '#/components/schemas/Asset'
 
     LedgerCreateRequest:
       type: object
