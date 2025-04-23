@@ -1,0 +1,32 @@
+---
+id: pagination
+title: "Pagination"
+description: ""
+sidebar_label: "Pagination"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"page_size":0,"total_count":0,"next_page_token":"string","previous_page_token":"string","first_page_token":"string","last_page_token":"string"}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Pagination"}
+>
+</Heading>
+
+
+
+
+
+<Schema
+  schema={{"type":"object","properties":{"page_size":{"type":"integer","description":"Número de itens retornados na página atual."},"total_count":{"type":"integer","description":"Número total de registros para a consulta original."},"next_page_token":{"type":"string","description":"Token para recuperar a próxima página."},"previous_page_token":{"type":"string","description":"Token para recuperar a página anterior."},"first_page_token":{"type":"string","description":"Token representando a primeira página do conjunto de dados."},"last_page_token":{"type":"string","description":"Token para ir para a última página."}},"title":"Pagination"}}
+  schemaType={"response"}
+>
+  
+</Schema>

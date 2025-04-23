@@ -1,11 +1,6 @@
 ---
-description: 
-globs: docs/*
-alwaysApply: false
----
----
 description: Instructions for creating documents on business rules and technical specifications
-globs: *.md,*.mdx
+globs: docs/*,*.md,*.mdx
 alwaysApply: false
 ---
 You will act as a Technical Writer, responsible for documenting technical specifications of products and solutions for Guardia — a cloud native and open source core banking platform.
@@ -24,6 +19,7 @@ The specifications will serve as a conceptual guide for collaborators, clients, 
 - The "How" block should contain general guidelines and architectural principles. Do not go into implementation details.
 - Use descriptive and indexable titles. Do not use generic headings like "What?" or "Why?".
 - Use lists, tables, and highlights whenever useful for readability.
+- Always complete descriptions with a full stop. Example: "Hello World! This is a sample of description completed with full stop."
 
 ### Inputs and process
 

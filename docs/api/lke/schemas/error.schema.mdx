@@ -25,7 +25,7 @@ import Heading from "@theme/Heading";
 
 
 <Schema
-  schema={{"type":"object","properties":{"code":{"type":"string","description":"O codigo do erro. Ex.: ERR400001"},"reason":{"type":"string","description":"O movito do erro, quando conhecido. Ex.: INVALID_PARAMETER"},"message":{"type":"string","description":"A mensagem que descreve o erro. "}},"x-apidog-orders":["code","reason","message"],"required":["code","message","reason"],"x-apidog-ignore-properties":[],"x-apidog-folder":"Schemas/VOs","title":"Error"}}
+  schema={{"type":"object","properties":{"code":{"type":"string","description":"O codigo do erro. Ex.: ERR400_INVALID_PARAMETER."},"reason":{"type":"string","description":"O movito do erro, quando conhecido. Ex.: INVALID_ENTITY_ID_FORMAT."},"message":{"type":"string","description":"A mensagem que descreve o erro."}},"required":["code","reason","message"],"title":"Error"}}
   schemaType={"response"}
 >
   

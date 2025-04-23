@@ -6,7 +6,7 @@ sidebar_label: "ChapterUpdateRequest"
 hide_title: true
 hide_table_of_contents: true
 schema: true
-sample: {"external_entity_id":"string","name":"string","description":"string","ledger_entity_id":"3fa85f64-5717-4562-b3fc-2c963f66afa6","metadata":{"foo":"string"}}
+sample: {"name":"string","description":"string","metadata":{"foo":"bar"}}
 custom_edit_url: null
 ---
 
@@ -25,7 +25,7 @@ import Heading from "@theme/Heading";
 
 
 <Schema
-  schema={{"type":"object","properties":{"external_entity_id":{"type":"string","description":"Um ID externo único do chapter. Pode ser associado para uso externo. Recomendado o formato UUID.","title":"","examples":["fff78a0d3b5146a1ae80007e3d316714"],"maxLength":36,"nullable":true},"name":{"type":"string","description":"Nome único dentro do chapter","examples":["Investimentos"],"nullable":true},"description":{"type":"string","description":"Uma descrição personalizada do chapter. Mínimo de 3 caracteres e Máximo de 512 caracteres.","examples":["Unidade de Negócio voltada para produtos de Investimentos."],"nullable":true},"ledger_entity_id":{"type":"string","description":"Identificador único do ledger ao qual o chapter pertence. Alternativamente pode ser utilizado o `external_entity_id`.","format":"uuid","maxLength":36,"minLength":32,"examples":["f636cb1c46c4468e93c384a12530ee30"],"nullable":true},"metadata":{"description":"Os metadados a serem adicionados à entidade devem ser fornecidos como pares de chave-valor em um formato de objeto JSON, com chave e valor como strings. O tamanho maximo do objeto deve ser 1MB.","type":"object","properties":{"foo":{"type":"string","x-apidog-mock":"bar","examples":["bar"],"nullable":true}},"x-apidog-orders":["foo"],"x-apidog-ignore-properties":[],"x-apidog-folder":"Schemas/VOs","title":"Metadata"}},"x-apidog-refs":{},"x-apidog-orders":["external_entity_id","name","description","ledger_entity_id","metadata"],"x-apidog-ignore-properties":[],"x-apidog-folder":"Schemas/Requests","title":"ChapterUpdateRequest"}}
+  schema={{"type":"object","properties":{"name":{"type":"string"},"description":{"type":"string"},"metadata":{"type":"object","description":"Os metadados a serem adicionados à entidade devem ser fornecidos como pares de chave-valor em um formato de objeto JSON, com chave e valor como strings. O tamanho maximo do objeto deve ser 1MB.","additionalProperties":{"type":"string"},"maxProperties":10,"example":{"foo":"bar"},"title":"Metadata"}},"title":"ChapterUpdateRequest"}}
   schemaType={"response"}
 >
   

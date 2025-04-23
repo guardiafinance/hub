@@ -6,7 +6,7 @@ sidebar_label: "AssetCreateRequest"
 hide_title: true
 hide_table_of_contents: true
 schema: true
-sample: {"external_entity_id":"string","code":"string","number":"string","exponent":0,"is_fiat":false,"locations":["string"]}
+sample: {"external_entity_id":"ext-123","code":"string","number":"string","exponent":"string","is_fiat":true,"locations":["string"]}
 custom_edit_url: null
 ---
 
@@ -25,7 +25,7 @@ import Heading from "@theme/Heading";
 
 
 <Schema
-  schema={{"type":"object","properties":{"external_entity_id":{"type":"string","description":"Um ID externo único d{{a entidade}}. Pode ser associado para uso externo. Recomendado o formato UUID.","title":"","nullable":true},"code":{"type":"string","minLength":3,"maxLength":24,"description":"O código do asset deve ter entre 3 e 24 caracteres, podendo seguir os formatos ISO 4217, ISO 10962, MIC, ISIN ou um padrão interno da instituição."},"number":{"type":"string","minLength":3,"maxLength":24,"description":"Alguns assets podem possuir, além do código, um identificador alfanumérico de 3 a 24 caracteres, adicional para referência específica dentro da instituição ou do sistema.","nullable":true},"exponent":{"type":"integer","minimum":0,"maximum":18,"description":"O expoente define a escala de precisão do ativo, determinando o número de casas decimais permitidas, podendo variar de 0 a 18 dígitos após a vírgula."},"is_fiat":{"type":"boolean","description":"Indicador que define se o ativo é fiduciário, ou seja, com respaldo de um regulador, como um estado ou governo, ou não.","default":false},"locations":{"type":"array","items":{"type":"string"},"description":"Países onde o ativo é válido no formato ISO 3166, por exemplo, BR, AG, US. Para representar todos os países, use ALL, e para uso interno, use NONE."}},"x-apidog-orders":["external_entity_id","code","number","exponent","is_fiat","locations"],"required":["exponent","is_fiat","locations","code"],"x-apidog-ignore-properties":[],"x-apidog-folder":"Schemas/Requests","title":"AssetCreateRequest"}}
+  schema={{"type":"object","properties":{"external_entity_id":{"type":"string","description":"Identificador externo da entidade para interoperabilidade com outros sistemas.","minLength":1,"maxLength":36,"example":"ext-123","nullable":true,"title":"ExternalEntityID"},"code":{"type":"string"},"number":{"type":"string"},"exponent":{"type":"string"},"is_fiat":{"type":"boolean"},"locations":{"type":"array","items":{"type":"string"}}},"required":["external_entity_id","code","number","exponent","is_fiat","locations"],"title":"AssetCreateRequest"}}
   schemaType={"response"}
 >
   

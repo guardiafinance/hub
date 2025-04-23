@@ -1,0 +1,111 @@
+---
+description: 
+globs: **/*.{openapi.yaml}
+alwaysApply: false
+---
+headers:
+  - name: Link
+    type: standard
+    direction: response
+    required: optional
+    description: Contains HATEOAS navigation links for previous, next, first, and last pages.
+
+  - name: Cache-Control
+    type: standard
+    direction: response
+    required: optional
+    description: Defines cache policies for paginated endpoints. Must align with page token expiration (e.g., `max-age=900`).
+
+query:
+  - name: page_size
+    type: uint32
+    default: 20
+    max: 100
+    required: optional
+    description: Number of items per page. Requests above max must return validation error.
+
+  - name: page_token
+    type: string
+    required: optional
+    description: Opaque token that identifies the current page. Must be treated as opaque and server-controlled.
+
+  - name: order_by
+    type: string
+    default: created_at
+    allowed: [created_at, updated_at, reference_date]
+    required: optional
+    description: Defines the field used for sorting. Any other value must result in a 400 error.
+
+  - name: sort
+    type: string
+    default: desc
+    allowed: [asc, desc]
+    required: optional
+    description: Defines sorting direction. Must reject other values with appropriate error.
+
+response:
+  - name: data
+    type: array
+    description: List of items for the current page. Must follow the resource structure of the endpoint.
+
+  - name: pagination.page_size
+    type: uint32
+    description: Number of items returned in the current page.
+
+  - name: pagination.total_count
+    type: uint32
+    optional: true
+    description: Total number of records for the original query. May be omitted to optimize performance.
+
+  - name: pagination.next_page_token
+    type: string
+    optional: true
+    description: Token for retrieving the next page. Null or absent when no next page exists.
+
+  - name: pagination.previous_page_token
+    type: string
+    optional: true
+    description: Token for retrieving the previous page. Null or absent when this is the first page.
+
+  - name: pagination.first_page_token
+    type: string
+    optional: true
+    description: Token representing the first page in the dataset. Useful for restarting navigation.
+
+  - name: pagination.last_page_token
+    type: string
+    optional: true
+    description: Token for jumping to the last page. Optional for optimization.
+
+rules:
+  - if: no page_token is provided
+    then: return first page using default sort and page_size
+
+  - if: page_size exceeds 100
+    then: return 400 Bad Request with reason PAGE_SIZE_TOO_LARGE
+
+  - if: order_by contains invalid values
+    then: return 400 Bad Request with reason ORDER_BY_INVALID 
+
+  - if: sort contains invalid values
+    then: return 400 Bad Request with reason SORT_INVALID 
+  
+  - if: page_token is invalid
+    then: return 400 Bad Request with reason PAGE_TOKEN_INVALID
+
+  - if: page_token is expired
+    then: return 400 Bad Request with reason PAGE_TOKEN_EXPIRED
+
+  - if: no results found
+    then: return 200 OK with empty data array and pagination.total_count = 0
+
+  - enforce: All tokens must be opaque, signed or encrypted, and expire after 10 minutes
+
+  - log: Every paginated request must include X-Grd-Trace-Id for audit and observability
+
+notes:
+  - Pagination must be documented in OpenAPI contracts.
+  - Pagination must be implemented even for endpoints expected to return one item.
+  - Tokens must not be reused beyond their expiration.
+  - All pagination behaviors must be stateless and deterministic.
+  - Clients must not rely on token structure or decoding.

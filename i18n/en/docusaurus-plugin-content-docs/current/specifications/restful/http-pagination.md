@@ -81,25 +81,25 @@ Responses from endpoints that implement pagination MUST follow the structure bel
 ##### `pagination.page_size`
 - MUST be a positive integer (`uint32`) representing the number of items per page in the response.
 
-##### `pagination.next_page_token`
-- MAY be a string representing the next page token.
-- WHEN missing or null, indicates there are no more following pages.
-
-##### `pagination.previous_page_token`
-- MAY be a string representing the previous page token.
-- WHEN missing or null, indicates this is the first page in the sequence.
+##### `pagination.total_count`
+- MUST be a positive integer (`uint32`) representing the total number of records available in the original query.
+- MAY be omitted in highly scalable pagination scenarios where the complete count affects performance.
 
 ##### `pagination.first_page_token`
 - MAY be a string representing the first page token.
 - MUST be treated as an auxiliary resource for clients that wish to restart navigation.
 
+##### `pagination.previous_page_token`
+- MAY be a string representing the previous page token.
+- WHEN missing or null, indicates this is the first page in the sequence.
+
+##### `pagination.next_page_token`
+- MAY be a string representing the next page token.
+- WHEN missing or null, indicates there are no more following pages.
+
 ##### `pagination.last_page_token`
 - MAY be a string representing the last page token.
 - MUST be optionally used by clients to jump to the end of the sequence.
-
-##### `pagination.total_count`
-- MUST be a positive integer (`uint32`) representing the total number of records available in the original query.
-- MAY be omitted in highly scalable pagination scenarios where the complete count affects performance.
 
 #### JSON Example
 ```json
@@ -110,11 +110,11 @@ Responses from endpoints that implement pagination MUST follow the structure bel
   ],
   "pagination": {
     "page_size": 20,
+    "total_count": 200,
     "first_page_token": "eyJhbGciOi...",
-    "next_page_token": "eyJhbGciOi...",
     "previous_page_token": "eyJhbGciOi...",
-    "last_page_token": "eyJhbGciOi...",
-    "total_count": 200
+    "next_page_token": "eyJhbGciOi...",
+    "last_page_token": "eyJhbGciOi..."
   }
 }
 ```
@@ -132,10 +132,10 @@ Example:
 
 ```
 link:
+<https://{tenant_id}.guardia.finance/api/v1/ledgers?page_token={first_page_token}>; rel="first",
 <https://{tenant_id}.guardia.finance/api/v1/ledgers?page_token={previous_page_token}>; rel="previous",
 <https://{tenant_id}.guardia.finance/api/v1/ledgers?page_token={next_page_token}>; rel="next",
-<https://{tenant_id}.guardia.finance/api/v1/ledgers?page_token={last_page_token}>; rel="last",
-<https://{tenant_id}.guardia.finance/api/v1/ledgers?page_token={first_page_token}>; rel="first"
+<https://{tenant_id}.guardia.finance/api/v1/ledgers?page_token={last_page_token}>; rel="last"
 ```
 
 Learn more about the HTTP headers that Guardia uses [here](./http-headers.md).

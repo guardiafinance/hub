@@ -22,6 +22,10 @@ Todos os headers DEVEM seguir o padrão de nomenclatura definido nesta especific
 
 | Header                                              | Tipo     | Categoria | Direção   | Obrigatoriedade | Descrição                         |
 |-----------------------------------------------------|----------|-----------|-----------|-----------------|-----------------------------------|
+| [Accept](#accept)                                     | string   | padrão    | Request   | Opcional        | Formato de resposta aceito.       |
+| [Accept-Language](#accept-language)                   | string   | padrão    | Request   | Opcional        | Idioma preferido.                 |
+| [Content-Type](#content-type)                         | string   | padrão    | Request/Response  | Opcional        | Formato de conteúdo.              |
+| [Content-Language](#content-language)               | string   | padrão    | Response  | Opcional        | Idioma da resposta.               |
 | [Cache-Control](#cache-control)                     | string   | padrão    | Response  | Opcional        | Diretivas para controle de cache. |
 | [Link](#link)                                       | string   | padrão    | Response  | Opcional        | Links de navegação.               |
 | [Idempotency-Key](#idempotency-key)                 | string   | padrão    | Request/Response  | Opcional        | Chave de idempotência.            |
@@ -31,11 +35,57 @@ Todos os headers DEVEM seguir o padrão de nomenclatura definido nesta especific
 
 ---
 
+### Accept
+
+O cabeçalho `Accept` DEVE ser usado para especificar o formato de resposta aceito pelo cliente.
+
+#### Exemplos de uso
+
+```http
+Accept: application/vnd.guardia.v1+json
+```
+
+---
+
+### Accept-Language
+
+O cabeçalho `Accept-Language` DEVE ser usado para especificar o idioma preferido pelo cliente.
+
+#### Exemplos de uso
+
+```http
+Accept-Language: pt-BR
+```
+
+---
+
+### Content-Type
+
+O cabeçalho `Content-Type` DEVE ser usado para especificar o formato de conteúdo da requisição e da resposta.
+
+#### Exemplos de uso
+
+```http
+Content-Type: application/vnd.guardia.v1+json
+```
+
+---
+
+### Content-Language
+
+O cabeçalho `Content-Language` DEVE ser usado para especificar o idioma da resposta. DEVE retornar o valor solicitado através do cabeçalho `Accept-Language` da requisição.
+
+#### Exemplos de uso
+
+```http
+Content-Language: pt-BR
+```
+
+---
+
 ### Cache-Control
 
 O cabeçalho `Cache-Control` DEVE ser usado para orientar mecanismos de cache tanto em requisições quanto em respostas.
-
-#### Resposta
 
 O cache DEVE ser configurado com a diretiva `max-age=<seconds>`, precedida por:
 

@@ -19,13 +19,13 @@ const sidebar: SidebarsConfig = {
         {
           type: "doc",
           id: "api/lke/list-ledgers",
-          label: "Lista todos os ledgers",
+          label: "Lista todos os ledgers.",
           className: "api-method get",
         },
         {
           type: "doc",
           id: "api/lke/create-ledger",
-          label: "Criar um novo ledger",
+          label: "Cria um novo ledger.",
           className: "api-method post",
         },
         {
@@ -37,13 +37,13 @@ const sidebar: SidebarsConfig = {
         {
           type: "doc",
           id: "api/lke/update-ledger",
-          label: "Atualiza um ledger específico",
+          label: "Atualize os dados de um ledger específico.",
           className: "api-method patch",
         },
         {
           type: "doc",
           id: "api/lke/delete-ledger",
-          label: "Exclui um ledger específico",
+          label: "Exclui um ledger específico.",
           className: "api-method delete",
         },
       ],
@@ -61,7 +61,7 @@ const sidebar: SidebarsConfig = {
         {
           type: "doc",
           id: "api/lke/list-chapters",
-          label: "Lista todos os chapters",
+          label: "Lista todos os chapters.",
           className: "api-method get",
         },
         {
@@ -73,19 +73,19 @@ const sidebar: SidebarsConfig = {
         {
           type: "doc",
           id: "api/lke/get-chapter",
-          label: "Obtém um chapter específico",
+          label: "Obtém um chapter específico.",
           className: "api-method get",
         },
         {
           type: "doc",
           id: "api/lke/update-chapter",
-          label: "Atualiza um chapter específico",
+          label: "Atualiza um chapter específico.",
           className: "api-method patch",
         },
         {
           type: "doc",
           id: "api/lke/delete-chapter",
-          label: "Exclui um chapter específico",
+          label: "Exclui um chapter específico.",
           className: "api-method delete",
         },
       ],
@@ -103,7 +103,7 @@ const sidebar: SidebarsConfig = {
         {
           type: "doc",
           id: "api/lke/create-asset",
-          label: "Criar um novo asset",
+          label: "Criar um novo asset.",
           className: "api-method post",
         },
       ],
@@ -116,20 +116,26 @@ const sidebar: SidebarsConfig = {
       items: [
         {
           type: "doc",
-          id: "api/lke/schemas/ledger",
-          label: "Ledger",
+          id: "api/lke/schemas/uuidv-7",
+          label: "UUIDv7",
           className: "schema",
         },
         {
           type: "doc",
-          id: "api/lke/schemas/chapter",
-          label: "Chapter",
+          id: "api/lke/schemas/externalentityid",
+          label: "ExternalEntityID",
           className: "schema",
         },
         {
           type: "doc",
-          id: "api/lke/schemas/asset",
-          label: "Asset",
+          id: "api/lke/schemas/version",
+          label: "Version",
+          className: "schema",
+        },
+        {
+          type: "doc",
+          id: "api/lke/schemas/datetime",
+          label: "DateTime",
           className: "schema",
         },
         {
@@ -140,8 +146,20 @@ const sidebar: SidebarsConfig = {
         },
         {
           type: "doc",
-          id: "api/lke/schemas/datetime-iso-8601-rfc-3339",
-          label: "DateTime (ISO 8601 / RFC 3339)",
+          id: "api/lke/schemas/ledger",
+          label: "Ledger",
+          className: "schema",
+        },
+        {
+          type: "doc",
+          id: "api/lke/schemas/ledgerresponse",
+          label: "LedgerResponse",
+          className: "schema",
+        },
+        {
+          type: "doc",
+          id: "api/lke/schemas/pagination",
+          label: "Pagination",
           className: "schema",
         },
         {
@@ -158,26 +176,32 @@ const sidebar: SidebarsConfig = {
         },
         {
           type: "doc",
-          id: "api/lke/schemas/version",
-          label: "Version",
+          id: "api/lke/schemas/errorsresponse",
+          label: "ErrorsResponse",
           className: "schema",
         },
         {
           type: "doc",
-          id: "api/lke/schemas/entityid",
-          label: "EntityID",
-          className: "schema",
-        },
-        {
-          type: "doc",
-          id: "api/lke/schemas/ledgercreateresquest",
-          label: "LedgerCreateResquest",
+          id: "api/lke/schemas/ledgercreaterequest",
+          label: "LedgerCreateRequest",
           className: "schema",
         },
         {
           type: "doc",
           id: "api/lke/schemas/ledgerupdaterequest",
           label: "LedgerUpdateRequest",
+          className: "schema",
+        },
+        {
+          type: "doc",
+          id: "api/lke/schemas/chapter",
+          label: "Chapter",
+          className: "schema",
+        },
+        {
+          type: "doc",
+          id: "api/lke/schemas/chapterresponse",
+          label: "ChapterResponse",
           className: "schema",
         },
         {
@@ -194,32 +218,38 @@ const sidebar: SidebarsConfig = {
         },
         {
           type: "doc",
-          id: "api/lke/schemas/assetcreaterequest",
-          label: "AssetCreateRequest",
-          className: "schema",
-        },
-        {
-          type: "doc",
-          id: "api/lke/schemas/errorsresponse",
-          label: "ErrorsResponse",
-          className: "schema",
-        },
-        {
-          type: "doc",
-          id: "api/lke/schemas/ledgerresponse",
-          label: "LedgerResponse",
-          className: "schema",
-        },
-        {
-          type: "doc",
-          id: "api/lke/schemas/chapterresponse",
-          label: "ChapterResponse",
+          id: "api/lke/schemas/asset",
+          label: "Asset",
           className: "schema",
         },
         {
           type: "doc",
           id: "api/lke/schemas/assetresponse",
           label: "AssetResponse",
+          className: "schema",
+        },
+        {
+          type: "doc",
+          id: "api/lke/schemas/uuid",
+          label: "UUID",
+          className: "schema",
+        },
+        {
+          type: "doc",
+          id: "api/lke/schemas/uuidv-7",
+          label: "UUIDv7",
+          className: "schema",
+        },
+        {
+          type: "doc",
+          id: "api/lke/schemas/debug",
+          label: "Debug",
+          className: "schema",
+        },
+        {
+          type: "doc",
+          id: "api/lke/schemas/assetcreaterequest",
+          label: "AssetCreateRequest",
           className: "schema",
         },
       ],

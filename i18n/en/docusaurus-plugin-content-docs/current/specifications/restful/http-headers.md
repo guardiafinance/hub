@@ -19,13 +19,66 @@ All headers MUST follow the naming pattern defined in this specification.
 
 ## Standard Headers
 
-| Header                                            | Type     | Category  | Direction   | Mandatory | Description                            |
-|---------------------------------------------------|----------|-----------|-------------|-----------|----------------------------------------|
-| [Cache-Control](#cache-control)                   | string   | standard  | Response    | Optional  | Cache control directives.              |
-| [Link](#link)                                     | string   | standard  | Response    | Optional  | Links for pagination or entity state.  |
-| [Idempotency-Key](#idempotency-key)               | string   | standard  | Both        | Optional  | Idempotency key.                       |
-| [Content-Digest](#content-digest)                 | string   | standard  | Response    | Optional  | Payload hash.                          |
-| [Last-Modified](#last-modified)                   | timestamp| standard  | Response    | Optional  | Last modification date.                |
+| Header                                              | Type     | Category | Direction | Required    | Description                         |
+|-----------------------------------------------------|----------|-----------|-----------|--------------|-------------------------------------|
+| [Accept](#accept)                                     | string   | standard  | Request   | Optional     | Accepted response format.           |
+| [Accept-Language](#accept-language)                   | string   | standard  | Request   | Optional     | Preferred language.                 |
+| [Content-Type](#content-type)                         | string   | standard  | Both      | Optional     | Content format.                     |
+| [Content-Language](#content-language)                 | string   | standard  | Response  | Optional     | Response language.                  |
+| [Cache-Control](#cache-control)                       | string   | standard  | Response  | Optional     | Cache control directives.           |
+| [Link](#link)                                         | string   | standard  | Response  | Optional     | Navigation links.                   |
+| [Idempotency-Key](#idempotency-key)                  | string   | standard  | Both      | Optional     | Idempotency key.                    |
+| [Content-Digest](#content-digest)                     | string   | standard  | Response  | Optional     | Payload hash.                       |
+| [Last-Modified](#last-modified)                       | timestamp| standard  | Response  | Optional     | Last modification date.             |
+| [Retry-After](#retry-after)                          | integer  | standard  | Response  | Optional     | Time in seconds to wait before retrying the request. |
+
+---
+
+### Accept
+
+The `Accept` header MUST be used to specify the response format accepted by the client.
+
+#### Usage Examples
+
+```http
+Accept: application/vnd.guardia.v1+json
+```
+
+---
+
+### Accept-Language
+
+The `Accept-Language` header MUST be used to specify the client's preferred language.
+
+#### Usage Examples
+
+```http
+Accept-Language: en
+```
+
+---
+
+### Content-Type
+
+The `Content-Type` header MUST be used to specify the content format of the request and response.
+
+#### Usage Examples
+
+```http
+Content-Type: application/vnd.guardia.v1+json
+```
+
+---
+
+### Content-Language
+
+The `Content-Language` header MUST be used to specify the response language. MUST return the value requested through the `Accept-Language` header of the request.
+
+#### Usage Examples
+
+```http
+Content-Language: en
+```
 
 ---
 
@@ -136,21 +189,31 @@ Last-Modified: <http-date>
 
 ---
 
+### Retry-After
+
+The `Retry-After` header MUST be returned in case of error 429 (Too Many Requests) to indicate the time in seconds to wait before retrying the request.
+
+```http
+Retry-After: <seconds>
+```
+
+#### Validation
+
+- MUST be a positive integer value.
+
 ## Custom Headers
 
 Custom headers used by Guardia follow the `X-Grd-*` prefix convention. They address specific needs for traceability and correlation between systems.
 
-| Header                                            | Type     | Category | Direction    | Mandatory | Description                                            |
-|---------------------------------------------------|----------|-----------|-------------|-----------|--------------------------------------------------------|
-| [X-Grd-Debug](#x-grd-debug)                       | booleano | custom    | Request     | Optional  | Flag for enabling debug mode.                          |
-| [X-Grd-Trace-Id](#x-grd-trace-id)                 | uuid     | custom    | Response    | Mandatory | Unique request identifier for traceability.            |
-| [X-Grd-Correlation-Id](#x-grd-correlation-id)     | uuid     | custom    | Both        | Optional  | External correlation identifier for distributed calls. |
-
----
+| Header                                              | Type     | Category | Direction | Required    | Description                                             |
+|-----------------------------------------------------|----------|-----------|-----------|-------------|---------------------------------------------------------|
+| [X-Grd-Debug](#x-grd-debug)                         | boolean  | custom    | Request   | Optional    | Flag to enable debug mode.                              |
+| [X-Grd-Trace-Id](#x-grd-trace-id)                   | uuid     | custom    | Response  | Required    | Unique request ID for traceability.                     |
+| [X-Grd-Correlation-Id](#x-grd-correlation-id)       | uuid     | custom    | Both      | Optional    | Correlation ID for distributed calls.                   |
 
 ### X-Grd-Debug
 
-Optional boolean header. When present with the value `true`, the response MUST include the `debug` object in the payload, containing additional information according to the [response payloads specification](./http-response-payloads.md#debug).
+Optional boolean header. When present with value `true`, the response MUST include the `debug` object in the payload, containing additional information according to [response payload specification](./http-response-payloads.md#in-case-of-debug).
 
 ```http
 X-Grd-Debug: true
@@ -159,22 +222,20 @@ X-Grd-Debug: true
 #### Validation
 - MUST accept only `true` or `false` values (case insensitive)
 - Any other value MUST result in `400 Bad Request` with code `ERR400_MISSING_OR_MALFORMED_HEADER` and reason `INVALID_DEBUG_HEADER_VALUE`
-- Usage in production environments MUST be controlled by:
+- Use in production environments MUST be controlled by:
   - Specific permission scope
   - Maximum usage time restricted to 10 minutes per client
   - Limit of 10 requests per minute
   - Usage interval restricted to at least 1 minute between requests
-  - Audit logging of usage
-
----
+  - Usage audit logging
 
 ### X-Grd-Trace-Id
 
-Mandatory header returned in all responses from Guardia APIs. Represents the unique request identifier.
+Required header returned in **all responses** from Guardia APIs. Represents the unique request identifier.
 
-- MUST be generated by Guardia's infrastructure
-- MUST track the request and response across all system layers, including domain events and webhook notifications
-- The value MUST follow the UUIDv7 standard, with temporal marking as specified in [RFC 9562](https://datatracker.ietf.org/doc/html/rfc9562#name-uuid-version-7)
+- MUST be generated by Guardia infrastructure
+- MUST track the request and response throughout all system layers, including domain events and webhook notifications
+- The value MUST follow the UUIDv7 standard, with timestamp marking as specified in [RFC 9562](https://datatracker.ietf.org/doc/html/rfc9562#name-uuid-version-7)
 
 ```http
 X-Grd-Trace-Id: <uuid>
@@ -184,15 +245,13 @@ X-Grd-Trace-Id: <uuid>
 - MUST be a valid UUIDv7
 - MUST be included in all responses, including errors
 
----
-
 ### X-Grd-Correlation-Id
 
 Optional header sent by external systems. Used to propagate tracking context throughout distributed calls.
 
 - If present in the request, MUST be included in the response
-- If present in the request, MUST be propagated across all system layers, including domain events and webhook notifications
-- The value MUST follow the standard proposed by [RFC 9562](https://datatracker.ietf.org/doc/html/rfc9562)
+- If present in the request, MUST be propagated through all system layers, including domain events and webhook notifications
+- The value MUST follow the UUID standard proposed by [RFC 9562](https://datatracker.ietf.org/doc/html/rfc9562)
 
 ```http
 X-Grd-Correlation-Id: <uuid>
@@ -201,8 +260,6 @@ X-Grd-Correlation-Id: <uuid>
 #### Validation
 - If present, MUST be a valid UUID
 - If invalid, MUST be ignored and a new value MUST be generated
-
----
 
 ## Security Considerations
 
@@ -220,10 +277,10 @@ X-Grd-Correlation-Id: <uuid>
   - Be sanitized to prevent code injection
   - Be limited in quantity per request
 
-## Additional notes
+## Additional Notes
 
-- Headers used in each endpoint MUST be documented in the API OAS contract
-- Headers described here are considered the minimum standard for any Guardia RESTful API
+- Headers used in each endpoint MUST be documented in the API's OAS contract
+- The headers described here are considered the **minimum standard** for any Guardia RESTful API
 
 ## References
 

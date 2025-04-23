@@ -1,0 +1,32 @@
+---
+id: debug
+title: "Debug"
+description: ""
+sidebar_label: "Debug"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"trace_id":"string","correlation_id":"string","instance":"string","timestamp":"string","duration":"string","memory":"string","query":"string","params":"string","external_ip":"string"}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Debug"}
+>
+</Heading>
+
+
+
+
+
+<Schema
+  schema={{"type":"object","properties":{"trace_id":{"type":"string","description":"Identificador único da requisição."},"correlation_id":{"type":"string","description":"Identificador de correlação para rastreamento distribuído."},"instance":{"type":"string","description":"Identificador da instância que processou a requisição."},"timestamp":{"type":"string","description":"Timestamp UNIX de quando a requisição foi recebida."},"duration":{"type":"string","description":"Tempo total de processamento da requisição em milissegundos."},"memory":{"type":"string","description":"Memória utilizada para processar a requisição em bytes."},"query":{"type":"string","description":"Query string da requisição, se disponível."},"params":{"type":"string","description":"Parâmetros de rota utilizados, se houver."},"external_ip":{"type":"string","description":"IP externo da requisição do cliente."}},"title":"Debug"}}
+  schemaType={"response"}
+>
+  
+</Schema>

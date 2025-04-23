@@ -21,12 +21,64 @@ Todos los headers DEBEN seguir el patrón de nomenclatura definido en esta espec
 
 | Header                                            | Tipo     | Categoría        | Dirección    | Obligatoriedad | Descripción                                              |
 |---------------------------------------------------|----------|------------------|--------------|----------------|----------------------------------------------------------|
-| [Cache-Control](#cache-control)                   | string   | estándar         | Response     | Opcional       | Direcciones para el control de caché.                    |
-| [Link](#link)                                     | string   | estándar         | Response     | Opcional       | Enlaces para la paginación o el estado de las entidades. |
-| [Idempotency-Key](#idempotency-key)               | string   | estándar         | Ambos        | Opcional       | Clave de idempotencia.                                   |
-| [Content-Digest](#content-digest)                 | string   | estándar         | Response     | Opcional       | Hash del payload.                                        |
-| [Last-Modified](#last-modified)                   | timestamp| estándar         | Response     | Opcional       | Fecha de última modificación.                            |
+| [Accept](#accept)                                   | string   | estándar         | Request      | Opcional       | Formato de respuesta aceptado.                           |
+| [Accept-Language](#accept-language)                 | string   | estándar         | Request      | Opcional       | Idioma preferido.                                        |
+| [Content-Type](#content-type)                       | string   | estándar         | Ambos        | Opcional       | Formato del contenido.                                   |
+| [Content-Language](#content-language)               | string   | estándar         | Response     | Opcional       | Idioma de la respuesta.                                  |
+| [Cache-Control](#cache-control)                     | string   | estándar         | Response     | Opcional       | Direcciones para el control de caché.                    |
+| [Link](#link)                                       | string   | estándar         | Response     | Opcional       | Enlaces para la paginación o el estado de las entidades. |
+| [Idempotency-Key](#idempotency-key)                | string   | estándar         | Ambos        | Opcional       | Clave de idempotencia.                                   |
+| [Content-Digest](#content-digest)                   | string   | estándar         | Response     | Opcional       | Hash del payload.                                        |
+| [Last-Modified](#last-modified)                     | timestamp| estándar         | Response     | Opcional       | Fecha de última modificación.                            |
+| [Retry-After](#retry-after)                         | integer  | estándar         | Response     | Opcional       | Tiempo en segundos para esperar antes de reintentar la solicitud. |
 
+---
+
+### Accept
+
+El header `Accept` DEBE ser usado para especificar el formato de respuesta aceptado por el cliente.
+
+#### Ejemplos de uso
+
+```http
+Accept: application/vnd.guardia.v1+json
+```
+
+---
+
+### Accept-Language
+
+El header `Accept-Language` DEBE ser usado para especificar el idioma preferido por el cliente.
+
+#### Ejemplos de uso
+
+```http
+Accept-Language: es
+```
+
+---
+
+### Content-Type
+
+El header `Content-Type` DEBE ser usado para especificar el formato del contenido de la solicitud y la respuesta.
+
+#### Ejemplos de uso
+
+```http
+Content-Type: application/vnd.guardia.v1+json
+```
+
+---
+
+### Content-Language
+
+El header `Content-Language` DEBE ser usado para especificar el idioma de la respuesta. DEBE retornar el valor solicitado a través del header `Accept-Language` de la solicitud.
+
+#### Ejemplos de uso
+
+```http
+Content-Language: es
+```
 
 ---
 
@@ -137,6 +189,18 @@ Last-Modified: <http-date>
 - DEBE ser usado según la [especificación de idempotencia](../idempotency.md#implementación-en-apis).
 
 ---
+
+### Retry-After
+
+El header `Retry-After` DEBE ser retornado en caso de error 429 (Too Many Requests) para indicar el tiempo en segundos para esperar antes de reintentar la solicitud.
+
+```http
+Retry-After: <seconds>
+```
+
+#### Validación
+
+- DEBE ser un valor entero positivo.
 
 ## Headers Personalizados
 

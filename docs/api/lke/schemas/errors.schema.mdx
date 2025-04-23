@@ -1,12 +1,12 @@
 ---
 id: errors
 title: "Errors"
-description: ""
+description: "Lista de erros retornados pela API. Cada erro contém um código, motivo e mensagem descritiva."
 sidebar_label: "Errors"
 hide_title: true
 hide_table_of_contents: true
 schema: true
-sample: [{"code":"string","reason":"string","message":"string"}]
+sample: [{"code":"ERR400_INVALID_PARAMETER","reason":"INVALID_ENTITY_ID_FORMAT","message":"O parâmetro 'entity_id' é inválido. Deve ser um UUIDv7 válido."},{"code":"ERR400_INVALID_PARAMETER","reason":"INVALID_EXTERNAL_ENTITY_ID_LENGTH","message":"O campo 'external_entity_id' deve ter até 36 caracteres."}]
 custom_edit_url: null
 ---
 
@@ -22,10 +22,10 @@ import Heading from "@theme/Heading";
 
 
 
-
+Lista de erros retornados pela API. Cada erro contém um código, motivo e mensagem descritiva.
 
 <Schema
-  schema={{"type":"array","items":{"type":"object","properties":{"code":{"type":"string","description":"O codigo do erro. Ex.: ERR400001"},"reason":{"type":"string","description":"O movito do erro, quando conhecido. Ex.: INVALID_PARAMETER"},"message":{"type":"string","description":"A mensagem que descreve o erro. "}},"x-apidog-orders":["code","reason","message"],"required":["code","message","reason"],"x-apidog-ignore-properties":[],"x-apidog-folder":"Schemas/VOs","title":"Error"},"x-apidog-folder":"Schemas/VOs","title":"Errors"}}
+  schema={{"type":"array","description":"Lista de erros retornados pela API. Cada erro contém um código, motivo e mensagem descritiva.","items":{"type":"object","properties":{"code":{"type":"string","description":"O codigo do erro. Ex.: ERR400_INVALID_PARAMETER."},"reason":{"type":"string","description":"O movito do erro, quando conhecido. Ex.: INVALID_ENTITY_ID_FORMAT."},"message":{"type":"string","description":"A mensagem que descreve o erro."}},"required":["code","reason","message"],"title":"Error"},"example":[{"code":"ERR400_INVALID_PARAMETER","reason":"INVALID_ENTITY_ID_FORMAT","message":"O parâmetro 'entity_id' é inválido. Deve ser um UUIDv7 válido."},{"code":"ERR400_INVALID_PARAMETER","reason":"INVALID_EXTERNAL_ENTITY_ID_LENGTH","message":"O campo 'external_entity_id' deve ter até 36 caracteres."}],"title":"Errors"}}
   schemaType={"response"}
 >
   

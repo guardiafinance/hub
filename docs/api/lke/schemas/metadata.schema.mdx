@@ -6,7 +6,7 @@ sidebar_label: "Metadata"
 hide_title: true
 hide_table_of_contents: true
 schema: true
-sample: {"foo":"string"}
+sample: {"foo":"bar"}
 custom_edit_url: null
 ---
 
@@ -25,7 +25,7 @@ import Heading from "@theme/Heading";
 Os metadados a serem adicionados à entidade devem ser fornecidos como pares de chave-valor em um formato de objeto JSON, com chave e valor como strings. O tamanho maximo do objeto deve ser 1MB.
 
 <Schema
-  schema={{"type":"object","properties":{"foo":{"type":"string","x-apidog-mock":"bar","examples":["bar"],"nullable":true}},"x-apidog-orders":["foo"],"description":"Os metadados a serem adicionados à entidade devem ser fornecidos como pares de chave-valor em um formato de objeto JSON, com chave e valor como strings. O tamanho maximo do objeto deve ser 1MB.","x-apidog-ignore-properties":[],"x-apidog-folder":"Schemas/VOs","title":"Metadata"}}
+  schema={{"type":"object","description":"Os metadados a serem adicionados à entidade devem ser fornecidos como pares de chave-valor em um formato de objeto JSON, com chave e valor como strings. O tamanho maximo do objeto deve ser 1MB.","additionalProperties":{"type":"string"},"maxProperties":10,"example":{"foo":"bar"},"title":"Metadata"}}
   schemaType={"response"}
 >
   

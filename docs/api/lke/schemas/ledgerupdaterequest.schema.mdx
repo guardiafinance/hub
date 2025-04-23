@@ -6,7 +6,7 @@ sidebar_label: "LedgerUpdateRequest"
 hide_title: true
 hide_table_of_contents: true
 schema: true
-sample: {"external_entity_id":"string","name":"string","description":"string","metadata":{"foo":"string"}}
+sample: {"name":"string","description":"string","metadata":{"foo":"bar"}}
 custom_edit_url: null
 ---
 
@@ -25,7 +25,7 @@ import Heading from "@theme/Heading";
 
 
 <Schema
-  schema={{"type":"object","properties":{"external_entity_id":{"type":"string","description":"Um ID externo único da ledger. Pode ser associado para uso externo. Recomendado o formato UUID.","title":"","examples":["9606e83f427b44c298192c0f110129bc"],"maxLength":36,"nullable":true},"name":{"type":"string","description":"O nome único e personalizado da ledger. Mínimo de 3 caractere e Máximo de 256 caracteres.","minLength":3,"maxLength":256,"examples":["General Ledger"],"nullable":true},"description":{"type":"string","description":"Uma descrição personalizada da ledger. Mínimo de 3 caracteres e Máximo de 512 caracteres.","examples":["Ledger da ACME Corp."],"minLength":3,"maxLength":512,"nullable":true},"metadata":{"description":"Os metadados a serem adicionados à entidade devem ser fornecidos como pares de chave-valor em um formato de objeto JSON, com chave e valor como strings. O tamanho maximo do objeto deve ser 1MB.","type":"object","properties":{"foo":{"type":"string","x-apidog-mock":"bar","examples":["bar"],"nullable":true}},"x-apidog-orders":["foo"],"x-apidog-ignore-properties":[],"x-apidog-folder":"Schemas/VOs","title":"Metadata"}},"x-apidog-refs":{},"x-apidog-orders":["external_entity_id","name","description","metadata"],"x-apidog-ignore-properties":[],"x-apidog-folder":"Schemas/Requests","title":"LedgerUpdateRequest"}}
+  schema={{"type":"object","properties":{"name":{"type":"string","minLength":3,"maxLength":128},"description":{"type":"string","minLength":3,"maxLength":256},"metadata":{"type":"object","description":"Os metadados a serem adicionados à entidade devem ser fornecidos como pares de chave-valor em um formato de objeto JSON, com chave e valor como strings. O tamanho maximo do objeto deve ser 1MB.","additionalProperties":{"type":"string"},"maxProperties":10,"example":{"foo":"bar"},"title":"Metadata"}},"title":"LedgerUpdateRequest"}}
   schemaType={"response"}
 >
   

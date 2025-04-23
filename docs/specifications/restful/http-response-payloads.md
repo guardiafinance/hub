@@ -81,9 +81,7 @@ O `data` DEVE ser retornado quando a requisição é bem sucedida, e DEVE conter
     "previous_page_token": "string",
     "first_page_token": "string",
     "last_page_token": "string",
-    "total_count": "uint32",
-    "has_next_page": "boolean",
-    "has_previous_page": "boolean"
+    "total_count": "uint32"
   }
 }
 ```
@@ -148,7 +146,6 @@ O payload de debug DEVE ser retornado quando o header `X-Grd-Debug` estiver pres
 | [`memory`](#memory)                 | string | Memória utilizada pela requisição em bytes.        |
 | [`query`](#query)                   | string | Query da requisição, quando aplicável.             |
 | [`params`](#params)                 | string | Parâmetros da requisição, quando aplicável.        |
-| [`internal_ip`](#internal_ip)       | string | IP interno do pod.                                 |
 | [`external_ip`](#external_ip)       | string | IP externo do proxy ou gateway da requisição.      |
 
 ### Estrutura do objeto `debug`

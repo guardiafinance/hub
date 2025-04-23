@@ -1,0 +1,105 @@
+---
+description: 
+globs: **/*.{openapi.yaml}
+alwaysApply: false
+---
+response:
+  - name: data
+    type: object | array
+    required: conditional
+    description: Must be present when request is successful (`2xx`). Single entity responses return an object; list responses return an array.
+
+  - name: pagination
+    type: object
+    required: conditional
+    description: Must be included only in successful (`2xx`) responses that are paginated. Must follow the http-pagination spec.
+
+  - name: errors
+    type: array
+    required: conditional
+    description: Must be present only when response is an error (`4xx` or `5xx`). Each item must include `code`, `reason`, and `message`.
+
+  - name: debug
+    type: object
+    required: conditional
+    description: Only included when the `X-Grd-Debug: true` header is present. Contains metadata for traceability and debugging.
+
+debug:
+  - name: trace_id
+    type: string
+    description: Unique global identifier for the request. Also returned in the `X-Grd-Trace-Id` header.
+
+  - name: correlation_id
+    type: string
+    description: Correlation ID for distributed tracing. Also returned in the `X-Grd-Correlation-Id` header.
+
+  - name: instance
+    type: string
+    description: Identifier of the instance or pod that processed the request.
+
+  - name: timestamp
+    type: string
+    description: UNIX epoch timestamp representing when the request was received.
+
+  - name: duration
+    type: string
+    description: Total time taken to process the request in milliseconds.
+
+  - name: memory
+    type: string
+    description: Memory used to process the request in bytes.
+
+  - name: query
+    type: string
+    optional: true
+    description: Raw query string of the request, if available.
+
+  - name: params
+    type: string
+    optional: true
+    description: Path parameters used in the route, if any.
+
+  - name: external_ip
+    type: string
+    description: External IP of the client request (e.g., proxy or gateway).
+
+error:
+  - name: code
+    type: string
+    required: true
+    description: Standardized error code, used for programmatic handling. Defined in the Guardia error-handling spec.
+
+  - name: reason
+    type: string
+    required: true
+    description: Concise reason for the error. Must match predefined reasons in the error catalog.
+
+  - name: message
+    type: string
+    required: true
+    description: Informational message to help the developer understand and resolve the issue. Not intended for end-user display.
+
+rules:
+  - if: status code is 2xx
+    then:
+      - must include: data as object when not is list
+      - must include: data as array when is list
+      - must not include: errors
+
+  - if: status code is 4xx or 5xx
+    then:
+      - must include: list of errors
+      - must not include: data, pagination
+
+  - if: X-Grd-Debug header is present and true
+    then:
+      - include: debug object in the response
+      - enforce: must not expose sensitive data
+
+  - enforce: response payloads must be documented in the OpenAPI (OAS) contract
+
+notes:
+  - All successful responses must include a `data` field and optionally a `pagination` field.
+  - All error responses must return an `errors` array with structured information.
+  - The `debug` block is a powerful tool for observability and must be used cautiously.
+  - This structure is the minimum standard for all RESTful APIs within Guardia.

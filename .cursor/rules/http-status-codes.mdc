@@ -1,14 +1,8 @@
 ---
 description: 
-globs: *.openapi.yaml
+globs: **/*.{openapi.yaml}
 alwaysApply: false
 ---
----
-name: http-status-codes-best-practices.mdc
-description: Best practices for using HTTP status codes in APIs
-globs: **/*.{openapi.yaml}
----
-
 - Use 200 OK for successful operations that return data
 - Use 201 Created when a new resource is created
 - Use 202 Accepted for asynchronous processing

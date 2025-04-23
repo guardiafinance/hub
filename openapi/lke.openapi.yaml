@@ -1,18 +1,19 @@
 openapi: 3.0.1
 info:
   title: Introdução
-  description: >-
+  description: |
     Otimize a gestão financeira da sua operação com eficiência e segurança.
     Organize livros razão, monitore transações e saldos em tempo real, e
     consolide dados com precisão. Automatize processos com Smart Transactions,
     garantindo controle total, rastreabilidade e integridade das transações financeiras.
 
 
-    Saiba mais sobre o Ledger Kernel Engine [aqui](https://hub.guardia.finance/docs/modules/lke).
+    Saiba mais sobre o Ledger Kernel Engine [aqui](https://hub.guardia.finance/docs/modules<https://{tenant_id}.guardia.finance/lke).
 
     ## Comunidade
 
     Faça parte da nossa comunidade no WhatsApp.
+
 
     [![WhatsApp](https://img.shields.io/badge/WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://chat.whatsapp.com/BcngCJx3ytzHy9AeZWzRg2)
 
@@ -21,10 +22,9 @@ info:
     name: Guardia
     url: https://www.guardia.finance/#contact-us
     email: contato@guardia.finance
-    whatsapp: https://chat.whatsapp.com/BcngCJx3ytzHy9AeZWzRg2
   license:
     name: Apache 2.0
-    url: https://github.com/guardiafinance/lke/blob/main/LICENSE
+    url: https://github.com/guardiafinance<https://{tenant_id}.guardia.finance/lke/blob/main/LICENSE
   x-logo:
     url: "/img/banner-lke.svg"
     altText: Ledger Kernel Engine Banner
@@ -33,454 +33,172 @@ info:
     altText: "Ledger Kernel Engine Banner"
 tags:
   - name: Ledger
-    description: >-
+    description: |
       Gerencie os livros razão da sua empresa. Crie, atualize e exclua ledgers,
       além de consultar informações detalhadas sobre cada um.
   - name: Chapter
-    description: >-
+    description: |
       Organize os livros razão em capítulos para facilitar a gestão e análise.
       Crie, atualize e exclua capítulos, além de consultar informações detalhadas sobre cada um.
   - name: Asset
-    description: >-
+    description: |
       Gerencie os ativos da sua empresa. Crie, atualize e exclua ativos,
       além de consultar informações detalhadas sobre cada um.
   - name: Transaction
-    description: >-
+    description: |
       Registre transações financeiras relacionadas a um livro razão ou capítulo.
 
 paths:
   /v1/ledgers:
     get:
-      summary: Lista todos os ledgers
+      summary: Lista todos os ledgers.
       deprecated: false
       description: 'Obténha uma lista de ledgers disponíveis para a organização filtrando por metadata ou incluindo itens descartados.'
       operationId: list_ledgers
       tags:
         - Ledger
       parameters:
-        - name: $metadata.key
-          in: query
-          description: >-
-            Se você deseja listar os ledgers com uma metadata cuja chave seja
-            `foo` e o valor seja `bar`, a consulta seria `$metadata.foo=bar`
-          required: false
-          example: value
-          schema:
-            type: string
-        - name: include_discarded
-          in: query
-          description: >-
-            Incluir os itens descartados no resultado da busca. O valor padrão é
-            `false`.
-          required: false
-          example: 'false'
-          schema:
-            type: string
-        - name: entity_ids
-          in: query
-          description: >-
-            Uma lista de ledger ids separadas por vírgulas. Ex.:
-            `entity_ids={entity_id},{entity_id},{entity_id}`. Espaços em branco
-            entre as vírgulas serão ignorados.
-          required: false
-          example: 6683756247371778,6683756247371779,6683756247371780
-          schema:
-            type: string
-        - name: external_entity_ids
-          in: query
-          description: ''
-          required: false
-          schema:
-            type: string
-        - name: Accept
-          in: header
-          description: >-
-            Tipo de contrato esperado na resposta da API. O valor padrão é
-            `application/vnd.guardia.v1+json` ou a versao mais recente.
-          required: false
-          example: application/vnd.guardia.v1+json
-          schema:
-            type: string
-        - name: Accept-Language
-          in: header
-          description: >-
-            O idioma em que a API deve retornar as mensagens de erro. Use `en`
-            para inglês americano ou `pt-BR` para português brasileiro. O valor
-            padrão é `en`.
-          required: false
-          example: en
-          schema:
-            type: string
-        - name: Content-Type
-          in: header
-          description: >-
-            Tipo de contrato enviado na requisição para a API. O valor padrão é
-            `application/vnd.guardia.v1+json` ou a versao mais recente.
-          required: false
-          example: application/vnd.guardia.v1+json
-          schema:
-            type: string
-        - name: X-Per-Page
-          in: header
-          description: Define o número de itens retornados por página na resposta.
-          required: false
-          example: '20'
-          schema:
-            type: string
-        - name: X-Page-Index
-          in: header
-          description: >-
-            Indica o cursor para acessar a próxima página, se disponível. Este
-            cabeçalho não deve ser enviado se `X-Previous-Page` estiver
-            presente.
-          required: false
-          example: '2'
-          schema:
-            type: string
+        - $ref: './components.openapi.yaml#/components/parameters/EntityIds'
+        - $ref: './components.openapi.yaml#/components/parameters/ExternalEntityIds'
+        - $ref: './components.openapi.yaml#/components/parameters/MetadataFilter'
+        - $ref: './components.openapi.yaml#/components/parameters/IncludeDiscarded'
+        - $ref: './components.openapi.yaml#/components/parameters/PageSize'
+        - $ref: './components.openapi.yaml#/components/parameters/PageToken'
+        - $ref: './components.openapi.yaml#/components/parameters/OrderBy'
+        - $ref: './components.openapi.yaml#/components/parameters/Sort'
+        - $ref: './components.openapi.yaml#/components/parameters/Accept'
+        - $ref: './components.openapi.yaml#/components/parameters/AcceptLanguage'
+        - $ref: './components.openapi.yaml#/components/parameters/ContentType'
+        - $ref: './components.openapi.yaml#/components/parameters/CorrelationId'
       responses:
         '200':
-          description: Lista de ledgers
+          description: Lista de ledgers.
           content:
             application/vnd.guardia.v1+json:
               schema:
-                type: array
-                items: &ref_0
-                  $ref: '#/components/schemas/LedgerResponse'
-              example:
-                - entity_id: '6683756247371778'
-                  entity_type: LEDGER
-                  external_entity_id: 9606e83f427b44c298192c0f110129bc
-                  version: 0
-                  name: General Ledger
-                  description: Ledger da ACME Corp.
-                  created_at: '2024-11-17T00:00:00.000Z'
-                  updated_at: null
-                  discarded_at: null
-                  metadata:
-                    foo: bar
-                - entity_id: '6683756247371779'
-                  entity_type: LEDGER
-                  external_entity_id: bd08974cee3a45388324e27906af62b5
-                  version: 0
-                  name: My Ledger 2
-                  description: Ledger da ACME Corp.
-                  created_at: '2024-11-17T00:00:00.000Z'
-                  updated_at: '2024-11-17T00:00:00.000Z'
-                  discarded_at: '2024-11-17T00:00:00.000Z'
-                  metadata:
-                    foo: bar
-                - entity_id: '6683756247371780'
-                  entity_type: LEDGER
-                  external_entity_id: eb7ec6ee94934e3b8741209a71c52926
-                  version: 0
-                  name: My Ledger 3
-                  description: Ledger da ACME Corp.
-                  created_at: '2024-11-17T00:00:00.000Z'
-                  updated_at: '2024-11-17T00:00:00.000Z'
-                  discarded_at: '2024-11-17T00:00:00.000Z'
-                  metadata:
-                    foo: bar
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: './components.openapi.yaml#/components/schemas/LedgerResponse'
+                  pagination:
+                    $ref: './components.openapi.yaml#/components/schemas/Pagination'
           headers:
-            Content-Type:
-              example: application/vnd.guardia.v1+json
-              required: true
-              description: Tipo de contrato retornado.
-              schema:
-                type: string
-            Content-Length:
-              example: <length>
-              required: true
-              description: >-
-                Indica o tamanho, em bytes, do corpo da resposta retornado pela
-                API.
-              schema:
-                type: string
+            Cache-Control:
+              $ref: './components.openapi.yaml#/components/headers/Cache-Control'
             Content-Language:
-              example: en
-              required: true
-              description: >-
-                O idioma em que a API retorna as mensagens de erro. Use en para
-                inglês americano ou pt-BR para português brasileiro.
-              schema:
-                type: string
-            X-RateLimit-Limit:
-              example: '30'
-              required: true
-              description: >-
-                Cota de requisições por segundos por cliente (org id + tenant
-                id).
-              schema:
-                type: string
-            X-RateLimit-Remaining:
-              example: '10'
-              required: true
-              description: Cota de requisições restantes no mesmo segundo.
-              schema:
-                type: string
-            Retry-After:
-              example: '0'
-              required: false
-              description: >-
-                Indica quanto tempo o cliente (org id + tenant id) deve aguardar
-                antes de fazer uma requisição. Zero indica que não há tempo de
-                espera.
-              schema:
-                type: string
-            Strict-Transport-Security:
-              example: max-age=31536000; includeSubDomains
-              required: true
-              description: Indica que o navegador deve acessar o site apenas por HTTPS.
-              schema:
-                type: string
-            X-Total-Count:
-              example: '10'
-              required: true
-              description: Total de itens disponíveis no sistema.
-              schema:
-                type: string
-            X-Per-Page:
-              example: '20'
-              required: true
-              description: Quantidade de itens exibidos por página.
-              schema:
-                type: string
-            X-Current-Page:
-              example: '1'
-              required: true
-              description: Número da página atual na navegação.
-              schema:
-                type: string
-            X-Previous-Page:
-              example: 'null'
-              required: true
-              description: >-
-                Cursor para a página anterior. `null` indica que não há página
-                anterior.
-              schema:
-                type:
-                  - string
-                  - 'null'
-            X-Next-Page:
-              example: 'null'
-              required: true
-              description: >-
-                Cursor para a próxima página. `null` indica que não há próxima
-                página.
-              schema:
-                type:
-                  - string
-                  - 'null'
-            X-Total-Pages:
-              example: '1'
-              required: true
-              description: >-
-                Total de páginas disponíveis com base na quantidade total de
-                itens e itens por página.
-              schema:
-                type: string
-          x-apidog-name: OK
-      security: []
-      x-apidog-folder: Ledger
-      x-apidog-status: developing
-      x-apidog-maintainer: Fernando Seguim
-      x-run-in-apidog: https://app.apidog.com/web/project/719079/apis/api-11718078-run
-    post:
-      summary: Criar um novo ledger
-      deprecated: false
-      description: >-
-        Um ***ledger*** (ou razão) é um sistema centralizado que organiza e
-        registra transações financeiras relacionadas a uma organização, unidade
-        de negócio, centro de custo ou produto. Ele contém um conjunto
-        estruturado de contas, lançamentos e transações, que podem ser agrupados
-        em *Chapters* para facilitar a gestão e análise.
-
-
-        Essa estrutura permite a criação de demonstrações financeiras baseadas
-        nos saldos consolidados, oferecendo uma visão abrangente da saúde
-        financeira geral e do desempenho de cada segmento monitorado.
-      operationId: create_ledger
-      tags:
-        - Ledger
-      parameters:
-        - name: Accept
-          in: header
-          description: >-
-            Tipo de contrato esperado na resposta da API. O valor padrão é
-            `application/vnd.guardia.v1+json` ou a versao mais recente.
-          required: false
-          example: application/vnd.guardia.v1+json
-          schema:
-            type: string
-        - name: Accept-Language
-          in: header
-          description: >-
-            O idioma em que a API deve retornar as mensagens de erro. Use `en`
-            para inglês americano ou `pt-BR` para português brasileiro. O valor
-            padrão é `en`.
-          required: false
-          example: en
-          schema:
-            type: string
-        - name: Content-Type
-          in: header
-          description: >-
-            Tipo de contrato enviado na requisição para a API. O valor padrão é
-            `application/vnd.guardia.v1+json` ou a versao mais recente.
-          required: false
-          example: application/vnd.guardia.v1+json
-          schema:
-            type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/LedgerCreateResquest'
-            example:
-              external_entity_id: 9606e83f427b44c298192c0f110129bc
-              name: My Ledger 1
-              description: Ledger da ACME Corp.
-              metadata:
-                foo: bar
-      responses:
-        '201':
-          description: Ledger criado
-          content:
-            application/vnd.guardia.v1+json:
-              schema: *ref_0
-              example:
-                entity_id: '6683756247371778'
-                entity_type: LEDGER
-                external_entity_id: 9606e83f427b44c298192c0f110129bc
-                version: 0
-                name: General Ledger
-                description: Ledger da ACME Corp.
-                created_at: '2024-11-17T00:00:00.000Z'
-                updated_at: null
-                discarded_at: null
-                metadata:
-                  foo: bar
-          headers:
-            Content-Type:
-              example: application/vnd.guardia.v1+json
-              required: true
-              description: Tipo de contrato retornado
-              schema:
-                type: string
+              $ref: './components.openapi.yaml#/components/headers/Content-Language'
             Content-Length:
-              example: <length>
-              required: true
-              description: >-
-                Tipo de contrato enviado na requisição para a API. O valor
-                padrão é `application/vnd.guardia.v1+json` ou a versao mais
-                recente.
-              schema:
-                type: string
-            Content-Language:
-              example: en
-              required: true
-              description: >-
-                O idioma em que a API retorna as mensagens de erro. Use en para
-                inglês americano ou pt-BR para português brasileiro.
-              schema:
-                type: string
-            X-RateLimit-Limit:
-              example: '30'
-              required: true
-              description: >-
-                Cota de requisições por segundos por cliente (org id + tenant
-                id)
-              schema:
-                type: string
-            X-RateLimit-Remaining:
-              example: '10'
-              required: true
-              description: Cota de requisições restantes no mesmo segundo
-              schema:
-                type: string
-            Retry-After:
-              example: '0'
-              required: false
-              description: >-
-                Indica quanto tempo o cliente (org id + tenant id) deve aguardar
-                antes de fazer uma requisição. Zero indica que não há tempo de
-                espera.
-              schema:
-                type: string
+              $ref: './components.openapi.yaml#/components/headers/Content-Length'
+            Content-Type:
+              $ref: './components.openapi.yaml#/components/headers/Content-Type'
+            Link:
+              $ref: './components.openapi.yaml#/components/headers/Link'
             Strict-Transport-Security:
-              example: max-age=31536000; includeSubDomains
-              required: true
-              description: Indica que o navegador deve acessar o site apenas por HTTPS.
-              schema:
-                type: string
-          x-apidog-name: Created
+              $ref: './components.openapi.yaml#/components/headers/Strict-Transport-Security'
+            X-Grd-Correlation-Id:
+              $ref: './components.openapi.yaml#/components/headers/X-Grd-Correlation-Id'
+            X-Grd-Trace-Id:
+              $ref: './components.openapi.yaml#/components/headers/X-Grd-Trace-Id'
+            X-RateLimit-Limit:
+              $ref: './components.openapi.yaml#/components/headers/X-RateLimit-Limit'
+            X-RateLimit-Remaining:
+              $ref: './components.openapi.yaml#/components/headers/X-RateLimit-Remaining'
+            X-RateLimit-Reset:
+              $ref: './components.openapi.yaml#/components/headers/X-RateLimit-Reset'
         '400':
-          description: ''
-          content:
-            application/json:
-              schema: &ref_1
-                $ref: '#/components/schemas/ErrorsResponse'
-              example:
-                errors:
-                  - code: ERR4000001
-                    reason: INVALID_PARAMETER_FORMAT
-                    message: >-
-                      O formato do parâmetro `{{field name}}` no `{{path | body
-                      | header | query-param}}` é inválido.
-                    regex_pattern: ^(?=.*[A-Za-z])(?=.*\d).+$
-                reference: https://docs.guardia.finance/api/known-errors/{{entity_type}}
-          headers: {}
-          x-apidog-name: InvalidParameterError
+          $ref: './components.openapi.yaml#/components/responses/Error400'
+        '401':
+          $ref: './components.openapi.yaml#/components/responses/Error401'
+        '403':
+          $ref: './components.openapi.yaml#/components/responses/Error403'
+        '404':
+          $ref: './components.openapi.yaml#/components/responses/Error404'
         '409':
-          description: ''
-          content:
-            application/json:
-              schema: *ref_1
-              example:
-                errors:
-                  - code: ERR4090001
-                    reason: EXTERNAL_ENTITY_ID_ALREADY_USED
-                    message: >-
-                      O identificador único externo da entidade {{entity_type}}
-                      já está sendo usado por outro recurso.
-                reference: https://docs.guardia.finance/api/known-errors/{{entity_type}}
-          headers: {}
-          x-apidog-name: ConflictError
+          $ref: './components.openapi.yaml#/components/responses/Error409'
         '422':
-          description: ''
-          content:
-            application/json:
-              schema: *ref_1
-              example:
-                errors:
-                  - code: ERR4220001
-                    reason: INVALID_{{entity_type}}_STATE
-                    message: >-
-                      O estado da {{entity_type}} é inválido para realizar a
-                      operação.
-                reference: https://docs.guardia.finance/api/known-errors/{{entity_type}}
-          headers: {}
-          x-apidog-name: UnprocessableContentError
+          $ref: './components.openapi.yaml#/components/responses/Error422'
         '429':
-          description: ''
-          content:
-            application/json:
-              schema: *ref_1
-              example:
-                errors:
-                  - code: ERR429
-                    reason: TOO_MENY_REQUESTS
-                    message: >-
-                      O cliente {{org_id}} excedeu a cota de requisições por
-                      segundo no tenant {{tenant_id}}. Verifique o cabeçalho
-                      `Retry-After` antes de enviar uma nova requisição.
-                reference: https://docs.guardia.finance/api/known-errors/{{entity_type}}
-          headers: {}
-          x-apidog-name: TooManyRequests
+          $ref: './components.openapi.yaml#/components/responses/Error429'
+        '500':
+          $ref: './components.openapi.yaml#/components/responses/Error500'
       security: []
       x-apidog-folder: Ledger
       x-apidog-status: developing
       x-apidog-maintainer: Fernando Seguim
       x-run-in-apidog: https://app.apidog.com/web/project/719079/apis/api-11718079-run
+    post:
+      summary: Cria um novo ledger.
+      description: Cria um novo ledger com os dados fornecidos.
+      operationId: create_ledger
+      tags:
+        - Ledger
+      parameters:
+        - $ref: './components.openapi.yaml#/components/parameters/IdempotencyKey'
+        - $ref: './components.openapi.yaml#/components/parameters/Accept'
+        - $ref: './components.openapi.yaml#/components/parameters/AcceptLanguage'
+        - $ref: './components.openapi.yaml#/components/parameters/ContentType'
+        - $ref: './components.openapi.yaml#/components/parameters/CorrelationId'
+      requestBody:
+        required: true
+        content:
+          application/vnd.guardia.v1+json:
+            schema:
+              $ref: './components.openapi.yaml#/components/schemas/LedgerCreateRequest'
+      responses:
+        '201':
+          description: Ledger criado com sucesso.
+          headers:
+            Content-Type:
+              $ref: './components.openapi.yaml#/components/headers/Content-Type'
+            Content-Length:
+              $ref: './components.openapi.yaml#/components/headers/Content-Length'
+            Content-Language:
+              $ref: './components.openapi.yaml#/components/headers/Content-Language'
+            Cache-Control:
+              $ref: './components.openapi.yaml#/components/headers/Cache-Control'
+            Idempotency-Key:
+              $ref: './components.openapi.yaml#/components/headers/Idempotency-Key'
+            Content-Digest:
+              $ref: './components.openapi.yaml#/components/headers/Content-Digest'
+            Last-Modified:
+              $ref: './components.openapi.yaml#/components/headers/Last-Modified'
+            X-Grd-Correlation-Id:
+              $ref: './components.openapi.yaml#/components/headers/X-Grd-Correlation-Id'
+            X-Grd-Trace-Id:
+              $ref: './components.openapi.yaml#/components/headers/X-Grd-Trace-Id'
+            X-RateLimit-Limit:
+              $ref: './components.openapi.yaml#/components/headers/X-RateLimit-Limit'
+            X-RateLimit-Remaining:
+              $ref: './components.openapi.yaml#/components/headers/X-RateLimit-Remaining'
+            X-RateLimit-Reset:
+              $ref: './components.openapi.yaml#/components/headers/X-RateLimit-Reset'
+          content:
+            application/vnd.guardia.v1+json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: './components.openapi.yaml#/components/schemas/LedgerResponse'
+        '400':
+          $ref: './components.openapi.yaml#/components/responses/Error400'
+        '401':
+          $ref: './components.openapi.yaml#/components/responses/Error401'
+        '403':
+          $ref: './components.openapi.yaml#/components/responses/Error403'
+        '404':
+          $ref: './components.openapi.yaml#/components/responses/Error404'
+        '409':
+          $ref: './components.openapi.yaml#/components/responses/Error409'
+        '422':
+          $ref: './components.openapi.yaml#/components/responses/Error422'
+        '429':
+          $ref: './components.openapi.yaml#/components/responses/Error429'
+        '500':
+          $ref: './components.openapi.yaml#/components/responses/Error500'
+      security:
+        - BearerAuth: []
   /v1/ledgers/{entity_id}:
     get:
       summary: Obtém um ledger específico
@@ -490,360 +208,205 @@ paths:
       tags:
         - Ledger
       parameters:
-        - name: entity_id
-          in: path
-          description: >-
-            Identificador único do ledger. Alternativamente pode ser utilizado o
-            `external_entity_id`.
-          required: true
-          example: '6683756247371778'
-          schema:
-            type: string
-        - name: Accept
-          in: header
-          description: >-
-            Tipo de contrato esperado na resposta da API. O valor padrão é
-            `application/vnd.guardia.v1+json` ou a versao mais recente.
-          required: false
-          example: application/vnd.guardia.v1+json
-          schema:
-            type: string
-        - name: Accept-Language
-          in: header
-          description: >-
-            O idioma em que a API deve retornar as mensagens de erro. Use `en`
-            para inglês americano ou `pt-BR` para português brasileiro. O valor
-            padrão é `en`.
-          required: false
-          example: en
-          schema:
-            type: string
-        - name: Content-Type
-          in: header
-          description: >-
-            Tipo de contrato enviado na requisição para a API. O valor padrão é
-            `application/vnd.guardia.v1+json` ou a versao mais recente.
-          required: false
-          example: application/vnd.guardia.v1+json
-          schema:
-            type: string
+        - $ref: './components.openapi.yaml#/components/parameters/EntityId'
+        - $ref: './components.openapi.yaml#/components/parameters/Accept'
+        - $ref: './components.openapi.yaml#/components/parameters/AcceptLanguage'
+        - $ref: './components.openapi.yaml#/components/parameters/ContentType'
+        - $ref: './components.openapi.yaml#/components/parameters/CorrelationId'
       responses:
         '200':
-          description: Dados do ledger
+          description: Dados do ledger.
           content:
             application/vnd.guardia.v1+json:
-              schema: *ref_0
-              example:
-                entity_id: '6683756247371778'
-                entity_type: LEDGER
-                external_entity_id: 9606e83f427b44c298192c0f110129bc
-                version: 0
-                name: General Ledger
-                description: Ledger da ACME Corp.
-                created_at: '2024-11-17T00:00:00.000Z'
-                updated_at: null
-                discarded_at: '2024-11-17T00:00:00.000Z'
-                metadata:
-                  foo: bar
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: './components.openapi.yaml#/components/schemas/LedgerResponse'
           headers:
-            Content-Type:
-              example: application/vnd.guardia.v1+json
-              required: true
-              description: Tipo de contrato retornado.
-              schema:
-                type: string
-            Content-Length:
-              example: <length>
-              required: true
-              description: >-
-                Indica o tamanho, em bytes, do corpo da resposta retornado pela
-                API.
-              schema:
-                type: string
+            Cache-Control:
+              $ref: './components.openapi.yaml#/components/headers/Cache-Control'
             Content-Language:
-              example: en
-              required: true
-              description: >-
-                O idioma em que a API retorna as mensagens de erro. Use en para
-                inglês americano ou pt-BR para português brasileiro.
-              schema:
-                type: string
-            X-RateLimit-Limit:
-              example: '30'
-              required: true
-              description: >-
-                Cota de requisições por segundos por cliente (org id + tenant
-                id).
-              schema:
-                type: string
-            X-RateLimit-Remaining:
-              example: '10'
-              required: true
-              description: Cota de requisições restantes no mesmo segundo.
-              schema:
-                type: string
-            Retry-After:
-              example: '0'
-              required: false
-              description: >-
-                Indica quanto tempo o cliente (org id + tenant id) deve aguardar
-                antes de fazer uma requisição. Zero indica que não há tempo de
-                espera.
-              schema:
-                type: string
+              $ref: './components.openapi.yaml#/components/headers/Content-Language'
+            Content-Length:
+              $ref: './components.openapi.yaml#/components/headers/Content-Length'
+            Content-Type:
+              $ref: './components.openapi.yaml#/components/headers/Content-Type'
             Strict-Transport-Security:
-              example: max-age=31536000; includeSubDomains
-              required: true
-              description: Indica que o navegador deve acessar o site apenas por HTTPS.
-              schema:
-                type: string
+              $ref: './components.openapi.yaml#/components/headers/Strict-Transport-Security'
+            X-Grd-Correlation-Id:
+              $ref: './components.openapi.yaml#/components/headers/X-Grd-Correlation-Id'
+            X-Grd-Trace-Id:
+              $ref: './components.openapi.yaml#/components/headers/X-Grd-Trace-Id'
+            X-RateLimit-Limit:
+              $ref: './components.openapi.yaml#/components/headers/X-RateLimit-Limit'
+            X-RateLimit-Remaining:
+              $ref: './components.openapi.yaml#/components/headers/X-RateLimit-Remaining'
+            X-RateLimit-Reset:
+              $ref: './components.openapi.yaml#/components/headers/X-RateLimit-Reset'
           x-apidog-name: OK
+        '400':
+          $ref: './components.openapi.yaml#/components/responses/Error400'
+        '401':
+          $ref: './components.openapi.yaml#/components/responses/Error401'
+        '403':
+          $ref: './components.openapi.yaml#/components/responses/Error403'
+        '404':
+          $ref: './components.openapi.yaml#/components/responses/Error404'
+        '409':
+          $ref: './components.openapi.yaml#/components/responses/Error409'
+        '422':
+          $ref: './components.openapi.yaml#/components/responses/Error422'
+        '429':
+          $ref: './components.openapi.yaml#/components/responses/Error429'
+        '500':
+          $ref: './components.openapi.yaml#/components/responses/Error500'
       security: []
       x-apidog-folder: Ledger
       x-apidog-status: developing
       x-apidog-maintainer: Fernando Seguim
-      x-run-in-apidog: https://app.apidog.com/web/project/719079/apis/api-11718080-run
+      x-run-in-apidog: https://app.apidog.com/web/project/719079/apis/api-11718081-run
     patch:
-      summary: Atualiza um ledger específico
-      deprecated: false
+      summary: Atualize os dados de um ledger específico.
       description: |
-        > **Nota:**
-        > Quando o valor for `null`, ele não será considerado para alteração.
+        :::warning
+        Ao atualizar um metadata, quando o valor for `null`, caso a propriedade exista, ela será considerada para remoção, conforme a especificação do Json Merge Patch [RFC 7386](https://datatracker.ietf.org/doc/html/rfc7386).
+        :::
       operationId: update_ledger
       tags:
         - Ledger
       parameters:
-        - name: entity_id
-          in: path
-          description: >-
-            Identificador único do ledger. Alternativamente pode ser utilizado o
-            `external_entity_id`.
-          required: true
-          example: '6683756247371778'
-          schema:
-            type: string
-        - name: Accept
-          in: header
-          description: >-
-            Tipo de contrato esperado na resposta da API. O valor padrão é
-            `application/vnd.guardia.v1+json` ou a versao mais recente.
-          required: false
-          example: application/vnd.guardia.v1+json
-          schema:
-            type: string
-        - name: Accept-Language
-          in: header
-          description: >-
-            O idioma em que a API deve retornar as mensagens de erro. Use `en`
-            para inglês americano ou `pt-BR` para português brasileiro. O valor
-            padrão é `en`.
-          required: false
-          example: en
-          schema:
-            type: string
-        - name: Content-Type
-          in: header
-          description: >-
-            Tipo de contrato enviado na requisição para a API. O valor padrão é
-            `application/vnd.guardia.v1+json` ou a versao mais recente.
-          required: false
-          example: application/vnd.guardia.v1+json
-          schema:
-            type: string
+        - $ref: './components.openapi.yaml#/components/parameters/EntityId'
+        - $ref: './components.openapi.yaml#/components/parameters/IdempotencyKey'
+        - $ref: './components.openapi.yaml#/components/parameters/Accept'
+        - $ref: './components.openapi.yaml#/components/parameters/AcceptLanguage'
+        - $ref: './components.openapi.yaml#/components/parameters/ContentType'
+        - $ref: './components.openapi.yaml#/components/parameters/CorrelationId'
       requestBody:
+        required: true
         content:
           application/vnd.guardia.v1+json:
             schema:
-              $ref: '#/components/schemas/LedgerUpdateRequest'
-            example:
-              external_entity_id: 9606e83f427b44c298192c0f110129bc
-              name: General Ledger
-              description: Ledger responsável por registros financeiros principais
-              tags:
-                - guardia
-              metadata:
-                foo: bar
+              $ref: './components.openapi.yaml#/components/schemas/LedgerUpdateRequest'
       responses:
         '200':
-          description: Ledger atualizado
+          description: Ledger atualizado com sucesso.
+          headers:
+            Cache-Control:
+              $ref: './components.openapi.yaml#/components/headers/Cache-Control'
+            Content-Digest:
+              $ref: './components.openapi.yaml#/components/headers/Content-Digest'
+            Content-Language:
+              $ref: './components.openapi.yaml#/components/headers/Content-Language'
+            Content-Length:
+              $ref: './components.openapi.yaml#/components/headers/Content-Length'
+            Content-Type:
+              $ref: './components.openapi.yaml#/components/headers/Content-Type'
+            Idempotency-Key:
+              $ref: './components.openapi.yaml#/components/headers/Idempotency-Key'
+            Last-Modified:
+              $ref: './components.openapi.yaml#/components/headers/Last-Modified'
+            Strict-Transport-Security:
+              $ref: './components.openapi.yaml#/components/headers/Strict-Transport-Security'
+            X-Grd-Correlation-Id:
+              $ref: './components.openapi.yaml#/components/headers/X-Grd-Correlation-Id'
+            X-Grd-Trace-Id:
+              $ref: './components.openapi.yaml#/components/headers/X-Grd-Trace-Id'
+            X-RateLimit-Limit:
+              $ref: './components.openapi.yaml#/components/headers/X-RateLimit-Limit'
+            X-RateLimit-Remaining:
+              $ref: './components.openapi.yaml#/components/headers/X-RateLimit-Remaining'
+            X-RateLimit-Reset:
+              $ref: './components.openapi.yaml#/components/headers/X-RateLimit-Reset'
           content:
             application/vnd.guardia.v1+json:
-              schema: *ref_0
-              example:
-                entity_id: '6683756247371778'
-                entity_type: LEDGER
-                external_entity_id: 9606e83f427b44c298192c0f110129bc
-                version: 0
-                name: General Ledger
-                description: Ledger da ACME Corp.
-                created_at: '2024-11-17T00:00:00.000Z'
-                updated_at: null
-                discarded_at: '2024-11-17T00:00:00.000Z'
-                metadata:
-                  foo: bar
-          headers:
-            Content-Type:
-              example: application/vnd.guardia.v1+json
-              required: true
-              description: Tipo de contrato retornado.
               schema:
-                type: string
-            Content-Length:
-              example: <length>
-              required: true
-              description: >-
-                Indica o tamanho, em bytes, do corpo da resposta retornado pela
-                API.
-              schema:
-                type: string
-            Content-Language:
-              example: en
-              required: true
-              description: >-
-                O idioma em que a API retorna as mensagens de erro. Use en para
-                inglês americano ou pt-BR para português brasileiro.
-              schema:
-                type: string
-            X-RateLimit-Limit:
-              example: '30'
-              required: true
-              description: >-
-                Cota de requisições por segundos por cliente (org id + tenant
-                id).
-              schema:
-                type: string
-            X-RateLimit-Remaining:
-              example: '10'
-              required: true
-              description: Cota de requisições restantes no mesmo segundo.
-              schema:
-                type: string
-            Retry-After:
-              example: '0'
-              required: false
-              description: >-
-                Indica quanto tempo o cliente (org id + tenant id) deve aguardar
-                antes de fazer uma requisição. Zero indica que não há tempo de
-                espera.
-              schema:
-                type: string
-            Strict-Transport-Security:
-              example: max-age=31536000; includeSubDomains
-              required: true
-              description: Indica que o navegador deve acessar o site apenas por HTTPS.
-              schema:
-                type: string
-          x-apidog-name: OK
+                type: object
+                properties:
+                  data:
+                    $ref: './components.openapi.yaml#/components/schemas/LedgerResponse'
+        '400':
+          $ref: './components.openapi.yaml#/components/responses/Error400'
+        '401':
+          $ref: './components.openapi.yaml#/components/responses/Error401'
+        '403':
+          $ref: './components.openapi.yaml#/components/responses/Error403'
+        '404':
+          $ref: './components.openapi.yaml#/components/responses/Error404'
+        '409':
+          $ref: './components.openapi.yaml#/components/responses/Error409'
+        '422':
+          $ref: './components.openapi.yaml#/components/responses/Error422'
+        '429':
+          $ref: './components.openapi.yaml#/components/responses/Error429'
+        '500':
+          $ref: './components.openapi.yaml#/components/responses/Error500'
       security: []
       x-apidog-folder: Ledger
       x-apidog-status: developing
       x-apidog-maintainer: Fernando Seguim
       x-run-in-apidog: https://app.apidog.com/web/project/719079/apis/api-11718081-run
     delete:
-      summary: Exclui um ledger específico
+      summary: Exclui um ledger específico.
       deprecated: false
-      description: ''
+      description: |
+        :::note
+        Se o ledger possuir transações, a exclusão não será permitida.
+        :::
       operationId: delete_ledger
       tags:
         - Ledger
       parameters:
-        - name: entity_id
-          in: path
-          description: >-
-            Identificador único do ledger. Alternativamente pode ser utilizado o
-            `external_entity_id`.
-          required: true
-          example: '6683756247371778'
-          schema:
-            type: string
-        - name: Accept
-          in: header
-          description: >-
-            Tipo de contrato esperado na resposta da API. O valor padrão é
-            `application/vnd.guardia.v1+json` ou a versao mais recente.
-          required: false
-          example: application/vnd.guardia.v1+json
-          schema:
-            type: string
-        - name: Accept-Language
-          in: header
-          description: >-
-            O idioma em que a API deve retornar as mensagens de erro. Use `en`
-            para inglês americano ou `pt-BR` para português brasileiro. O valor
-            padrão é `en`.
-          required: false
-          example: en
-          schema:
-            type: string
-        - name: Content-Type
-          in: header
-          description: >-
-            Tipo de contrato enviado na requisição para a API. O valor padrão é
-            `application/vnd.guardia.v1+json` ou a versao mais recente.
-          required: false
-          example: application/vnd.guardia.v1+json
-          schema:
-            type: string
+        - $ref: './components.openapi.yaml#/components/parameters/EntityId'
+        - $ref: './components.openapi.yaml#/components/parameters/Accept'
+        - $ref: './components.openapi.yaml#/components/parameters/AcceptLanguage'
+        - $ref: './components.openapi.yaml#/components/parameters/ContentType'
+        - $ref: './components.openapi.yaml#/components/parameters/CorrelationId'
       responses:
         '204':
-          description: Ledger excluído com sucesso
-          content:
-            application/vnd.guardia.v1+json:
-              schema:
-                type: 'null'
+          description: Ledger excluído com sucesso.
           headers:
-            Content-Type:
-              example: application/vnd.guardia.v1+json
-              required: true
-              description: Tipo de contrato retornado.
-              schema:
-                type: string
-            Content-Length:
-              example: <length>
-              required: true
-              description: >-
-                Indica o tamanho, em bytes, do corpo da resposta retornado pela
-                API.
-              schema:
-                type: string
+            Cache-Control:
+              $ref: './components.openapi.yaml#/components/headers/Cache-Control'
+            Content-Digest:
+              $ref: './components.openapi.yaml#/components/headers/Content-Digest'
             Content-Language:
-              example: en
-              required: true
-              description: >-
-                O idioma em que a API retorna as mensagens de erro. Use en para
-                inglês americano ou pt-BR para português brasileiro.
-              schema:
-                type: string
-            X-RateLimit-Limit:
-              example: '30'
-              required: true
-              description: >-
-                Cota de requisições por segundos por cliente (org id + tenant
-                id).
-              schema:
-                type: string
-            X-RateLimit-Remaining:
-              example: '10'
-              required: true
-              description: Cota de requisições restantes no mesmo segundo.
-              schema:
-                type: string
-            Retry-After:
-              example: '0'
-              required: false
-              description: >-
-                Indica quanto tempo o cliente (org id + tenant id) deve aguardar
-                antes de fazer uma requisição. Zero indica que não há tempo de
-                espera.
-              schema:
-                type: string
+              $ref: './components.openapi.yaml#/components/headers/Content-Language'
+            Content-Length:
+              $ref: './components.openapi.yaml#/components/headers/Content-Length'
+            Content-Type:
+              $ref: './components.openapi.yaml#/components/headers/Content-Type'
+            Last-Modified:
+              $ref: './components.openapi.yaml#/components/headers/Last-Modified'
             Strict-Transport-Security:
-              example: max-age=31536000; includeSubDomains
-              required: true
-              description: Indica que o navegador deve acessar o site apenas por HTTPS.
-              schema:
-                type: string
+              $ref: './components.openapi.yaml#/components/headers/Strict-Transport-Security'
+            X-Grd-Correlation-Id:
+              $ref: './components.openapi.yaml#/components/headers/X-Grd-Correlation-Id'
+            X-Grd-Trace-Id:
+              $ref: './components.openapi.yaml#/components/headers/X-Grd-Trace-Id'
+            X-RateLimit-Limit:
+              $ref: './components.openapi.yaml#/components/headers/X-RateLimit-Limit'
+            X-RateLimit-Remaining:
+              $ref: './components.openapi.yaml#/components/headers/X-RateLimit-Remaining'
+            X-RateLimit-Reset:
+              $ref: './components.openapi.yaml#/components/headers/X-RateLimit-Reset'
           x-apidog-name: No Content
+        '400':
+          $ref: './components.openapi.yaml#/components/responses/Error400'
+        '401':
+          $ref: './components.openapi.yaml#/components/responses/Error401'
+        '403':
+          $ref: './components.openapi.yaml#/components/responses/Error403'
+        '404':
+          $ref: './components.openapi.yaml#/components/responses/Error404'
+        '409':
+          $ref: './components.openapi.yaml#/components/responses/Error409'
+        '422':
+          $ref: './components.openapi.yaml#/components/responses/Error422'
+        '429':
+          $ref: './components.openapi.yaml#/components/responses/Error429'
+        '500':
+          $ref: './components.openapi.yaml#/components/responses/Error500'
       security: []
       x-apidog-folder: Ledger
       x-apidog-status: developing
@@ -851,252 +414,74 @@ paths:
       x-run-in-apidog: https://app.apidog.com/web/project/719079/apis/api-11718082-run
   /v1/chapters:
     get:
-      summary: Lista todos os chapters
+      summary: Lista todos os chapters.
       deprecated: false
       description: ''
       operationId: list_chapters
       tags:
         - Chapter
       parameters:
-        - name: ledger_entity_id
-          in: query
-          description: >-
-            Identificador único do ledger ao qual os chapters pertencem.
-            Alternativamente pode ser utilizado o `external_entity_id`.
-          required: false
-          example: f636cb1c46c4468e93c384a12530ee30
-          schema:
-            type: string
-        - name: tags
-          in: query
-          description: >-
-            Uma lista de tags separadas por vírgulas. Ex.:
-            `tags=guardia,core,banking`. Espaços em branco entre as vírgulas
-            serão ignorados.
-          required: false
-          example: guardia,core,banking
-          schema:
-            type: string
-        - name: $metadata.key
-          in: query
-          description: >-
-            Se você deseja listar os ledgers com uma metadata cuja chave seja
-            `foo` e o valor seja `bar`, a consulta seria `$metadata.foo=bar`
-          required: false
-          example: value
-          schema:
-            type: string
-        - name: include_discarded
-          in: query
-          description: >-
-            Incluir os itens descartados no resultado da busca. O valor padrão é
-            `false`.
-          required: false
-          example: 'false'
-          schema:
-            type: string
-        - name: chapters
-          in: query
-          description: >-
-            Uma lista de chapter ids separadas por vírgulas. Ex.:
-            chapters={entity_id},{entity_id},{entity_id}. Espaços em branco
-            entre as vírgulas serão ignorados.
-          required: false
-          example: 6683756247371778,6683756247371779,6683756247371780
-          schema:
-            type: string
-        - name: Accept
-          in: header
-          description: >-
-            Tipo de contrato esperado na resposta da API. O valor padrão é
-            `application/vnd.guardia.v1+json` ou a versao mais recente.
-          required: false
-          example: application/vnd.guardia.v1+json
-          schema:
-            type: string
-        - name: Accept-Language
-          in: header
-          description: >-
-            O idioma em que a API deve retornar as mensagens de erro. Use `en`
-            para inglês americano ou `pt-BR` para português brasileiro. O valor
-            padrão é `en`.
-          required: false
-          example: en
-          schema:
-            type: string
-        - name: Content-Type
-          in: header
-          description: >-
-            Tipo de contrato enviado na requisição para a API. O valor padrão é
-            `application/vnd.guardia.v1+json` ou a versao mais recente.
-          required: false
-          example: application/vnd.guardia.v1+json
-          schema:
-            type: string
-        - name: X-Per-Page
-          in: header
-          description: Define o número de itens retornados por página na resposta.
-          required: false
-          example: '20'
-          schema:
-            type: string
-        - name: X-Next-Page
-          in: header
-          description: >-
-            Indica o cursor para acessar a próxima página, se disponível. Este
-            cabeçalho não deve ser enviado se `X-Previous-Page` estiver
-            presente.
-          required: false
-          example: '2'
-          schema:
-            type: string
-        - name: X-Previous-Page
-          in: header
-          description: >-
-            Indica o cursor para acessar a página anterior, se disponível. Este
-            cabeçalho não deve ser enviado se `X-Next-Page` estiver presente.
-          required: false
-          example: '1'
-          schema:
-            type: string
+        - $ref: './components.openapi.yaml#/components/parameters/EntityIds'
+        - $ref: './components.openapi.yaml#/components/parameters/ExternalEntityIds'
+        - $ref: './components.openapi.yaml#/components/parameters/MetadataFilter'
+        - $ref: './components.openapi.yaml#/components/parameters/IncludeDiscarded'
+        - $ref: './components.openapi.yaml#/components/parameters/PageSize'
+        - $ref: './components.openapi.yaml#/components/parameters/PageToken'
+        - $ref: './components.openapi.yaml#/components/parameters/OrderBy'
+        - $ref: './components.openapi.yaml#/components/parameters/Sort'
+        - $ref: './components.openapi.yaml#/components/parameters/Accept'
+        - $ref: './components.openapi.yaml#/components/parameters/AcceptLanguage'
+        - $ref: './components.openapi.yaml#/components/parameters/ContentType'
+        - $ref: './components.openapi.yaml#/components/parameters/CorrelationId'
       responses:
         '200':
-          description: Lista de chapters
+          description: Lista de chapters.
           content:
             application/vnd.guardia.v1+json:
               schema:
-                type: array
-                items: &ref_2
-                  $ref: '#/components/schemas/ChapterResponse'
-              example:
-                - entity_id: '6683756247371778'
-                  entity_type: CHAPTER
-                  external_entity_id: fff78a0d3b5146a1ae80007e3d316714
-                  version: 0
-                  name: Receivables
-                  description: Unidade de Negocio para produtos de Investimentos.
-                  created_at: '2024-11-17T00:00:00.000Z'
-                  updated_at: null
-                  discarded_at: null
-                  metadata:
-                    foo: bar
-                - entity_id: '6683756247371779'
-                  entity_type: CHAPTER
-                  external_entity_id: fff78a0d3b5146a1ae80007e3d316714
-                  version: 0
-                  name: Investiments
-                  description: Unidade de Negocio para produtos de Investimentos.
-                  created_at: '2024-11-17T00:00:00.000Z'
-                  updated_at: null
-                  discarded_at: null
-                  metadata:
-                    foo: bar
-                - entity_id: '6683756247371780'
-                  entity_type: CHAPTER
-                  external_entity_id: fff78a0d3b5146a1ae80007e3d316714
-                  version: 0
-                  name: Investiments
-                  description: Unidade de Negocio para produtos de Investimentos.
-                  created_at: '2024-11-17T00:00:00.000Z'
-                  updated_at: null
-                  discarded_at: null
-                  metadata:
-                    foo: bar
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: './components.openapi.yaml#/components/schemas/ChapterResponse'
+                  pagination:
+                    $ref: './components.openapi.yaml#/components/schemas/Pagination'
           headers:
-            Content-Type:
-              example: application/vnd.guardia.v1+json
-              required: true
-              description: Tipo de contrato retornado.
-              schema:
-                type: string
-            Content-Length:
-              example: <length>
-              required: true
-              description: >-
-                Indica o tamanho, em bytes, do corpo da resposta retornado pela
-                API.
-              schema:
-                type: string
+            Cache-Control:
+              $ref: './components.openapi.yaml#/components/headers/Cache-Control'
             Content-Language:
-              example: en
-              required: true
-              description: >-
-                O idioma em que a API retorna as mensagens de erro. Use en para
-                inglês americano ou pt-BR para português brasileiro.
-              schema:
-                type: string
-            X-RateLimit-Limit:
-              example: '30'
-              required: true
-              description: >-
-                Cota de requisições por segundos por cliente (org id + tenant
-                id).
-              schema:
-                type: string
-            X-RateLimit-Remaining:
-              example: '10'
-              required: true
-              description: Cota de requisições restantes no mesmo segundo.
-              schema:
-                type: string
-            Retry-After:
-              example: '0'
-              required: false
-              description: >-
-                Indica quanto tempo o cliente (org id + tenant id) deve aguardar
-                antes de fazer uma requisição. Zero indica que não há tempo de
-                espera.
-              schema:
-                type: string
+              $ref: './components.openapi.yaml#/components/headers/Content-Language'
+            Content-Length:
+              $ref: './components.openapi.yaml#/components/headers/Content-Length'
+            Content-Type:
+              $ref: './components.openapi.yaml#/components/headers/Content-Type'
             Strict-Transport-Security:
-              example: max-age=31536000; includeSubDomains
-              required: true
-              description: Indica que o navegador deve acessar o site apenas por HTTPS.
-              schema:
-                type: string
-            X-Total-Count:
-              example: '10'
-              required: true
-              description: Total de itens disponíveis no sistema.
-              schema:
-                type: string
-            X-Per-Page:
-              example: '20'
-              required: true
-              description: Quantidade de itens exibidos por página.
-              schema:
-                type: string
-            X-Current-Page:
-              example: '1'
-              required: true
-              description: Número da página atual na navegação.
-              schema:
-                type: string
-            X-Total-Pages:
-              example: '1'
-              required: true
-              description: >-
-                Total de páginas disponíveis com base na quantidade total de
-                itens e itens por página.
-              schema:
-                type: string
-            X-Next-Page:
-              example: '0'
-              required: true
-              description: >-
-                Cursor para a próxima página. `Zero` indica que não há próxima
-                página.
-              schema:
-                type: string
-            X-Previous-Page:
-              example: '0'
-              required: true
-              description: >-
-                Cursor para a página anterior. `Zero` indica que não há página
-                anterior.
-              schema:
-                type: string
-          x-apidog-name: OK
+              $ref: './components.openapi.yaml#/components/headers/Strict-Transport-Security'
+            X-Grd-Correlation-Id:
+              $ref: './components.openapi.yaml#/components/headers/X-Grd-Correlation-Id'
+            X-Grd-Trace-Id:
+              $ref: './components.openapi.yaml#/components/headers/X-Grd-Trace-Id'
+            X-RateLimit-Limit:
+              $ref: './components.openapi.yaml#/components/headers/X-RateLimit-Limit'
+            X-RateLimit-Remaining:
+              $ref: './components.openapi.yaml#/components/headers/X-RateLimit-Remaining'
+            X-RateLimit-Reset:
+              $ref: './components.openapi.yaml#/components/headers/X-RateLimit-Reset'
+        '400':
+          $ref: './components.openapi.yaml#/components/responses/Error400'
+        '401':
+          $ref: './components.openapi.yaml#/components/responses/Error401'
+        '403':
+          $ref: './components.openapi.yaml#/components/responses/Error403'
+        '429':
+          $ref: './components.openapi.yaml#/components/responses/Error429'
+        '500':
+          $ref: './components.openapi.yaml#/components/responses/Error500'
+        '409':
+          $ref: './components.openapi.yaml#/components/responses/Error409'
+        '422':
+          $ref: './components.openapi.yaml#/components/responses/Error422'
       security: []
       x-apidog-folder: Chapter
       x-apidog-status: developing
@@ -1105,7 +490,7 @@ paths:
     post:
       summary: Cria um novo chapter
       deprecated: false
-      description: >-
+      description: |
         Permite criar uma segmentação da ledger em ***Chapters*** (Capítulos),
         organizando transações e saldos por critérios específicos, como unidade
         de negócio ou centro de custo, para facilitar análises, relatórios e
@@ -1114,117 +499,88 @@ paths:
       tags:
         - Chapter
       parameters:
-        - name: Accept
-          in: header
-          description: >-
-            Tipo de contrato esperado na resposta da API. O valor padrão é
-            `application/vnd.guardia.v1+json` ou a versao mais recente.
-          required: false
-          example: application/vnd.guardia.v1+json
-          schema:
-            type: string
-        - name: Accept-Language
-          in: header
-          description: >-
-            O idioma em que a API deve retornar as mensagens de erro. Use `en`
-            para inglês americano ou `pt-BR` para português brasileiro. O valor
-            padrão é `en`.
-          required: false
-          example: en
-          schema:
-            type: string
-        - name: Content-Type
-          in: header
-          description: >-
-            Tipo de contrato enviado na requisição para a API. O valor padrão é
-            `application/vnd.guardia.v1+json` ou a versao mais recente.
-          required: false
-          example: application/vnd.guardia.v1+json
-          schema:
-            type: string
+        - $ref: './components.openapi.yaml#/components/parameters/IdempotencyKey'
+        - $ref: './components.openapi.yaml#/components/parameters/Accept'
+        - $ref: './components.openapi.yaml#/components/parameters/AcceptLanguage'
+        - $ref: './components.openapi.yaml#/components/parameters/ContentType'
+        - $ref: './components.openapi.yaml#/components/parameters/CorrelationId'
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ChapterCreateRequest'
+              $ref: './components.openapi.yaml#/components/schemas/ChapterCreateRequest'
             example:
               external_entity_id: fff78a0d3b5146a1ae80007e3d316714
               name: Investimentos
               description: Unidade de Negócio voltada para produtos de Investimentos.
               ledger_entity_id: f636cb1c46c4468e93c384a12530ee30
-              tags:
-                - guardia
               metadata:
                 foo: bar
       responses:
         '201':
           description: Chapter criado
+          headers:
+            Cache-Control:
+              $ref: './components.openapi.yaml#/components/headers/Cache-Control'
+            Content-Digest:
+              $ref: './components.openapi.yaml#/components/headers/Content-Digest'
+            Content-Language:
+              $ref: './components.openapi.yaml#/components/headers/Content-Language'
+            Content-Length:
+              $ref: './components.openapi.yaml#/components/headers/Content-Length'
+            Content-Type:
+              $ref: './components.openapi.yaml#/components/headers/Content-Type'
+            Idempotency-Key:
+              $ref: './components.openapi.yaml#/components/headers/Idempotency-Key'
+            Last-Modified:
+              $ref: './components.openapi.yaml#/components/headers/Last-Modified'
+            Strict-Transport-Security:
+              $ref: './components.openapi.yaml#/components/headers/Strict-Transport-Security'
+            X-Grd-Correlation-Id:
+              $ref: './components.openapi.yaml#/components/headers/X-Grd-Correlation-Id'
+            X-Grd-Trace-Id:
+              $ref: './components.openapi.yaml#/components/headers/X-Grd-Trace-Id'
+            X-RateLimit-Limit:
+              $ref: './components.openapi.yaml#/components/headers/X-RateLimit-Limit'
+            X-RateLimit-Remaining:
+              $ref: './components.openapi.yaml#/components/headers/X-RateLimit-Remaining'
+            X-RateLimit-Reset:
+              $ref: './components.openapi.yaml#/components/headers/X-RateLimit-Reset'
           content:
             application/vnd.guardia.v1+json:
-              schema: *ref_2
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: './components.openapi.yaml#/components/schemas/ChapterResponse'
               example:
-                entity_id: '6683756247371778'
-                entity_type: CHAPTER
-                external_entity_id: fff78a0d3b5146a1ae80007e3d316714
-                version: 0
-                name: Investiments
-                description: Unidade de Negocio para produtos de Investimentos.
-                created_at: '2024-11-17T00:00:00.000Z'
-                updated_at: null
-                discarded_at: null
-                metadata:
-                  foo: bar
-          headers:
-            Content-Type:
-              example: application/vnd.guardia.v1+json
-              required: true
-              description: Tipo de contrato retornado
-              schema:
-                type: string
-            Content-Length:
-              example: <length>
-              required: true
-              description: ''
-              schema:
-                type: string
-            Content-Language:
-              example: en
-              required: true
-              description: >-
-                O idioma em que a API retorna as mensagens de erro. Use en para
-                inglês americano ou pt-BR para português brasileiro.
-              schema:
-                type: string
-            X-RateLimit-Limit:
-              example: '30'
-              required: true
-              description: >-
-                Cota de requisições por segundos por cliente (org id + tenant
-                id)
-              schema:
-                type: string
-            X-RateLimit-Remaining:
-              example: '10'
-              required: true
-              description: Cota de requisições restantes no mesmo segundo
-              schema:
-                type: string
-            Retry-After:
-              example: '0'
-              required: false
-              description: >-
-                Indica quanto tempo o cliente (org id + tenant id) deve aguardar
-                antes de fazer uma requisição. Zero indica que não há tempo de
-                espera.
-              schema:
-                type: string
-            Strict-Transport-Security:
-              example: max-age=31536000; includeSubDomains
-              required: true
-              description: Indica que o navegador deve acessar o site apenas por HTTPS.
-              schema:
-                type: string
+                data:
+                  entity_id: '6683756247371778'
+                  entity_type: CHAPTER
+                  external_entity_id: fff78a0d3b5146a1ae80007e3d316714
+                  version: 0
+                  name: Investiments
+                  description: Unidade de Negocio para produtos de Investimentos.
+                  created_at: '2024-11-17T00:00:00.000Z'
+                  updated_at: null
+                  discarded_at: null
+                  metadata:
+                    foo: bar
           x-apidog-name: Created
+        '401':
+          $ref: './components.openapi.yaml#/components/responses/Error401'
+        '403':
+          $ref: './components.openapi.yaml#/components/responses/Error403'
+        '500':
+          $ref: './components.openapi.yaml#/components/responses/Error500'
+        '400':
+          $ref: './components.openapi.yaml#/components/responses/Error400'
+        '409':
+          $ref: './components.openapi.yaml#/components/responses/Error409'
+        '422':
+          $ref: './components.openapi.yaml#/components/responses/Error422'
+        '429':
+          $ref: './components.openapi.yaml#/components/responses/Error429'
       security: []
       x-apidog-folder: Chapter
       x-apidog-status: developing
@@ -1232,178 +588,92 @@ paths:
       x-run-in-apidog: https://app.apidog.com/web/project/719079/apis/api-11718084-run
   /v1/chapters/{entity_id}:
     get:
-      summary: Obtém um chapter específico
+      summary: Obtém um chapter específico.
       deprecated: false
       description: ''
       operationId: get_chapter
       tags:
         - Chapter
       parameters:
-        - name: entity_id
-          in: path
-          description: >-
-            Identificador único do chapter. Alternativamente pode ser utilizado
-            o `external_entity_id`.
-          required: true
-          example: '6683756247371778'
-          schema:
-            type: string
-        - name: Accept
-          in: header
-          description: >-
-            Tipo de contrato esperado na resposta da API. O valor padrão é
-            `application/vnd.guardia.v1+json` ou a versao mais recente.
-          required: false
-          example: application/vnd.guardia.v1+json
-          schema:
-            type: string
-        - name: Accept-Language
-          in: header
-          description: >-
-            O idioma em que a API deve retornar as mensagens de erro. Use `en`
-            para inglês americano ou `pt-BR` para português brasileiro. O valor
-            padrão é `en`.
-          required: false
-          example: en
-          schema:
-            type: string
-        - name: Content-Type
-          in: header
-          description: >-
-            Tipo de contrato enviado na requisição para a API. O valor padrão é
-            `application/vnd.guardia.v1+json` ou a versao mais recente.
-          required: false
-          example: application/vnd.guardia.v1+json
-          schema:
-            type: string
+        - $ref: './components.openapi.yaml#/components/parameters/EntityId'
+        - $ref: './components.openapi.yaml#/components/parameters/Accept'
+        - $ref: './components.openapi.yaml#/components/parameters/AcceptLanguage'
+        - $ref: './components.openapi.yaml#/components/parameters/ContentType'
+        - $ref: './components.openapi.yaml#/components/parameters/CorrelationId'
       responses:
         '200':
-          description: Dados do chapter
+          description: Dados do chapter.
           content:
             application/vnd.guardia.v1+json:
-              schema: *ref_2
-              example:
-                entity_id: '6683756247371778'
-                entity_type: CHAPTER
-                external_entity_id: fff78a0d3b5146a1ae80007e3d316714
-                version: 0
-                name: Receivables
-                description: Unidade de Negocio para produtos de Investimentos.
-                created_at: '2024-11-17T00:00:00.000Z'
-                updated_at: null
-                discarded_at: null
-                metadata:
-                  foo: bar
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: './components.openapi.yaml#/components/schemas/ChapterResponse'
           headers:
-            Content-Type:
-              example: application/vnd.guardia.v1+json
-              required: true
-              description: Tipo de contrato retornado.
-              schema:
-                type: string
-            Content-Length:
-              example: <length>
-              required: true
-              description: >-
-                Indica o tamanho, em bytes, do corpo da resposta retornado pela
-                API.
-              schema:
-                type: string
+            Cache-Control:
+              $ref: './components.openapi.yaml#/components/headers/Cache-Control'
             Content-Language:
-              example: en
-              required: true
-              description: >-
-                O idioma em que a API retorna as mensagens de erro. Use en para
-                inglês americano ou pt-BR para português brasileiro.
-              schema:
-                type: string
-            X-RateLimit-Limit:
-              example: '30'
-              required: true
-              description: >-
-                Cota de requisições por segundos por cliente (org id + tenant
-                id).
-              schema:
-                type: string
-            X-RateLimit-Remaining:
-              example: '10'
-              required: true
-              description: Cota de requisições restantes no mesmo segundo.
-              schema:
-                type: string
-            Retry-After:
-              example: '0'
-              required: false
-              description: >-
-                Indica quanto tempo o cliente (org id + tenant id) deve aguardar
-                antes de fazer uma requisição. Zero indica que não há tempo de
-                espera.
-              schema:
-                type: string
+              $ref: './components.openapi.yaml#/components/headers/Content-Language'
+            Content-Length:
+              $ref: './components.openapi.yaml#/components/headers/Content-Length'
+            Content-Type:
+              $ref: './components.openapi.yaml#/components/headers/Content-Type'
             Strict-Transport-Security:
-              example: max-age=31536000; includeSubDomains
-              required: true
-              description: Indica que o navegador deve acessar o site apenas por HTTPS.
-              schema:
-                type: string
+              $ref: './components.openapi.yaml#/components/headers/Strict-Transport-Security'
+            X-Grd-Correlation-Id:
+              $ref: './components.openapi.yaml#/components/headers/X-Grd-Correlation-Id'
+            X-Grd-Trace-Id:
+              $ref: './components.openapi.yaml#/components/headers/X-Grd-Trace-Id'
+            X-RateLimit-Limit:
+              $ref: './components.openapi.yaml#/components/headers/X-RateLimit-Limit'
+            X-RateLimit-Remaining:
+              $ref: './components.openapi.yaml#/components/headers/X-RateLimit-Remaining'
+            X-RateLimit-Reset:
+              $ref: './components.openapi.yaml#/components/headers/X-RateLimit-Reset'
           x-apidog-name: OK
+        '401':
+          $ref: './components.openapi.yaml#/components/responses/Error401'
+        '403':
+          $ref: './components.openapi.yaml#/components/responses/Error403'
+        '404':
+          $ref: './components.openapi.yaml#/components/responses/Error404'
+        '500':
+          $ref: './components.openapi.yaml#/components/responses/Error500'
+        '400':
+          $ref: './components.openapi.yaml#/components/responses/Error400'
+        '409':
+          $ref: './components.openapi.yaml#/components/responses/Error409'
+        '422':
+          $ref: './components.openapi.yaml#/components/responses/Error422'
+        '429':
+          $ref: './components.openapi.yaml#/components/responses/Error429'
       security: []
       x-apidog-folder: Chapter
       x-apidog-status: developing
       x-apidog-maintainer: Fernando Seguim
       x-run-in-apidog: https://app.apidog.com/web/project/719079/apis/api-11718085-run
     patch:
-      summary: Atualiza um chapter específico
+      summary: Atualiza um chapter específico.
       deprecated: false
       description: |
         > **Nota:**
-        > Quando o valor for `null`, ele não será considerado para alteração.
+        > Quando o valor for `null`, caso a propriedade exista, eleserá considerado para alteração.
       operationId: update_chapter
       tags:
         - Chapter
       parameters:
-        - name: entity_id
-          in: path
-          description: >-
-            Identificador único do chapter. Alternativamente pode ser utilizado
-            o `external_entity_id`.
-          required: true
-          example: '6683756247371778'
-          schema:
-            type: string
-        - name: Accept
-          in: header
-          description: >-
-            Tipo de contrato esperado na resposta da API. O valor padrão é
-            `application/vnd.guardia.v1+json` ou a versao mais recente.
-          required: false
-          example: application/vnd.guardia.v1+json
-          schema:
-            type: string
-        - name: Accept-Language
-          in: header
-          description: >-
-            O idioma em que a API deve retornar as mensagens de erro. Use `en`
-            para inglês americano ou `pt-BR` para português brasileiro. O valor
-            padrão é `en`.
-          required: false
-          example: en
-          schema:
-            type: string
-        - name: Content-Type
-          in: header
-          description: >-
-            Tipo de contrato enviado na requisição para a API. O valor padrão é
-            `application/vnd.guardia.v1+json` ou a versao mais recente.
-          required: false
-          example: application/vnd.guardia.v1+json
-          schema:
-            type: string
+        - $ref: './components.openapi.yaml#/components/parameters/EntityId'
+        - $ref: './components.openapi.yaml#/components/parameters/Accept'
+        - $ref: './components.openapi.yaml#/components/parameters/AcceptLanguage'
+        - $ref: './components.openapi.yaml#/components/parameters/ContentType'
+        - $ref: './components.openapi.yaml#/components/parameters/IdempotencyKey'
+        - $ref: './components.openapi.yaml#/components/parameters/CorrelationId'
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ChapterUpdateRequest'
+              $ref: './components.openapi.yaml#/components/schemas/ChapterUpdateRequest'
             example:
               external_entity_id: fff78a0d3b5146a1ae80007e3d316714
               name: Investimentos
@@ -1418,185 +688,134 @@ paths:
           description: Chapter atualizado
           content:
             application/vnd.guardia.v1+json:
-              schema: *ref_2
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: './components.openapi.yaml#/components/schemas/ChapterResponse'
               example:
-                entity_id: '6683756247371778'
-                entity_type: CHAPTER
-                external_entity_id: fff78a0d3b5146a1ae80007e3d316714
-                version: 0
-                name: Receivables
-                description: Unidade de Negocio para produtos de Investimentos.
-                created_at: '2024-11-17T00:00:00.000Z'
-                updated_at: null
-                discarded_at: null
-                metadata:
-                  foo: bar
+                data:
+                  entity_id: '6683756247371778'
+                  entity_type: CHAPTER
+                  external_entity_id: fff78a0d3b5146a1ae80007e3d316714
+                  version: 0
+                  name: Receivables
+                  description: Unidade de Negocio para produtos de Investimentos.
+                  created_at: '2024-11-17T00:00:00.000Z'
+                  updated_at: null
+                  discarded_at: null
+                  metadata:
+                    foo: bar
           headers:
-            Content-Type:
-              example: application/vnd.guardia.v1+json
-              required: true
-              description: Tipo de contrato retornado.
-              schema:
-                type: string
-            Content-Length:
-              example: <length>
-              required: true
-              description: >-
-                Indica o tamanho, em bytes, do corpo da resposta retornado pela
-                API.
-              schema:
-                type: string
+            Cache-Control:
+              $ref: './components.openapi.yaml#/components/headers/Cache-Control'
+            Content-Digest:
+              $ref: './components.openapi.yaml#/components/headers/Content-Digest'
             Content-Language:
-              example: en
-              required: true
-              description: >-
-                O idioma em que a API retorna as mensagens de erro. Use en para
-                inglês americano ou pt-BR para português brasileiro.
-              schema:
-                type: string
-            X-RateLimit-Limit:
-              example: '30'
-              required: true
-              description: >-
-                Cota de requisições por segundos por cliente (org id + tenant
-                id).
-              schema:
-                type: string
-            X-RateLimit-Remaining:
-              example: '10'
-              required: true
-              description: Cota de requisições restantes no mesmo segundo.
-              schema:
-                type: string
-            Retry-After:
-              example: '0'
-              required: false
-              description: >-
-                Indica quanto tempo o cliente (org id + tenant id) deve aguardar
-                antes de fazer uma requisição. Zero indica que não há tempo de
-                espera.
-              schema:
-                type: string
+              $ref: './components.openapi.yaml#/components/headers/Content-Language'
+            Content-Length:
+              $ref: './components.openapi.yaml#/components/headers/Content-Length'
+            Content-Type:
+              $ref: './components.openapi.yaml#/components/headers/Content-Type'
+            Idempotency-Key:
+              $ref: './components.openapi.yaml#/components/headers/Idempotency-Key'
+            Last-Modified:
+              $ref: './components.openapi.yaml#/components/headers/Last-Modified'
             Strict-Transport-Security:
-              example: max-age=31536000; includeSubDomains
-              required: true
-              description: Indica que o navegador deve acessar o site apenas por HTTPS.
-              schema:
-                type: string
+              $ref: './components.openapi.yaml#/components/headers/Strict-Transport-Security'
+            X-Grd-Correlation-Id:
+              $ref: './components.openapi.yaml#/components/headers/X-Grd-Correlation-Id'
+            X-Grd-Trace-Id:
+              $ref: './components.openapi.yaml#/components/headers/X-Grd-Trace-Id'
+            X-RateLimit-Limit:
+              $ref: './components.openapi.yaml#/components/headers/X-RateLimit-Limit'
+            X-RateLimit-Remaining:
+              $ref: './components.openapi.yaml#/components/headers/X-RateLimit-Remaining'
+            X-RateLimit-Reset:
+              $ref: './components.openapi.yaml#/components/headers/X-RateLimit-Reset'
           x-apidog-name: OK
+        '401':
+          $ref: './components.openapi.yaml#/components/responses/Error401'
+        '403':
+          $ref: './components.openapi.yaml#/components/responses/Error403'
+        '404':
+          $ref: './components.openapi.yaml#/components/responses/Error404'
+        '500':
+          $ref: './components.openapi.yaml#/components/responses/Error500'
+        '400':
+          $ref: './components.openapi.yaml#/components/responses/Error400'
+        '409':
+          $ref: './components.openapi.yaml#/components/responses/Error409'
+        '422':
+          $ref: './components.openapi.yaml#/components/responses/Error422'
+        '429':
+          $ref: './components.openapi.yaml#/components/responses/Error429'
       security: []
       x-apidog-folder: Chapter
       x-apidog-status: developing
       x-apidog-maintainer: Fernando Seguim
       x-run-in-apidog: https://app.apidog.com/web/project/719079/apis/api-11718086-run
     delete:
-      summary: Exclui um chapter específico
+      summary: Exclui um chapter específico.
       deprecated: false
-      description: ''
+      description: |
+        :::note
+        Se o chapter possuir transações, a exclusão não será permitida.
+        :::
       operationId: delete_chapter
       tags:
         - Chapter
       parameters:
-        - name: entity_id
-          in: path
-          description: >-
-            Identificador único do chapter. Alternativamente pode ser utilizado
-            o `external_entity_id`.
-          required: true
-          example: ef5772a46cb048abb7bfdeedafae7977
-          schema:
-            type: string
-        - name: Accept
-          in: header
-          description: >-
-            Tipo de contrato esperado na resposta da API. O valor padrão é
-            `application/vnd.guardia.v1+json` ou a versao mais recente.
-          required: false
-          example: application/vnd.guardia.v1+json
-          schema:
-            type: string
-        - name: Accept-Language
-          in: header
-          description: >-
-            O idioma em que a API deve retornar as mensagens de erro. Use `en`
-            para inglês americano ou `pt-BR` para português brasileiro. O valor
-            padrão é `en`.
-          required: false
-          example: en
-          schema:
-            type: string
-        - name: Content-Type
-          in: header
-          description: >-
-            Tipo de contrato enviado na requisição para a API. O valor padrão é
-            `application/vnd.guardia.v1+json` ou a versao mais recente.
-          required: false
-          example: application/vnd.guardia.v1+json
-          schema:
-            type: string
+        - $ref: './components.openapi.yaml#/components/parameters/EntityId'
+        - $ref: './components.openapi.yaml#/components/parameters/Accept'
+        - $ref: './components.openapi.yaml#/components/parameters/AcceptLanguage'
+        - $ref: './components.openapi.yaml#/components/parameters/ContentType'
+        - $ref: './components.openapi.yaml#/components/parameters/CorrelationId'
       responses:
         '204':
           description: Chapter excluído com sucesso
-          content:
-            application/vnd.guardia.v1+json:
-              schema:
-                type: object
-                properties: {}
-                x-apidog-orders: []
-                x-apidog-ignore-properties: []
           headers:
-            Content-Type:
-              example: application/vnd.guardia.v1+json
-              required: true
-              description: Tipo de contrato retornado.
-              schema:
-                type: string
-            Content-Length:
-              example: <length>
-              required: true
-              description: >-
-                Indica o tamanho, em bytes, do corpo da resposta retornado pela
-                API.
-              schema:
-                type: string
+            Cache-Control:
+              $ref: './components.openapi.yaml#/components/headers/Cache-Control'
+            Content-Digest:
+              $ref: './components.openapi.yaml#/components/headers/Content-Digest'
             Content-Language:
-              example: en
-              required: true
-              description: >-
-                O idioma em que a API retorna as mensagens de erro. Use en para
-                inglês americano ou pt-BR para português brasileiro.
-              schema:
-                type: string
-            X-RateLimit-Limit:
-              example: '30'
-              required: true
-              description: >-
-                Cota de requisições por segundos por cliente (org id + tenant
-                id).
-              schema:
-                type: string
-            X-RateLimit-Remaining:
-              example: '10'
-              required: true
-              description: Cota de requisições restantes no mesmo segundo.
-              schema:
-                type: string
-            ' Retry-After':
-              example: '0'
-              required: false
-              description: >-
-                Indica quanto tempo o cliente (org id + tenant id) deve aguardar
-                antes de fazer uma requisição. Zero indica que não há tempo de
-                espera.
-              schema:
-                type: string
+              $ref: './components.openapi.yaml#/components/headers/Content-Language'
+            Content-Length:
+              $ref: './components.openapi.yaml#/components/headers/Content-Length'
+            Content-Type:
+              $ref: './components.openapi.yaml#/components/headers/Content-Type'
+            Last-Modified:
+              $ref: './components.openapi.yaml#/components/headers/Last-Modified'
             Strict-Transport-Security:
-              example: max-age=31536000; includeSubDomains
-              required: true
-              description: Indica que o navegador deve acessar o site apenas por HTTPS.
-              schema:
-                type: string
+              $ref: './components.openapi.yaml#/components/headers/Strict-Transport-Security'
+            X-Grd-Correlation-Id:
+              $ref: './components.openapi.yaml#/components/headers/X-Grd-Correlation-Id'
+            X-Grd-Trace-Id:
+              $ref: './components.openapi.yaml#/components/headers/X-Grd-Trace-Id'
+            X-RateLimit-Limit:
+              $ref: './components.openapi.yaml#/components/headers/X-RateLimit-Limit'
+            X-RateLimit-Remaining:
+              $ref: './components.openapi.yaml#/components/headers/X-RateLimit-Remaining'
+            X-RateLimit-Reset:
+              $ref: './components.openapi.yaml#/components/headers/X-RateLimit-Reset'
           x-apidog-name: No Content
+        '401':
+          $ref: './components.openapi.yaml#/components/responses/Error401'
+        '403':
+          $ref: './components.openapi.yaml#/components/responses/Error403'
+        '404':
+          $ref: './components.openapi.yaml#/components/responses/Error404'
+        '500':
+          $ref: './components.openapi.yaml#/components/responses/Error500'
+        '400':
+          $ref: './components.openapi.yaml#/components/responses/Error400'
+        '409':
+          $ref: './components.openapi.yaml#/components/responses/Error409'
+        '422':
+          $ref: './components.openapi.yaml#/components/responses/Error422'
+        '429':
+          $ref: './components.openapi.yaml#/components/responses/Error429'
       security: []
       x-apidog-folder: Chapter
       x-apidog-status: developing
@@ -1604,9 +823,9 @@ paths:
       x-run-in-apidog: https://app.apidog.com/web/project/719079/apis/api-11718087-run
   /v1/assets:
     post:
-      summary: Criar um novo asset
+      summary: Criar um novo asset.
       deprecated: false
-      description: >-
+      description: |
         Um **asset** (ou ativo) é um recurso de valor econômico que pode ser
         possuído ou controlado por uma entidade, indivíduo ou instituição. No
         contexto financeiro, um ativo pode ser:
@@ -1629,639 +848,117 @@ paths:
       operationId: create_asset
       tags:
         - Asset
-      parameters: []
+      parameters:
+        - $ref: './components.openapi.yaml#/components/parameters/IdempotencyKey'
+        - $ref: './components.openapi.yaml#/components/parameters/CorrelationId'
+        - $ref: './components.openapi.yaml#/components/parameters/Accept'
+        - $ref: './components.openapi.yaml#/components/parameters/AcceptLanguage'
+        - $ref: './components.openapi.yaml#/components/parameters/ContentType'
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/AssetCreateRequest'
-            example:
-              external_entity_id: e9ad6a8ac4ce4a0b8e845c5d89e24322
-              code: INT01
-              number: '2003202501'
-              exponent: 10
-              is_fiat: false
-              locations:
-                - NONE
-      responses:
-        '200':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AssetResponse'
-              example:
-                entity_id: '6683756247371778'
-                entity_type: ASSET
-                external_entity_id: e9ad6a8ac4ce4a0b8e845c5d89e24322
-                version: 0
-                code: INT01
-                number: '2003202501'
-                exponent: 10
-                is_fiat: false
+              type: object
+              properties:
+                external_entity_id:
+                  $ref: './components.openapi.yaml#/components/schemas/ExternalEntityID'
+                code:
+                  type: string
+                number:
+                  type: string
+                exponent:
+                  type: string
+                is_fiat:
+                  type: boolean
                 locations:
-                  - NONE
-                created_at: '2024-11-17T00:00:00.000Z'
-                updated_at: null
-                discarded_at: null
-          headers: {}
-          x-apidog-name: Success
+                  type: array
+                  items:
+                    type: string
+              required:
+                - external_entity_id
+                - code
+                - number
+                - exponent
+                - is_fiat
+                - locations
+      responses:
+        '201':
+          description: Asset criado
+          headers:
+            Cache-Control:
+              $ref: './components.openapi.yaml#/components/headers/Cache-Control'
+            Content-Digest:
+              $ref: './components.openapi.yaml#/components/headers/Content-Digest'
+            Content-Language:
+              $ref: './components.openapi.yaml#/components/headers/Content-Language'
+            Content-Length:
+              $ref: './components.openapi.yaml#/components/headers/Content-Length'
+            Content-Type:
+              $ref: './components.openapi.yaml#/components/headers/Content-Type'
+            Idempotency-Key:
+              $ref: './components.openapi.yaml#/components/headers/Idempotency-Key'
+            Last-Modified:
+              $ref: './components.openapi.yaml#/components/headers/Last-Modified'
+            Strict-Transport-Security:
+              $ref: './components.openapi.yaml#/components/headers/Strict-Transport-Security'
+            X-Grd-Correlation-Id:
+              $ref: './components.openapi.yaml#/components/headers/X-Grd-Correlation-Id'
+            X-Grd-Trace-Id:
+              $ref: './components.openapi.yaml#/components/headers/X-Grd-Trace-Id'
+            X-RateLimit-Limit:
+              $ref: './components.openapi.yaml#/components/headers/X-RateLimit-Limit'
+            X-RateLimit-Remaining:
+              $ref: './components.openapi.yaml#/components/headers/X-RateLimit-Remaining'
+            X-RateLimit-Reset:
+              $ref: './components.openapi.yaml#/components/headers/X-RateLimit-Reset'
+          content:
+            application/vnd.guardia.v1+json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: './components.openapi.yaml#/components/schemas/AssetResponse'
+              example:
+                data:
+                  entity_id: '6683756247371778'
+                  entity_type: ASSET
+                  external_entity_id: e9ad6a8ac4ce4a0b8e845c5d89e24322
+                  version: 0
+                  code: INT01
+                  number: '2003202501'
+                  exponent: 10
+                  is_fiat: false
+                  locations:
+                    - NONE
+                  created_at: '2024-11-17T00:00:00.000Z'
+                  updated_at: null
+                  discarded_at: null
+          x-apidog-name: Created
+        '401':
+          $ref: './components.openapi.yaml#/components/responses/Error401'
+        '403':
+          $ref: './components.openapi.yaml#/components/responses/Error403'
+        '500':
+          $ref: './components.openapi.yaml#/components/responses/Error500'
+        '400':
+          $ref: './components.openapi.yaml#/components/responses/Error400'
+        '409':
+          $ref: './components.openapi.yaml#/components/responses/Error409'
+        '422':
+          $ref: './components.openapi.yaml#/components/responses/Error422'
+        '429':
+          $ref: './components.openapi.yaml#/components/responses/Error429'
       security: []
       x-apidog-folder: Assets
       x-apidog-status: developing
       x-apidog-maintainer: Fernando Seguim
       x-run-in-apidog: https://app.apidog.com/web/project/719079/apis/api-14888485-run
+
 components:
+  headers:
+    $ref: './components.openapi.yaml#/components/headers'
   schemas:
-    Ledger:
-      type: object
-      properties:
-        entity_id: &ref_4
-          description: Identificador único do ledger.
-          $ref: '#/components/schemas/EntityID'
-        entity_type:
-          type: string
-          description: Tipo da entidade.
-          examples:
-            - LEDGER
-        external_entity_id:
-          type: string
-          description: >-
-            Identificador único externo da ledger. Pode ser associado para uso
-            externo.
-          title: ''
-          examples:
-            - 9606e83f427b44c298192c0f110129bc
-          nullable: true
-        version: &ref_7
-          description: >-
-            Versao da entidade. Inicia em 0 e incrementa 1 a cada alteração
-            realizada.
-          $ref: '#/components/schemas/Version'
-        name:
-          type: string
-          description: Nome único do ledger.
-          minLength: 3
-          maxLength: 256
-          examples:
-            - My Ledger 1
-        description:
-          type: string
-          description: Descrição do ledger.
-          examples:
-            - Ledger da ACME Corp.
-          minLength: 3
-          maxLength: 512
-          nullable: true
-        created_at: &ref_3
-          description: Data e hora de criação do ledger no formato ISO 8601 (UTC).
-          $ref: '#/components/schemas/DateTime%20(ISO%208601%20%2F%20RFC%203339)'
-        updated_at:
-          description: >-
-            Data e hora da última atualização do ledger no formato ISO 8601
-            (UTC).
-          anyOf:
-            - *ref_3
-            - type: 'null'
-        discarded_at:
-          description: Data e hora de descarte do ledger no formato ISO 8601 (UTC).
-          anyOf:
-            - *ref_3
-            - type: 'null'
-        metadata:
-          description: >-
-            Os metadados a serem adicionados à entidade devem ser fornecidos
-            como pares de chave-valor em um formato de objeto JSON, com chave e
-            valor como strings. O tamanho maximo do objeto deve ser 1MB.
-          anyOf:
-            - &ref_6
-              description: >-
-                Os metadados a serem adicionados à entidade devem ser fornecidos
-                como pares de chave-valor em um formato de objeto JSON, com
-                chave e valor como strings. O tamanho maximo do objeto deve ser
-                1MB.
-              $ref: '#/components/schemas/Metadata'
-            - type: 'null'
-      x-apidog-refs: {}
-      x-apidog-orders:
-        - entity_id
-        - entity_type
-        - external_entity_id
-        - version
-        - name
-        - description
-        - created_at
-        - updated_at
-        - discarded_at
-        - metadata
-      required:
-        - entity_id
-        - entity_type
-        - name
-        - created_at
-        - updated_at
-        - version
-        - discarded_at
-      x-apidog-ignore-properties: []
-      x-apidog-folder: Schemas/Entities
-    Chapter:
-      type: object
-      properties:
-        entity_id: *ref_4
-        entity_type:
-          type: string
-          description: Tipo da entidade.
-          examples:
-            - CHAPTER
-        external_entity_id:
-          type: string
-          description: >-
-            Um ID externo único do chapter. Pode ser associado para uso externo.
-            Recomendado o formato UUID.
-          title: ''
-          examples:
-            - fff78a0d3b5146a1ae80007e3d316714
-          maxLength: 36
-          nullable: true
-        version: *ref_7
-        name:
-          type: string
-          description: Nome único dentro do chapter.
-          examples:
-            - Investiments
-            - Payables
-            - Receivables
-        description:
-          type: string
-          description: Descrição do chapter.
-          examples:
-            - Unidade de Negocio para produtos de Investimentos.
-          nullable: true
-        created_at: *ref_3
-        updated_at:
-          description: >-
-            Data e hora da última atualização do chapter no formato ISO 8601
-            (UTC).
-          anyOf:
-            - *ref_3
-            - type: 'null'
-        discarded_at:
-          description: Data e hora de descarte do chapter no formato ISO 8601 (UTC).
-          anyOf:
-            - *ref_3
-            - type: 'null'
-        metadata:
-          description: >-
-            Os metadados a serem adicionados à entidade devem ser fornecidos
-            como pares de chave-valor em um formato de objeto JSON, com chave e
-            valor como strings. O tamanho maximo do objeto deve ser 1MB.
-          anyOf:
-            - *ref_6
-            - type: 'null'
-      x-apidog-orders:
-        - entity_id
-        - entity_type
-        - external_entity_id
-        - version
-        - name
-        - description
-        - created_at
-        - updated_at
-        - discarded_at
-        - metadata
-      x-apidog-refs: {}
-      required:
-        - entity_id
-        - entity_type
-        - name
-        - created_at
-        - updated_at
-        - version
-        - discarded_at
-      x-apidog-ignore-properties: []
-      x-apidog-folder: Schemas/Entities
-    Asset:
-      type: object
-      properties:
-        entity_id: *ref_4
-        entity_type:
-          type: string
-          description: Tipo da entidade
-        external_entity_id:
-          type: string
-          title: ''
-          description: >-
-            Um ID externo único do asset de ser associado para uso externo.
-            Recomendado o formato UUID.
-        version: *ref_7
-        code:
-          type: string
-          description: >-
-            O código do asset deve ter entre 3 e 24 caracteres, podendo seguir
-            os formatos ISO 4217, ISO 10962, MIC, ISIN ou um padrão interno da
-            instituição.
-        number:
-          type: string
-          description: >-
-            Alguns assets podem possuir, além do código, um identificador
-            alfanumérico de 3 a 24 caracteres, adicional para referência
-            específica dentro da instituição ou do sistema.
-        exponent:
-          type: string
-          description: >-
-            O expoente define a escala de precisão do ativo, determinando o
-            número de casas decimais permitidas, podendo variar de 0 a 18
-            dígitos após a vírgula.
-        is_fiat:
-          type: boolean
-          description: >-
-            Indicador que define se o ativo é fiduciário, ou seja, com respaldo
-            de um regulador, como um estado ou governo, ou não.
-          default: false
-        locations:
-          type: array
-          items:
-            type: string
-            description: >-
-              BR, AG, US, ... veja a lista de codigos da ISO 3166 ou ALL para
-              todos ou NONE para uso interno.
-          description: >-
-            Países onde o ativo é válido no formato ISO 3166, por exemplo, BR,
-            AG, US. Para representar todos os países, use ALL, e para uso
-            interno, use NONE.
-        created_at: *ref_3
-        updated_at: *ref_3
-        discarded_at: *ref_3
-      x-apidog-orders:
-        - entity_id
-        - entity_type
-        - external_entity_id
-        - version
-        - code
-        - number
-        - exponent
-        - is_fiat
-        - locations
-        - created_at
-        - updated_at
-        - discarded_at
-      required:
-        - entity_id
-        - entity_type
-        - version
-        - external_entity_id
-        - code
-        - number
-        - exponent
-        - is_fiat
-        - locations
-        - created_at
-        - discarded_at
-        - updated_at
-      x-apidog-ignore-properties: []
-      x-apidog-folder: Schemas/Entities
-    Metadata:
-      type: object
-      properties:
-        foo:
-          type: string
-          x-apidog-mock: bar
-          examples:
-            - bar
-          nullable: true
-      x-apidog-orders:
-        - foo
-      description: >-
-        Os metadados a serem adicionados à entidade devem ser fornecidos como
-        pares de chave-valor em um formato de objeto JSON, com chave e valor
-        como strings. O tamanho maximo do objeto deve ser 1MB.
-      x-apidog-ignore-properties: []
-      x-apidog-folder: Schemas/VOs
-    DateTime (ISO 8601 / RFC 3339):
-      type: string
-      description: Data e hora no formato no formato ISO 8601 / RFC 3339 (UTC).
-      format: date-time
-      examples:
-        - '2024-11-17T00:00:00.000Z'
-      pattern: >-
-        ^(?<year>[0-9]{4})-?(?<month>1[0-2]|0[1-9])-?(?<day>3[01]|0[1-9]|[12][0-9])T(?<hour>2[0-3]|[01][0-9]):?(?<minute>[0-5][0-9]):?(?<second>[0-5][0-9])(?:\.(?<fraction>[0-9]{1,9}))?Z$
-      nullable: true
-      x-apidog-folder: Schemas/VOs
-    Error:
-      type: object
-      properties:
-        code:
-          type: string
-          description: 'O codigo do erro. Ex.: ERR400001'
-        reason:
-          type: string
-          description: 'O movito do erro, quando conhecido. Ex.: INVALID_PARAMETER'
-        message:
-          type: string
-          description: 'A mensagem que descreve o erro. '
-      x-apidog-orders:
-        - code
-        - reason
-        - message
-      required:
-        - code
-        - message
-        - reason
-      x-apidog-ignore-properties: []
-      x-apidog-folder: Schemas/VOs
-    Errors:
-      type: array
-      items:
-        $ref: '#/components/schemas/Error'
-      x-apidog-folder: Schemas/VOs
-    Version:
-      type: integer
-      minimum: 0
-      maximum: 128
-      examples:
-        - 0
-      x-apidog-folder: Schemas/VOs
-    EntityID:
-      type: string
-      format: snowflake
-      examples:
-        - '6683756247371778'
-      description: Identificador único da entidade em formato snowflake.
-      x-apidog-folder: Schemas/VOs
-    LedgerCreateResquest:
-      type: object
-      properties:
-        external_entity_id:
-          type: string
-          description: >-
-            Um ID externo único da ledger. Pode ser associado para uso externo.
-            Recomendado o formato UUID.
-          title: ''
-          maxLength: 36
-          examples:
-            - 9606e83f427b44c298192c0f110129bc
-          nullable: true
-        name:
-          type: string
-          description: >-
-            O nome único e personalizado da ledger. Mínimo de 3 caractere e
-            Máximo de 256 caracteres.
-          minLength: 3
-          maxLength: 128
-          examples:
-            - My Ledger 1
-        description:
-          type: string
-          description: >-
-            Uma descrição personalizada da ledger. Mínimo de 3 caracteres e
-            Máximo de 512 caracteres.
-          examples:
-            - Ledger da ACME Corp.
-          minLength: 3
-          maxLength: 512
-          nullable: true
-        metadata: *ref_6
-      x-apidog-refs: {}
-      x-apidog-orders:
-        - external_entity_id
-        - name
-        - description
-        - metadata
-      required:
-        - name
-      x-apidog-ignore-properties: []
-      x-apidog-folder: Schemas/Requests
-    LedgerUpdateRequest:
-      type: object
-      properties:
-        external_entity_id:
-          type: string
-          description: >-
-            Um ID externo único da ledger. Pode ser associado para uso externo.
-            Recomendado o formato UUID.
-          title: ''
-          examples:
-            - 9606e83f427b44c298192c0f110129bc
-          maxLength: 36
-          nullable: true
-        name:
-          type: string
-          description: >-
-            O nome único e personalizado da ledger. Mínimo de 3 caractere e
-            Máximo de 256 caracteres.
-          minLength: 3
-          maxLength: 256
-          examples:
-            - General Ledger
-          nullable: true
-        description:
-          type: string
-          description: >-
-            Uma descrição personalizada da ledger. Mínimo de 3 caracteres e
-            Máximo de 512 caracteres.
-          examples:
-            - Ledger da ACME Corp.
-          minLength: 3
-          maxLength: 512
-          nullable: true
-        metadata: *ref_6
-      x-apidog-refs: {}
-      x-apidog-orders:
-        - external_entity_id
-        - name
-        - description
-        - metadata
-      x-apidog-ignore-properties: []
-      x-apidog-folder: Schemas/Requests
-    ChapterCreateRequest:
-      type: object
-      properties:
-        external_entity_id:
-          type: string
-          description: >-
-            Um ID externo único do chapter. Pode ser associado para uso externo.
-            Recomendado o formato UUID.
-          title: ''
-          examples:
-            - fff78a0d3b5146a1ae80007e3d316714
-          maxLength: 36
-          nullable: true
-        name:
-          type: string
-          description: Nome único dentro do chapter
-          examples:
-            - Investments
-        description:
-          type: string
-          description: >-
-            Uma descrição personalizada do chapter. Mínimo de 3 caracteres e
-            Máximo de 512 caracteres.
-          examples:
-            - Unidade de Negócio voltada para produtos de Investimentos.
-          nullable: true
-        ledger_entity_id:
-          type: string
-          description: >-
-            Identificador único do ledger ao qual o chapter pertence.
-            Alternativamente pode ser utilizado o `external_entity_id`.
-          format: uuid
-          maxLength: 36
-          minLength: 32
-          examples:
-            - f636cb1c46c4468e93c384a12530ee30
-        metadata: *ref_6
-      x-apidog-refs: {}
-      x-apidog-orders:
-        - external_entity_id
-        - name
-        - description
-        - ledger_entity_id
-        - metadata
-      required:
-        - name
-        - ledger_entity_id
-      x-apidog-ignore-properties: []
-      x-apidog-folder: Schemas/Requests
-    ChapterUpdateRequest:
-      type: object
-      properties:
-        external_entity_id:
-          type: string
-          description: >-
-            Um ID externo único do chapter. Pode ser associado para uso externo.
-            Recomendado o formato UUID.
-          title: ''
-          examples:
-            - fff78a0d3b5146a1ae80007e3d316714
-          maxLength: 36
-          nullable: true
-        name:
-          type: string
-          description: Nome único dentro do chapter
-          examples:
-            - Investimentos
-          nullable: true
-        description:
-          type: string
-          description: >-
-            Uma descrição personalizada do chapter. Mínimo de 3 caracteres e
-            Máximo de 512 caracteres.
-          examples:
-            - Unidade de Negócio voltada para produtos de Investimentos.
-          nullable: true
-        ledger_entity_id:
-          type: string
-          description: >-
-            Identificador único do ledger ao qual o chapter pertence.
-            Alternativamente pode ser utilizado o `external_entity_id`.
-          format: uuid
-          maxLength: 36
-          minLength: 32
-          examples:
-            - f636cb1c46c4468e93c384a12530ee30
-          nullable: true
-        metadata: *ref_6
-      x-apidog-refs: {}
-      x-apidog-orders:
-        - external_entity_id
-        - name
-        - description
-        - ledger_entity_id
-        - metadata
-      x-apidog-ignore-properties: []
-      x-apidog-folder: Schemas/Requests
-    AssetCreateRequest:
-      type: object
-      properties:
-        external_entity_id:
-          type: string
-          description: >-
-            Um ID externo único d{{a entidade}}. Pode ser associado para uso
-            externo. Recomendado o formato UUID.
-          title: ''
-          nullable: true
-        code:
-          type: string
-          minLength: 3
-          maxLength: 24
-          description: >-
-            O código do asset deve ter entre 3 e 24 caracteres, podendo seguir
-            os formatos ISO 4217, ISO 10962, MIC, ISIN ou um padrão interno da
-            instituição.
-        number:
-          type: string
-          minLength: 3
-          maxLength: 24
-          description: >-
-            Alguns assets podem possuir, além do código, um identificador
-            alfanumérico de 3 a 24 caracteres, adicional para referência
-            específica dentro da instituição ou do sistema.
-          nullable: true
-        exponent:
-          type: integer
-          minimum: 0
-          maximum: 18
-          description: >-
-            O expoente define a escala de precisão do ativo, determinando o
-            número de casas decimais permitidas, podendo variar de 0 a 18
-            dígitos após a vírgula.
-        is_fiat:
-          type: boolean
-          description: >-
-            Indicador que define se o ativo é fiduciário, ou seja, com respaldo
-            de um regulador, como um estado ou governo, ou não.
-          default: false
-        locations:
-          type: array
-          items:
-            type: string
-          description: >-
-            Países onde o ativo é válido no formato ISO 3166, por exemplo, BR,
-            AG, US. Para representar todos os países, use ALL, e para uso
-            interno, use NONE.
-      x-apidog-orders:
-        - external_entity_id
-        - code
-        - number
-        - exponent
-        - is_fiat
-        - locations
-      required:
-        - exponent
-        - is_fiat
-        - locations
-        - code
-      x-apidog-ignore-properties: []
-      x-apidog-folder: Schemas/Requests
-    ErrorsResponse:
-      type: object
-      properties:
-        errors:
-          $ref: '#/components/schemas/Errors'
-          description: Lista de erros
-        reference:
-          type: string
-          description: Link para a documentação.
-          examples:
-            - https://docs.guardia.finance/api/known-errors/{{entity_type}}
-          format: uri
-      x-apidog-orders:
-        - errors
-        - reference
-      required:
-        - errors
-        - reference
-      x-apidog-ignore-properties: []
-      x-apidog-folder: Schemas/Responses/Errors
-    LedgerResponse:
-      $ref: '#/components/schemas/Ledger'
-      x-apidog-folder: Schemas/Responses
-    ChapterResponse:
-      $ref: '#/components/schemas/Chapter'
-      x-apidog-folder: Schemas/Responses
-    AssetResponse:
-      $ref: '#/components/schemas/Asset'
-      x-apidog-folder: Schemas/Responses
-  securitySchemes: {}
-servers: []
-security: []
+    $ref: './components.openapi.yaml#/components/schemas'
+  responses:
+    $ref: './components.openapi.yaml#/components/responses'
+

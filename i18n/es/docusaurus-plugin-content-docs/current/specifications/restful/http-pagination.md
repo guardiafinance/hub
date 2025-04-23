@@ -60,11 +60,11 @@ La respuesta DEBE contener los siguientes propiedades:
 | [`data`](#data)                                                       | array  |
 | [`pagination`](#pagination)                                           | object |
 | [`pagination.page_size`](#paginationpage_size)                       | uint32 |
-| [`pagination.next_page_token`](#paginationnext_page_token)           | string |
-| [`pagination.previous_page_token`](#paginationprevious_page_token)   | string |
-| [`pagination.first_page_token`](#paginationfirst_page_token)         | string |
-| [`pagination.last_page_token`](#paginationlast_page_token)           | string |
 | [`pagination.total_count`](#paginationtotal_count)                   | uint32 |
+| [`pagination.first_page_token`](#paginationfirst_page_token)         | string |
+| [`pagination.previous_page_token`](#paginationprevious_page_token)   | string |
+| [`pagination.next_page_token`](#paginationnext_page_token)           | string |
+| [`pagination.last_page_token`](#paginationlast_page_token)           | string |
 
 ### Estructura del Payload
 
@@ -81,25 +81,25 @@ Las respuestas de endpoints que implementan paginación DEBEN seguir la estructu
 ##### `pagination.page_size`
 - DEBE ser un entero positivo (`uint32`) que represente el número de elementos por página en la respuesta.
 
-##### `pagination.next_page_token`
-- PUEDE ser una cadena que represente el token de la siguiente página.
-- CUANDO esté ausente o sea nulo, indica que no hay más páginas siguientes.
-
-##### `pagination.previous_page_token`
-- PUEDE ser una cadena que represente el token de la página anterior.
-- CUANDO esté ausente o sea nulo, indica que esta es la primera página de la secuencia.
+##### `pagination.total_count`
+- DEBE ser un entero positivo (`uint32`) que represente el número total de registros disponibles en la consulta original.
+- PUEDE ser omitido en escenarios de paginación altamente escalables donde el conteo completo afecte el rendimiento.
 
 ##### `pagination.first_page_token`
 - PUEDE ser una cadena que represente el token de la primera página.
 - DEBE ser tratado como un recurso auxiliar para clientes que deseen reiniciar la navegación.
 
+##### `pagination.previous_page_token`
+- PUEDE ser una cadena que represente el token de la página anterior.
+- CUANDO esté ausente o sea nulo, indica que esta es la primera página de la secuencia.
+
+##### `pagination.next_page_token`
+- PUEDE ser una cadena que represente el token de la siguiente página.
+- CUANDO esté ausente o sea nulo, indica que no hay más páginas siguientes.
+
 ##### `pagination.last_page_token`
 - PUEDE ser una cadena que represente el token de la última página.
 - DEBE ser utilizado opcionalmente por los clientes para saltar al final de la secuencia.
-
-##### `pagination.total_count`
-- DEBE ser un entero positivo (`uint32`) que represente el número total de registros disponibles en la consulta original.
-- PUEDE ser omitido en escenarios de paginación altamente escalables donde el conteo completo afecte el rendimiento.
 
 #### Ejemplo en JSON
 ```json
@@ -110,11 +110,11 @@ Las respuestas de endpoints que implementan paginación DEBEN seguir la estructu
   ],
   "pagination": {
     "page_size": 20,
+    "total_count": 200,
     "first_page_token": "eyJhbGciOi...",
-    "next_page_token": "eyJhbGciOi...",
     "previous_page_token": "eyJhbGciOi...",
+    "next_page_token": "eyJhbGciOi...",
     "last_page_token": "eyJhbGciOi...",
-    "total_count": 200
   }
 }
 ```
@@ -132,10 +132,10 @@ Ejemplo:
 
 ```
 link:
+<https://{tenant_id}.guardia.finance/api/v1/ledgers?page_token={first_page_token}>; rel="first",
 <https://{tenant_id}.guardia.finance/api/v1/ledgers?page_token={previous_page_token}>; rel="previous",
 <https://{tenant_id}.guardia.finance/api/v1/ledgers?page_token={next_page_token}>; rel="next",
-<https://{tenant_id}.guardia.finance/api/v1/ledgers?page_token={last_page_token}>; rel="last",
-<https://{tenant_id}.guardia.finance/api/v1/ledgers?page_token={first_page_token}>; rel="first"
+<https://{tenant_id}.guardia.finance/api/v1/ledgers?page_token={last_page_token}>; rel="last"
 ```
 
 Conozca más sobre los headers HTTP que utiliza Guardia [aquí](./http-headers.md).

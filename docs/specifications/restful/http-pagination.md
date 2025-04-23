@@ -60,11 +60,11 @@ A resposta DEVE conter os seguintes propriedades:
 | [`data`](#data)                                                             | array  |
 | [`pagination`](#pagination)                                                 | object |
 | [`pagination.page_size`](#paginationpage_size)                             | uint32 |
-| [`pagination.next_page_token`](#paginationnext_page_token)                 | string |
-| [`pagination.previous_page_token`](#paginationprevious_page_token)         | string |
-| [`pagination.first_page_token`](#paginationfirst_page_token)               | string |
-| [`pagination.last_page_token`](#paginationlast_page_token)                 | string |
 | [`pagination.total_count`](#paginationtotal_count)                         | uint32 |
+| [`pagination.first_page_token`](#paginationfirst_page_token)               | string |
+| [`pagination.previous_page_token`](#paginationprevious_page_token)         | string |
+| [`pagination.next_page_token`](#paginationnext_page_token)                 | string |
+| [`pagination.last_page_token`](#paginationlast_page_token)                 | string |
 
 
 ### Estrutura do Payload
@@ -82,25 +82,25 @@ As respostas de endpoints que implementam paginação DEVEM seguir a estrutura a
 ##### `pagination.page_size`
 - DEVE ser um inteiro positivo (`uint32`) representando o número de itens por página na resposta.
 
-##### `pagination.next_page_token`
-- PODE ser uma string representando o token da próxima página.
-- QUANDO ausente ou nulo, indica que não há mais páginas seguintes.
-
-##### `pagination.previous_page_token`
-- PODE ser uma string representando o token da página anterior.
-- QUANDO ausente ou nulo, indica que esta é a primeira página da sequência.
+##### `pagination.total_count`
+- DEVE ser um inteiro positivo (`uint32`) representando o número total de registros disponíveis na consulta original.
+- PODE ser omitido em cenários de paginação altamente escaláveis onde a contagem completa afete a performance.
 
 ##### `pagination.first_page_token`
 - PODE ser uma string representando o token da primeira página.
 - DEVE ser tratado como um recurso auxiliar para clientes que desejem reiniciar a navegação.
 
+##### `pagination.previous_page_token`
+- PODE ser uma string representando o token da página anterior.
+- QUANDO ausente ou nulo, indica que esta é a primeira página da sequência.
+
+##### `pagination.next_page_token`
+- PODE ser uma string representando o token da próxima página.
+- QUANDO ausente ou nulo, indica que não há mais páginas seguintes.
+
 ##### `pagination.last_page_token`
 - PODE ser uma string representando o token da última página.
 - DEVE ser utilizado opcionalmente por clientes para saltar ao final da sequência.
-
-##### `pagination.total_count`
-- DEVE ser um inteiro positivo (`uint32`) representando o número total de registros disponíveis na consulta original.
-- PODE ser omitido em cenários de paginação altamente escaláveis onde a contagem completa afete a performance.
 
 
 #### Exemplo em JSON
@@ -112,11 +112,11 @@ As respostas de endpoints que implementam paginação DEVEM seguir a estrutura a
   ],
   "pagination": {
     "page_size": 20,
+    "total_count": 200,
     "first_page_token": "eyJhbGciOi...",
-    "next_page_token": "eyJhbGciOi...",
     "previous_page_token": "eyJhbGciOi...",
-    "last_page_token": "eyJhbGciOi...",
-    "total_count": 200
+    "next_page_token": "eyJhbGciOi...",
+    "last_page_token": "eyJhbGciOi..."
   }
 }
 ```
@@ -134,10 +134,10 @@ Exemplo:
 
 ```
 link:
+<https://{tenant_id}.guardia.finance/api/v1/ledgers?page_token={first_page_token}>; rel="first",
 <https://{tenant_id}.guardia.finance/api/v1/ledgers?page_token={previous_page_token}>; rel="previous",
 <https://{tenant_id}.guardia.finance/api/v1/ledgers?page_token={next_page_token}>; rel="next",
-<https://{tenant_id}.guardia.finance/api/v1/ledgers?page_token={last_page_token}>; rel="last",
-<https://{tenant_id}.guardia.finance/api/v1/ledgers?page_token={first_page_token}>; rel="first"
+<https://{tenant_id}.guardia.finance/api/v1/ledgers?page_token={last_page_token}>; rel="last"
 ```
 
 
