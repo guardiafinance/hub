@@ -19,13 +19,13 @@ const sidebar: SidebarsConfig = {
         {
           type: "doc",
           id: "api/lke/list-ledgers",
-          label: "Lista todos os ledgers.",
+          label: "Lista todos os ledgers",
           className: "api-method get",
         },
         {
           type: "doc",
           id: "api/lke/create-ledger",
-          label: "Cria um novo ledger.",
+          label: "Cria um novo ledger",
           className: "api-method post",
         },
         {
@@ -37,13 +37,13 @@ const sidebar: SidebarsConfig = {
         {
           type: "doc",
           id: "api/lke/update-ledger",
-          label: "Atualize os dados de um ledger específico.",
+          label: "Atualize os dados de um ledger específico",
           className: "api-method patch",
         },
         {
           type: "doc",
           id: "api/lke/delete-ledger",
-          label: "Exclui um ledger específico.",
+          label: "Exclui um ledger específico",
           className: "api-method delete",
         },
       ],
@@ -61,7 +61,7 @@ const sidebar: SidebarsConfig = {
         {
           type: "doc",
           id: "api/lke/list-chapters",
-          label: "Lista todos os chapters.",
+          label: "Lista todos os chapters",
           className: "api-method get",
         },
         {
@@ -73,19 +73,19 @@ const sidebar: SidebarsConfig = {
         {
           type: "doc",
           id: "api/lke/get-chapter",
-          label: "Obtém um chapter específico.",
+          label: "Obtém um chapter específico",
           className: "api-method get",
         },
         {
           type: "doc",
           id: "api/lke/update-chapter",
-          label: "Atualiza um chapter específico.",
+          label: "Atualiza um chapter específico",
           className: "api-method patch",
         },
         {
           type: "doc",
           id: "api/lke/delete-chapter",
-          label: "Exclui um chapter específico.",
+          label: "Exclui um chapter específico",
           className: "api-method delete",
         },
       ],
@@ -103,7 +103,7 @@ const sidebar: SidebarsConfig = {
         {
           type: "doc",
           id: "api/lke/create-asset",
-          label: "Criar um novo asset.",
+          label: "Criar um novo asset",
           className: "api-method post",
         },
       ],
