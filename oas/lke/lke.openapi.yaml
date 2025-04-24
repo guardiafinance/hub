@@ -22,9 +22,6 @@ info:
     name: Guardia
     url: https://www.guardia.finance/#contact-us
     email: contato@guardia.finance
-  license:
-    name: Open Core e Enterprise, saiba mais.
-    url: https://hub.guardia.finance/docs/licensing
   x-logo:
     url: "/img/banner-lke.svg"
     altText: Ledger Kernel Engine Banner
