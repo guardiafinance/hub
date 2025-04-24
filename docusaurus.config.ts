@@ -239,7 +239,7 @@ const config: Config = {
         docsPluginId: "classic", // configured for preset-classic
         config: {
           lke: {
-            specPath: "openapi/lke.openapi.yaml",
+            specPath: "oas/lke/lke.openapi.yaml",
             outputDir: "docs/api/lke",
             sidebarOptions: {
               groupPathsBy: "tag",
@@ -253,7 +253,7 @@ const config: Config = {
             schemaTemplate: "templates/schema.mustache",
             version: "1.0.0",
             label: "v1.0.0.",
-            downloadUrl: "openapi/lke.openapi.yaml",
+            downloadUrl: "oas/lke/lke.openapi.yaml",
             showSchemas: true,
             hideSendButton: false,
             showExtensions: false,
