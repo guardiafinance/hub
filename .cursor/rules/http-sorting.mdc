@@ -1,0 +1,56 @@
+---
+description:
+globs: **/*.{openapi.yaml}
+alwaysApply: false
+---
+query:
+  - name: order_by
+    type: string
+    required: optional
+    allowed: [created_at, updated_at, reference_date]
+    default: created_at
+    description: Field used for ordering results. Only temporal fields are allowed. Invalid values must trigger 400 error with `ORDER_BY_INVALID`.
+
+  - name: sort
+    type: string
+    required: optional
+    allowed: [asc, desc]
+    default: asc
+    case_insensitive: true
+    description: Direction of ordering. Accepts `asc` or `desc`. Invalid values must trigger 400 error with `SORT_INVALID`.
+
+rules:
+  - if: order_by is missing
+    then: default to `created_at`
+
+  - if: sort is missing
+    then: default to `asc`
+
+  - enforce: Must use indexed temporal fields for sorting
+  - enforce: Must ensure sorting stability using secondary key like `entity_id`
+  - enforce: Sorting logic must be compatible with pagination logic
+
+errors:
+  - scenario: invalid order_by
+    status: 400
+    code: ERR400_INVALID_PARAMETER
+    reason: ORDER_BY_INVALID_VALUE
+
+  - scenario: invalid sort
+    status: 400
+    code: ERR400_INVALID_PARAMETER
+    reason: SORT_INVALID_VALUE
+
+examples:
+  - request: GET /api/v1/ledgers?order_by=created_at
+  - request: GET /api/v1/ledgers?order_by=reference_date&sort=desc
+  - request: GET /api/v1/ledgers?sort=DESC
+
+notes:
+  - Sorting must be applied to all endpoints that return paginated lists.
+  - Must be documented in the OpenAPI (OAS) contract.
+  - Exceptions are allowed only with justification recorded in the Product Decision Record (PDR).
+  - Sorting behavior must be deterministic and predictable across requests.
+
+
+

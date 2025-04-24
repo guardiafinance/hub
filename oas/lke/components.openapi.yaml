@@ -91,7 +91,7 @@ components:
     OrderBy:
       name: order_by
       in: query
-      description: Campo usado para ordenação dos resultados.
+      description: Campo usado para ordenação dos resultados. Apenas campos temporais são permitidos.
       required: false
       schema:
         type: string
@@ -101,12 +101,12 @@ components:
     Sort:
       name: sort
       in: query
-      description: Direção da ordenação.
+      description: Direção da ordenação. Aceita 'asc' ou 'desc' (case insensitive).
       required: false
       schema:
         type: string
         enum: [asc, desc]
-        default: desc
+        default: asc
 
     IncludeDiscarded:
       name: include_discarded

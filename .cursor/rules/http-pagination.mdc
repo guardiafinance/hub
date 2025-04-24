@@ -1,5 +1,5 @@
 ---
-description: 
+description:
 globs: **/*.{openapi.yaml}
 alwaysApply: false
 ---
@@ -38,7 +38,7 @@ query:
 
   - name: sort
     type: string
-    default: desc
+    default: asc
     allowed: [asc, desc]
     required: optional
     description: Defines sorting direction. Must reject other values with appropriate error.
@@ -85,11 +85,11 @@ rules:
     then: return 400 Bad Request with reason PAGE_SIZE_TOO_LARGE
 
   - if: order_by contains invalid values
-    then: return 400 Bad Request with reason ORDER_BY_INVALID 
+    then: return 400 Bad Request with reason ORDER_BY_INVALID
 
   - if: sort contains invalid values
-    then: return 400 Bad Request with reason SORT_INVALID 
-  
+    then: return 400 Bad Request with reason SORT_INVALID
+
   - if: page_token is invalid
     then: return 400 Bad Request with reason PAGE_TOKEN_INVALID
 

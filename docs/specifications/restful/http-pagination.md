@@ -49,7 +49,7 @@ Os sistemas que expõem recursos pagináveis DEVEM implementar os seguintes par�
 #### `sort`
 - DEVE ser uma string indicando a direção da ordenação.
 - VALORES permitidos são `asc` (ordem crescente) e `desc` (ordem decrescente).
-- QUANDO não informado, DEVE assumir `desc`.
+- QUANDO não informado, DEVE assumir `asc`.
 
 ## Resposta
 
