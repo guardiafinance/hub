@@ -946,6 +946,74 @@ paths:
       x-apidog-status: developing
       x-apidog-maintainer: Fernando Seguim
       x-run-in-apidog: https://app.apidog.com/web/project/719079/apis/api-14888485-run
+  /v1/assets/{entity_id}:
+    get:
+      summary: Obtém um asset específico
+      deprecated: false
+      description: |
+        Obtém os detalhes de um asset específico usando seu `entity_id` ou `external_entity_id`.
+        O asset pode ser um ativo fiduciário (baseado na ISO 4712) ou não fiduciário.
+      operationId: get_asset
+      tags:
+        - Asset
+      parameters:
+        - $ref: './components.openapi.yaml#/components/parameters/EntityId'
+        - $ref: './components.openapi.yaml#/components/parameters/Accept'
+        - $ref: './components.openapi.yaml#/components/parameters/AcceptLanguage'
+        - $ref: './components.openapi.yaml#/components/parameters/ContentType'
+        - $ref: './components.openapi.yaml#/components/parameters/CorrelationId'
+      responses:
+        '200':
+          description: Dados do asset.
+          content:
+            application/vnd.guardia.v1+json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: './components.openapi.yaml#/components/schemas/Asset'
+          headers:
+            Cache-Control:
+              $ref: './components.openapi.yaml#/components/headers/Cache-Control'
+            Content-Language:
+              $ref: './components.openapi.yaml#/components/headers/Content-Language'
+            Content-Length:
+              $ref: './components.openapi.yaml#/components/headers/Content-Length'
+            Content-Type:
+              $ref: './components.openapi.yaml#/components/headers/Content-Type'
+            Strict-Transport-Security:
+              $ref: './components.openapi.yaml#/components/headers/Strict-Transport-Security'
+            X-Grd-Correlation-Id:
+              $ref: './components.openapi.yaml#/components/headers/X-Grd-Correlation-Id'
+            X-Grd-Trace-Id:
+              $ref: './components.openapi.yaml#/components/headers/X-Grd-Trace-Id'
+            X-RateLimit-Limit:
+              $ref: './components.openapi.yaml#/components/headers/X-RateLimit-Limit'
+            X-RateLimit-Remaining:
+              $ref: './components.openapi.yaml#/components/headers/X-RateLimit-Remaining'
+            X-RateLimit-Reset:
+              $ref: './components.openapi.yaml#/components/headers/X-RateLimit-Reset'
+        '400':
+          $ref: './components.openapi.yaml#/components/responses/Error400'
+        '401':
+          $ref: './components.openapi.yaml#/components/responses/Error401'
+        '403':
+          $ref: './components.openapi.yaml#/components/responses/Error403'
+        '404':
+          $ref: './components.openapi.yaml#/components/responses/Error404'
+        '409':
+          $ref: './components.openapi.yaml#/components/responses/Error409'
+        '422':
+          $ref: './components.openapi.yaml#/components/responses/Error422'
+        '429':
+          $ref: './components.openapi.yaml#/components/responses/Error429'
+        '500':
+          $ref: './components.openapi.yaml#/components/responses/Error500'
+      security: []
+      x-apidog-folder: Assets
+      x-apidog-status: developing
+      x-apidog-maintainer: Fernando Seguim
+      x-run-in-apidog: https://app.apidog.com/web/project/719079/apis/api-14888486-run
 
 components:
   headers:

@@ -106,6 +106,12 @@ const sidebar: SidebarsConfig = {
           label: "Criar um novo asset",
           className: "api-method post",
         },
+        {
+          type: "doc",
+          id: "api/lke/get-asset",
+          label: "Obtém um asset específico",
+          className: "api-method get",
+        },
       ],
     },
     {
