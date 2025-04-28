@@ -7,7 +7,6 @@ info:
     consolide dados com precisão. Automatize processos com Smart Transactions,
     garantindo controle total, rastreabilidade e integridade das transações financeiras.
 
-
     Saiba mais sobre o Ledger Kernel Engine [aqui](https://hub.guardia.finance/docs/modules<https://{tenant_id}.guardia.finance/lke).
 
     ## Comunidade
@@ -1014,6 +1013,80 @@ paths:
       x-apidog-status: developing
       x-apidog-maintainer: Fernando Seguim
       x-run-in-apidog: https://app.apidog.com/web/project/719079/apis/api-14888486-run
+    patch:
+      summary: Atualiza um asset específico
+      description: |
+        Atualiza os dados de um asset existente. Quando o valor de um campo for `null`, caso a propriedade exista, ela será considerada para remoção, conforme a especificação do Json Merge Patch [RFC 7386](https://datatracker.ietf.org/doc/html/rfc7386).
+      operationId: update_asset
+      tags:
+        - Asset
+      parameters:
+        - $ref: './components.openapi.yaml#/components/parameters/EntityId'
+        - $ref: './components.openapi.yaml#/components/parameters/IdempotencyKey'
+        - $ref: './components.openapi.yaml#/components/parameters/Accept'
+        - $ref: './components.openapi.yaml#/components/parameters/AcceptLanguage'
+        - $ref: './components.openapi.yaml#/components/parameters/ContentType'
+        - $ref: './components.openapi.yaml#/components/parameters/CorrelationId'
+      requestBody:
+        required: true
+        content:
+          application/vnd.guardia.v1+json:
+            schema:
+              $ref: './components.openapi.yaml#/components/schemas/AssetUpdateRequest'
+      responses:
+        '200':
+          description: Asset atualizado com sucesso.
+          headers:
+            Cache-Control:
+              $ref: './components.openapi.yaml#/components/headers/Cache-Control'
+            Content-Digest:
+              $ref: './components.openapi.yaml#/components/headers/Content-Digest'
+            Content-Language:
+              $ref: './components.openapi.yaml#/components/headers/Content-Language'
+            Content-Length:
+              $ref: './components.openapi.yaml#/components/headers/Content-Length'
+            Content-Type:
+              $ref: './components.openapi.yaml#/components/headers/Content-Type'
+            Idempotency-Key:
+              $ref: './components.openapi.yaml#/components/headers/Idempotency-Key'
+            Last-Modified:
+              $ref: './components.openapi.yaml#/components/headers/Last-Modified'
+            Strict-Transport-Security:
+              $ref: './components.openapi.yaml#/components/headers/Strict-Transport-Security'
+            X-Grd-Correlation-Id:
+              $ref: './components.openapi.yaml#/components/headers/X-Grd-Correlation-Id'
+            X-Grd-Trace-Id:
+              $ref: './components.openapi.yaml#/components/headers/X-Grd-Trace-Id'
+            X-RateLimit-Limit:
+              $ref: './components.openapi.yaml#/components/headers/X-RateLimit-Limit'
+            X-RateLimit-Remaining:
+              $ref: './components.openapi.yaml#/components/headers/X-RateLimit-Remaining'
+            X-RateLimit-Reset:
+              $ref: './components.openapi.yaml#/components/headers/X-RateLimit-Reset'
+          content:
+            application/vnd.guardia.v1+json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: './components.openapi.yaml#/components/schemas/Asset'
+        '400':
+          $ref: './components.openapi.yaml#/components/responses/Error400'
+        '401':
+          $ref: './components.openapi.yaml#/components/responses/Error401'
+        '403':
+          $ref: './components.openapi.yaml#/components/responses/Error403'
+        '404':
+          $ref: './components.openapi.yaml#/components/responses/Error404'
+        '409':
+          $ref: './components.openapi.yaml#/components/responses/Error409'
+        '422':
+          $ref: './components.openapi.yaml#/components/responses/Error422'
+        '429':
+          $ref: './components.openapi.yaml#/components/responses/Error429'
+        '500':
+          $ref: './components.openapi.yaml#/components/responses/Error500'
+      security: []
 
 components:
   headers:

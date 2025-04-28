@@ -623,6 +623,24 @@ components:
         - is_fiat
         - locations
 
+    AssetUpdateRequest:
+      type: object
+      properties:
+        code:
+          type: string
+        number:
+          type: string
+        exponent:
+          type: string
+        is_fiat:
+          type: boolean
+        locations:
+          type: array
+          items:
+            type: string
+        metadata:
+          $ref: '#/components/schemas/Metadata'
+
   responses:
     Error400:
       description: Requisição inválida.

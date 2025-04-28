@@ -1,0 +1,32 @@
+---
+id: assetupdaterequest
+title: "AssetUpdateRequest"
+description: ""
+sidebar_label: "AssetUpdateRequest"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"code":"string","number":"string","exponent":"string","is_fiat":true,"locations":["string"],"metadata":{"foo":"bar"}}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"AssetUpdateRequest"}
+>
+</Heading>
+
+
+
+
+
+<Schema
+  schema={{"type":"object","properties":{"code":{"type":"string"},"number":{"type":"string"},"exponent":{"type":"string"},"is_fiat":{"type":"boolean"},"locations":{"type":"array","items":{"type":"string"}},"metadata":{"type":"object","description":"Os metadados a serem adicionados à entidade devem ser fornecidos como pares de chave-valor em um formato de objeto JSON, com chave e valor como strings. O tamanho maximo do objeto deve ser 1MB.","additionalProperties":{"type":"string"},"maxProperties":10,"example":{"foo":"bar"},"title":"Metadata"}},"title":"AssetUpdateRequest"}}
+  schemaType={"response"}
+>
+  
+</Schema>

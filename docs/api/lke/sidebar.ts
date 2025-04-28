@@ -112,6 +112,12 @@ const sidebar: SidebarsConfig = {
           label: "Obtém um asset específico",
           className: "api-method get",
         },
+        {
+          type: "doc",
+          id: "api/lke/update-asset",
+          label: "Atualiza um asset específico",
+          className: "api-method patch",
+        },
       ],
     },
     {
@@ -226,6 +232,12 @@ const sidebar: SidebarsConfig = {
           type: "doc",
           id: "api/lke/schemas/asset",
           label: "Asset",
+          className: "schema",
+        },
+        {
+          type: "doc",
+          id: "api/lke/schemas/assetupdaterequest",
+          label: "AssetUpdateRequest",
           className: "schema",
         },
         {
