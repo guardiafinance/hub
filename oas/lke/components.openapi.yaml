@@ -155,6 +155,30 @@ components:
       schema:
         type: string
 
+    AssetCodes:
+      name: asset_codes
+      in: query
+      description: |
+        Uma lista de códigos de assets separados por vírgulas. Para ativos fiduciários, use códigos ISO 4217
+        (ex: BRL, USD, EUR). Para outros tipos de ativos, use o código definido
+        na criação do asset.
+      required: false
+      example: 'BRL,USD,EUR'
+      schema:
+        type: string
+
+    AssetNumbers:
+      name: asset_numbers
+      in: query
+      description: |
+        Uma lista de números de identificação de assets separados por vírgulas. Este número pode ser baseado
+        em especificações como ISO 10962, MIC, ISIN ou um padrão interno da
+        instituição.
+      required: false
+      example: '986,840,978'
+      schema:
+        type: string
+
   headers:
     X-Grd-Trace-Id:
       description: Identificador único da requisição gerado pela infraestrutura Guardia.
