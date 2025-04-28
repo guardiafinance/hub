@@ -28,19 +28,19 @@ info:
     url: "/img/banner-lke.svg"
     altText: "Ledger Kernel Engine Banner"
 tags:
-  - name: Ledger
+  - name: Ledgers
     description: |
       Gerencie os livros razão da sua empresa. Crie, atualize e exclua ledgers,
       além de consultar informações detalhadas sobre cada um.
-  - name: Chapter
+  - name: Chapters
     description: |
       Organize os livros razão em capítulos para facilitar a gestão e análise.
       Crie, atualize e exclua capítulos, além de consultar informações detalhadas sobre cada um.
-  - name: Asset
+  - name: Assets
     description: |
       Gerencie os ativos da sua empresa. Crie, atualize e exclua ativos,
       além de consultar informações detalhadas sobre cada um.
-  - name: Transaction
+  - name: Transactions
     description: |
       Registre transações financeiras relacionadas a um livro razão ou capítulo.
 
@@ -52,7 +52,7 @@ paths:
       description: 'Obténha uma lista de ledgers disponíveis para a organização filtrando por metadata ou incluindo itens descartados.'
       operationId: list_ledgers
       tags:
-        - Ledger
+        - Ledgers
       parameters:
         - $ref: './components.openapi.yaml#/components/parameters/EntityIds'
         - $ref: './components.openapi.yaml#/components/parameters/ExternalEntityIds'
@@ -118,7 +118,7 @@ paths:
         '500':
           $ref: './components.openapi.yaml#/components/responses/Error500'
       security: []
-      x-apidog-folder: Ledger
+      x-apidog-folder: Ledgers
       x-apidog-status: developing
       x-apidog-maintainer: Fernando Seguim
       x-run-in-apidog: https://app.apidog.com/web/project/719079/apis/api-11718079-run
@@ -127,7 +127,7 @@ paths:
       description: Cria um novo ledger com os dados fornecidos.
       operationId: create_ledger
       tags:
-        - Ledger
+        - Ledgers
       parameters:
         - $ref: './components.openapi.yaml#/components/parameters/IdempotencyKey'
         - $ref: './components.openapi.yaml#/components/parameters/Accept'
@@ -200,7 +200,7 @@ paths:
       description: ''
       operationId: get_ledger
       tags:
-        - Ledger
+        - Ledgers
       parameters:
         - $ref: './components.openapi.yaml#/components/parameters/EntityId'
         - $ref: './components.openapi.yaml#/components/parameters/Accept'
@@ -256,7 +256,7 @@ paths:
         '500':
           $ref: './components.openapi.yaml#/components/responses/Error500'
       security: []
-      x-apidog-folder: Ledger
+      x-apidog-folder: Ledgers
       x-apidog-status: developing
       x-apidog-maintainer: Fernando Seguim
       x-run-in-apidog: https://app.apidog.com/web/project/719079/apis/api-11718081-run
@@ -268,7 +268,7 @@ paths:
         :::
       operationId: update_ledger
       tags:
-        - Ledger
+        - Ledgers
       parameters:
         - $ref: './components.openapi.yaml#/components/parameters/EntityId'
         - $ref: './components.openapi.yaml#/components/parameters/IdempotencyKey'
@@ -336,7 +336,7 @@ paths:
         '500':
           $ref: './components.openapi.yaml#/components/responses/Error500'
       security: []
-      x-apidog-folder: Ledger
+      x-apidog-folder: Ledgers
       x-apidog-status: developing
       x-apidog-maintainer: Fernando Seguim
       x-run-in-apidog: https://app.apidog.com/web/project/719079/apis/api-11718081-run
@@ -349,7 +349,7 @@ paths:
         :::
       operationId: delete_ledger
       tags:
-        - Ledger
+        - Ledgers
       parameters:
         - $ref: './components.openapi.yaml#/components/parameters/EntityId'
         - $ref: './components.openapi.yaml#/components/parameters/Accept'
@@ -402,7 +402,7 @@ paths:
         '500':
           $ref: './components.openapi.yaml#/components/responses/Error500'
       security: []
-      x-apidog-folder: Ledger
+      x-apidog-folder: Ledgers
       x-apidog-status: developing
       x-apidog-maintainer: Fernando Seguim
       x-run-in-apidog: https://app.apidog.com/web/project/719079/apis/api-11718082-run
@@ -413,7 +413,7 @@ paths:
       description: ''
       operationId: list_chapters
       tags:
-        - Chapter
+        - Chapters
       parameters:
         - $ref: './components.openapi.yaml#/components/parameters/EntityIds'
         - $ref: './components.openapi.yaml#/components/parameters/ExternalEntityIds'
@@ -475,7 +475,7 @@ paths:
         '422':
           $ref: './components.openapi.yaml#/components/responses/Error422'
       security: []
-      x-apidog-folder: Chapter
+      x-apidog-folder: Chapters
       x-apidog-status: developing
       x-apidog-maintainer: Fernando Seguim
       x-run-in-apidog: https://app.apidog.com/web/project/719079/apis/api-11718083-run
@@ -489,7 +489,7 @@ paths:
         auditorias com maior precisão e flexibilidade.
       operationId: create_chapter
       tags:
-        - Chapter
+        - Chapters
       parameters:
         - $ref: './components.openapi.yaml#/components/parameters/IdempotencyKey'
         - $ref: './components.openapi.yaml#/components/parameters/Accept'
@@ -574,7 +574,7 @@ paths:
         '429':
           $ref: './components.openapi.yaml#/components/responses/Error429'
       security: []
-      x-apidog-folder: Chapter
+      x-apidog-folder: Chapters
       x-apidog-status: developing
       x-apidog-maintainer: Fernando Seguim
       x-run-in-apidog: https://app.apidog.com/web/project/719079/apis/api-11718084-run
@@ -585,7 +585,7 @@ paths:
       description: ''
       operationId: get_chapter
       tags:
-        - Chapter
+        - Chapters
       parameters:
         - $ref: './components.openapi.yaml#/components/parameters/EntityId'
         - $ref: './components.openapi.yaml#/components/parameters/Accept'
@@ -641,7 +641,7 @@ paths:
         '429':
           $ref: './components.openapi.yaml#/components/responses/Error429'
       security: []
-      x-apidog-folder: Chapter
+      x-apidog-folder: Chapters
       x-apidog-status: developing
       x-apidog-maintainer: Fernando Seguim
       x-run-in-apidog: https://app.apidog.com/web/project/719079/apis/api-11718085-run
@@ -653,7 +653,7 @@ paths:
         > Quando o valor for `null`, caso a propriedade exista, eleserá considerado para alteração.
       operationId: update_chapter
       tags:
-        - Chapter
+        - Chapters
       parameters:
         - $ref: './components.openapi.yaml#/components/parameters/EntityId'
         - $ref: './components.openapi.yaml#/components/parameters/Accept'
@@ -743,7 +743,7 @@ paths:
         '429':
           $ref: './components.openapi.yaml#/components/responses/Error429'
       security: []
-      x-apidog-folder: Chapter
+      x-apidog-folder: Chapters
       x-apidog-status: developing
       x-apidog-maintainer: Fernando Seguim
       x-run-in-apidog: https://app.apidog.com/web/project/719079/apis/api-11718086-run
@@ -756,7 +756,7 @@ paths:
         :::
       operationId: delete_chapter
       tags:
-        - Chapter
+        - Chapters
       parameters:
         - $ref: './components.openapi.yaml#/components/parameters/EntityId'
         - $ref: './components.openapi.yaml#/components/parameters/Accept'
@@ -809,7 +809,7 @@ paths:
         '429':
           $ref: './components.openapi.yaml#/components/responses/Error429'
       security: []
-      x-apidog-folder: Chapter
+      x-apidog-folder: Chapters
       x-apidog-status: developing
       x-apidog-maintainer: Fernando Seguim
       x-run-in-apidog: https://app.apidog.com/web/project/719079/apis/api-11718087-run
@@ -839,7 +839,7 @@ paths:
         instituição.
       operationId: create_asset
       tags:
-        - Asset
+        - Assets
       parameters:
         - $ref: './components.openapi.yaml#/components/parameters/IdempotencyKey'
         - $ref: './components.openapi.yaml#/components/parameters/CorrelationId'
@@ -954,7 +954,7 @@ paths:
         O asset pode ser um ativo fiduciário (baseado na ISO 4712) ou não fiduciário.
       operationId: get_asset
       tags:
-        - Asset
+        - Assets
       parameters:
         - $ref: './components.openapi.yaml#/components/parameters/EntityId'
         - $ref: './components.openapi.yaml#/components/parameters/Accept'
@@ -1019,7 +1019,7 @@ paths:
         Atualiza os dados de um asset existente. Quando o valor de um campo for `null`, caso a propriedade exista, ela será considerada para remoção, conforme a especificação do Json Merge Patch [RFC 7386](https://datatracker.ietf.org/doc/html/rfc7386).
       operationId: update_asset
       tags:
-        - Asset
+        - Assets
       parameters:
         - $ref: './components.openapi.yaml#/components/parameters/EntityId'
         - $ref: './components.openapi.yaml#/components/parameters/IdempotencyKey'
