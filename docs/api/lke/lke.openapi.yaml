@@ -27,21 +27,21 @@ info:
     url: /img/banner-lke.svg
     altText: Ledger Kernel Engine Banner
 tags:
-  - name: Ledger
+  - name: Ledgers
     description: |
       Gerencie os livros razão da sua empresa. Crie, atualize e exclua ledgers,
       além de consultar informações detalhadas sobre cada um.
-  - name: Chapter
+  - name: Chapters
     description: >
       Organize os livros razão em capítulos para facilitar a gestão e análise.
 
       Crie, atualize e exclua capítulos, além de consultar informações
       detalhadas sobre cada um.
-  - name: Asset
+  - name: Assets
     description: |
       Gerencie os ativos da sua empresa. Crie, atualize e exclua ativos,
       além de consultar informações detalhadas sobre cada um.
-  - name: Transaction
+  - name: Transactions
     description: |
       Registre transações financeiras relacionadas a um livro razão ou capítulo.
 paths:
@@ -53,7 +53,7 @@ paths:
         filtrando por metadata ou incluindo itens descartados.
       operationId: list_ledgers
       tags:
-        - Ledger
+        - Ledgers
       parameters:
         - name: entity_ids
           in: query
@@ -194,7 +194,7 @@ paths:
         "500":
           $ref: "#/components/responses/Error500"
       security: []
-      x-apidog-folder: Ledger
+      x-apidog-folder: Ledgers
       x-apidog-status: developing
       x-apidog-maintainer: Fernando Seguim
       x-run-in-apidog: https://app.apidog.com/web/project/719079/apis/api-11718079-run
@@ -203,7 +203,7 @@ paths:
       description: Cria um novo ledger com os dados fornecidos.
       operationId: create_ledger
       tags:
-        - Ledger
+        - Ledgers
       parameters:
         - $ref: "#/paths/~1v1~1assets/post/parameters/0"
         - $ref: "#/paths/~1v1~1assets/post/parameters/2"
@@ -276,7 +276,7 @@ paths:
       description: ""
       operationId: get_ledger
       tags:
-        - Ledger
+        - Ledgers
       parameters:
         - $ref: "#/paths/~1v1~1assets~1%7Bentity_id%7D/get/parameters/0"
         - $ref: "#/paths/~1v1~1assets/post/parameters/2"
@@ -332,7 +332,7 @@ paths:
         "500":
           $ref: "#/components/responses/Error500"
       security: []
-      x-apidog-folder: Ledger
+      x-apidog-folder: Ledgers
       x-apidog-status: developing
       x-apidog-maintainer: Fernando Seguim
       x-run-in-apidog: https://app.apidog.com/web/project/719079/apis/api-11718081-run
@@ -349,7 +349,7 @@ paths:
         :::
       operationId: update_ledger
       tags:
-        - Ledger
+        - Ledgers
       parameters:
         - $ref: "#/paths/~1v1~1assets~1%7Bentity_id%7D/get/parameters/0"
         - $ref: "#/paths/~1v1~1assets/post/parameters/0"
@@ -417,7 +417,7 @@ paths:
         "500":
           $ref: "#/components/responses/Error500"
       security: []
-      x-apidog-folder: Ledger
+      x-apidog-folder: Ledgers
       x-apidog-status: developing
       x-apidog-maintainer: Fernando Seguim
       x-run-in-apidog: https://app.apidog.com/web/project/719079/apis/api-11718081-run
@@ -430,7 +430,7 @@ paths:
         :::
       operationId: delete_ledger
       tags:
-        - Ledger
+        - Ledgers
       parameters:
         - $ref: "#/paths/~1v1~1assets~1%7Bentity_id%7D/get/parameters/0"
         - $ref: "#/paths/~1v1~1assets/post/parameters/2"
@@ -483,7 +483,7 @@ paths:
         "500":
           $ref: "#/components/responses/Error500"
       security: []
-      x-apidog-folder: Ledger
+      x-apidog-folder: Ledgers
       x-apidog-status: developing
       x-apidog-maintainer: Fernando Seguim
       x-run-in-apidog: https://app.apidog.com/web/project/719079/apis/api-11718082-run
@@ -494,7 +494,7 @@ paths:
       description: ""
       operationId: list_chapters
       tags:
-        - Chapter
+        - Chapters
       parameters:
         - $ref: "#/paths/~1v1~1ledgers/get/parameters/0"
         - $ref: "#/paths/~1v1~1ledgers/get/parameters/1"
@@ -556,7 +556,7 @@ paths:
         "500":
           $ref: "#/components/responses/Error500"
       security: []
-      x-apidog-folder: Chapter
+      x-apidog-folder: Chapters
       x-apidog-status: developing
       x-apidog-maintainer: Fernando Seguim
       x-run-in-apidog: https://app.apidog.com/web/project/719079/apis/api-11718083-run
@@ -570,7 +570,7 @@ paths:
         auditorias com maior precisão e flexibilidade.
       operationId: create_chapter
       tags:
-        - Chapter
+        - Chapters
       parameters:
         - $ref: "#/paths/~1v1~1assets/post/parameters/0"
         - $ref: "#/paths/~1v1~1assets/post/parameters/2"
@@ -655,7 +655,7 @@ paths:
         "500":
           $ref: "#/components/responses/Error500"
       security: []
-      x-apidog-folder: Chapter
+      x-apidog-folder: Chapters
       x-apidog-status: developing
       x-apidog-maintainer: Fernando Seguim
       x-run-in-apidog: https://app.apidog.com/web/project/719079/apis/api-11718084-run
@@ -666,7 +666,7 @@ paths:
       description: ""
       operationId: get_chapter
       tags:
-        - Chapter
+        - Chapters
       parameters:
         - $ref: "#/paths/~1v1~1assets~1%7Bentity_id%7D/get/parameters/0"
         - $ref: "#/paths/~1v1~1assets/post/parameters/2"
@@ -722,7 +722,7 @@ paths:
         "500":
           $ref: "#/components/responses/Error500"
       security: []
-      x-apidog-folder: Chapter
+      x-apidog-folder: Chapters
       x-apidog-status: developing
       x-apidog-maintainer: Fernando Seguim
       x-run-in-apidog: https://app.apidog.com/web/project/719079/apis/api-11718085-run
@@ -736,7 +736,7 @@ paths:
         considerado para alteração.
       operationId: update_chapter
       tags:
-        - Chapter
+        - Chapters
       parameters:
         - $ref: "#/paths/~1v1~1assets~1%7Bentity_id%7D/get/parameters/0"
         - $ref: "#/paths/~1v1~1assets/post/parameters/2"
@@ -826,7 +826,7 @@ paths:
         "500":
           $ref: "#/components/responses/Error500"
       security: []
-      x-apidog-folder: Chapter
+      x-apidog-folder: Chapters
       x-apidog-status: developing
       x-apidog-maintainer: Fernando Seguim
       x-run-in-apidog: https://app.apidog.com/web/project/719079/apis/api-11718086-run
@@ -839,7 +839,7 @@ paths:
         :::
       operationId: delete_chapter
       tags:
-        - Chapter
+        - Chapters
       parameters:
         - $ref: "#/paths/~1v1~1assets~1%7Bentity_id%7D/get/parameters/0"
         - $ref: "#/paths/~1v1~1assets/post/parameters/2"
@@ -892,7 +892,7 @@ paths:
         "500":
           $ref: "#/components/responses/Error500"
       security: []
-      x-apidog-folder: Chapter
+      x-apidog-folder: Chapters
       x-apidog-status: developing
       x-apidog-maintainer: Fernando Seguim
       x-run-in-apidog: https://app.apidog.com/web/project/719079/apis/api-11718087-run
@@ -922,7 +922,7 @@ paths:
         instituição.
       operationId: create_asset
       tags:
-        - Asset
+        - Assets
       parameters:
         - name: Idempotency-Key
           in: header
@@ -1080,7 +1080,7 @@ paths:
         fiduciário.
       operationId: get_asset
       tags:
-        - Asset
+        - Assets
       parameters:
         - name: entity_id
           in: path
@@ -1157,7 +1157,7 @@ paths:
         7386](https://datatracker.ietf.org/doc/html/rfc7386).
       operationId: update_asset
       tags:
-        - Asset
+        - Assets
       parameters:
         - $ref: "#/paths/~1v1~1assets~1%7Bentity_id%7D/get/parameters/0"
         - $ref: "#/paths/~1v1~1assets/post/parameters/0"

@@ -8,10 +8,10 @@ const sidebar: SidebarsConfig = {
     },
     {
       type: "category",
-      label: "Ledger",
+      label: "Ledgers",
       link: {
         type: "doc",
-        id: "api/lke/ledger",
+        id: "api/lke/ledgers",
       },
       collapsible: true,
       collapsed: true,
@@ -50,10 +50,10 @@ const sidebar: SidebarsConfig = {
     },
     {
       type: "category",
-      label: "Chapter",
+      label: "Chapters",
       link: {
         type: "doc",
-        id: "api/lke/chapter",
+        id: "api/lke/chapters",
       },
       collapsible: true,
       collapsed: true,
@@ -92,10 +92,10 @@ const sidebar: SidebarsConfig = {
     },
     {
       type: "category",
-      label: "Asset",
+      label: "Assets",
       link: {
         type: "doc",
-        id: "api/lke/asset",
+        id: "api/lke/assets",
       },
       collapsible: true,
       collapsed: true,
