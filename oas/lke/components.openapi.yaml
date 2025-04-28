@@ -340,6 +340,10 @@ components:
         description:
           type: string
           nullable: true
+        ledger_entity_id:
+          $ref: '#/components/schemas/EntityID'
+          description: |
+            Identificador único da ledger associada ao chapter.
         created_at:
           $ref: '#/components/schemas/DateTime'
           nullable: false
@@ -382,6 +386,12 @@ components:
           type: array
           items:
             type: string
+        ledger_entity_ids:
+          type: array
+          description: |
+            Lista de identificadores únicos das ledgers associadas ao asset.
+          items:
+            $ref: '#/components/schemas/EntityID'
         created_at:
           $ref: '#/components/schemas/DateTime'
           nullable: false
