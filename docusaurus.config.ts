@@ -253,7 +253,8 @@ const config: Config = {
             schemaTemplate: "templates/schema.mustache",
             version: "1.0.0",
             label: "v1.0.0.",
-            downloadUrl: "oas/lke/lke.openapi.yaml",
+            downloadUrl:
+            "https://raw.githubusercontent.com/guardiafinance/hub/refs/heads/main/docs/api/lke/lke.openapi.yaml",
             showSchemas: true,
             hideSendButton: false,
             showExtensions: false,
