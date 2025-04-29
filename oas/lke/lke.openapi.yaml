@@ -202,7 +202,7 @@ paths:
       tags:
         - Ledgers
       parameters:
-        - $ref: './components.openapi.yaml#/components/parameters/EntityId'
+        - $ref: './components.openapi.yaml#/components/parameters/EntityIdParam'
         - $ref: './components.openapi.yaml#/components/parameters/Accept'
         - $ref: './components.openapi.yaml#/components/parameters/AcceptLanguage'
         - $ref: './components.openapi.yaml#/components/parameters/ContentType'
@@ -270,7 +270,7 @@ paths:
       tags:
         - Ledgers
       parameters:
-        - $ref: './components.openapi.yaml#/components/parameters/EntityId'
+        - $ref: './components.openapi.yaml#/components/parameters/EntityIdParam'
         - $ref: './components.openapi.yaml#/components/parameters/IdempotencyKey'
         - $ref: './components.openapi.yaml#/components/parameters/Accept'
         - $ref: './components.openapi.yaml#/components/parameters/AcceptLanguage'
@@ -351,7 +351,7 @@ paths:
       tags:
         - Ledgers
       parameters:
-        - $ref: './components.openapi.yaml#/components/parameters/EntityId'
+        - $ref: './components.openapi.yaml#/components/parameters/EntityIdParam'
         - $ref: './components.openapi.yaml#/components/parameters/Accept'
         - $ref: './components.openapi.yaml#/components/parameters/AcceptLanguage'
         - $ref: './components.openapi.yaml#/components/parameters/ContentType'
@@ -587,7 +587,7 @@ paths:
       tags:
         - Chapters
       parameters:
-        - $ref: './components.openapi.yaml#/components/parameters/EntityId'
+        - $ref: './components.openapi.yaml#/components/parameters/EntityIdParam'
         - $ref: './components.openapi.yaml#/components/parameters/Accept'
         - $ref: './components.openapi.yaml#/components/parameters/AcceptLanguage'
         - $ref: './components.openapi.yaml#/components/parameters/ContentType'
@@ -655,7 +655,7 @@ paths:
       tags:
         - Chapters
       parameters:
-        - $ref: './components.openapi.yaml#/components/parameters/EntityId'
+        - $ref: './components.openapi.yaml#/components/parameters/EntityIdParam'
         - $ref: './components.openapi.yaml#/components/parameters/Accept'
         - $ref: './components.openapi.yaml#/components/parameters/AcceptLanguage'
         - $ref: './components.openapi.yaml#/components/parameters/ContentType'
@@ -758,7 +758,7 @@ paths:
       tags:
         - Chapters
       parameters:
-        - $ref: './components.openapi.yaml#/components/parameters/EntityId'
+        - $ref: './components.openapi.yaml#/components/parameters/EntityIdParam'
         - $ref: './components.openapi.yaml#/components/parameters/Accept'
         - $ref: './components.openapi.yaml#/components/parameters/AcceptLanguage'
         - $ref: './components.openapi.yaml#/components/parameters/ContentType'
@@ -1034,7 +1034,7 @@ paths:
       tags:
         - Assets
       parameters:
-        - $ref: './components.openapi.yaml#/components/parameters/EntityId'
+        - $ref: './components.openapi.yaml#/components/parameters/EntityIdParam'
         - $ref: './components.openapi.yaml#/components/parameters/Accept'
         - $ref: './components.openapi.yaml#/components/parameters/AcceptLanguage'
         - $ref: './components.openapi.yaml#/components/parameters/ContentType'
@@ -1099,7 +1099,7 @@ paths:
       tags:
         - Assets
       parameters:
-        - $ref: './components.openapi.yaml#/components/parameters/EntityId'
+        - $ref: './components.openapi.yaml#/components/parameters/EntityIdParam'
         - $ref: './components.openapi.yaml#/components/parameters/IdempotencyKey'
         - $ref: './components.openapi.yaml#/components/parameters/Accept'
         - $ref: './components.openapi.yaml#/components/parameters/AcceptLanguage'
@@ -1176,7 +1176,7 @@ paths:
       tags:
         - Assets
       parameters:
-        - $ref: './components.openapi.yaml#/components/parameters/EntityId'
+        - $ref: './components.openapi.yaml#/components/parameters/EntityIdParam'
         - $ref: './components.openapi.yaml#/components/parameters/Accept'
         - $ref: './components.openapi.yaml#/components/parameters/AcceptLanguage'
         - $ref: './components.openapi.yaml#/components/parameters/ContentType'

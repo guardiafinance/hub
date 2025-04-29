@@ -102,6 +102,12 @@ const sidebar: SidebarsConfig = {
       items: [
         {
           type: "doc",
+          id: "api/lke/list-assets",
+          label: "Lista todos os assets",
+          className: "api-method get",
+        },
+        {
+          type: "doc",
           id: "api/lke/create-asset",
           label: "Criar um novo asset",
           className: "api-method post",
@@ -117,6 +123,12 @@ const sidebar: SidebarsConfig = {
           id: "api/lke/update-asset",
           label: "Atualiza um asset específico",
           className: "api-method patch",
+        },
+        {
+          type: "doc",
+          id: "api/lke/delete-asset",
+          label: "Exclui um asset específico",
+          className: "api-method delete",
         },
       ],
     },
@@ -236,6 +248,12 @@ const sidebar: SidebarsConfig = {
         },
         {
           type: "doc",
+          id: "api/lke/schemas/listofassets",
+          label: "ListOfAssets",
+          className: "schema",
+        },
+        {
+          type: "doc",
           id: "api/lke/schemas/assetupdaterequest",
           label: "AssetUpdateRequest",
           className: "schema",
@@ -256,12 +274,6 @@ const sidebar: SidebarsConfig = {
           type: "doc",
           id: "api/lke/schemas/debug",
           label: "Debug",
-          className: "schema",
-        },
-        {
-          type: "doc",
-          id: "api/lke/schemas/listofassets",
-          label: "ListOfAssets",
           className: "schema",
         },
         {

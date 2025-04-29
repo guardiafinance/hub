@@ -58,7 +58,7 @@ components:
         type: string
         format: uuid
 
-    EntityId:
+    EntityIdParam:
       name: entity_id
       in: path
       description: |
