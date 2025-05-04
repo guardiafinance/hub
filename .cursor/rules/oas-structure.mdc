@@ -1,0 +1,17 @@
+---
+description:
+globs: **/*.{openapi.yaml}
+alwaysApply: false
+---
+# Structure
+
+- Endpoint order
+ - POST
+ - GET
+ - PUT
+ - PATCH
+ - DELETE
+
+Status Code Ordem
+
+- Must always respect the ascending numerical order.
