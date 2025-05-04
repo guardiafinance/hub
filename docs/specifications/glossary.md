@@ -12,5 +12,5 @@ API exposta pelo Guardia via PaaS acessível através da internet e que requer a
 
 ### API Privada (ou API Interna)
 
-APIs dos módulos do Guardia exposta pelo Guardia via PaaS acessível apenas internamente, via VPN, e que requer autenticação OAuth 2.0, com token emitido por um Identity Provider (IdP) conhecido e confiável.
+APIs dos módulos do Guardia exposta pelo Guardia via PaaS acessível apenas internamente, via VPC, e que requer autenticação OAuth 2.0, com token emitido por um Identity Provider (IdP) conhecido e confiável.
 

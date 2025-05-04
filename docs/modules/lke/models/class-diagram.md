@@ -6,6 +6,8 @@ import MermaidDiagram from '@site/src/components/MermaidDiagram';
 
 # Diagrama de Classes
 
+Este diagrama de classes ilustra os Aggregates, Entities, Value Objects e seus relacionamentos no Bounded Context do Ledger Kernel Engine (LKe).
+
 <MermaidDiagram>
 ```mermaid
 classDiagram

@@ -4,199 +4,334 @@ sidebar_position: 0
 
 import MermaidDiagram from '@site/src/components/MermaidDiagram';
 
-# Entidades e Relacionamentos
+# Entities and Relationships
+
+## Control Schema
+
+The control schema is the schema that contains the references of all other schemas.
 
 <MermaidDiagram>
 ```mermaid
 erDiagram
-    LEDGER ||--o{ CHAPTER : contains
+    %%{init: {'theme': 'neutral'}}%%
+
     LEDGER ||--o{ LEDGER_HISTORY : tracks
+
     LEDGER {
-        uuid entity_id PK "Field controled by application. UUID v7, with temporal order."
-        string external_entity_id "Unique identifier for interoperability with other systems. Max length: 36 characters."
-        string name "Unique within organization and tenant. Max length: 128 characters."
-        string description "Description for reporting purposes. Max length: 256 characters."
-        timestamp created_at "Date of insertion on database."
-        timestamp updated_at "Date of last update on database."
-        timestamp discarded_at "Date of deletion on database. Must implement soft delete pattern."
-        hstore metadata "Additional metadata for interoperability with other systems. Max length: 4KB"
-        int version "Field controled by application. Must be incremented by 1 each time the entity is changed."
-        timestampz valid_from "Field indicating the start of the validity period of this version of the entity."
-        timestampz valid_to "Field indicating the end of the validity period of this version of the entity. Default: 31/12/9999 23:59:59."
+        uuid entity_id PK "Field controlled by the application. UUID v7, with temporal ordering."
+        string external_entity_id "Unique identifier for interoperability with other systems. Maximum length: 36 characters."
+        string name "Unique within the organization and tenant. Maximum length: 128 characters."
+        string description "Description for reporting purposes. Maximum length: 256 characters."
+        timestamp created_at "Date of insertion into the database."
+        timestamp updated_at "Date of last update in the database."
+        timestamp discarded_at "Date of deletion in the database. MUST implement soft delete standard."
+        hstore metadata "Additional metadata for interoperability with other systems. Maximum size: 4KB."
+        int version "Field controlled by the application. MUST be incremented by 1 each time the entity is changed."
+        timestampz valid_from "Field indicating the start of the validity period of this entity version."
+        timestampz valid_to "Field indicating the end of the validity period of this entity version. Default: 12/31/9999 23:59:59."
     }
 
     LEDGER_HISTORY {
-        uuid entity_id PK "Field controled by application. UUID v7, with temporal order."
-        string external_entity_id "Unique identifier for interoperability with other systems. Max length: 36 characters."
-        string name "Unique within organization and tenant. Max length: 128 characters."
-        string description "Description for reporting purposes. Max length: 256 characters."
-        timestamp created_at "Date of insertion on database."
-        timestamp updated_at "Date of last update on database."
-        timestamp discarded_at "Date of deletion on database. Must implement soft delete pattern."
-        hstore metadata "Additional metadata for interoperability with other systems. Max length: 4KB"
-        int version "Field controled by application. Must be incremented by 1 each time the entity is changed."
-        timestampz valid_from "Field indicating the start of the validity period of this version of the entity."
-        timestampz valid_to "Field indicating the end of the validity period of this version of the entity."
-    }
-
-    CHAPTER ||--o{ CHAPTER_HISTORY : tracks
-    CHAPTER {
-        uuid entity_id PK "Field controled by application. UUID v7, with temporal order."
-        string external_entity_id "Unique identifier for interoperability with other systems. Max length: 36 characters."
-        uuid ledger_id FK "Relationship with LEDGER."
-        string name "Unique within ledger. Max length: 128 characters."
-        string description "Description for reporting purposes. Max length: 256 characters."
-        timestamp created_at "Date of insertion on database."
-        timestamp updated_at "Date of last update on database."
-        timestamp discarded_at "Date of deletion on database. Must implement soft delete pattern."
-        hstore metadata "Additional metadata for interoperability with other systems. Max length: 4KB"
-        int version "Field controled by application. Must be incremented by 1 each time the entity is changed."
-        timestampz valid_from "Field indicating the start of the validity period of this version of the entity."
-        timestampz valid_to "Field indicating the end of the validity period of this version of the entity. Default: 31/12/9999 23:59:59."
-    }
-
-
-    CHAPTER_HISTORY {
-        uuid entity_id PK "Field controled by application. UUID v7, with temporal order."
-        string external_entity_id "Unique identifier for interoperability with other systems. Max length: 36 characters."
-        uuid ledger_id FK "Relationship with LEDGER."
-        string name "Unique within ledger. Max length: 128 characters."
-        string description "Description for reporting purposes. Max length: 256 characters."
-        timestamp created_at "Date of insertion on database."
-        timestamp updated_at "Date of last update on database."
-        timestamp discarded_at "Date of deletion on database. Must implement soft delete pattern."
-        hstore metadata "Additional metadata for interoperability with other systems. Max length: 4KB"
-        int version "Field controled by application. Must be incremented by 1 each time the entity is changed."
-        timestampz valid_from "Field indicating the start of the validity period of this version of the entity."
-        timestampz valid_to "Field indicating the end of the validity period of this version of the entity."
-    }
-
-    BOOK ||--o{ ENTRY : contains
-    BOOK ||--|| POSITION : has
-    BOOK ||--|| LEDGER : belongs_to
-    BOOK ||--o{ CHAPTER : references
-    BOOK ||--o{ BOOK_HISTORY : tracks
-    BOOK {
-        uuid entity_id PK "Field controled by application. UUID v7, with temporal order."
-        string external_entity_id "Unique identifier for interoperability with other systems. Max length: 36 characters."
-        uuid ledger_id FK "Relationship with LEDGER."
-        uuid chapter_id FK "Relationship with CHAPTER."
-        uuid position_id FK "Relationship with POSITION."
-        string name "Unique within ledger. Max length: 128 characters."
-        enum nature "Nature of the book. Must be CREDITOR or DEBITOR."
-        timestamp created_at "Date of insertion on database."
-        timestamp updated_at "Date of last update on database."
-        timestamp discarded_at "Date of deletion on database. Must implement soft delete pattern."
-        hstore metadata "Additional metadata for interoperability with other systems. Max length: 4KB"
-        int version "Field controled by application. Must be incremented by 1 each time the entity is changed."
-        timestampz valid_from "Field indicating the start of the validity period of this version of the entity."
-        timestampz valid_to "Field indicating the end of the validity period of this version of the entity. Default: 31/12/9999 23:59:59"
-    }
-
-    BOOK_HISTORY {
-        uuid entity_id PK "Field controled by application. UUID v7, with temporal order."
-        string external_entity_id "Unique identifier for interoperability with other systems. Max length: 36 characters."
-        uuid ledger_id FK "Relationship with LEDGER."
-        uuid chapter_id FK "Relationship with CHAPTER."
-        uuid position_id FK "Relationship with POSITION."
-        string name "Unique within ledger. Max length: 128 characters."
-        enum nature "Nature of the book. Must be CREDITOR or DEBITOR."
-        timestamp created_at "Date of insertion on database."
-        timestamp updated_at "Date of last update on database."
-        timestamp discarded_at "Date of deletion on database. Must implement soft delete pattern."
-        hstore metadata "Additional metadata for interoperability with other systems. Max length: 4KB"
-        int version "Field controled by application. Must be incremented by 1 each time the entity is changed."
-        timestampz valid_from "Field indicating the start of the validity period of this version of the entity."
-        timestampz valid_to "Field indicating the end of the validity period of this version of the entity."
-    }
-
-    POSITION ||--|| ASSET : references
-    POSITION ||--o{ POSITION_HISTORY : tracks
-    POSITION {
-        uuid entity_id PK "Field controled by application. UUID v7, with temporal order."
-        string external_entity_id "Unique identifier for interoperability with other systems. Max length: 36 characters."
-        uuid book_id FK "Relationship with BOOK."
-        uuid asset_id FK "Relationship with ASSET."
-        timestamp reference_date "Date of transaction. If not provided, it will be the date of insertion on database."
-        bigint posted_amount "Total amount posted on the position."
-        bigint posted_credits "Total credits posted on the position."
-        bigint posted_debits "Total debits posted on the position."
-        bigint confirmable_amount "Total amount to be confirmed on the position."
-        bigint confirmable_credits "Total credits to be confirmed on the position."
-        bigint confirmable_debits "Total debits to be confirmed on the position."
-        bigint provisioned_amount "Total amount provisioned (posted and confirmable) on the position."
-        bigint provisioned_credits "Total credits provisioned on the position."
-        bigint provisioned_debits "Total debits provisioned on the position."
-        bigint available_amount "Total amount available on the position."
-        bigint available_credits "Total credits available on the position."
-        bigint available_debits "Total debits available on the position."
-        timestamp created_at "Date of insertion on database."
-        timestamp updated_at "Date of last update on database."
-        timestamp discarded_at "Date of deletion on database. Must implement soft delete pattern."
-        int version "Field controled by application. Must be incremented by 1 each time the entity is changed."
-        timestampz valid_from "Field indicating the start of the validity period of this version of the entity."
-        timestampz valid_to "Field indicating the end of the validity period of this version of the entity. Default: 31/12/9999 23:59:59."
-    }
-
-    POSITION_HISTORY {
-        uuid entity_id PK "Field controled by application. UUID v7, with temporal order."
-        string external_entity_id "Unique identifier for interoperability with other systems. Max length: 36 characters."
-        uuid book_id FK "Relationship with BOOK."
-        uuid asset_id FK "Relationship with ASSET."
-        timestamp reference_date "Date of transaction. If not provided, it will be the date of insertion on database."
-        bigint posted_amount "Amount posted on the position."
-        bigint posted_credits "Credits posted on the position."
-        bigint posted_debits "Debits posted on the position."
-        bigint confirmable_amount "Amount confirmable on the position."
-        bigint confirmable_credits "Credits confirmable on the position."
-        bigint confirmable_debits "Debits confirmable on the position."
-        bigint provisioned_amount "Amount provisioned on the position."
-        bigint provisioned_credits "Credits provisioned on the position."
-        bigint provisioned_debits "Debits provisioned on the position."
-        bigint available_amount "Amount available on the position."
-        bigint available_credits "Credits available on the position."
-        bigint available_debits "Debits available on the position."
-        timestamp created_at "Date of insertion on database."
-        timestamp updated_at "Date of last update on database."
-        timestamp discarded_at "Date of deletion on database. Must implement soft delete pattern."
-        int version "Field controled by application. Must be incremented by 1 each time the entity is changed."
-        timestampz valid_from "Field indicating the start of the validity period of this version of the entity."
-        timestampz valid_to "Field indicating the end of the validity period of this version of the entity."
+        uuid entity_id PK "Campo controlado pela aplicação. UUID v7, com ordenação temporal."
+        string external_entity_id "Identificador único para interoperabilidade com outros sistemas. Tamanho máximo: 36 caracteres."
+        string name "Único dentro da organização e tenant. Tamanho máximo: 128 caracteres."
+        string description "Descrição para fins de relatórios. Tamanho máximo: 256 caracteres."
+        timestamp created_at "Data de inserção no banco de dados."
+        timestamp updated_at "Data da última atualização no banco de dados."
+        timestamp discarded_at "Data de exclusão no banco de dados. Deve implementar padrão de exclusão suave."
+        hstore metadata "Metadados adicionais para interoperabilidade com outros sistemas. Tamanho máximo: 4KB"
+        int version "Campo controlado pela aplicação. Deve ser incrementado em 1 cada vez que a entidade é alterada."
+        timestampz valid_from "Campo indicando o início do período de validade desta versão da entidade."
+        timestampz valid_to "Campo indicando o fim do período de validade desta versão da entidade."
     }
 
     ASSET ||--o{ ASSET_HISTORY : tracks
     ASSET {
-        uuid entity_id PK "Field controled by application. UUID v7, with temporal order."
-        string external_entity_id "Unique identifier for interoperability with other systems. Max length: 36 characters."
-        uuid ledger_id FK "Relationship with LEDGER."
-        string code "Unique within ledger. Max length: 12 characters."
-        string number "Unique within ledger. Max length: 128 characters."
-        int exponent "Exponent of the asset. Must be between 0 and 18."
-        boolean is_fiat "Indicates if the asset is a fiat currency."
-        array locations "Regions where the asset is accepted as a currency for exchange. Must be an array of ISO 3166-2 codes."
-        timestamp created_at "Date of insertion on database."
-        timestamp updated_at "Date of last update on database."
-        timestamp discarded_at "Date of deletion on database. Must implement soft delete pattern."
-        int version "Field controled by application. Must be incremented by 1 each time the entity is changed."
-        timestampz valid_from "Field indicating the start of the validity period of this version of the entity."
-        timestampz valid_to "Field indicating the end of the validity period of this version of the entity. Default: 31/12/9999 23:59:59."
+        uuid entity_id PK "Campo controlado pela aplicação. UUID v7, com ordenação temporal."
+        string external_entity_id "Identificador único para interoperabilidade com outros sistemas. Tamanho máximo: 36 caracteres."
+        string code "Único dentro do ledger. Tamanho máximo: 12 caracteres."
+        string number "Único dentro do ledger. Tamanho máximo: 128 caracteres."
+        int exponent "Expoente do asset. Deve estar entre 0 e 18."
+        boolean is_fiat "Indica se o asset é uma moeda fiduciária."
+        array locations "Regiões onde o asset é aceito como moeda de troca. Deve ser um array de códigos ISO 3166-2."
+        timestamp created_at "Data de inserção no banco de dados."
+        timestamp updated_at "Data da última atualização no banco de dados."
+        timestamp discarded_at "Data de exclusão no banco de dados. Deve implementar padrão de exclusão suave."
+        int version "Campo controlado pela aplicação. Deve ser incrementado em 1 cada vez que a entidade é alterada."
+        timestampz valid_from "Campo indicando o início do período de validade desta versão da entidade."
+        timestampz valid_to "Campo indicando o fim do período de validade desta versão da entidade. Padrão: 31/12/9999 23:59:59."
     }
 
     ASSET_HISTORY {
-        uuid entity_id PK "Field controled by application. UUID v7, with temporal order."
-        string external_entity_id "Unique identifier for interoperability with other systems. Max length: 36 characters."
-        uuid ledger_id FK "Relationship with LEDGER."
-        string code "Unique within ledger. Max length: 12 characters."
-        string number "Unique within ledger. Max length: 128 characters."
-        int exponent "Exponent of the asset. Must be between 0 and 18."
-        boolean is_fiat "Indicates if the asset is a fiat currency."
-        array locations "Regions where the asset is accepted as a currency for exchange. Must be an array of ISO 3166-2 codes."
-        timestamp created_at "Date of insertion on database."
-        timestamp updated_at "Date of last update on database."
-        timestamp discarded_at "Date of deletion on database. Must implement soft delete pattern."
-        int version "Field controled by application. Must be incremented by 1 each time the entity is changed."
-        timestampz valid_from "Field indicating the start of the validity period of this version of the entity."
-        timestampz valid_to "Field indicating the end of the validity period of this version of the entity."
+        uuid entity_id PK "Campo controlado pela aplicação. UUID v7, com ordenação temporal."
+        string external_entity_id "Identificador único para interoperabilidade com outros sistemas. Tamanho máximo: 36 caracteres."
+        uuid ledger_id "Referência do LEDGER."
+        string code "Único dentro do ledger. Tamanho máximo: 12 caracteres."
+        string number "Único dentro do ledger. Tamanho máximo: 128 caracteres."
+        int exponent "Expoente do asset. Deve estar entre 0 e 18."
+        boolean is_fiat "Indica se o asset é uma moeda fiduciária."
+        array locations "Regiões onde o asset é aceito como moeda de troca. Deve ser um array de códigos ISO 3166-2."
+        timestamp created_at "Data de inserção no banco de dados."
+        timestamp updated_at "Data da última atualização no banco de dados."
+        timestamp discarded_at "Data de exclusão no banco de dados. Deve implementar padrão de exclusão suave."
+        int version "Campo controlado pela aplicação. Deve ser incrementado em 1 cada vez que a entidade é alterada."
+        timestampz valid_from "Campo indicando o início do período de validade desta versão da entidade."
+        timestampz valid_to "Campo indicando o fim do período de validade desta versão da entidade."
+    }
+
+    LEDGER ||--o{ LEDGER_ASSET : has
+    ASSET ||--o{ LEDGER_ASSET : has
+    LEDGER_ASSET {
+        uuid ledger_id FK "Referência do LEDGER."
+        uuid asset_id FK "Relação com ASSET."
+        timestamp created_at "Data de inserção no banco de dados."
+        timestamp updated_at "Data da última atualização no banco de dados."
+    }
+
+```
+</MermaidDiagram>
+
+
+## Schema General
+
+El esquema general es el esquema del ledger central usado en el sistema de partidas triplas. En este esquema se registran, formato de partida triple, el registro temporal de las transacciones, entradas y posiciones.
+
+<MermaidDiagram>
+```mermaid
+erDiagram
+    %%{init: {'theme': 'neutral'}}%%
+
+    CHAPTER {
+        uuid entity_id PK "Campo controlado pela aplicação. UUID v7, com ordenação temporal."
+        string external_entity_id "Identificador único para interoperabilidade com outros sistemas. Tamanho máximo: 36 caracteres."
+        uuid ledger_id "Referência do LEDGER."
+        string name "Único dentro do ledger. Tamanho máximo: 128 caracteres."
+        string description "Descrição para fins de relatórios. Tamanho máximo: 256 caracteres."
+        timestamp created_at "Data de inserção no banco de dados."
+        timestamp updated_at "Data da última atualização no banco de dados."
+        timestamp discarded_at "Data de exclusão no banco de dados. Deve implementar padrão de exclusão suave."
+        hstore metadata "Metadados adicionais para interoperabilidade com outros sistemas. Tamanho máximo: 4KB"
+        int version "Campo controlado pela aplicação. Deve ser incrementado em 1 cada vez que a entidade é alterada."
+        timestampz valid_from "Campo indicando o início do período de validade desta versão da entidade."
+        timestampz valid_to "Campo indicando o fim do período de validade desta versão da entidade. Padrão: 31/12/9999 23:59:59."
+    }
+
+    BOOK ||--o{ ENTRY : contains
+    BOOK ||--|| POSITION : has
+    BOOK ||--o{ CHAPTER : references
+    BOOK {
+        uuid entity_id PK "Campo controlado pela aplicação. UUID v7, com ordenação temporal."
+        string external_entity_id "Identificador único para interoperabilidade com outros sistemas. Tamanho máximo: 36 caracteres."
+        uuid ledger_id "Referência do LEDGER."
+        uuid chapter_id FK "Relação com CHAPTER."
+        uuid position_id FK "Relação com POSITION."
+        string name "Único dentro do ledger. Tamanho máximo: 128 caracteres."
+        enum nature "Natureza do book. Deve ser CREDITOR ou DEBITOR."
+        timestamp created_at "Data de inserção no banco de dados."
+        timestamp updated_at "Data da última atualização no banco de dados."
+        timestamp discarded_at "Data de exclusão no banco de dados. Deve implementar padrão de exclusão suave."
+        hstore metadata "Metadados adicionais para interoperabilidade com outros sistemas. Tamanho máximo: 4KB"
+        int version "Campo controlado pela aplicação. Deve ser incrementado em 1 cada vez que a entidade é alterada."
+        timestampz valid_from "Campo indicando o início do período de validade desta versão da entidade."
+        timestampz valid_to "Campo indicando o fim do período de validade desta versão da entidade. Padrão: 31/12/9999 23:59:59"
+    }
+
+    POSITION {
+        uuid entity_id PK "Campo controlado pela aplicação. UUID v7, com ordenação temporal."
+        uuid book_id FK "Relação com BOOK."
+        uuid asset_id "Referência do ASSET."
+        timestamp reference_date "Data da transação. Se não fornecida, será a data de inserção no banco de dados."
+        bigint posted_amount "Valor lançado na posição."
+        bigint posted_credits "Créditos lançados na posição."
+        bigint posted_debits "Débitos lançados na posição."
+        bigint confirmable_amount "Valor a ser confirmado na posição."
+        bigint confirmable_credits "Créditos a serem confirmados na posição."
+        bigint confirmable_debits "Débitos a serem confirmados na posição."
+        bigint provisioned_amount "Valor provisionado na posição."
+        bigint provisioned_credits "Créditos provisionados na posição."
+        bigint provisioned_debits "Débitos provisionados na posição."
+        bigint available_amount "Valor disponível na posição."
+        bigint available_credits "Créditos disponíveis na posição."
+        bigint available_debits "Débitos disponíveis na posição."
+        timestamp created_at "Data de inserção no banco de dados."
+        timestamp updated_at "Data da última atualização no banco de dados."
+        timestamp discarded_at "Data de exclusão no banco de dados. Deve implementar padrão de exclusão suave."
+        int version "Campo controlado pela aplicação. Deve ser incrementado em 1 cada vez que a entidade é alterada."
+        timestampz valid_from "Campo indicando o início do período de validade desta versão da entidade."
+        timestampz valid_to "Campo indicando o fim do período de validade desta versão da entidade. Padrão: 31/12/9999 23:59:59."
+    }
+
+    ENTRY }o--|| TRANSACTION : belongs_to
+    ENTRY ||--|| POSITION : references
+    ENTRY ||--|| BOOK : references
+    ENTRY {
+        uuid entity_id PK "Campo controlado pela aplicação. UUID v7, com ordenação temporal."
+        string external_entity_id "Identificador único para interoperabilidade com outros sistemas. Tamanho máximo: 36 caracteres."
+        uuid transaction_id FK "Relação com TRANSACTION."
+        uuid position_id FK "Relação com POSITION."
+        uuid book_id FK "Relação com BOOK."
+        timestamp reference_date "Data da transação. Se não fornecida, será a data de inserção no banco de dados."
+        enum direction "Direção do entry. Deve ser CREDIT ou DEBIT."
+        enum status "Status do entry. Deve ser PENDING, POSTED ou DISCARDED."
+        timestamp created_at "Data de inserção no banco de dados."
+        timestamp updated_at "Data da última atualização no banco de dados."
+        timestamp posted_at "Data de lançamento no ledger."
+        timestamp discarded_at "Data de exclusão no ledger. Deve implementar padrão de exclusão suave."
+        hstore metadata "Metadados adicionais para interoperabilidade com outros sistemas. Tamanho máximo: 4KB"
+        int version "Campo controlado pela aplicação. Deve ser incrementado em 1 cada vez que a entidade é alterada."
+        timestampz valid_from "Campo indicando o início do período de validade desta versão da entidade."
+        timestampz valid_to "Campo indicando o fim do período de validade desta versão da entidade. Padrão: 31/12/9999 23:59:59."
+    }
+
+    TRANSACTION ||--o| TRANSACTION : reverses
+    TRANSACTION {
+        uuid entity_id PK "Campo controlado pela aplicação. UUID v7, com ordenação temporal."
+        string external_entity_id "Identificador único para interoperabilidade com outros sistemas. Tamanho máximo: 36 caracteres."
+        uuid ledger_id "Referência do LEDGER."
+        timestamp reference_date "Data da transação. Se não fornecida, será a data de inserção no banco de dados."
+        enum status "Status da transação. Deve ser PENDING, POSTED ou DISCARDED."
+        timestamp created_at "Data de inserção no banco de dados."
+        timestamp updated_at "Data da última atualização no banco de dados."
+        timestamp posted_at "Data de lançamento no ledger."
+        timestamp discarded_at "Data de exclusão no ledger. Deve implementar padrão de exclusão suave."
+        hstore metadata "Metadados adicionais para interoperabilidade com outros sistemas. Tamanho máximo: 4KB"
+        int version "Campo controlado pela aplicação. Deve ser incrementado em 1 cada vez que a entidade é alterada."
+        timestampz valid_from "Campo indicando o início do período de validade desta versão da entidade."
+        timestampz valid_to "Campo indicando o fim do período de validade desta versão da entidade. Padrão: 31/12/9999 23:59:59."
+    }
+
+```
+</MermaidDiagram>
+
+
+## Schema Transactional
+
+Cada ledger esta asociado a un schema transactional. Además del registro temporal de cada entidad, el schema transactional registra el historial de cada entidad.
+
+<MermaidDiagram>
+```mermaid
+erDiagram
+    %%{init: {'theme': 'neutral'}}%%
+
+    CHAPTER ||--o{ CHAPTER_HISTORY : tracks
+    CHAPTER {
+        uuid entity_id PK "Campo controlado pela aplicação. UUID v7, com ordenação temporal."
+        string external_entity_id "Identificador único para interoperabilidade com outros sistemas. Tamanho máximo: 36 caracteres."
+        uuid ledger_id "Referência do LEDGER."
+        string name "Único dentro do ledger. Tamanho máximo: 128 caracteres."
+        string description "Descrição para fins de relatórios. Tamanho máximo: 256 caracteres."
+        timestamp created_at "Data de inserção no banco de dados."
+        timestamp updated_at "Data da última atualização no banco de dados."
+        timestamp discarded_at "Data de exclusão no banco de dados. Deve implementar padrão de exclusão suave."
+        hstore metadata "Metadados adicionais para interoperabilidade com outros sistemas. Tamanho máximo: 4KB"
+        int version "Campo controlado pela aplicação. Deve ser incrementado em 1 cada vez que a entidade é alterada."
+        timestampz valid_from "Campo indicando o início do período de validade desta versão da entidade."
+        timestampz valid_to "Campo indicando o fim do período de validade desta versão da entidade. Padrão: 31/12/9999 23:59:59."
+    }
+
+    CHAPTER_HISTORY {
+        uuid entity_id PK "Campo controlado pela aplicação. UUID v7, com ordenação temporal."
+        string external_entity_id "Identificador único para interoperabilidade com outros sistemas. Tamanho máximo: 36 caracteres."
+        uuid ledger_id "Referência do LEDGER."
+        string name "Único dentro do ledger. Tamanho máximo: 128 caracteres."
+        string description "Descrição para fins de relatórios. Tamanho máximo: 256 caracteres."
+        timestamp created_at "Data de inserção no banco de dados."
+        timestamp updated_at "Data da última atualização no banco de dados."
+        timestamp discarded_at "Data de exclusão no banco de dados. Deve implementar padrão de exclusão suave."
+        hstore metadata "Metadados adicionais para interoperabilidade com outros sistemas. Tamanho máximo: 4KB"
+        int version "Campo controlado pela aplicação. Deve ser incrementado em 1 cada vez que a entidade é alterada."
+        timestampz valid_from "Campo indicando o início do período de validade desta versão da entidade."
+        timestampz valid_to "Campo indicando o fim do período de validade desta versão da entidade."
+    }
+
+    BOOK ||--o{ ENTRY : contains
+    BOOK ||--|| POSITION : has
+    BOOK ||--o{ CHAPTER : references
+    BOOK ||--o{ BOOK_HISTORY : tracks
+    BOOK {
+        uuid entity_id PK "Campo controlado pela aplicação. UUID v7, com ordenação temporal."
+        string external_entity_id "Identificador único para interoperabilidade com outros sistemas. Tamanho máximo: 36 caracteres."
+        uuid ledger_id "Referência do LEDGER."
+        uuid chapter_id FK "Relação com CHAPTER."
+        uuid position_id FK "Relação com POSITION."
+        string name "Único dentro do ledger. Tamanho máximo: 128 caracteres."
+        enum nature "Natureza do book. Deve ser CREDITOR ou DEBITOR."
+        timestamp created_at "Data de inserção no banco de dados."
+        timestamp updated_at "Data da última atualização no banco de dados."
+        timestamp discarded_at "Data de exclusão no banco de dados. Deve implementar padrão de exclusão suave."
+        hstore metadata "Metadados adicionais para interoperabilidade com outros sistemas. Tamanho máximo: 4KB"
+        int version "Campo controlado pela aplicação. Deve ser incrementado em 1 cada vez que a entidade é alterada."
+        timestampz valid_from "Campo indicando o início do período de validade desta versão da entidade."
+        timestampz valid_to "Campo indicando o fim do período de validade desta versão da entidade. Padrão: 31/12/9999 23:59:59"
+    }
+
+    BOOK_HISTORY {
+        uuid entity_id PK "Campo controlado pela aplicação. UUID v7, com ordenação temporal."
+        string external_entity_id "Identificador único para interoperabilidade com outros sistemas. Tamanho máximo: 36 caracteres."
+        uuid ledger_id "Referência do LEDGER."
+        uuid chapter_id FK "Relação com CHAPTER."
+        uuid position_id FK "Relação com POSITION."
+        string name "Único dentro do ledger. Tamanho máximo: 128 caracteres."
+        enum nature "Natureza do book. Deve ser CREDITOR ou DEBITOR."
+        timestamp created_at "Data de inserção no banco de dados."
+        timestamp updated_at "Data da última atualização no banco de dados."
+        timestamp discarded_at "Data de exclusão no banco de dados. Deve implementar padrão de exclusão suave."
+        hstore metadata "Metadados adicionais para interoperabilidade com outros sistemas. Tamanho máximo: 4KB"
+        int version "Campo controlado pela aplicação. Deve ser incrementado em 1 cada vez que a entidade é alterada."
+        timestampz valid_from "Campo indicando o início do período de validade desta versão da entidade."
+        timestampz valid_to "Campo indicando o fim do período de validade desta versão da entidade."
+    }
+
+    POSITION ||--o{ POSITION_HISTORY : tracks
+    POSITION {
+        uuid entity_id PK "Campo controlado pela aplicação. UUID v7, com ordenação temporal."
+        uuid book_id FK "Relação com BOOK."
+        uuid asset_id "Referência do ASSET."
+        timestamp reference_date "Data da transação. Se não fornecida, será a data de inserção no banco de dados."
+        bigint posted_amount "Valor lançado na posição."
+        bigint posted_credits "Créditos lançados na posição."
+        bigint posted_debits "Débitos lançados na posição."
+        bigint confirmable_amount "Valor a ser confirmado na posição."
+        bigint confirmable_credits "Créditos a serem confirmados na posição."
+        bigint confirmable_debits "Débitos a serem confirmados na posição."
+        bigint provisioned_amount "Valor provisionado na posição."
+        bigint provisioned_credits "Créditos provisionados na posição."
+        bigint provisioned_debits "Débitos provisionados na posição."
+        bigint available_amount "Valor disponível na posição."
+        bigint available_credits "Créditos disponíveis na posição."
+        bigint available_debits "Débitos disponíveis na posição."
+        timestamp created_at "Data de inserção no banco de dados."
+        timestamp updated_at "Data da última atualização no banco de dados."
+        timestamp discarded_at "Data de exclusão no banco de dados. Deve implementar padrão de exclusão suave."
+        int version "Campo controlado pela aplicação. Deve ser incrementado em 1 cada vez que a entidade é alterada."
+        timestampz valid_from "Campo indicando o início do período de validade desta versão da entidade."
+        timestampz valid_to "Campo indicando o fim do período de validade desta versão da entidade. Padrão: 31/12/9999 23:59:59."
+    }
+
+    POSITION_HISTORY {
+        uuid entity_id PK "Campo controlado pela aplicação. UUID v7, com ordenação temporal."
+        string external_entity_id "Identificador único para interoperabilidade com outros sistemas. Tamanho máximo: 36 caracteres."
+        uuid book_id FK "Relação com BOOK."
+        uuid asset_id FK "Relação com ASSET."
+        timestamp reference_date "Data da transação. Se não fornecida, será a data de inserção no banco de dados."
+        bigint posted_amount "Valor total lançado na posição."
+        bigint posted_credits "Créditos total lançados na posição."
+        bigint posted_debits "Débitos total lançados na posição."
+        bigint confirmable_amount "Valor total a ser confirmado na posição."
+        bigint confirmable_credits "Total de créditos a serem confirmados na posição."
+        bigint confirmable_debits "Total de débitos a serem confirmados na posição."
+        bigint provisioned_amount "Valor total provisionado (lançado e confirmado) na posição."
+        bigint provisioned_credits "Total de créditos provisionados (lançado e confirmado) na posição."
+        bigint provisioned_debits "Total de débitos provisionados na posição."
+        bigint available_amount "Valor total disponível na posição."
+        bigint available_credits "Total de créditos disponíveis na posição."
+        bigint available_debits "Total de débitos disponíveis na posição."
+        timestamp created_at "Data de inserção no banco de dados."
+        timestamp updated_at "Data da última atualização no banco de dados."
+        timestamp discarded_at "Data de exclusão no banco de dados. Deve implementar padrão de exclusão suave."
+        int version "Campo controlado pela aplicação. Deve ser incrementado em 1 cada vez que a entidade é alterada."
+        timestampz valid_from "Campo indicando o início do período de validade desta versão da entidade."
+        timestampz valid_to "Campo indicando o fim do período de validade desta versão da entidade."
     }
 
     ENTRY }o--|| TRANSACTION : belongs_to
@@ -204,76 +339,75 @@ erDiagram
     ENTRY ||--|| BOOK : references
     ENTRY ||--o{ ENTRY_HISTORY : tracks
     ENTRY {
-        uuid entity_id PK "Field controled by application. UUID v7, with temporal order."
-        string external_entity_id "Unique identifier for interoperability with other systems. Max length: 36 characters."
-        uuid transaction_id FK "Relationship with TRANSACTION."
-        uuid position_id FK "Relationship with POSITION."
-        uuid book_id FK "Relationship with BOOK."
-        timestamp reference_date "Date of transaction. If not provided, it will be the date of insertion on database."
-        enum direction "Direction of the entry. Must be CREDIT or DEBIT."
-        enum status "Status of the entry. Must be PENDING, POSTED or DISCARDED."
-        timestamp created_at "Date of insertion on database."
-        timestamp updated_at "Date of last update on database."
-        timestamp posted_at "Date of posting on ledger."
-        timestamp discarded_at "Date of deletion on ledger. Must implement soft delete pattern."
-        hstore metadata "Additional metadata for interoperability with other systems. Max length: 4KB"
-        int version "Field controled by application. Must be incremented by 1 each time the entity is changed."
-        timestampz valid_from "Field indicating the start of the validity period of this version of the entity."
-        timestampz valid_to "Field indicating the end of the validity period of this version of the entity. Default: 31/12/9999 23:59:59."
+        uuid entity_id PK "Campo controlado pela aplicação. UUID v7, com ordenação temporal."
+        string external_entity_id "Identificador único para interoperabilidade com outros sistemas. Tamanho máximo: 36 caracteres."
+        uuid transaction_id FK "Relação com TRANSACTION."
+        uuid position_id FK "Relação com POSITION."
+        uuid book_id FK "Relação com BOOK."
+        timestamp reference_date "Data da transação. Se não fornecida, será a data de inserção no banco de dados."
+        enum direction "Direção do entry. Deve ser CREDIT ou DEBIT."
+        enum status "Status do entry. Deve ser PENDING, POSTED ou DISCARDED."
+        timestamp created_at "Data de inserção no banco de dados."
+        timestamp updated_at "Data da última atualização no banco de dados."
+        timestamp posted_at "Data de lançamento no ledger."
+        timestamp discarded_at "Data de exclusão no ledger. Deve implementar padrão de exclusão suave."
+        hstore metadata "Metadados adicionais para interoperabilidade com outros sistemas. Tamanho máximo: 4KB"
+        int version "Campo controlado pela aplicação. Deve ser incrementado em 1 cada vez que a entidade é alterada."
+        timestampz valid_from "Campo indicando o início do período de validade desta versão da entidade."
+        timestampz valid_to "Campo indicando o fim do período de validade desta versão da entidade. Padrão: 31/12/9999 23:59:59."
     }
 
     ENTRY_HISTORY {
-        uuid entity_id PK "Field controled by application. UUID v7, with temporal order."
-        string external_entity_id "Unique identifier for interoperability with other systems. Max length: 36 characters."
-        uuid transaction_id FK "Relationship with TRANSACTION."
-        uuid position_id FK "Relationship with POSITION."
-        uuid book_id FK "Relationship with BOOK."
-        timestamp reference_date "Date of transaction. If not provided, it will be the date of insertion on database."
-        enum direction "Direction of the entry. Must be CREDIT or DEBIT."
-        enum status "Status of the entry. Must be PENDING, POSTED or DISCARDED."
-        timestamp created_at "Date of insertion on database."
-        timestamp updated_at "Date of last update on database."
-        timestamp posted_at "Date of posting on ledger."
-        timestamp discarded_at "Date of deletion on ledger. Must implement soft delete pattern."
-        hstore metadata "Additional metadata for interoperability with other systems. Max length: 4KB"
-        int version "Field controled by application. Must be incremented by 1 each time the entity is changed."
-        timestampz valid_from "Field indicating the start of the validity period of this version of the entity."
-        timestampz valid_to "Field indicating the end of the validity period of this version of the entity."
+        uuid entity_id PK "Campo controlado pela aplicação. UUID v7, com ordenação temporal."
+        string external_entity_id "Identificador único para interoperabilidade com outros sistemas. Tamanho máximo: 36 caracteres."
+        uuid transaction_id FK "Relação com TRANSACTION."
+        uuid position_id FK "Relação com POSITION."
+        uuid book_id FK "Relação com BOOK."
+        timestamp reference_date "Data da transação. Se não fornecida, será a data de inserção no banco de dados."
+        enum direction "Direção do entry. Deve ser CREDIT ou DEBIT."
+        enum status "Status do entry. Deve ser PENDING, POSTED ou DISCARDED."
+        timestamp created_at "Data de inserção no banco de dados."
+        timestamp updated_at "Data da última atualização no banco de dados."
+        timestamp posted_at "Data de lançamento no ledger."
+        timestamp discarded_at "Data de exclusão no ledger. Deve implementar padrão de exclusão suave."
+        hstore metadata "Metadados adicionais para interoperabilidade com outros sistemas. Tamanho máximo: 4KB"
+        int version "Campo controlado pela aplicação. Deve ser incrementado em 1 cada vez que a entidade é alterada."
+        timestampz valid_from "Campo indicando o início do período de validade desta versão da entidade."
+        timestampz valid_to "Campo indicando o fim do período de validade desta versão da entidade."
     }
 
-    TRANSACTION ||--|| LEDGER : belongs_to
     TRANSACTION ||--o| TRANSACTION : reverses
     TRANSACTION ||--o{ TRANSACTION_HISTORY : tracks
     TRANSACTION {
-        uuid entity_id PK "Field controled by application. UUID v7, with temporal order."
-        string external_entity_id "Unique identifier for interoperability with other systems. Max length: 36 characters."
-        uuid ledger_id FK "Relationship with LEDGER."
-        timestamp reference_date "Date of transaction. If not provided, it will be the date of insertion on database."
-        enum status "Status of the transaction. Must be PENDING, POSTED or DISCARDED."
-        timestamp created_at "Date of insertion on database."
-        timestamp updated_at "Date of last update on database."
-        timestamp posted_at "Date of posting on ledger."
-        timestamp discarded_at "Date of deletion on ledger. Must implement soft delete pattern."
-        hstore metadata "Additional metadata for interoperability with other systems. Max length: 4KB"
-        int version "Field controled by application. Must be incremented by 1 each time the entity is changed."
-        timestampz valid_from "Field indicating the start of the validity period of this version of the entity."
-        timestampz valid_to "Field indicating the end of the validity period of this version of the entity. Default: 31/12/9999 23:59:59."
+        uuid entity_id PK "Campo controlado pela aplicação. UUID v7, com ordenação temporal."
+        string external_entity_id "Identificador único para interoperabilidade com outros sistemas. Tamanho máximo: 36 caracteres."
+        uuid ledger_id "Referência do LEDGER."
+        timestamp reference_date "Data da transação. Se não fornecida, será a data de inserção no banco de dados."
+        enum status "Status da transação. Deve ser PENDING, POSTED ou DISCARDED."
+        timestamp created_at "Data de inserção no banco de dados."
+        timestamp updated_at "Data da última atualização no banco de dados."
+        timestamp posted_at "Data de lançamento no ledger."
+        timestamp discarded_at "Data de exclusão no ledger. Deve implementar padrão de exclusão suave."
+        hstore metadata "Metadados adicionais para interoperabilidade com outros sistemas. Tamanho máximo: 4KB"
+        int version "Campo controlado pela aplicação. Deve ser incrementado em 1 cada vez que a entidade é alterada."
+        timestampz valid_from "Campo indicando o início do período de validade desta versão da entidade."
+        timestampz valid_to "Campo indicando o fim do período de validade desta versão da entidade. Padrão: 31/12/9999 23:59:59."
     }
 
     TRANSACTION_HISTORY {
-        uuid entity_id PK "Field controled by application. UUID v7, with temporal order."
-        string external_entity_id "Unique identifier for interoperability with other systems. Max length: 36 characters."
-        uuid ledger_id FK "Relationship with LEDGER."
-        timestamp reference_date "Date of transaction. If not provided, it will be the date of insertion on database."
-        enum status "Status of the transaction. Must be PENDING, POSTED or DISCARDED."
-        timestamp created_at "Date of insertion on database."
-        timestamp updated_at "Date of last update on database."
-        timestamp posted_at "Date of posting on ledger."
-        timestamp discarded_at "Date of deletion on ledger. Must implement soft delete pattern."
-        hstore metadata "Additional metadata for interoperability with other systems. Max length: 4KB"
-        int version "Field controled by application. Must be incremented by 1 each time the entity is changed."
-        timestampz valid_from "Field indicating the start of the validity period of this version of the entity."
-        timestampz valid_to "Field indicating the end of the validity period of this version of the entity."
+        uuid entity_id PK "Campo controlado pela aplicação. UUID v7, com ordenação temporal."
+        string external_entity_id "Identificador único para interoperabilidade com outros sistemas. Tamanho máximo: 36 caracteres."
+        uuid ledger_id "Referência do LEDGER."
+        timestamp reference_date "Data da transação. Se não fornecida, será a data de inserção no banco de dados."
+        enum status "Status da transação. Deve ser PENDING, POSTED ou DISCARDED."
+        timestamp created_at "Data de inserção no banco de dados."
+        timestamp updated_at "Data da última atualização no banco de dados."
+        timestamp posted_at "Data de lançamento no ledger."
+        timestamp discarded_at "Data de exclusão no ledger. Deve implementar padrão de exclusão suave."
+        hstore metadata "Metadados adicionais para interoperabilidade com outros sistemas. Tamanho máximo: 4KB"
+        int version "Campo controlado pela aplicação. Deve ser incrementado em 1 cada vez que a entidade é alterada."
+        timestampz valid_from "Campo indicando o início do período de validade desta versão da entidade."
+        timestampz valid_to "Campo indicando o fim do período de validade desta versão da entidade."
     }
 ```
 </MermaidDiagram>
