@@ -46,6 +46,77 @@ tags:
 
 paths:
   /v1/ledgers:
+    post:
+      summary: Cria um novo ledger
+      description: Cria um novo ledger com os dados fornecidos.
+      operationId: create_ledger
+      tags:
+        - Ledgers
+      parameters:
+        - $ref: './components.openapi.yaml#/components/parameters/IdempotencyKey'
+        - $ref: './components.openapi.yaml#/components/parameters/Accept'
+        - $ref: './components.openapi.yaml#/components/parameters/AcceptLanguage'
+        - $ref: './components.openapi.yaml#/components/parameters/ContentType'
+        - $ref: './components.openapi.yaml#/components/parameters/CorrelationId'
+      requestBody:
+        required: true
+        content:
+          application/vnd.guardia.v1+json:
+            schema:
+              $ref: './components.openapi.yaml#/components/schemas/LedgerCreateRequest'
+      responses:
+        '201':
+          description: Ledger criado com sucesso.
+          headers:
+            Content-Type:
+              $ref: './components.openapi.yaml#/components/headers/Content-Type'
+            Content-Length:
+              $ref: './components.openapi.yaml#/components/headers/Content-Length'
+            Content-Language:
+              $ref: './components.openapi.yaml#/components/headers/Content-Language'
+            Cache-Control:
+              $ref: './components.openapi.yaml#/components/headers/Cache-Control'
+            Idempotency-Key:
+              $ref: './components.openapi.yaml#/components/headers/Idempotency-Key'
+            Content-Digest:
+              $ref: './components.openapi.yaml#/components/headers/Content-Digest'
+            Last-Modified:
+              $ref: './components.openapi.yaml#/components/headers/Last-Modified'
+            X-Grd-Correlation-Id:
+              $ref: './components.openapi.yaml#/components/headers/X-Grd-Correlation-Id'
+            X-Grd-Trace-Id:
+              $ref: './components.openapi.yaml#/components/headers/X-Grd-Trace-Id'
+            X-RateLimit-Limit:
+              $ref: './components.openapi.yaml#/components/headers/X-RateLimit-Limit'
+            X-RateLimit-Remaining:
+              $ref: './components.openapi.yaml#/components/headers/X-RateLimit-Remaining'
+            X-RateLimit-Reset:
+              $ref: './components.openapi.yaml#/components/headers/X-RateLimit-Reset'
+          content:
+            application/vnd.guardia.v1+json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: './components.openapi.yaml#/components/schemas/Ledger'
+        '400':
+          $ref: './components.openapi.yaml#/components/responses/Error400'
+        '401':
+          $ref: './components.openapi.yaml#/components/responses/Error401'
+        '403':
+          $ref: './components.openapi.yaml#/components/responses/Error403'
+        '404':
+          $ref: './components.openapi.yaml#/components/responses/Error404'
+        '409':
+          $ref: './components.openapi.yaml#/components/responses/Error409'
+        '422':
+          $ref: './components.openapi.yaml#/components/responses/Error422'
+        '429':
+          $ref: './components.openapi.yaml#/components/responses/Error429'
+        '500':
+          $ref: './components.openapi.yaml#/components/responses/Error500'
+      security:
+        - BearerAuth: []
     get:
       summary: Lista todos os ledgers
       deprecated: false
@@ -122,77 +193,6 @@ paths:
       x-apidog-status: developing
       x-apidog-maintainer: Fernando Seguim
       x-run-in-apidog: https://app.apidog.com/web/project/719079/apis/api-11718079-run
-    post:
-      summary: Cria um novo ledger
-      description: Cria um novo ledger com os dados fornecidos.
-      operationId: create_ledger
-      tags:
-        - Ledgers
-      parameters:
-        - $ref: './components.openapi.yaml#/components/parameters/IdempotencyKey'
-        - $ref: './components.openapi.yaml#/components/parameters/Accept'
-        - $ref: './components.openapi.yaml#/components/parameters/AcceptLanguage'
-        - $ref: './components.openapi.yaml#/components/parameters/ContentType'
-        - $ref: './components.openapi.yaml#/components/parameters/CorrelationId'
-      requestBody:
-        required: true
-        content:
-          application/vnd.guardia.v1+json:
-            schema:
-              $ref: './components.openapi.yaml#/components/schemas/LedgerCreateRequest'
-      responses:
-        '201':
-          description: Ledger criado com sucesso.
-          headers:
-            Content-Type:
-              $ref: './components.openapi.yaml#/components/headers/Content-Type'
-            Content-Length:
-              $ref: './components.openapi.yaml#/components/headers/Content-Length'
-            Content-Language:
-              $ref: './components.openapi.yaml#/components/headers/Content-Language'
-            Cache-Control:
-              $ref: './components.openapi.yaml#/components/headers/Cache-Control'
-            Idempotency-Key:
-              $ref: './components.openapi.yaml#/components/headers/Idempotency-Key'
-            Content-Digest:
-              $ref: './components.openapi.yaml#/components/headers/Content-Digest'
-            Last-Modified:
-              $ref: './components.openapi.yaml#/components/headers/Last-Modified'
-            X-Grd-Correlation-Id:
-              $ref: './components.openapi.yaml#/components/headers/X-Grd-Correlation-Id'
-            X-Grd-Trace-Id:
-              $ref: './components.openapi.yaml#/components/headers/X-Grd-Trace-Id'
-            X-RateLimit-Limit:
-              $ref: './components.openapi.yaml#/components/headers/X-RateLimit-Limit'
-            X-RateLimit-Remaining:
-              $ref: './components.openapi.yaml#/components/headers/X-RateLimit-Remaining'
-            X-RateLimit-Reset:
-              $ref: './components.openapi.yaml#/components/headers/X-RateLimit-Reset'
-          content:
-            application/vnd.guardia.v1+json:
-              schema:
-                type: object
-                properties:
-                  data:
-                    $ref: './components.openapi.yaml#/components/schemas/Ledger'
-        '400':
-          $ref: './components.openapi.yaml#/components/responses/Error400'
-        '401':
-          $ref: './components.openapi.yaml#/components/responses/Error401'
-        '403':
-          $ref: './components.openapi.yaml#/components/responses/Error403'
-        '404':
-          $ref: './components.openapi.yaml#/components/responses/Error404'
-        '409':
-          $ref: './components.openapi.yaml#/components/responses/Error409'
-        '422':
-          $ref: './components.openapi.yaml#/components/responses/Error422'
-        '429':
-          $ref: './components.openapi.yaml#/components/responses/Error429'
-        '500':
-          $ref: './components.openapi.yaml#/components/responses/Error500'
-      security:
-        - BearerAuth: []
   /v1/ledgers/{entity_id}:
     get:
       summary: Obtém um ledger específico
@@ -407,78 +407,6 @@ paths:
       x-apidog-maintainer: Fernando Seguim
       x-run-in-apidog: https://app.apidog.com/web/project/719079/apis/api-11718082-run
   /v1/chapters:
-    get:
-      summary: Lista todos os chapters
-      deprecated: false
-      description: ''
-      operationId: list_chapters
-      tags:
-        - Chapters
-      parameters:
-        - $ref: './components.openapi.yaml#/components/parameters/EntityIds'
-        - $ref: './components.openapi.yaml#/components/parameters/ExternalEntityIds'
-        - $ref: './components.openapi.yaml#/components/parameters/MetadataFilter'
-        - $ref: './components.openapi.yaml#/components/parameters/IncludeDiscarded'
-        - $ref: './components.openapi.yaml#/components/parameters/PageSize'
-        - $ref: './components.openapi.yaml#/components/parameters/PageToken'
-        - $ref: './components.openapi.yaml#/components/parameters/OrderBy'
-        - $ref: './components.openapi.yaml#/components/parameters/Sort'
-        - $ref: './components.openapi.yaml#/components/parameters/Accept'
-        - $ref: './components.openapi.yaml#/components/parameters/AcceptLanguage'
-        - $ref: './components.openapi.yaml#/components/parameters/ContentType'
-        - $ref: './components.openapi.yaml#/components/parameters/CorrelationId'
-      responses:
-        '200':
-          description: Lista de chapters.
-          content:
-            application/vnd.guardia.v1+json:
-              schema:
-                type: object
-                properties:
-                  data:
-                    $ref: './components.openapi.yaml#/components/schemas/ListOfChapters'
-                  pagination:
-                    $ref: './components.openapi.yaml#/components/schemas/Pagination'
-          headers:
-            Cache-Control:
-              $ref: './components.openapi.yaml#/components/headers/Cache-Control'
-            Content-Language:
-              $ref: './components.openapi.yaml#/components/headers/Content-Language'
-            Content-Length:
-              $ref: './components.openapi.yaml#/components/headers/Content-Length'
-            Content-Type:
-              $ref: './components.openapi.yaml#/components/headers/Content-Type'
-            Strict-Transport-Security:
-              $ref: './components.openapi.yaml#/components/headers/Strict-Transport-Security'
-            X-Grd-Correlation-Id:
-              $ref: './components.openapi.yaml#/components/headers/X-Grd-Correlation-Id'
-            X-Grd-Trace-Id:
-              $ref: './components.openapi.yaml#/components/headers/X-Grd-Trace-Id'
-            X-RateLimit-Limit:
-              $ref: './components.openapi.yaml#/components/headers/X-RateLimit-Limit'
-            X-RateLimit-Remaining:
-              $ref: './components.openapi.yaml#/components/headers/X-RateLimit-Remaining'
-            X-RateLimit-Reset:
-              $ref: './components.openapi.yaml#/components/headers/X-RateLimit-Reset'
-        '400':
-          $ref: './components.openapi.yaml#/components/responses/Error400'
-        '401':
-          $ref: './components.openapi.yaml#/components/responses/Error401'
-        '403':
-          $ref: './components.openapi.yaml#/components/responses/Error403'
-        '429':
-          $ref: './components.openapi.yaml#/components/responses/Error429'
-        '500':
-          $ref: './components.openapi.yaml#/components/responses/Error500'
-        '409':
-          $ref: './components.openapi.yaml#/components/responses/Error409'
-        '422':
-          $ref: './components.openapi.yaml#/components/responses/Error422'
-      security: []
-      x-apidog-folder: Chapters
-      x-apidog-status: developing
-      x-apidog-maintainer: Fernando Seguim
-      x-run-in-apidog: https://app.apidog.com/web/project/719079/apis/api-11718083-run
     post:
       summary: Cria um novo chapter
       deprecated: false
@@ -578,6 +506,78 @@ paths:
       x-apidog-status: developing
       x-apidog-maintainer: Fernando Seguim
       x-run-in-apidog: https://app.apidog.com/web/project/719079/apis/api-11718084-run
+    get:
+      summary: Lista todos os chapters
+      deprecated: false
+      description: ''
+      operationId: list_chapters
+      tags:
+        - Chapters
+      parameters:
+        - $ref: './components.openapi.yaml#/components/parameters/EntityIds'
+        - $ref: './components.openapi.yaml#/components/parameters/ExternalEntityIds'
+        - $ref: './components.openapi.yaml#/components/parameters/MetadataFilter'
+        - $ref: './components.openapi.yaml#/components/parameters/IncludeDiscarded'
+        - $ref: './components.openapi.yaml#/components/parameters/PageSize'
+        - $ref: './components.openapi.yaml#/components/parameters/PageToken'
+        - $ref: './components.openapi.yaml#/components/parameters/OrderBy'
+        - $ref: './components.openapi.yaml#/components/parameters/Sort'
+        - $ref: './components.openapi.yaml#/components/parameters/Accept'
+        - $ref: './components.openapi.yaml#/components/parameters/AcceptLanguage'
+        - $ref: './components.openapi.yaml#/components/parameters/ContentType'
+        - $ref: './components.openapi.yaml#/components/parameters/CorrelationId'
+      responses:
+        '200':
+          description: Lista de chapters.
+          content:
+            application/vnd.guardia.v1+json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: './components.openapi.yaml#/components/schemas/ListOfChapters'
+                  pagination:
+                    $ref: './components.openapi.yaml#/components/schemas/Pagination'
+          headers:
+            Cache-Control:
+              $ref: './components.openapi.yaml#/components/headers/Cache-Control'
+            Content-Language:
+              $ref: './components.openapi.yaml#/components/headers/Content-Language'
+            Content-Length:
+              $ref: './components.openapi.yaml#/components/headers/Content-Length'
+            Content-Type:
+              $ref: './components.openapi.yaml#/components/headers/Content-Type'
+            Strict-Transport-Security:
+              $ref: './components.openapi.yaml#/components/headers/Strict-Transport-Security'
+            X-Grd-Correlation-Id:
+              $ref: './components.openapi.yaml#/components/headers/X-Grd-Correlation-Id'
+            X-Grd-Trace-Id:
+              $ref: './components.openapi.yaml#/components/headers/X-Grd-Trace-Id'
+            X-RateLimit-Limit:
+              $ref: './components.openapi.yaml#/components/headers/X-RateLimit-Limit'
+            X-RateLimit-Remaining:
+              $ref: './components.openapi.yaml#/components/headers/X-RateLimit-Remaining'
+            X-RateLimit-Reset:
+              $ref: './components.openapi.yaml#/components/headers/X-RateLimit-Reset'
+        '400':
+          $ref: './components.openapi.yaml#/components/responses/Error400'
+        '401':
+          $ref: './components.openapi.yaml#/components/responses/Error401'
+        '403':
+          $ref: './components.openapi.yaml#/components/responses/Error403'
+        '429':
+          $ref: './components.openapi.yaml#/components/responses/Error429'
+        '500':
+          $ref: './components.openapi.yaml#/components/responses/Error500'
+        '409':
+          $ref: './components.openapi.yaml#/components/responses/Error409'
+        '422':
+          $ref: './components.openapi.yaml#/components/responses/Error422'
+      security: []
+      x-apidog-folder: Chapters
+      x-apidog-status: developing
+      x-apidog-maintainer: Fernando Seguim
+      x-run-in-apidog: https://app.apidog.com/web/project/719079/apis/api-11718083-run
   /v1/chapters/{entity_id}:
     get:
       summary: Obtém um chapter específico
@@ -814,84 +814,6 @@ paths:
       x-apidog-maintainer: Fernando Seguim
       x-run-in-apidog: https://app.apidog.com/web/project/719079/apis/api-11718087-run
   /v1/assets:
-    get:
-      summary: Lista todos os assets
-      deprecated: false
-      description: 'Obtém uma lista de assets disponíveis para a organização filtrando por metadata ou incluindo itens descartados.'
-      operationId: list_assets
-      tags:
-        - Assets
-      parameters:
-        - $ref: './components.openapi.yaml#/components/parameters/EntityIds'
-        - $ref: './components.openapi.yaml#/components/parameters/ExternalEntityIds'
-        - $ref: './components.openapi.yaml#/components/parameters/AssetCodes'
-        - $ref: './components.openapi.yaml#/components/parameters/AssetNumbers'
-        - $ref: './components.openapi.yaml#/components/parameters/MetadataFilter'
-        - $ref: './components.openapi.yaml#/components/parameters/IncludeDiscarded'
-        - $ref: './components.openapi.yaml#/components/parameters/PageSize'
-        - $ref: './components.openapi.yaml#/components/parameters/PageToken'
-        - $ref: './components.openapi.yaml#/components/parameters/OrderBy'
-        - $ref: './components.openapi.yaml#/components/parameters/Sort'
-        - $ref: './components.openapi.yaml#/components/parameters/Accept'
-        - $ref: './components.openapi.yaml#/components/parameters/AcceptLanguage'
-        - $ref: './components.openapi.yaml#/components/parameters/ContentType'
-        - $ref: './components.openapi.yaml#/components/parameters/CorrelationId'
-      responses:
-        '200':
-          description: Lista de assets
-          content:
-            application/vnd.guardia.v1+json:
-              schema:
-                type: object
-                properties:
-                  data:
-                    $ref: './components.openapi.yaml#/components/schemas/ListOfAssets'
-                  pagination:
-                    $ref: './components.openapi.yaml#/components/schemas/Pagination'
-          headers:
-            Cache-Control:
-              $ref: './components.openapi.yaml#/components/headers/Cache-Control'
-            Content-Language:
-              $ref: './components.openapi.yaml#/components/headers/Content-Language'
-            Content-Length:
-              $ref: './components.openapi.yaml#/components/headers/Content-Length'
-            Content-Type:
-              $ref: './components.openapi.yaml#/components/headers/Content-Type'
-            Link:
-              $ref: './components.openapi.yaml#/components/headers/Link'
-            Strict-Transport-Security:
-              $ref: './components.openapi.yaml#/components/headers/Strict-Transport-Security'
-            X-Grd-Correlation-Id:
-              $ref: './components.openapi.yaml#/components/headers/X-Grd-Correlation-Id'
-            X-Grd-Trace-Id:
-              $ref: './components.openapi.yaml#/components/headers/X-Grd-Trace-Id'
-            X-RateLimit-Limit:
-              $ref: './components.openapi.yaml#/components/headers/X-RateLimit-Limit'
-            X-RateLimit-Remaining:
-              $ref: './components.openapi.yaml#/components/headers/X-RateLimit-Remaining'
-            X-RateLimit-Reset:
-              $ref: './components.openapi.yaml#/components/headers/X-RateLimit-Reset'
-        '400':
-          $ref: './components.openapi.yaml#/components/responses/Error400'
-        '401':
-          $ref: './components.openapi.yaml#/components/responses/Error401'
-        '403':
-          $ref: './components.openapi.yaml#/components/responses/Error403'
-        '404':
-          $ref: './components.openapi.yaml#/components/responses/Error404'
-        '409':
-          $ref: './components.openapi.yaml#/components/responses/Error409'
-        '422':
-          $ref: './components.openapi.yaml#/components/responses/Error422'
-        '429':
-          $ref: './components.openapi.yaml#/components/responses/Error429'
-        '500':
-          $ref: './components.openapi.yaml#/components/responses/Error500'
-      security: []
-      x-apidog-folder: Assets
-      x-apidog-status: developing
-      x-apidog-maintainer: Fernando Seguim
-      x-run-in-apidog: https://app.apidog.com/web/project/719079/apis/api-14888484-run
     post:
       summary: Criar um novo asset
       deprecated: false
@@ -1023,6 +945,84 @@ paths:
       x-apidog-status: developing
       x-apidog-maintainer: Fernando Seguim
       x-run-in-apidog: https://app.apidog.com/web/project/719079/apis/api-14888485-run
+    get:
+      summary: Lista todos os assets
+      deprecated: false
+      description: 'Obtém uma lista de assets disponíveis para a organização filtrando por metadata ou incluindo itens descartados.'
+      operationId: list_assets
+      tags:
+        - Assets
+      parameters:
+        - $ref: './components.openapi.yaml#/components/parameters/EntityIds'
+        - $ref: './components.openapi.yaml#/components/parameters/ExternalEntityIds'
+        - $ref: './components.openapi.yaml#/components/parameters/AssetCodes'
+        - $ref: './components.openapi.yaml#/components/parameters/AssetNumbers'
+        - $ref: './components.openapi.yaml#/components/parameters/MetadataFilter'
+        - $ref: './components.openapi.yaml#/components/parameters/IncludeDiscarded'
+        - $ref: './components.openapi.yaml#/components/parameters/PageSize'
+        - $ref: './components.openapi.yaml#/components/parameters/PageToken'
+        - $ref: './components.openapi.yaml#/components/parameters/OrderBy'
+        - $ref: './components.openapi.yaml#/components/parameters/Sort'
+        - $ref: './components.openapi.yaml#/components/parameters/Accept'
+        - $ref: './components.openapi.yaml#/components/parameters/AcceptLanguage'
+        - $ref: './components.openapi.yaml#/components/parameters/ContentType'
+        - $ref: './components.openapi.yaml#/components/parameters/CorrelationId'
+      responses:
+        '200':
+          description: Lista de assets
+          content:
+            application/vnd.guardia.v1+json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: './components.openapi.yaml#/components/schemas/ListOfAssets'
+                  pagination:
+                    $ref: './components.openapi.yaml#/components/schemas/Pagination'
+          headers:
+            Cache-Control:
+              $ref: './components.openapi.yaml#/components/headers/Cache-Control'
+            Content-Language:
+              $ref: './components.openapi.yaml#/components/headers/Content-Language'
+            Content-Length:
+              $ref: './components.openapi.yaml#/components/headers/Content-Length'
+            Content-Type:
+              $ref: './components.openapi.yaml#/components/headers/Content-Type'
+            Link:
+              $ref: './components.openapi.yaml#/components/headers/Link'
+            Strict-Transport-Security:
+              $ref: './components.openapi.yaml#/components/headers/Strict-Transport-Security'
+            X-Grd-Correlation-Id:
+              $ref: './components.openapi.yaml#/components/headers/X-Grd-Correlation-Id'
+            X-Grd-Trace-Id:
+              $ref: './components.openapi.yaml#/components/headers/X-Grd-Trace-Id'
+            X-RateLimit-Limit:
+              $ref: './components.openapi.yaml#/components/headers/X-RateLimit-Limit'
+            X-RateLimit-Remaining:
+              $ref: './components.openapi.yaml#/components/headers/X-RateLimit-Remaining'
+            X-RateLimit-Reset:
+              $ref: './components.openapi.yaml#/components/headers/X-RateLimit-Reset'
+        '400':
+          $ref: './components.openapi.yaml#/components/responses/Error400'
+        '401':
+          $ref: './components.openapi.yaml#/components/responses/Error401'
+        '403':
+          $ref: './components.openapi.yaml#/components/responses/Error403'
+        '404':
+          $ref: './components.openapi.yaml#/components/responses/Error404'
+        '409':
+          $ref: './components.openapi.yaml#/components/responses/Error409'
+        '422':
+          $ref: './components.openapi.yaml#/components/responses/Error422'
+        '429':
+          $ref: './components.openapi.yaml#/components/responses/Error429'
+        '500':
+          $ref: './components.openapi.yaml#/components/responses/Error500'
+      security: []
+      x-apidog-folder: Assets
+      x-apidog-status: developing
+      x-apidog-maintainer: Fernando Seguim
+      x-run-in-apidog: https://app.apidog.com/web/project/719079/apis/api-14888484-run
   /v1/assets/{entity_id}:
     get:
       summary: Obtém um asset específico

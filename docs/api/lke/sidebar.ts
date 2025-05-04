@@ -18,15 +18,15 @@ const sidebar: SidebarsConfig = {
       items: [
         {
           type: "doc",
-          id: "api/lke/list-ledgers",
-          label: "Lista todos os ledgers",
-          className: "api-method get",
-        },
-        {
-          type: "doc",
           id: "api/lke/create-ledger",
           label: "Cria um novo ledger",
           className: "api-method post",
+        },
+        {
+          type: "doc",
+          id: "api/lke/list-ledgers",
+          label: "Lista todos os ledgers",
+          className: "api-method get",
         },
         {
           type: "doc",
@@ -60,15 +60,15 @@ const sidebar: SidebarsConfig = {
       items: [
         {
           type: "doc",
-          id: "api/lke/list-chapters",
-          label: "Lista todos os chapters",
-          className: "api-method get",
-        },
-        {
-          type: "doc",
           id: "api/lke/create-chapter",
           label: "Cria um novo chapter",
           className: "api-method post",
+        },
+        {
+          type: "doc",
+          id: "api/lke/list-chapters",
+          label: "Lista todos os chapters",
+          className: "api-method get",
         },
         {
           type: "doc",
@@ -102,15 +102,15 @@ const sidebar: SidebarsConfig = {
       items: [
         {
           type: "doc",
-          id: "api/lke/list-assets",
-          label: "Lista todos os assets",
-          className: "api-method get",
-        },
-        {
-          type: "doc",
           id: "api/lke/create-asset",
           label: "Criar um novo asset",
           className: "api-method post",
+        },
+        {
+          type: "doc",
+          id: "api/lke/list-assets",
+          label: "Lista todos os assets",
+          className: "api-method get",
         },
         {
           type: "doc",
