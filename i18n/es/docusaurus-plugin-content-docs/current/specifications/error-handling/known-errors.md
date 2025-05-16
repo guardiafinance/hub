@@ -84,7 +84,7 @@ Este documento lista los errores estandarizados utilizados en la plataforma Guar
 
 ### `LEDGER_NOT_FOUND`
 - **Mensaje**: El ledger especificado no fue encontrado.
-- **Reintento**: ❓ Solo si el ledger es creado o el identificador corregido.
+- **Reintento**: Solo si el ledger es creado o el identificador corregido.
 - **Tratamiento sugerido**:
   - Verificar si el identificador del ledger es correcto y si el ledger existe.
 

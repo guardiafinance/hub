@@ -86,7 +86,7 @@ Este documento lista os erros padronizados utilizados na plataforma Guardia. Cad
 
 ### `LEDGER_NOT_FOUND`
 - **Mensagem**: O ledger especificado não foi encontrado.
-- **Retry**: ❓ Somente se o ledger for criado ou o identificador corrigido.
+- **Retry**: Somente se o ledger for criado ou o identificador corrigido.
 - **Tratamento sugerido**:
   - Verificar se o identificador do ledger está correto e se o ledger existe.
 

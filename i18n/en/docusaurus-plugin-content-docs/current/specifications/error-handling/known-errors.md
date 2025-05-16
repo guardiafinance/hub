@@ -84,7 +84,7 @@ This document lists the standardized errors used in the Guardia platform. Each e
 
 ### `LEDGER_NOT_FOUND`
 - **Message**: The specified ledger was not found.
-- **Retry**: ❓ Only if the ledger is created or the identifier corrected.
+- **Retry**: Only if the ledger is created or the identifier corrected.
 - **Suggested treatment**:
   - Verify if the ledger identifier is correct and if the ledger exists.
 
