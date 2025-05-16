@@ -36,6 +36,44 @@ This document lists the standardized errors used in the Guardia platform. Each e
 
 ## ERR400_INVALID_PARAMETER
 
+### `INVALID_LEDGER_NAME_LENGTH`
+- **Message**: The ledger name exceeds the allowed character limit or does not meet the minimum required.
+- **Retry**: ✅ Only after correction.
+- **Suggested treatment**:
+  - Adjust the ledger name length to comply with the defined limits.
+
+---
+
+### `INVALID_LEDGER_DESCRIPTION_LENGTH`
+- **Message**: The ledger description exceeds the allowed character limit.
+- **Retry**: ✅ Only after correction.
+- **Suggested treatment**:
+  - Reduce the ledger description length to comply with the defined limit.
+
+---
+
+### `INVALID_PARAMETER_FORMAT`
+- **Message**: The format of the body or parameters sent in the request is invalid.
+- **Retry**: ✅ Only after correction.
+- **Suggested treatment**:
+  - Check the API documentation for the expected format of parameters and the request body, and correct the request.
+
+---
+
+### `INVALID_METADATA_FORMAT`
+- **Message**: The format of the sent metadata is invalid.
+- **Retry**: ✅ Only after correction.
+- **Suggested treatment**:
+  - Ensure that the metadata is in a valid JSON format and follows the expected structure.
+
+---
+
+### `INVALID_METADATA_LENGTH`
+- **Message**: The size of the metadata exceeds the allowed limit.
+- **Retry**: ✅ Only after correction.
+- **Suggested treatment**:
+  - Reduce the metadata size to comply with the defined limit.
+
 ## ERR401_UNAUTHORIZED
 
 ## ERR402_INSUFFICIENT_FUNDS
@@ -43,6 +81,12 @@ This document lists the standardized errors used in the Guardia platform. Each e
 ## ERR403_FORBIDDEN
 
 ## ERR404_NOT_FOUND
+
+### `LEDGER_NOT_FOUND`
+- **Message**: The specified ledger was not found.
+- **Retry**: ❓ Only if the ledger is created or the identifier corrected.
+- **Suggested treatment**:
+  - Verify if the ledger identifier is correct and if the ledger exists.
 
 ## ERR405_INVALID_OPERATION
 
@@ -55,6 +99,22 @@ This document lists the standardized errors used in the Guardia platform. Each e
 - **Retry**: ✅ Only after correction.
 - **Suggested treatment**:
   - Ensure that the `Idempotency-Key` header is sent and correctly formatted according to the [idempotency specification](../../specifications/restful/http-headers.md#idempotency-key).
+
+---
+
+### `EXTERNAL_ENTITY_ID_ALREADY_IN_USE`
+- **Message**: The provided external entity ID is already in use by another resource.
+- **Retry**: ✅ Only after correction.
+- **Suggested treatment**:
+  - Use a different external entity ID or check the existing resource that uses the informed ID.
+
+---
+
+### `LEDGER_NAME_ALREADY_IN_USE`
+- **Message**: The provided ledger name is already in use by another ledger.
+- **Retry**: ✅ Only after correction.
+- **Suggested treatment**:
+  - Choose a different ledger name that is not already in use.
 
 ## ERR422_BUSINESS_ERROR
 

@@ -37,6 +37,45 @@ Este documento lista os erros padronizados utilizados na plataforma Guardia. Cad
 
 ## ERR400_INVALID_PARAMETER
 
+### `INVALID_LEDGER_NAME_LENGTH`
+- **Mensagem**: O nome do ledger excede o limite de caracteres permitido ou não atinge o mínimo necessário.
+- **Retry**: ✅ Somente após correção.
+- **Tratamento sugerido**:
+  - Ajustar o tamanho do nome do ledger para estar em conformidade com os limites definidos.
+
+---
+
+### `INVALID_LEDGER_DESCRIPTION_LENGTH`
+- **Mensagem**: A descrição do ledger excede o limite de caracteres permitido.
+- **Retry**: ✅ Somente após correção.
+- **Tratamento sugerido**:
+  - Reduzir o tamanho da descrição do ledger para estar em conformidade com o limite definido.
+
+---
+
+### `INVALID_PARAMETER_FORMAT`
+- **Mensagem**: O formato do body ou dos parâmetros enviados na requisição é inválido.
+- **Retry**: ✅ Somente após correção.
+- **Tratamento sugerido**:
+  - Verificar a documentação da API para o formato esperado dos parâmetros e do corpo da requisição e corrigir a requisição.
+  
+
+---
+
+### `INVALID_METADATA_FORMAT`
+- **Mensagem**: O formato dos metadados enviados é inválido.
+- **Retry**: ✅ Somente após correção.
+- **Tratamento sugerido**:
+  - Assegurar que os metadados estejam em um formato JSON válido e sigam a estrutura esperada.
+
+---
+
+### `INVALID_METADATA_LENGTH`
+- **Mensagem**: O tamanho dos metadados excede o limite permitido.
+- **Retry**: ✅ Somente após correção.
+- **Tratamento sugerido**:
+  - Reduzir o tamanho dos metadados para estar em conformidade com o limite definido.
+
 ## ERR401_UNAUTHORIZED
 
 ## ERR402_INSUFFICIENT_FUNDS
@@ -44,6 +83,12 @@ Este documento lista os erros padronizados utilizados na plataforma Guardia. Cad
 ## ERR403_FORBIDDEN
 
 ## ERR404_NOT_FOUND
+
+### `LEDGER_NOT_FOUND`
+- **Mensagem**: O ledger especificado não foi encontrado.
+- **Retry**: ❓ Somente se o ledger for criado ou o identificador corrigido.
+- **Tratamento sugerido**:
+  - Verificar se o identificador do ledger está correto e se o ledger existe.
 
 ## ERR405_INVALID_OPERATION
 
@@ -56,6 +101,22 @@ Este documento lista os erros padronizados utilizados na plataforma Guardia. Cad
 - **Retry**: ✅ Somente após correção.
 - **Tratamento sugerido**:
   - Assegurar que o header `Idempotency-Key` seja enviado e corretamente formatado conforme a [especificação de idempotência](../../specifications/restful/http-headers.md#idempotency-key).
+
+---
+
+### `EXTERNAL_ENTITY_ID_ALREADY_IN_USE`
+- **Mensagem**: O ID de entidade externa fornecido já está em uso por outro recurso.
+- **Retry**: ✅ Somente após correção.
+- **Tratamento sugerido**:
+  - Utilizar um ID de entidade externa diferente ou verificar o recurso existente que utiliza o ID informado.
+
+---
+
+### `LEDGER_NAME_ALREADY_IN_USE`
+- **Mensagem**: O nome do ledger fornecido já está em uso por outro ledger.
+- **Retry**: ✅ Somente após correção.
+- **Tratamento sugerido**:
+  - Escolher um nome de ledger diferente que ainda não esteja em uso.
 
 ## ERR422_BUSINESS_ERROR
 
