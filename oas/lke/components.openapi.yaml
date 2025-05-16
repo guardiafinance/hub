@@ -571,6 +571,11 @@ components:
       items:
         $ref: '#/components/schemas/Asset'
 
+    ListOfEntityIDs:
+      type: array
+      items:
+        $ref: '#/components/schemas/EntityID'
+
     LedgerCreateRequest:
       type: object
       properties:
@@ -649,6 +654,8 @@ components:
           type: array
           items:
             type: string
+        ledgers:
+          $ref: '#/components/schemas/ListOfEntityIDs'
       required:
         - external_entity_id
         - code

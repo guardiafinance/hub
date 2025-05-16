@@ -848,31 +848,9 @@ paths:
         - $ref: './components.openapi.yaml#/components/parameters/ContentType'
       requestBody:
         content:
-          application/json:
+          application/vnd.guardia.v1+json:
             schema:
-              type: object
-              properties:
-                external_entity_id:
-                  $ref: './components.openapi.yaml#/components/schemas/ExternalEntityID'
-                code:
-                  type: string
-                number:
-                  type: string
-                exponent:
-                  type: string
-                is_fiat:
-                  type: boolean
-                locations:
-                  type: array
-                  items:
-                    type: string
-              required:
-                - external_entity_id
-                - code
-                - number
-                - exponent
-                - is_fiat
-                - locations
+              $ref: './components.openapi.yaml#/components/schemas/AssetCreateRequest'
       responses:
         '201':
           description: Asset criado
