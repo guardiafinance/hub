@@ -81,11 +81,29 @@ erDiagram
 
     LEDGER ||--o{ LEDGER_ASSET : has
     ASSET ||--o{ LEDGER_ASSET : has
+    LEDGER_ASSET ||--o{ LEDGER_ASSET_HISTORY : tracks
     LEDGER_ASSET {
         uuid ledger_id FK "Referência do LEDGER."
         uuid asset_id FK "Relação com ASSET."
+        string code "Único dentro do ledger. Tamanho máximo: 12 caracteres."
+        string number "Único dentro do ledger. Tamanho máximo: 128 caracteres."
+        int exponent "Expoente do asset. Deve estar entre 0 e 18."
         timestamp created_at "Data de inserção no banco de dados."
         timestamp updated_at "Data da última atualização no banco de dados."
+        timestampz valid_from "Campo indicando o início do período de validade desta versão da entidade."
+        timestampz valid_to "Campo indicando o fim do período de validade desta versão da entidade."
+    }
+
+    LEDGER_ASSET_HISTORY {
+        uuid ledger_id FK "Referência do LEDGER."
+        uuid asset_id FK "Relação com ASSET."
+        string code "Único dentro do ledger. Tamanho máximo: 12 caracteres."
+        string number "Único dentro do ledger. Tamanho máximo: 128 caracteres."
+        int exponent "Expoente do asset. Deve estar entre 0 e 18."
+        timestamp created_at "Data de inserção no banco de dados."
+        timestamp updated_at "Data da última atualização no banco de dados."
+        timestampz valid_from "Campo indicando o início do período de validade desta versão da entidade."
+        timestampz valid_to "Campo indicando o fim do período de validade desta versão da entidade."
     }
 
 ```
