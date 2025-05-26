@@ -7,7 +7,7 @@ keywords: [guardia core banking, transactional ledger, ledger as a service, asse
 
 Assets represent the monetary or non-monetary units used in accounting entries within a Ledger and can be classified into two main types:
 
-- **Fiat Assets**: Digital representations of fiat currencies, such as USD, EUR, or JPY.
+- **Fiat Assets**: Digital representations of fiat currencies, such as BRL, USD, or EUR, among others.
 - **Non-Fiat Assets**: Digital representations of cryptocurrencies (such as BTC, ETH, XRP) or tokenized assets, such as commodities, stocks, or other financial instruments.
 
 ## Asset Properties
@@ -22,7 +22,7 @@ Each asset has the following properties:
 | `is_fiat`   | Defines whether the asset is a fiat currency (`true`) or not (`false`). |
 | `locations` | List of countries where the asset is accepted. |
 | `ledgers`   | List of ledgers where the asset is declared. |
-| `metadata`  | Additional information about the asset, which may include description, tags, external identifiers, among others. |
+| `metadata`  | Additional information about the asset, which may include description, tags, among others external identifiers. |
 
 For more details about asset properties, see the [Domain Model](../models/index.md#assets) section.
 

@@ -7,7 +7,7 @@ keywords: [guardia core banking, transactional ledger, ledger as a service, asse
 
 Los activos representan las unidades monetarias o no monetarias utilizadas en los asientos contables dentro de un Ledger y pueden clasificarse en dos tipos principales:
 
-- **Activos Fiat**: Representaciones digitales de monedas fiduciarias, como USD, EUR o JPY.
+- **Activos Fiat**: Representaciones digitales de monedas fiduciarias, como BRL, USD o EUR, entre otras.
 - **Activos No-Fiat**: Representaciones digitales de criptomonedas (como BTC, ETH, XRP) o de activos tokenizados, como commodities, acciones u otros instrumentos financieros.
 
 ## Propiedades del Activo
@@ -22,7 +22,7 @@ Cada activo posee las siguientes propiedades:
 | `is_fiat`   | Define si el activo es una moneda fiduciaria (`true`) o no (`false`). |
 | `locations` | Lista de países donde el activo es aceptado. |
 | `ledgers`   | Lista de ledgers en los que el activo está declarado. |
-| `metadata`  | Información adicional sobre el activo, que puede incluir descripción, etiquetas, identificadores externos, entre otros. |
+| `metadata`  | Información adicional sobre el activo, que puede incluir descripción, etiquetas, entre otros datos externos. |
 
 Para más detalles sobre las propiedades del activo, consulte la sección [Modelo de Dominio](../models/index.md#assets).
 
