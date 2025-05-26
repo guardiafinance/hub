@@ -54,6 +54,7 @@ import MermaidDiagram from '@site/src/components/MermaidDiagram';
 | `exponent` | `integer` | `1 byte` | `0 à 18` | `0` | Request/Response | Expoente do asset. |
 | `is_fiat` | `boolean` | `1 byte` | `true, false` | `false` | Request/Response | Indica se é moeda fiduciária. |
 | `locations` | `string[]` | - | - | - | Request/Response | Regiões onde o asset é aceito como moeda de troca em formato [ISO 3166-2](https://en.wikipedia.org/wiki/ISO_3166-2). |
+| `ledgers` | [`Ledger[]`](#ledger) | - | - | - | Response | Relacionamento com ledgers. |
 | `created_at` | `datetime` | - | - | - | Response | Data de criação do asset. |
 | `updated_at` | `datetime` | - | - | - | Response | Data da última atualização do asset. |
 | `discarded_at` | `datetime` | - | - | - | Response | Data de descarte do asset. |
