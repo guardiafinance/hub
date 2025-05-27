@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 0
 ---
 
 # Guardia Governance
@@ -183,4 +183,4 @@ All members and contributors must follow Guardia's guidelines:
 - [Code of Conduct](CODE_OF_CONDUCT.md)
 - [Compliance by Design](COMPLIANCE.md)
 
-Additionally, all contributors must sign the CNCF [Contributor License Agreement (CLA)](CLA.md), as described in the official document.
+Additionally, all contributors must sign the [Contributor License Agreement (CLA)](CLA.md), as described in the official document.

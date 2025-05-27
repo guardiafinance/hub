@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 0
 ---
 
 # Gobernanza de Guardia
@@ -183,4 +183,4 @@ Todos los miembros y contribuidores deben seguir las directrices de Guardia:
 - [Código de Conducta](CODE_OF_CONDUCT.md)
 - [Compliance by Design](COMPLIANCE.md)
 
-Además, todos los contribuidores deben firmar el CNCF [Contributor License Agreement (CLA)](CLA.md), como se describe en el documento oficial.
+Además, todos los contribuidores deben firmar el [Contributor License Agreement (CLA)](CLA.md), como se describe en el documento oficial.
