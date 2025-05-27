@@ -1,7 +1,5 @@
 ![main-cover](./static/img/main-banner.png)
 
-# Guardia, Core Banking
-
 ## O core bancário Cloud Native e Open Source, projetado para a nova era da economia digital.
 
 Guardia é a plataforma core banking Cloud Native e Open Source, projetada para fintechs, neobanks e startups que buscam modularidade e escalabilidade para otimizar suas operações financeiras com agilidade, segurança e eficiência.
