@@ -1,6 +1,6 @@
 ---
 sidebar_position: 0
-keywords: [guardia core banking, transactional ledger, ledger as a service, assets, ias-1, ias-8]
+keywords: [guardia core banking, transactional ledger, ledger as a service, ledger module of guardia, assets, ias-1, ias-8]
 ---
 
 # Assets

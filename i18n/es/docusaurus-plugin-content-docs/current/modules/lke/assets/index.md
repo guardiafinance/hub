@@ -1,6 +1,6 @@
 ---
 sidebar_position: 0
-keywords: [guardia core banking, transactional ledger, ledger as a service, assets, ias-1, ias-8]
+keywords: [guardia core bancario, libro mayor transaccional, libro mayor como servicio, módulo de libro mayor de guardia, activos, ias-1, ias-8]
 ---
 
 # Activos (Assets)

@@ -1,6 +1,6 @@
 ---
 sidebar_position: 0
-keywords: [guardia core banking, transactional ledger, ledger as a service, assets, ias-1, ias-8]
+keywords: [guardia core banking, transactional ledger, ledger as a service, modulo de ledger da guardia, assets, ias-1, ias-8]
 ---
 
 # Ativos (Assets)
