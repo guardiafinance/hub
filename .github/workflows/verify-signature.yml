@@ -1,0 +1,38 @@
+name: Verify Signed Commits
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+  push:
+
+jobs:
+  verify-signatures:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Get commit SHAs in push/PR
+        id: get-shas
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            echo "range=${{ github.event.pull_request.base.sha }}..${{ github.event.pull_request.head.sha }}" >> $GITHUB_OUTPUT
+          else
+            echo "range=${{ github.event.before }}..${{ github.sha }}" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Check commit signatures
+        run: |
+          unsigned=$(git log ${{ steps.get-shas.outputs.range }} --pretty=format:"%H" | while read sha; do
+            if ! git verify-commit "$sha" &>/dev/null; then
+              echo "$sha"
+            fi
+          done)
+
+          if [ -n "$unsigned" ]; then
+            echo "❌ The following commits are not signed:"
+            echo "$unsigned"
+            exit 1
+          else
+            echo "✅ All commits are signed and verified."
+          fi
