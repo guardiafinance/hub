@@ -1,82 +1,24 @@
 name: Verify Signed Commits
 
 on:
-  pull_request:
+  pull_request_target:
     types: [opened, synchronize, reopened]
 
 jobs:
   verify-signatures:
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: read
+      pull-requests: write  # Required to comment on PR
+
     steps:
-      - name: Checkout código com histórico completo
-        uses: actions/checkout@v4
+      - name: Check signed commits in PR
+        uses: 1Password/check-signed-commits-action@v1
         with:
-          fetch-depth: 0
+          comment: |
+            ⚠️ One or more commits in this Pull Request **are not signed**.
+            To ensure security and traceability, all commits must be digitally signed.
 
-      - name: Garantir fetch de base e merge (PRs)
-        run: |
-          if [ "${{ github.event_name }}" = "pull_request" ]; then
-            echo "🔁 Fetch PR merge ref"
-            git fetch origin +refs/pull/${{ github.event.pull_request.number }}/merge
-            echo "range=origin/${{ github.base_ref }}..HEAD" >> $GITHUB_ENV
-          else
-            echo "range=${{ github.event.before }}..${{ github.sha }}" >> $GITHUB_ENV
-          fi
-
-      - name: Instalar dependências
-        run: sudo apt-get update && sudo apt-get install -y jq gnupg
-
-      - name: Importar GPG Keys dos autores via GitHub
-        run: |
-          echo "🔍 Coletando autores únicos no range: $range"
-          authors=$(git log "$range" --pretty=format:"%an|%ae" | sort | uniq)
-
-          for entry in $authors; do
-            name=$(echo "$entry" | cut -d"|" -f1)
-            email=$(echo "$entry" | cut -d"|" -f2)
-
-            username=$(echo "$email" | sed -n 's/^\([0-9a-zA-Z-]*\)@users\.noreply\.github\.com$/\1/p')
-
-            if [ -n "$username" ]; then
-              echo "🔑 Importando GPG key de $username"
-              curl -s "https://api.github.com/users/$username/gpg_keys" | jq -r '.[].public_key' | gpg --import || echo "⚠️ Falha ao importar chave de $username"
-            else
-              echo "ℹ️ Email $email não segue padrão GitHub noreply. Pulando importação automática..."
-            fi
-          done
-
-      - name: Verificar assinaturas dos commits
-        run: |
-          echo "🔎 Verificando assinaturas no range: $range"
-
-          total=0
-          verified=0
-          unsigned=()
-
-          for sha in $(git log "$range" --pretty=format:"%H"); do
-            total=$((total + 1))
-            if git verify-commit "$sha" &>/dev/null; then
-              verified=$((verified + 1))
-            else
-              author=$(git show -s --format="%an" "$sha")
-              email=$(git show -s --format="%ae" "$sha")
-              message=$(git show -s --format="%s" "$sha")
-              unsigned+=("🔸 $sha | $author <$email> | $message")
-            fi
-          done
-
-          echo "📊 Total de commits: $total"
-          echo "✅ Commits assinados e verificados: $verified"
-          echo "❌ Commits não assinados/verificados: $((total - verified))"
-
-          if [ ${#unsigned[@]} -ne 0 ]; then
-            echo ""
-            echo "🔎 Detalhes dos commits não assinados:"
-            for entry in "${unsigned[@]}"; do
-              echo "$entry"
-            done
-            exit 1
-          else
-            echo "🎉 Todos os commits estão devidamente assinados!"
-          fi
+            Check out Guardia's tutorial to learn how to sign your commits:
+            👉 https://hub.guardia.finance/en/docs/tutorials/signing-commits/
