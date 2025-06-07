@@ -88,6 +88,12 @@ This document lists the standardized errors used in the Guardia platform. Each e
 - **Suggested treatment**:
   - Verify if the ledger identifier is correct and if the ledger exists.
 
+### `ASSET_NOT_FOUND`
+- **Message**: The specified asset was not found.
+- **Retry**: Only if the asset is created or the identifier corrected.
+- **Suggested treatment**:
+  - Verify if the asset identifier is correct and if the asset exists.
+
 ## ERR405_INVALID_OPERATION
 
 ## ERR408_REQUEST_TIMEOUT
