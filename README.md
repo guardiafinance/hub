@@ -25,9 +25,9 @@ Combinamos o poder do Open Source com as possibilidades da Inteligência Artific
 
 ## Comunidade
 
-Acesso o Developer Hub da Guardia em: [https://hub.guardia.finance](https://hub.guardia.finance)
+Acesse o Developer Hub da Guardia em: [https://hub.guardia.finance](https://hub.guardia.finance)
 
-Faca parte de nossa comunidade no Slack e WhatsApp (em breve).
+Faça parte de nossa comunidade no Slack e WhatsApp (em breve).
 
 ---
 
