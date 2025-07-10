@@ -3,7 +3,7 @@ sidebar_position: 2
 keywords: [guardia core banking, transactional ledger, ledger as a service, modulo de ledger da guardia, books, ias-1, ias-2, ias-38, ifrs-9]
 ---
 
-## Posição de Saldo
+# Posição de Saldo
 
 No modelo contábil da Guardia, **Position** representa o estado consolidado de um *book* em determinado momento, a partir da interpretação dos lançamentos contábeis (**entries**) registrados com base na **natureza da conta** (`nature = creditor` ou `debitor`).
 

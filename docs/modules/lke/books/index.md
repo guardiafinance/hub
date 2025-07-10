@@ -3,7 +3,7 @@ sidebar_position: 0
 keywords: [guardia core banking, transactional ledger, ledger as a service, modulo de ledger da guardia, books, ias-1, ias-2, ias-38, ifrs-9]
 ---
 
-## Book
+# Book
 
 Um **Book** é uma **unidade contábil independente**, usada para registrar o histórico de movimentações (`entries`) relacionadas a um determinado ativo, passivo, receita, despesa ou patrimônio. Ele é a menor célula rastreável de mensuração contábil dentro do ledger.
 
@@ -16,8 +16,6 @@ Cada Book é sempre associado a um **Asset**, que por sua vez representa uma **m
 * **Flexibilidade para representar ativos digitais e não convencionais**
 * **Compliance com IAS/IFRS**, mantendo integridade e rastreabilidade
 * **Base para reconciliações, fechamentos e relatórios contábeis**
-
----
 
 ## Estrutura do Book
 
