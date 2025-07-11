@@ -128,6 +128,41 @@ const sidebar: SidebarsConfig = {
           type: "doc",
           id: "api/lke/delete-asset",
           label: "Exclui um asset específico",
+    },
+    {
+      type: "category",
+      label: "Books",
+      collapsible: true,
+      collapsed: true,
+      items: [
+        {
+          type: "doc",
+          id: "api/lke/create-book",
+          label: "Cria um novo book",
+          className: "api-method post",
+        },
+        {
+          type: "doc",
+          id: "api/lke/list-books",
+          label: "Lista todos os books",
+          className: "api-method get",
+        },
+        {
+          type: "doc",
+          id: "api/lke/get-book",
+          label: "Obtém um book específico",
+          className: "api-method get",
+        },
+        {
+          type: "doc",
+          id: "api/lke/update-book",
+          label: "Atualiza um book específico",
+          className: "api-method patch",
+        },
+        {
+          type: "doc",
+          id: "api/lke/delete-book",
+          label: "Descarta um book específico",
           className: "api-method delete",
         },
       ],
@@ -268,6 +303,24 @@ const sidebar: SidebarsConfig = {
           type: "doc",
           id: "api/lke/schemas/assetupdaterequest",
           label: "AssetUpdateRequest",
+          className: "schema",
+        },
+        {
+          type: "doc",
+          id: "api/lke/schemas/book",
+          label: "Book",
+          className: "schema",
+        },
+        {
+          type: "doc",
+          id: "api/lke/schemas/listofbooks",
+          label: "ListOfBooks",
+          className: "schema",
+        },
+        {
+          type: "doc",
+          id: "api/lke/schemas/bookcreaterequest",
+          label: "BookCreateRequest",
           className: "schema",
         },
         {

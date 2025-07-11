@@ -571,6 +571,11 @@ components:
       items:
         $ref: '#/components/schemas/Asset'
 
+    ListOfBooks:
+      type: array
+      items:
+        $ref: '#/components/schemas/Book'
+
     ListOfEntityIDs:
       type: array
       items:
@@ -681,6 +686,75 @@ components:
             type: string
         metadata:
           $ref: '#/components/schemas/Metadata'
+
+    Book:
+      type: object
+      properties:
+        entity_id:
+          $ref: '#/components/schemas/EntityID'
+        entity_type:
+          type: string
+          enum: [BOOK]
+        external_entity_id:
+          $ref: '#/components/schemas/ExternalEntityID'
+        version:
+          $ref: '#/components/schemas/Version'
+        name:
+          type: string
+          minLength: 3
+          maxLength: 128
+          description: Nome único do book dentro do ledger.
+        ledger_entity_id:
+          $ref: '#/components/schemas/EntityID'
+          description: UUIDv7 do ledger ao qual o book pertence.
+        nature:
+          type: string
+          enum: [CREDITOR, DEBITOR]
+          description: Natureza do book.
+        created_at:
+          $ref: '#/components/schemas/DateTime'
+          nullable: false
+        updated_at:
+          $ref: '#/components/schemas/DateTime'
+          nullable: false
+        discarded_at:
+          $ref: '#/components/schemas/DateTime'
+          nullable: true
+        metadata:
+          $ref: '#/components/schemas/Metadata'
+
+    BookCreateRequest:
+      type: object
+      properties:
+        external_entity_id:
+          $ref: '#/components/schemas/ExternalEntityID'
+        name:
+          type: string
+          minLength: 3
+          maxLength: 128
+        ledger_entity_id:
+          $ref: '#/components/schemas/EntityID'
+        nature:
+          type: string
+          enum: [CREDITOR, DEBITOR]
+        asset:
+          type: string
+          description: Código do ativo (aka. moeda) ao qual o book esta associado.
+          minLength: 3
+          maxLength: 3
+          required: true
+          example: 'USD'
+        chapter:
+          $ref: '#/components/schemas/EntityID'
+          description: UUIDv7 do chapter ao qual o book pertence.
+          required: false
+        metadata:
+          $ref: '#/components/schemas/Metadata'
+      required:
+        - external_entity_id
+        - name
+        - ledger_entity_id
+        - nature
 
   responses:
     Error400:
