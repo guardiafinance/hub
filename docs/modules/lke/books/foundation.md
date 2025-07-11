@@ -3,9 +3,9 @@ sidebar_position: 1
 keywords: [guardia core banking, transactional ledger, ledger as a service, modulo de ledger da guardia, books, ias-1, ias-2, ias-38, ifrs-9]
 ---
 
-# Fundamentação da Estrutura do Book
+# Fundamentação Técnica
 
-Este documento descreve os fundamentos técnicos e normativos que embasam o conceito de **Book** como unidade contábil na arquitetura do ledger da Guardia. A proposta segue o princípio de **Compliance by Design**, assegurando que as decisões de modelagem estejam em conformidade com as normas internacionais de contabilidade desde sua concepção.
+Este documento descreve os fundamentos técnicos e normativos que embasam o conceito de **Book** como unidade contábil na arquitetura do LKe. A proposta segue o princípio de **Compliance by Design**, assegurando que as decisões de modelagem estejam em conformidade com as normas internacionais de contabilidade desde sua concepção.
 
 ## Referenciais Normativos
 
