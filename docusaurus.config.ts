@@ -42,6 +42,7 @@ const config: Config = {
         theme: {
           customCss: [
             require.resolve("./src/css/custom.css"),
+            require.resolve("./src/css/oas.css"),
           ]
         },
         sitemap: {

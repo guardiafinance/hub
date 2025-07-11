@@ -143,7 +143,7 @@ components:
         type: string
         pattern: ^([0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12},)*[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$
 
-    ExternalEntityIds:
+    ListOfExternalEntityIds:
       name: external_entity_ids
       in: query
       description: |
@@ -176,6 +176,26 @@ components:
         instituição.
       required: false
       example: '986,840,978'
+      schema:
+        type: string
+
+    ListOfAssetCodes:
+      name: asset_codes
+      in: query
+      description: |
+        Uma lista de códigos de ativos (moedas) separados por vírgulas. Exemplo: 'USD,BRL,EUR'.
+      required: false
+      example: 'USD,BRL,EUR'
+      schema:
+        type: string
+
+    ListOfChapterIds:
+      name: chapter_ids
+      in: query
+      description: |
+        Uma lista de IDs de chapters no formato UUIDv7 separados por vírgulas. Exemplo: 'id1,id2,id3'.
+      required: false
+      example: '018f74a6e3b270ccbf248a4b012f5f3e,018f74a6e3b270ccbf248a4b012f5f3f'
       schema:
         type: string
 
@@ -410,7 +430,7 @@ components:
           type: array
           items:
             type: string
-        ledger_entity_ids:
+        ledgers:
           type: array
           description: |
             Lista de identificadores únicos das ledgers associadas ao asset.
@@ -668,6 +688,7 @@ components:
         - exponent
         - is_fiat
         - locations
+        - ledgers
 
     AssetUpdateRequest:
       type: object

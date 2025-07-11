@@ -53,11 +53,11 @@ paths:
       tags:
         - Ledgers
       parameters:
-        - $ref: "#/paths/~1v1~1assets/post/parameters/0"
-        - $ref: "#/paths/~1v1~1assets/get/parameters/10"
-        - $ref: "#/paths/~1v1~1assets/get/parameters/11"
-        - $ref: "#/paths/~1v1~1assets/get/parameters/12"
-        - $ref: "#/paths/~1v1~1assets/get/parameters/13"
+        - $ref: "#/paths/~1v1~1books/post/parameters/0"
+        - $ref: "#/paths/~1v1~1books/get/parameters/10"
+        - $ref: "#/paths/~1v1~1books/get/parameters/11"
+        - $ref: "#/paths/~1v1~1books/get/parameters/12"
+        - $ref: "#/paths/~1v1~1books/get/parameters/13"
       requestBody:
         required: true
         content:
@@ -126,18 +126,18 @@ paths:
       tags:
         - Ledgers
       parameters:
-        - $ref: "#/paths/~1v1~1assets/get/parameters/0"
-        - $ref: "#/paths/~1v1~1assets/get/parameters/1"
-        - $ref: "#/paths/~1v1~1assets/get/parameters/4"
-        - $ref: "#/paths/~1v1~1assets/get/parameters/5"
-        - $ref: "#/paths/~1v1~1assets/get/parameters/6"
-        - $ref: "#/paths/~1v1~1assets/get/parameters/7"
-        - $ref: "#/paths/~1v1~1assets/get/parameters/8"
-        - $ref: "#/paths/~1v1~1assets/get/parameters/9"
-        - $ref: "#/paths/~1v1~1assets/get/parameters/10"
-        - $ref: "#/paths/~1v1~1assets/get/parameters/11"
-        - $ref: "#/paths/~1v1~1assets/get/parameters/12"
-        - $ref: "#/paths/~1v1~1assets/get/parameters/13"
+        - $ref: "#/paths/~1v1~1books/get/parameters/0"
+        - $ref: "#/paths/~1v1~1books/get/parameters/1"
+        - $ref: "#/paths/~1v1~1books/get/parameters/4"
+        - $ref: "#/paths/~1v1~1books/get/parameters/5"
+        - $ref: "#/paths/~1v1~1books/get/parameters/6"
+        - $ref: "#/paths/~1v1~1books/get/parameters/7"
+        - $ref: "#/paths/~1v1~1books/get/parameters/8"
+        - $ref: "#/paths/~1v1~1books/get/parameters/9"
+        - $ref: "#/paths/~1v1~1books/get/parameters/10"
+        - $ref: "#/paths/~1v1~1books/get/parameters/11"
+        - $ref: "#/paths/~1v1~1books/get/parameters/12"
+        - $ref: "#/paths/~1v1~1books/get/parameters/13"
       responses:
         "200":
           description: Lista de ledgers
@@ -203,11 +203,11 @@ paths:
       tags:
         - Ledgers
       parameters:
-        - $ref: "#/paths/~1v1~1assets~1%7Bentity_id%7D/get/parameters/0"
-        - $ref: "#/paths/~1v1~1assets/get/parameters/10"
-        - $ref: "#/paths/~1v1~1assets/get/parameters/11"
-        - $ref: "#/paths/~1v1~1assets/get/parameters/12"
-        - $ref: "#/paths/~1v1~1assets/get/parameters/13"
+        - $ref: "#/paths/~1v1~1books~1%7Bentity_id%7D/get/parameters/0"
+        - $ref: "#/paths/~1v1~1books/get/parameters/10"
+        - $ref: "#/paths/~1v1~1books/get/parameters/11"
+        - $ref: "#/paths/~1v1~1books/get/parameters/12"
+        - $ref: "#/paths/~1v1~1books/get/parameters/13"
       responses:
         "200":
           description: Dados do ledger.
@@ -262,7 +262,7 @@ paths:
       x-apidog-maintainer: Fernando Seguim
       x-run-in-apidog: https://app.apidog.com/web/project/719079/apis/api-11718081-run
     patch:
-      summary: Atualize os dados de um ledger específico
+      summary: Atualize um ledger específico
       description: >
         :::warning
 
@@ -276,12 +276,12 @@ paths:
       tags:
         - Ledgers
       parameters:
-        - $ref: "#/paths/~1v1~1assets~1%7Bentity_id%7D/get/parameters/0"
-        - $ref: "#/paths/~1v1~1assets/post/parameters/0"
-        - $ref: "#/paths/~1v1~1assets/get/parameters/10"
-        - $ref: "#/paths/~1v1~1assets/get/parameters/11"
-        - $ref: "#/paths/~1v1~1assets/get/parameters/12"
-        - $ref: "#/paths/~1v1~1assets/get/parameters/13"
+        - $ref: "#/paths/~1v1~1books~1%7Bentity_id%7D/get/parameters/0"
+        - $ref: "#/paths/~1v1~1books/post/parameters/0"
+        - $ref: "#/paths/~1v1~1books/get/parameters/10"
+        - $ref: "#/paths/~1v1~1books/get/parameters/11"
+        - $ref: "#/paths/~1v1~1books/get/parameters/12"
+        - $ref: "#/paths/~1v1~1books/get/parameters/13"
       requestBody:
         required: true
         content:
@@ -347,24 +347,24 @@ paths:
       x-apidog-maintainer: Fernando Seguim
       x-run-in-apidog: https://app.apidog.com/web/project/719079/apis/api-11718081-run
     delete:
-      summary: Exclui um ledger específico
+      summary: Descarta um ledger específico
       deprecated: false
       description: |
         :::note
-        Se o ledger possuir transações, a exclusão não será permitida.
+        Se o ledger possuir transações, o descarte não será permitido.
         :::
       operationId: delete_ledger
       tags:
         - Ledgers
       parameters:
-        - $ref: "#/paths/~1v1~1assets~1%7Bentity_id%7D/get/parameters/0"
-        - $ref: "#/paths/~1v1~1assets/get/parameters/10"
-        - $ref: "#/paths/~1v1~1assets/get/parameters/11"
-        - $ref: "#/paths/~1v1~1assets/get/parameters/12"
-        - $ref: "#/paths/~1v1~1assets/get/parameters/13"
+        - $ref: "#/paths/~1v1~1books~1%7Bentity_id%7D/get/parameters/0"
+        - $ref: "#/paths/~1v1~1books/get/parameters/10"
+        - $ref: "#/paths/~1v1~1books/get/parameters/11"
+        - $ref: "#/paths/~1v1~1books/get/parameters/12"
+        - $ref: "#/paths/~1v1~1books/get/parameters/13"
       responses:
         "204":
-          description: Ledger excluído com sucesso.
+          description: Ledger descartado com sucesso.
           headers:
             Cache-Control:
               $ref: "#/components/headers/Cache-Control"
@@ -425,14 +425,14 @@ paths:
       tags:
         - Chapters
       parameters:
-        - $ref: "#/paths/~1v1~1assets/post/parameters/0"
-        - $ref: "#/paths/~1v1~1assets/get/parameters/10"
-        - $ref: "#/paths/~1v1~1assets/get/parameters/11"
-        - $ref: "#/paths/~1v1~1assets/get/parameters/12"
-        - $ref: "#/paths/~1v1~1assets/get/parameters/13"
+        - $ref: "#/paths/~1v1~1books/post/parameters/0"
+        - $ref: "#/paths/~1v1~1books/get/parameters/10"
+        - $ref: "#/paths/~1v1~1books/get/parameters/11"
+        - $ref: "#/paths/~1v1~1books/get/parameters/12"
+        - $ref: "#/paths/~1v1~1books/get/parameters/13"
       requestBody:
         content:
-          application/json:
+          application/vnd.guardia.v1+json:
             schema:
               $ref: "#/components/schemas/ChapterCreateRequest"
             example:
@@ -520,18 +520,18 @@ paths:
       tags:
         - Chapters
       parameters:
-        - $ref: "#/paths/~1v1~1assets/get/parameters/0"
-        - $ref: "#/paths/~1v1~1assets/get/parameters/1"
-        - $ref: "#/paths/~1v1~1assets/get/parameters/4"
-        - $ref: "#/paths/~1v1~1assets/get/parameters/5"
-        - $ref: "#/paths/~1v1~1assets/get/parameters/6"
-        - $ref: "#/paths/~1v1~1assets/get/parameters/7"
-        - $ref: "#/paths/~1v1~1assets/get/parameters/8"
-        - $ref: "#/paths/~1v1~1assets/get/parameters/9"
-        - $ref: "#/paths/~1v1~1assets/get/parameters/10"
-        - $ref: "#/paths/~1v1~1assets/get/parameters/11"
-        - $ref: "#/paths/~1v1~1assets/get/parameters/12"
-        - $ref: "#/paths/~1v1~1assets/get/parameters/13"
+        - $ref: "#/paths/~1v1~1books/get/parameters/0"
+        - $ref: "#/paths/~1v1~1books/get/parameters/1"
+        - $ref: "#/paths/~1v1~1books/get/parameters/4"
+        - $ref: "#/paths/~1v1~1books/get/parameters/5"
+        - $ref: "#/paths/~1v1~1books/get/parameters/6"
+        - $ref: "#/paths/~1v1~1books/get/parameters/7"
+        - $ref: "#/paths/~1v1~1books/get/parameters/8"
+        - $ref: "#/paths/~1v1~1books/get/parameters/9"
+        - $ref: "#/paths/~1v1~1books/get/parameters/10"
+        - $ref: "#/paths/~1v1~1books/get/parameters/11"
+        - $ref: "#/paths/~1v1~1books/get/parameters/12"
+        - $ref: "#/paths/~1v1~1books/get/parameters/13"
       responses:
         "200":
           description: Lista de chapters.
@@ -593,11 +593,11 @@ paths:
       tags:
         - Chapters
       parameters:
-        - $ref: "#/paths/~1v1~1assets~1%7Bentity_id%7D/get/parameters/0"
-        - $ref: "#/paths/~1v1~1assets/get/parameters/10"
-        - $ref: "#/paths/~1v1~1assets/get/parameters/11"
-        - $ref: "#/paths/~1v1~1assets/get/parameters/12"
-        - $ref: "#/paths/~1v1~1assets/get/parameters/13"
+        - $ref: "#/paths/~1v1~1books~1%7Bentity_id%7D/get/parameters/0"
+        - $ref: "#/paths/~1v1~1books/get/parameters/10"
+        - $ref: "#/paths/~1v1~1books/get/parameters/11"
+        - $ref: "#/paths/~1v1~1books/get/parameters/12"
+        - $ref: "#/paths/~1v1~1books/get/parameters/13"
       responses:
         "200":
           description: Dados do chapter.
@@ -655,23 +655,27 @@ paths:
       summary: Atualiza um chapter específico
       deprecated: false
       description: >
-        > **Nota:**
+        :::warning
 
-        > Quando o valor for `null`, caso a propriedade exista, eleserá
-        considerado para alteração.
+        Ao atualizar um metadata, quando o valor for `null`, caso a propriedade
+        exista, ela será considerada para remoção, conforme a especificação do
+        Json Merge Patch [RFC
+        7386](https://datatracker.ietf.org/doc/html/rfc7386).
+
+        :::
       operationId: update_chapter
       tags:
         - Chapters
       parameters:
-        - $ref: "#/paths/~1v1~1assets~1%7Bentity_id%7D/get/parameters/0"
-        - $ref: "#/paths/~1v1~1assets/get/parameters/10"
-        - $ref: "#/paths/~1v1~1assets/get/parameters/11"
-        - $ref: "#/paths/~1v1~1assets/get/parameters/12"
-        - $ref: "#/paths/~1v1~1assets/post/parameters/0"
-        - $ref: "#/paths/~1v1~1assets/get/parameters/13"
+        - $ref: "#/paths/~1v1~1books~1%7Bentity_id%7D/get/parameters/0"
+        - $ref: "#/paths/~1v1~1books/get/parameters/10"
+        - $ref: "#/paths/~1v1~1books/get/parameters/11"
+        - $ref: "#/paths/~1v1~1books/get/parameters/12"
+        - $ref: "#/paths/~1v1~1books/post/parameters/0"
+        - $ref: "#/paths/~1v1~1books/get/parameters/13"
       requestBody:
         content:
-          application/json:
+          application/vnd.guardia.v1+json:
             schema:
               $ref: "#/components/schemas/ChapterUpdateRequest"
             example:
@@ -756,21 +760,21 @@ paths:
       x-apidog-maintainer: Fernando Seguim
       x-run-in-apidog: https://app.apidog.com/web/project/719079/apis/api-11718086-run
     delete:
-      summary: Exclui um chapter específico
+      summary: Descarta um chapter específico
       deprecated: false
       description: |
         :::note
-        Se o chapter possuir transações, a exclusão não será permitida.
+        Se o chapter possuir transações, o descarte não será permitido.
         :::
       operationId: delete_chapter
       tags:
         - Chapters
       parameters:
-        - $ref: "#/paths/~1v1~1assets~1%7Bentity_id%7D/get/parameters/0"
-        - $ref: "#/paths/~1v1~1assets/get/parameters/10"
-        - $ref: "#/paths/~1v1~1assets/get/parameters/11"
-        - $ref: "#/paths/~1v1~1assets/get/parameters/12"
-        - $ref: "#/paths/~1v1~1assets/get/parameters/13"
+        - $ref: "#/paths/~1v1~1books~1%7Bentity_id%7D/get/parameters/0"
+        - $ref: "#/paths/~1v1~1books/get/parameters/10"
+        - $ref: "#/paths/~1v1~1books/get/parameters/11"
+        - $ref: "#/paths/~1v1~1books/get/parameters/12"
+        - $ref: "#/paths/~1v1~1books/get/parameters/13"
       responses:
         "204":
           description: Chapter excluído com sucesso
@@ -843,50 +847,22 @@ paths:
         Os **assets fiduciários**, baseados na **ISO 4712**, já estão
         disponíveis para uso no **Guardia**, mas você pode criar novos assets
         conforme sua necessidade. Os demais assets podem ser baseados em
-        especificacoes como ISO 10962, MIC, ISIN ou um padrão interno da
+        especificações como ISO 10962, MIC, ISIN ou um padrão interno da
         instituição.
       operationId: create_asset
       tags:
         - Assets
       parameters:
-        - name: Idempotency-Key
-          in: header
-          description: Chave para garantir idempotência da requisição.
-          required: true
-          schema:
-            type: string
-            format: uuid
-        - $ref: "#/paths/~1v1~1assets/get/parameters/13"
-        - $ref: "#/paths/~1v1~1assets/get/parameters/10"
-        - $ref: "#/paths/~1v1~1assets/get/parameters/11"
-        - $ref: "#/paths/~1v1~1assets/get/parameters/12"
+        - $ref: "#/paths/~1v1~1books/post/parameters/0"
+        - $ref: "#/paths/~1v1~1books/get/parameters/13"
+        - $ref: "#/paths/~1v1~1books/get/parameters/10"
+        - $ref: "#/paths/~1v1~1books/get/parameters/11"
+        - $ref: "#/paths/~1v1~1books/get/parameters/12"
       requestBody:
         content:
-          application/json:
+          application/vnd.guardia.v1+json:
             schema:
-              type: object
-              properties:
-                external_entity_id:
-                  $ref: "#/components/schemas/ExternalEntityID"
-                code:
-                  type: string
-                number:
-                  type: string
-                exponent:
-                  type: string
-                is_fiat:
-                  type: boolean
-                locations:
-                  type: array
-                  items:
-                    type: string
-              required:
-                - external_entity_id
-                - code
-                - number
-                - exponent
-                - is_fiat
-                - locations
+              $ref: "#/components/schemas/AssetCreateRequest"
       responses:
         "201":
           description: Asset criado
@@ -968,6 +944,433 @@ paths:
       tags:
         - Assets
       parameters:
+        - $ref: "#/paths/~1v1~1books/get/parameters/0"
+        - $ref: "#/paths/~1v1~1books/get/parameters/1"
+        - name: asset_codes
+          in: query
+          description: >
+            Uma lista de códigos de assets separados por vírgulas. Para ativos
+            fiduciários, use códigos ISO 4217
+
+            (ex: BRL, USD, EUR). Para outros tipos de ativos, use o código
+            definido
+
+            na criação do asset.
+          required: false
+          example: BRL,USD,EUR
+          schema:
+            type: string
+        - name: asset_numbers
+          in: query
+          description: >
+            Uma lista de números de identificação de assets separados por
+            vírgulas. Este número pode ser baseado
+
+            em especificações como ISO 10962, MIC, ISIN ou um padrão interno da
+
+            instituição.
+          required: false
+          example: 986,840,978
+          schema:
+            type: string
+        - $ref: "#/paths/~1v1~1books/get/parameters/4"
+        - $ref: "#/paths/~1v1~1books/get/parameters/5"
+        - $ref: "#/paths/~1v1~1books/get/parameters/6"
+        - $ref: "#/paths/~1v1~1books/get/parameters/7"
+        - $ref: "#/paths/~1v1~1books/get/parameters/8"
+        - $ref: "#/paths/~1v1~1books/get/parameters/9"
+        - $ref: "#/paths/~1v1~1books/get/parameters/10"
+        - $ref: "#/paths/~1v1~1books/get/parameters/11"
+        - $ref: "#/paths/~1v1~1books/get/parameters/12"
+        - $ref: "#/paths/~1v1~1books/get/parameters/13"
+      responses:
+        "200":
+          description: Lista de assets
+          content:
+            application/vnd.guardia.v1+json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: "#/components/schemas/ListOfAssets"
+                  pagination:
+                    $ref: "#/components/schemas/Pagination"
+          headers:
+            Cache-Control:
+              $ref: "#/components/headers/Cache-Control"
+            Content-Language:
+              $ref: "#/components/headers/Content-Language"
+            Content-Length:
+              $ref: "#/components/headers/Content-Length"
+            Content-Type:
+              $ref: "#/components/headers/Content-Type"
+            Link:
+              $ref: "#/components/headers/Link"
+            Strict-Transport-Security:
+              $ref: "#/components/headers/Strict-Transport-Security"
+            X-Grd-Correlation-Id:
+              $ref: "#/components/headers/X-Grd-Correlation-Id"
+            X-Grd-Trace-Id:
+              $ref: "#/components/headers/X-Grd-Trace-Id"
+            X-RateLimit-Limit:
+              $ref: "#/components/headers/X-RateLimit-Limit"
+            X-RateLimit-Remaining:
+              $ref: "#/components/headers/X-RateLimit-Remaining"
+            X-RateLimit-Reset:
+              $ref: "#/components/headers/X-RateLimit-Reset"
+        "400":
+          $ref: "#/components/responses/Error400"
+        "401":
+          $ref: "#/components/responses/Error401"
+        "403":
+          $ref: "#/components/responses/Error403"
+        "404":
+          $ref: "#/components/responses/Error404"
+        "409":
+          $ref: "#/components/responses/Error409"
+        "422":
+          $ref: "#/components/responses/Error422"
+        "429":
+          $ref: "#/components/responses/Error429"
+        "500":
+          $ref: "#/components/responses/Error500"
+      security: []
+      x-apidog-folder: Assets
+      x-apidog-status: developing
+      x-apidog-maintainer: Fernando Seguim
+      x-run-in-apidog: https://app.apidog.com/web/project/719079/apis/api-14888484-run
+  /v1/assets/{entity_id}:
+    get:
+      summary: Obtém um asset específico
+      deprecated: false
+      description: >
+        Obtém os detalhes de um asset específico usando seu `entity_id` ou
+        `external_entity_id`.
+
+        O asset pode ser um ativo fiduciário (baseado na ISO 4712) ou não
+        fiduciário.
+      operationId: get_asset
+      tags:
+        - Assets
+      parameters:
+        - $ref: "#/paths/~1v1~1books~1%7Bentity_id%7D/get/parameters/0"
+        - $ref: "#/paths/~1v1~1books/get/parameters/10"
+        - $ref: "#/paths/~1v1~1books/get/parameters/11"
+        - $ref: "#/paths/~1v1~1books/get/parameters/12"
+        - $ref: "#/paths/~1v1~1books/get/parameters/13"
+      responses:
+        "200":
+          description: Dados do asset.
+          content:
+            application/vnd.guardia.v1+json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: "#/components/schemas/Asset"
+          headers:
+            Cache-Control:
+              $ref: "#/components/headers/Cache-Control"
+            Content-Language:
+              $ref: "#/components/headers/Content-Language"
+            Content-Length:
+              $ref: "#/components/headers/Content-Length"
+            Content-Type:
+              $ref: "#/components/headers/Content-Type"
+            Strict-Transport-Security:
+              $ref: "#/components/headers/Strict-Transport-Security"
+            X-Grd-Correlation-Id:
+              $ref: "#/components/headers/X-Grd-Correlation-Id"
+            X-Grd-Trace-Id:
+              $ref: "#/components/headers/X-Grd-Trace-Id"
+            X-RateLimit-Limit:
+              $ref: "#/components/headers/X-RateLimit-Limit"
+            X-RateLimit-Remaining:
+              $ref: "#/components/headers/X-RateLimit-Remaining"
+            X-RateLimit-Reset:
+              $ref: "#/components/headers/X-RateLimit-Reset"
+        "400":
+          $ref: "#/components/responses/Error400"
+        "401":
+          $ref: "#/components/responses/Error401"
+        "403":
+          $ref: "#/components/responses/Error403"
+        "404":
+          $ref: "#/components/responses/Error404"
+        "409":
+          $ref: "#/components/responses/Error409"
+        "422":
+          $ref: "#/components/responses/Error422"
+        "429":
+          $ref: "#/components/responses/Error429"
+        "500":
+          $ref: "#/components/responses/Error500"
+      security: []
+    patch:
+      summary: Atualiza um asset específico
+      description: >
+        Atualiza os dados como Nome, Código, Número, Expoente, Locations e
+        Metadata de um asset existente.
+
+        <br />
+
+        :::warning
+
+        Ao atualizar um metadata, quando o valor for `null`, caso a propriedade
+        exista, ela será considerada para remoção, conforme a especificação do
+        Json Merge Patch [RFC
+        7386](https://datatracker.ietf.org/doc/html/rfc7386).
+
+        :::
+      operationId: update_asset
+      tags:
+        - Assets
+      parameters:
+        - $ref: "#/paths/~1v1~1books~1%7Bentity_id%7D/get/parameters/0"
+        - $ref: "#/paths/~1v1~1books/post/parameters/0"
+        - $ref: "#/paths/~1v1~1books/get/parameters/10"
+        - $ref: "#/paths/~1v1~1books/get/parameters/11"
+        - $ref: "#/paths/~1v1~1books/get/parameters/12"
+        - $ref: "#/paths/~1v1~1books/get/parameters/13"
+      requestBody:
+        required: true
+        content:
+          application/vnd.guardia.v1+json:
+            schema:
+              $ref: "#/components/schemas/AssetUpdateRequest"
+      responses:
+        "200":
+          description: Asset atualizado com sucesso.
+          headers:
+            Cache-Control:
+              $ref: "#/components/headers/Cache-Control"
+            Content-Digest:
+              $ref: "#/components/headers/Content-Digest"
+            Content-Language:
+              $ref: "#/components/headers/Content-Language"
+            Content-Length:
+              $ref: "#/components/headers/Content-Length"
+            Content-Type:
+              $ref: "#/components/headers/Content-Type"
+            Idempotency-Key:
+              $ref: "#/components/headers/Idempotency-Key"
+            Last-Modified:
+              $ref: "#/components/headers/Last-Modified"
+            Strict-Transport-Security:
+              $ref: "#/components/headers/Strict-Transport-Security"
+            X-Grd-Correlation-Id:
+              $ref: "#/components/headers/X-Grd-Correlation-Id"
+            X-Grd-Trace-Id:
+              $ref: "#/components/headers/X-Grd-Trace-Id"
+            X-RateLimit-Limit:
+              $ref: "#/components/headers/X-RateLimit-Limit"
+            X-RateLimit-Remaining:
+              $ref: "#/components/headers/X-RateLimit-Remaining"
+            X-RateLimit-Reset:
+              $ref: "#/components/headers/X-RateLimit-Reset"
+          content:
+            application/vnd.guardia.v1+json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: "#/components/schemas/Asset"
+        "400":
+          $ref: "#/components/responses/Error400"
+        "401":
+          $ref: "#/components/responses/Error401"
+        "403":
+          $ref: "#/components/responses/Error403"
+        "404":
+          $ref: "#/components/responses/Error404"
+        "409":
+          $ref: "#/components/responses/Error409"
+        "422":
+          $ref: "#/components/responses/Error422"
+        "429":
+          $ref: "#/components/responses/Error429"
+        "500":
+          $ref: "#/components/responses/Error500"
+      security: []
+    delete:
+      summary: Descarta um asset específico
+      deprecated: false
+      description: >
+        :::note
+
+        Se o asset estiver sendo utilizado em transações, o descarte não será
+        permitido.
+
+        :::
+      operationId: delete_asset
+      tags:
+        - Assets
+      parameters:
+        - $ref: "#/paths/~1v1~1books~1%7Bentity_id%7D/get/parameters/0"
+        - $ref: "#/paths/~1v1~1books/get/parameters/10"
+        - $ref: "#/paths/~1v1~1books/get/parameters/11"
+        - $ref: "#/paths/~1v1~1books/get/parameters/12"
+        - $ref: "#/paths/~1v1~1books/get/parameters/13"
+      responses:
+        "204":
+          description: Asset excluído com sucesso
+          headers:
+            Cache-Control:
+              $ref: "#/components/headers/Cache-Control"
+            Content-Digest:
+              $ref: "#/components/headers/Content-Digest"
+            Content-Language:
+              $ref: "#/components/headers/Content-Language"
+            Content-Length:
+              $ref: "#/components/headers/Content-Length"
+            Content-Type:
+              $ref: "#/components/headers/Content-Type"
+            Last-Modified:
+              $ref: "#/components/headers/Last-Modified"
+            Strict-Transport-Security:
+              $ref: "#/components/headers/Strict-Transport-Security"
+            X-Grd-Correlation-Id:
+              $ref: "#/components/headers/X-Grd-Correlation-Id"
+            X-Grd-Trace-Id:
+              $ref: "#/components/headers/X-Grd-Trace-Id"
+            X-RateLimit-Limit:
+              $ref: "#/components/headers/X-RateLimit-Limit"
+            X-RateLimit-Remaining:
+              $ref: "#/components/headers/X-RateLimit-Remaining"
+            X-RateLimit-Reset:
+              $ref: "#/components/headers/X-RateLimit-Reset"
+        "400":
+          $ref: "#/components/responses/Error400"
+        "401":
+          $ref: "#/components/responses/Error401"
+        "403":
+          $ref: "#/components/responses/Error403"
+        "404":
+          $ref: "#/components/responses/Error404"
+        "409":
+          $ref: "#/components/responses/Error409"
+        "422":
+          $ref: "#/components/responses/Error422"
+        "429":
+          $ref: "#/components/responses/Error429"
+        "500":
+          $ref: "#/components/responses/Error500"
+      security: []
+      x-apidog-folder: Assets
+      x-apidog-status: developing
+      x-apidog-maintainer: Fernando Seguim
+  /v1/books:
+    post:
+      summary: Cria um novo book
+      description: >
+        O Book é uma entidade fundamental que representa uma conta contábil no
+        LKe.
+
+        Com sua natureza definida como credora ou devedora, ele organiza e
+        registra
+
+        lançamentos financeiros de maneira estruturada, rastreável e segregada
+        conforme
+
+        a finalidade contábil ou operacional.
+
+
+        Como unidade básica na estrutura do ledger, os Books proporcionam um
+        controle
+
+        preciso sobre saldos, movimentações e conciliações.
+
+
+        Todo Book deve estar vinculado a um Asset, que representa a moeda
+        utilizada
+
+        (seja fiduciária ou não) nas transações. Além disso, pode ser associado
+        a um
+
+        Chapter do Ledger para otimizar a gestão e o controle financeiro.
+      operationId: create_book
+      tags:
+        - Books
+      parameters:
+        - name: Idempotency-Key
+          in: header
+          description: Chave para garantir idempotência da requisição.
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - $ref: "#/paths/~1v1~1books/get/parameters/10"
+        - $ref: "#/paths/~1v1~1books/get/parameters/11"
+        - $ref: "#/paths/~1v1~1books/get/parameters/12"
+        - $ref: "#/paths/~1v1~1books/get/parameters/13"
+      requestBody:
+        required: true
+        content:
+          application/vnd.guardia.v1+json:
+            schema:
+              $ref: "#/components/schemas/BookCreateRequest"
+      responses:
+        "201":
+          description: Book criado com sucesso.
+          headers:
+            Content-Type:
+              $ref: "#/components/headers/Content-Type"
+            Content-Length:
+              $ref: "#/components/headers/Content-Length"
+            Content-Language:
+              $ref: "#/components/headers/Content-Language"
+            Cache-Control:
+              $ref: "#/components/headers/Cache-Control"
+            Idempotency-Key:
+              $ref: "#/components/headers/Idempotency-Key"
+            Content-Digest:
+              $ref: "#/components/headers/Content-Digest"
+            Last-Modified:
+              $ref: "#/components/headers/Last-Modified"
+            X-Grd-Correlation-Id:
+              $ref: "#/components/headers/X-Grd-Correlation-Id"
+            X-Grd-Trace-Id:
+              $ref: "#/components/headers/X-Grd-Trace-Id"
+            X-RateLimit-Limit:
+              $ref: "#/components/headers/X-RateLimit-Limit"
+            X-RateLimit-Remaining:
+              $ref: "#/components/headers/X-RateLimit-Remaining"
+            X-RateLimit-Reset:
+              $ref: "#/components/headers/X-RateLimit-Reset"
+          content:
+            application/vnd.guardia.v1+json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: "#/components/schemas/Book"
+        "400":
+          $ref: "#/components/responses/Error400"
+        "401":
+          $ref: "#/components/responses/Error401"
+        "403":
+          $ref: "#/components/responses/Error403"
+        "404":
+          $ref: "#/components/responses/Error404"
+        "409":
+          $ref: "#/components/responses/Error409"
+        "422":
+          $ref: "#/components/responses/Error422"
+        "429":
+          $ref: "#/components/responses/Error429"
+        "500":
+          $ref: "#/components/responses/Error500"
+      security:
+        - BearerAuth: []
+    get:
+      summary: Lista todos os books
+      description: Obtém uma lista de books disponíveis para a organização filtrando
+        por metadata, moeda (asset_codes) ou chapters (chapter_ids), além de
+        incluir itens descartados.
+      operationId: list_books
+      tags:
+        - Books
+      parameters:
         - name: entity_ids
           in: query
           description: >
@@ -998,28 +1401,19 @@ paths:
         - name: asset_codes
           in: query
           description: >
-            Uma lista de códigos de assets separados por vírgulas. Para ativos
-            fiduciários, use códigos ISO 4217
-
-            (ex: BRL, USD, EUR). Para outros tipos de ativos, use o código
-            definido
-
-            na criação do asset.
+            Uma lista de códigos de ativos (moedas) separados por vírgulas.
+            Exemplo: 'USD,BRL,EUR'.
           required: false
-          example: BRL,USD,EUR
+          example: USD,BRL,EUR
           schema:
             type: string
-        - name: asset_numbers
+        - name: chapter_ids
           in: query
           description: >
-            Uma lista de números de identificação de assets separados por
-            vírgulas. Este número pode ser baseado
-
-            em especificações como ISO 10962, MIC, ISIN ou um padrão interno da
-
-            instituição.
+            Uma lista de IDs de chapters no formato UUIDv7 separados por
+            vírgulas. Exemplo: 'id1,id2,id3'.
           required: false
-          example: 986,840,978
+          example: 018f74a6e3b270ccbf248a4b012f5f3e,018f74a6e3b270ccbf248a4b012f5f3f
           schema:
             type: string
         - name: $metadata.key
@@ -1118,14 +1512,14 @@ paths:
             format: uuid
       responses:
         "200":
-          description: Lista de assets
+          description: Lista de books
           content:
             application/vnd.guardia.v1+json:
               schema:
                 type: object
                 properties:
                   data:
-                    $ref: "#/components/schemas/ListOfAssets"
+                    $ref: "#/components/schemas/ListOfBooks"
                   pagination:
                     $ref: "#/components/schemas/Pagination"
           headers:
@@ -1168,23 +1562,18 @@ paths:
         "500":
           $ref: "#/components/responses/Error500"
       security: []
-      x-apidog-folder: Assets
+      x-apidog-folder: Books
       x-apidog-status: developing
       x-apidog-maintainer: Fernando Seguim
-      x-run-in-apidog: https://app.apidog.com/web/project/719079/apis/api-14888484-run
-  /v1/assets/{entity_id}:
+      x-run-in-apidog: https://app.apidog.com/web/project/719079/apis/api-14888487-run
+  /v1/books/{entity_id}:
     get:
-      summary: Obtém um asset específico
-      deprecated: false
-      description: >
-        Obtém os detalhes de um asset específico usando seu `entity_id` ou
-        `external_entity_id`.
-
-        O asset pode ser um ativo fiduciário (baseado na ISO 4712) ou não
-        fiduciário.
-      operationId: get_asset
+      summary: Obtém um book específico
+      description: Obtém os detalhes de um book específico usando seu entity_id ou
+        external_entity_id.
+      operationId: get_book
       tags:
-        - Assets
+        - Books
       parameters:
         - name: entity_id
           in: path
@@ -1196,20 +1585,20 @@ paths:
           required: true
           schema:
             $ref: "#/components/schemas/UUIDv7"
-        - $ref: "#/paths/~1v1~1assets/get/parameters/10"
-        - $ref: "#/paths/~1v1~1assets/get/parameters/11"
-        - $ref: "#/paths/~1v1~1assets/get/parameters/12"
-        - $ref: "#/paths/~1v1~1assets/get/parameters/13"
+        - $ref: "#/paths/~1v1~1books/get/parameters/10"
+        - $ref: "#/paths/~1v1~1books/get/parameters/11"
+        - $ref: "#/paths/~1v1~1books/get/parameters/12"
+        - $ref: "#/paths/~1v1~1books/get/parameters/13"
       responses:
         "200":
-          description: Dados do asset.
+          description: Dados do book.
           content:
             application/vnd.guardia.v1+json:
               schema:
                 type: object
                 properties:
                   data:
-                    $ref: "#/components/schemas/Asset"
+                    $ref: "#/components/schemas/Book"
           headers:
             Cache-Control:
               $ref: "#/components/headers/Cache-Control"
@@ -1248,36 +1637,61 @@ paths:
         "500":
           $ref: "#/components/responses/Error500"
       security: []
-      x-apidog-folder: Assets
-      x-apidog-status: developing
-      x-apidog-maintainer: Fernando Seguim
-      x-run-in-apidog: https://app.apidog.com/web/project/719079/apis/api-14888486-run
     patch:
-      summary: Atualiza um asset específico
+      summary: Atualiza um book específico
       description: >
-        Atualiza os dados de um asset existente. Quando o valor de um campo for
-        `null`, caso a propriedade exista, ela será considerada para remoção,
-        conforme a especificação do Json Merge Patch [RFC
+        Atualiza os dados como Nome, Natureza, Ativo, Chapter e Metadata de um
+        book existente.
+
+        <br />
+
+        :::warning
+
+        Ao atualizar um metadata, quando o valor for `null`, caso a propriedade
+        exista, ela será considerada para remoção, conforme a especificação do
+        Json Merge Patch [RFC
         7386](https://datatracker.ietf.org/doc/html/rfc7386).
-      operationId: update_asset
+
+        :::
+      operationId: update_book
       tags:
-        - Assets
+        - Books
       parameters:
-        - $ref: "#/paths/~1v1~1assets~1%7Bentity_id%7D/get/parameters/0"
-        - $ref: "#/paths/~1v1~1assets/post/parameters/0"
-        - $ref: "#/paths/~1v1~1assets/get/parameters/10"
-        - $ref: "#/paths/~1v1~1assets/get/parameters/11"
-        - $ref: "#/paths/~1v1~1assets/get/parameters/12"
-        - $ref: "#/paths/~1v1~1assets/get/parameters/13"
+        - $ref: "#/paths/~1v1~1books~1%7Bentity_id%7D/get/parameters/0"
+        - $ref: "#/paths/~1v1~1books/post/parameters/0"
+        - $ref: "#/paths/~1v1~1books/get/parameters/10"
+        - $ref: "#/paths/~1v1~1books/get/parameters/11"
+        - $ref: "#/paths/~1v1~1books/get/parameters/12"
+        - $ref: "#/paths/~1v1~1books/get/parameters/13"
       requestBody:
         required: true
         content:
           application/vnd.guardia.v1+json:
             schema:
-              $ref: "#/components/schemas/AssetUpdateRequest"
+              type: object
+              properties:
+                name:
+                  type: string
+                  minLength: 3
+                  maxLength: 128
+                nature:
+                  type: string
+                  enum:
+                    - CREDITOR
+                    - DEBITOR
+                asset:
+                  type: string
+                  minLength: 3
+                  maxLength: 3
+                  description: Código do ativo (aka. moeda) ao qual o book está associado.
+                chapter:
+                  $ref: "#/components/schemas/UUIDv7"
+                  description: UUIDv7 do chapter ao qual o book pertence.
+                metadata:
+                  $ref: "#/components/schemas/Metadata"
       responses:
         "200":
-          description: Asset atualizado com sucesso.
+          description: Book atualizado com sucesso.
           headers:
             Cache-Control:
               $ref: "#/components/headers/Cache-Control"
@@ -1311,7 +1725,7 @@ paths:
                 type: object
                 properties:
                   data:
-                    $ref: "#/components/schemas/Asset"
+                    $ref: "#/components/schemas/Book"
         "400":
           $ref: "#/components/responses/Error400"
         "401":
@@ -1330,27 +1744,23 @@ paths:
           $ref: "#/components/responses/Error500"
       security: []
     delete:
-      summary: Exclui um asset específico
-      deprecated: false
-      description: >
+      summary: Descarta um book específico
+      description: |
         :::note
-
-        Se o asset estiver sendo utilizado em transações, a exclusão não será
-        permitida.
-
+        Se o book possuir transações, o descarte não será permitido.
         :::
-      operationId: delete_asset
+      operationId: delete_book
       tags:
-        - Assets
+        - Books
       parameters:
-        - $ref: "#/paths/~1v1~1assets~1%7Bentity_id%7D/get/parameters/0"
-        - $ref: "#/paths/~1v1~1assets/get/parameters/10"
-        - $ref: "#/paths/~1v1~1assets/get/parameters/11"
-        - $ref: "#/paths/~1v1~1assets/get/parameters/12"
-        - $ref: "#/paths/~1v1~1assets/get/parameters/13"
+        - $ref: "#/paths/~1v1~1books~1%7Bentity_id%7D/get/parameters/0"
+        - $ref: "#/paths/~1v1~1books/get/parameters/10"
+        - $ref: "#/paths/~1v1~1books/get/parameters/11"
+        - $ref: "#/paths/~1v1~1books/get/parameters/12"
+        - $ref: "#/paths/~1v1~1books/get/parameters/13"
       responses:
         "204":
-          description: Asset excluído com sucesso
+          description: Book descartado com sucesso
           headers:
             Cache-Control:
               $ref: "#/components/headers/Cache-Control"
@@ -1393,7 +1803,7 @@ paths:
         "500":
           $ref: "#/components/responses/Error500"
       security: []
-      x-apidog-folder: Assets
+      x-apidog-folder: Books
       x-apidog-status: developing
       x-apidog-maintainer: Fernando Seguim
 components:
@@ -1772,6 +2182,14 @@ components:
       type: array
       items:
         $ref: "#/components/schemas/Asset"
+    ListOfBooks:
+      type: array
+      items:
+        $ref: "#/components/schemas/Book"
+    ListOfEntityIDs:
+      type: array
+      items:
+        $ref: "#/components/schemas/UUIDv7"
     LedgerCreateRequest:
       type: object
       properties:
@@ -1846,6 +2264,8 @@ components:
           type: array
           items:
             type: string
+        ledgers:
+          $ref: "#/components/schemas/ListOfEntityIDs"
       required:
         - external_entity_id
         - code
@@ -1853,6 +2273,7 @@ components:
         - exponent
         - is_fiat
         - locations
+        - ledgers
     AssetUpdateRequest:
       type: object
       properties:
@@ -1870,6 +2291,78 @@ components:
             type: string
         metadata:
           $ref: "#/components/schemas/Metadata"
+    Book:
+      type: object
+      properties:
+        entity_id:
+          $ref: "#/components/schemas/UUIDv7"
+        entity_type:
+          type: string
+          enum:
+            - BOOK
+        external_entity_id:
+          $ref: "#/components/schemas/ExternalEntityID"
+        version:
+          $ref: "#/components/schemas/Version"
+        name:
+          type: string
+          minLength: 3
+          maxLength: 128
+          description: Nome único do book dentro do ledger.
+        ledger_entity_id:
+          $ref: "#/components/schemas/UUIDv7"
+          description: UUIDv7 do ledger ao qual o book pertence.
+        nature:
+          type: string
+          enum:
+            - CREDITOR
+            - DEBITOR
+          description: Natureza do book.
+        created_at:
+          $ref: "#/components/schemas/DateTime"
+          nullable: false
+        updated_at:
+          $ref: "#/components/schemas/DateTime"
+          nullable: false
+        discarded_at:
+          $ref: "#/components/schemas/DateTime"
+          nullable: true
+        metadata:
+          $ref: "#/components/schemas/Metadata"
+    BookCreateRequest:
+      type: object
+      properties:
+        external_entity_id:
+          $ref: "#/components/schemas/ExternalEntityID"
+        name:
+          type: string
+          minLength: 3
+          maxLength: 128
+        ledger_entity_id:
+          $ref: "#/components/schemas/UUIDv7"
+        nature:
+          type: string
+          enum:
+            - CREDITOR
+            - DEBITOR
+        asset:
+          type: string
+          description: Código do ativo (aka. moeda) ao qual o book esta associado.
+          minLength: 3
+          maxLength: 3
+          required: true
+          example: USD
+        chapter:
+          $ref: "#/components/schemas/UUIDv7"
+          description: UUIDv7 do chapter ao qual o book pertence.
+          required: false
+        metadata:
+          $ref: "#/components/schemas/Metadata"
+      required:
+        - external_entity_id
+        - name
+        - ledger_entity_id
+        - nature
   responses:
     Error400:
       description: Requisição inválida.

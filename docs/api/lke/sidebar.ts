@@ -37,13 +37,13 @@ const sidebar: SidebarsConfig = {
         {
           type: "doc",
           id: "api/lke/update-ledger",
-          label: "Atualize os dados de um ledger específico",
+          label: "Atualize um ledger específico",
           className: "api-method patch",
         },
         {
           type: "doc",
           id: "api/lke/delete-ledger",
-          label: "Exclui um ledger específico",
+          label: "Descarta um ledger específico",
           className: "api-method delete",
         },
       ],
@@ -85,7 +85,7 @@ const sidebar: SidebarsConfig = {
         {
           type: "doc",
           id: "api/lke/delete-chapter",
-          label: "Exclui um chapter específico",
+          label: "Descarta um chapter específico",
           className: "api-method delete",
         },
       ],
@@ -127,7 +127,10 @@ const sidebar: SidebarsConfig = {
         {
           type: "doc",
           id: "api/lke/delete-asset",
-          label: "Exclui um asset específico",
+          label: "Descarta um asset específico",
+          className: "api-method delete",
+        },
+      ],
     },
     {
       type: "category",

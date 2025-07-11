@@ -261,7 +261,7 @@ paths:
       x-apidog-maintainer: Fernando Seguim
       x-run-in-apidog: https://app.apidog.com/web/project/719079/apis/api-11718081-run
     patch:
-      summary: Atualize os dados de um ledger específico
+      summary: Atualize um ledger específico
       description: |
         :::warning
         Ao atualizar um metadata, quando o valor for `null`, caso a propriedade exista, ela será considerada para remoção, conforme a especificação do Json Merge Patch [RFC 7386](https://datatracker.ietf.org/doc/html/rfc7386).
@@ -341,11 +341,11 @@ paths:
       x-apidog-maintainer: Fernando Seguim
       x-run-in-apidog: https://app.apidog.com/web/project/719079/apis/api-11718081-run
     delete:
-      summary: Exclui um ledger específico
+      summary: Descarta um ledger específico
       deprecated: false
       description: |
         :::note
-        Se o ledger possuir transações, a exclusão não será permitida.
+        Se o ledger possuir transações, o descarte não será permitido.
         :::
       operationId: delete_ledger
       tags:
@@ -358,7 +358,7 @@ paths:
         - $ref: './components.openapi.yaml#/components/parameters/CorrelationId'
       responses:
         '204':
-          description: Ledger excluído com sucesso.
+          description: Ledger descartado com sucesso.
           headers:
             Cache-Control:
               $ref: './components.openapi.yaml#/components/headers/Cache-Control'
@@ -426,7 +426,7 @@ paths:
         - $ref: './components.openapi.yaml#/components/parameters/CorrelationId'
       requestBody:
         content:
-          application/json:
+          application/vnd.guardia.v1+json:
             schema:
               $ref: './components.openapi.yaml#/components/schemas/ChapterCreateRequest'
             example:
@@ -649,8 +649,9 @@ paths:
       summary: Atualiza um chapter específico
       deprecated: false
       description: |
-        > **Nota:**
-        > Quando o valor for `null`, caso a propriedade exista, eleserá considerado para alteração.
+        :::warning
+        Ao atualizar um metadata, quando o valor for `null`, caso a propriedade exista, ela será considerada para remoção, conforme a especificação do Json Merge Patch [RFC 7386](https://datatracker.ietf.org/doc/html/rfc7386).
+        :::
       operationId: update_chapter
       tags:
         - Chapters
@@ -663,7 +664,7 @@ paths:
         - $ref: './components.openapi.yaml#/components/parameters/CorrelationId'
       requestBody:
         content:
-          application/json:
+          application/vnd.guardia.v1+json:
             schema:
               $ref: './components.openapi.yaml#/components/schemas/ChapterUpdateRequest'
             example:
@@ -748,11 +749,11 @@ paths:
       x-apidog-maintainer: Fernando Seguim
       x-run-in-apidog: https://app.apidog.com/web/project/719079/apis/api-11718086-run
     delete:
-      summary: Exclui um chapter específico
+      summary: Descarta um chapter específico
       deprecated: false
       description: |
         :::note
-        Se o chapter possuir transações, a exclusão não será permitida.
+        Se o chapter possuir transações, o descarte não será permitido.
         :::
       operationId: delete_chapter
       tags:
@@ -835,7 +836,7 @@ paths:
         Os **assets fiduciários**, baseados na **ISO 4712**, já estão
         disponíveis para uso no **Guardia**, mas você pode criar novos assets
         conforme sua necessidade. Os demais assets podem ser baseados em
-        especificacoes como ISO 10962, MIC, ISIN ou um padrão interno da
+        especificações como ISO 10962, MIC, ISIN ou um padrão interno da
         instituição.
       operationId: create_asset
       tags:
@@ -1065,14 +1066,14 @@ paths:
         '500':
           $ref: './components.openapi.yaml#/components/responses/Error500'
       security: []
-      x-apidog-folder: Assets
-      x-apidog-status: developing
-      x-apidog-maintainer: Fernando Seguim
-      x-run-in-apidog: https://app.apidog.com/web/project/719079/apis/api-14888486-run
     patch:
       summary: Atualiza um asset específico
       description: |
-        Atualiza os dados de um asset existente. Quando o valor de um campo for `null`, caso a propriedade exista, ela será considerada para remoção, conforme a especificação do Json Merge Patch [RFC 7386](https://datatracker.ietf.org/doc/html/rfc7386).
+        Atualiza os dados como Nome, Código, Número, Expoente, Locations e Metadata de um asset existente.
+        <br />
+        :::warning
+        Ao atualizar um metadata, quando o valor for `null`, caso a propriedade exista, ela será considerada para remoção, conforme a especificação do Json Merge Patch [RFC 7386](https://datatracker.ietf.org/doc/html/rfc7386).
+        :::
       operationId: update_asset
       tags:
         - Assets
@@ -1144,11 +1145,11 @@ paths:
           $ref: './components.openapi.yaml#/components/responses/Error500'
       security: []
     delete:
-      summary: Exclui um asset específico
+      summary: Descarta um asset específico
       deprecated: false
       description: |
         :::note
-        Se o asset estiver sendo utilizado em transações, a exclusão não será permitida.
+        Se o asset estiver sendo utilizado em transações, o descarte não será permitido.
         :::
       operationId: delete_asset
       tags:

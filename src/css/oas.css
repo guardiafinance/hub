@@ -1,0 +1,20 @@
+.badge--primary {
+  --ifm-badge-background-color: #17b26a;
+}
+
+.badge--success {
+  --ifm-badge-background-color: #ef6820;
+}
+
+.badge--warning {
+  --ifm-badge-background-color: #ee46bc;
+}
+
+.badge--danger {
+  --ifm-badge-background-color: #f04438;
+}
+
+.badge--info {
+  --ifm-badge-background-color: #2e90fa;
+}
+
