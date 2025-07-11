@@ -489,7 +489,6 @@ paths:
                   description: Unidade de Negocio para produtos de Investimentos.
                   created_at: 2024-11-17T00:00:00.000Z
                   updated_at: 2024-11-17T00:00:00.000Z
-                  discarded_at: null
                   metadata:
                     foo: bar
           x-apidog-name: Created
@@ -707,7 +706,6 @@ paths:
                   description: Unidade de Negocio para produtos de Investimentos.
                   created_at: 2024-11-17T00:00:00.000Z
                   updated_at: 2024-11-17T00:00:00.000Z
-                  discarded_at: null
                   metadata:
                     foo: bar
           headers:
@@ -914,7 +912,6 @@ paths:
                     - NONE
                   created_at: 2024-11-17T00:00:00.000Z
                   updated_at: 2024-11-17T00:00:00.000Z
-                  discarded_at: null
           x-apidog-name: Created
         "400":
           $ref: "#/components/responses/Error400"
@@ -2031,7 +2028,7 @@ components:
           type: array
           items:
             type: string
-        ledger_entity_ids:
+        ledgers:
           type: array
           description: |
             Lista de identificadores únicos das ledgers associadas ao asset.
@@ -2350,12 +2347,10 @@ components:
           description: Código do ativo (aka. moeda) ao qual o book esta associado.
           minLength: 3
           maxLength: 3
-          required: true
           example: USD
         chapter:
           $ref: "#/components/schemas/UUIDv7"
           description: UUIDv7 do chapter ao qual o book pertence.
-          required: false
         metadata:
           $ref: "#/components/schemas/Metadata"
       required:
@@ -2363,6 +2358,7 @@ components:
         - name
         - ledger_entity_id
         - nature
+        - asset
   responses:
     Error400:
       description: Requisição inválida.

@@ -130,7 +130,7 @@ components:
       schema:
         type: string
 
-    EntityIds:
+    ListOfEntityIds:
       name: entity_ids
       in: query
       description: |
@@ -763,12 +763,10 @@ components:
           description: Código do ativo (aka. moeda) ao qual o book esta associado.
           minLength: 3
           maxLength: 3
-          required: true
           example: 'USD'
         chapter:
           $ref: '#/components/schemas/EntityID'
           description: UUIDv7 do chapter ao qual o book pertence.
-          required: false
         metadata:
           $ref: '#/components/schemas/Metadata'
       required:
@@ -776,6 +774,7 @@ components:
         - name
         - ledger_entity_id
         - nature
+        - asset
 
   responses:
     Error400:
