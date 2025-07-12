@@ -1,5 +1,3 @@
-# Política de Segurança | Security Policy | Política de Seguridad
-
 ## 🇧🇷 **Português Brasileiro**
 
 Este é um projeto da **Guardia** e seguimos um processo rigoroso de tratamento de vulnerabilidades.

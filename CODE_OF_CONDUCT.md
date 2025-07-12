@@ -1,6 +1,6 @@
 ![Guardia Logo](./static/img/main-banner.png)
 
-## Português
+## 🇧🇷 **Português Brasileiro**
 
 A Guardia acredita em um ambiente respeitoso, seguro e inclusivo para todos. Para acessar o conteúdo completo e detalhado:
 
@@ -12,7 +12,7 @@ A Guardia acredita em um ambiente respeitoso, seguro e inclusivo para todos. Par
 - Escreva para: [governance@guardia.finance](mailto:governance@guardia.finance)
 - Ou abra uma discussão na [página de discussões](https://github.com/orgs/guardiafinance/discussions/new?category=general)
 
-## Español
+## 🇪🇸 **Español**
 
 La Guardia cree en un entorno respetuoso, seguro e inclusivo para todos. Para leer el contenido completo y detallado:
 
@@ -24,7 +24,7 @@ La Guardia cree en un entorno respetuoso, seguro e inclusivo para todos. Para le
 - Escribe a: [governance@guardia.finance](mailto:governance@guardia.finance)
 - O abre una discusión en la [página de discusiones](https://github.com/orgs/guardiafinance/discussions/new?category=general)
 
-## English
+## 🇺🇸 **English**
 
 Guardia believes in a respectful, safe, and inclusive environment for everyone. To access the full and detailed content:
 
