@@ -2,6 +2,7 @@
 sidebar_position: 3
 keywords: [guardia core banking, core bancario open source, core bancario escalable, ledger transaccional, transacciones en tiempo real]
 ---
+
 # Acuerdo de Licencia de Contribuidor Individual (v1.0)
 
 **Guardia Serviços de Tecnologia Ltda.**
@@ -10,8 +11,8 @@ keywords: [guardia core banking, core bancario open source, core bancario escala
 - [governance@guardia.finance](mailto:governance@guardia.finance)
 
 *Este documento está disponible en otros idiomas:*
-- [English](en/docs/community/governance/CLA.md)
-- [Português](docs/community/governance/CLA.md)
+- [English](../en/docs/community/governance/CLA)
+- [Português](../docs/community/governance/CLA)
 
 Gracias por su interés en contribuir a los proyectos de Guardia. Este Acuerdo de Licencia de Contribuidor ("CLA") garantiza claridad sobre los derechos de propiedad intelectual relacionados con sus contribuciones, protegiendo al Contribuidor, a Guardia y a los demás usuarios.
 

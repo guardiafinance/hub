@@ -1,6 +1,5 @@
 ---
 sidebar_position: 1
-sidebar_class_name: sidebar-item
 ---
 
 import MermaidDiagram from '@site/src/components/MermaidDiagram';
@@ -93,6 +92,7 @@ graph LR
     class J,M decision;
 ```
 </MermaidDiagram>
+
 ## Fluxo de Trabalho para Pair Programming
 
 Caso esteja trabalhando em um fluxo de pair programming, veja também o [Fluxo de Trabalho para Pair Programming com Forks Individuais](../tutorials/pair-program-workflow.md) para mais informações.
