@@ -1,7 +1,3 @@
----
-sidebar_position: 4
----
-
 # Política de Segurança | Security Policy | Política de Seguridad
 
 ## 🇧🇷 **Português Brasileiro**
