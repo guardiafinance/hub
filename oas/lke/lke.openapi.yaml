@@ -406,6 +406,149 @@ paths:
       x-apidog-status: developing
       x-apidog-maintainer: Fernando Seguim
       x-run-in-apidog: https://app.apidog.com/web/project/719079/apis/api-11718082-run
+  /v1/ledgers/{entity_id}/assets:
+    post:
+      summary: Adiciona um asset ao ledger
+      description: Associa um asset existente ao ledger especificado através do código do asset.
+      operationId: add_asset_to_ledger
+      tags:
+        - Ledgers
+      parameters:
+        - $ref: './components.openapi.yaml#/components/parameters/EntityIdParam'
+        - $ref: './components.openapi.yaml#/components/parameters/IdempotencyKey'
+        - $ref: './components.openapi.yaml#/components/parameters/Accept'
+        - $ref: './components.openapi.yaml#/components/parameters/AcceptLanguage'
+        - $ref: './components.openapi.yaml#/components/parameters/ContentType'
+        - $ref: './components.openapi.yaml#/components/parameters/CorrelationId'
+      requestBody:
+        required: true
+        content:
+          application/vnd.guardia.v1+json:
+            schema:
+              type: object
+              required:
+                - code
+              properties:
+                code:
+                  type: string
+                  description: "Código do asset que será associado ao ledger (ex.: BRL, BTC)."
+      responses:
+        '201':
+          description: Asset associado com sucesso.
+          headers:
+            Cache-Control:
+              $ref: './components.openapi.yaml#/components/headers/Cache-Control'
+            Content-Digest:
+              $ref: './components.openapi.yaml#/components/headers/Content-Digest'
+            Content-Language:
+              $ref: './components.openapi.yaml#/components/headers/Content-Language'
+            Content-Length:
+              $ref: './components.openapi.yaml#/components/headers/Content-Length'
+            Content-Type:
+              $ref: './components.openapi.yaml#/components/headers/Content-Type'
+            Idempotency-Key:
+              $ref: './components.openapi.yaml#/components/headers/Idempotency-Key'
+            Last-Modified:
+              $ref: './components.openapi.yaml#/components/headers/Last-Modified'
+            X-Grd-Correlation-Id:
+              $ref: './components.openapi.yaml#/components/headers/X-Grd-Correlation-Id'
+            X-Grd-Trace-Id:
+              $ref: './components.openapi.yaml#/components/headers/X-Grd-Trace-Id'
+            X-RateLimit-Limit:
+              $ref: './components.openapi.yaml#/components/headers/X-RateLimit-Limit'
+            X-RateLimit-Remaining:
+              $ref: './components.openapi.yaml#/components/headers/X-RateLimit-Remaining'
+            X-RateLimit-Reset:
+              $ref: './components.openapi.yaml#/components/headers/X-RateLimit-Reset'
+          content:
+            application/vnd.guardia.v1+json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: './components.openapi.yaml#/components/schemas/LedgerAssetBinding'
+        '400':
+          $ref: './components.openapi.yaml#/components/responses/Error400'
+        '401':
+          $ref: './components.openapi.yaml#/components/responses/Error401'
+        '403':
+          $ref: './components.openapi.yaml#/components/responses/Error403'
+        '404':
+          $ref: './components.openapi.yaml#/components/responses/Error404'
+        '409':
+          $ref: './components.openapi.yaml#/components/responses/Error409'
+        '422':
+          $ref: './components.openapi.yaml#/components/responses/Error422'
+        '429':
+          $ref: './components.openapi.yaml#/components/responses/Error429'
+        '500':
+          $ref: './components.openapi.yaml#/components/responses/Error500'
+      security: []
+    delete:
+      summary: Remove um asset do ledger
+      description: Remove a associação de um asset existente do ledger especificado através do código do asset.
+      operationId: remove_asset_from_ledger
+      tags:
+        - Ledgers
+      parameters:
+        - $ref: './components.openapi.yaml#/components/parameters/EntityIdParam'
+        - $ref: './components.openapi.yaml#/components/parameters/Accept'
+        - $ref: './components.openapi.yaml#/components/parameters/AcceptLanguage'
+        - $ref: './components.openapi.yaml#/components/parameters/ContentType'
+        - $ref: './components.openapi.yaml#/components/parameters/CorrelationId'
+      requestBody:
+        required: true
+        content:
+          application/vnd.guardia.v1+json:
+            schema:
+              type: object
+              required:
+                - code
+              properties:
+                code:
+                  type: string
+                  description: Código do asset que será removido do ledger.
+      responses:
+        '204':
+          description: Asset removido com sucesso.
+          headers:
+            Cache-Control:
+              $ref: './components.openapi.yaml#/components/headers/Cache-Control'
+            Content-Language:
+              $ref: './components.openapi.yaml#/components/headers/Content-Language'
+            Content-Length:
+              $ref: './components.openapi.yaml#/components/headers/Content-Length'
+            Content-Type:
+              $ref: './components.openapi.yaml#/components/headers/Content-Type'
+            Last-Modified:
+              $ref: './components.openapi.yaml#/components/headers/Last-Modified'
+            X-Grd-Correlation-Id:
+              $ref: './components.openapi.yaml#/components/headers/X-Grd-Correlation-Id'
+            X-Grd-Trace-Id:
+              $ref: './components.openapi.yaml#/components/headers/X-Grd-Trace-Id'
+            X-RateLimit-Limit:
+              $ref: './components.openapi.yaml#/components/headers/X-RateLimit-Limit'
+            X-RateLimit-Remaining:
+              $ref: './components.openapi.yaml#/components/headers/X-RateLimit-Remaining'
+            X-RateLimit-Reset:
+              $ref: './components.openapi.yaml#/components/headers/X-RateLimit-Reset'
+        '400':
+          $ref: './components.openapi.yaml#/components/responses/Error400'
+        '401':
+          $ref: './components.openapi.yaml#/components/responses/Error401'
+        '403':
+          $ref: './components.openapi.yaml#/components/responses/Error403'
+        '404':
+          $ref: './components.openapi.yaml#/components/responses/Error404'
+        '409':
+          $ref: './components.openapi.yaml#/components/responses/Error409'
+        '422':
+          $ref: './components.openapi.yaml#/components/responses/Error422'
+        '429':
+          $ref: './components.openapi.yaml#/components/responses/Error429'
+        '500':
+          $ref: './components.openapi.yaml#/components/responses/Error500'
+      security: []
   /v1/chapters:
     post:
       summary: Cria um novo chapter

@@ -448,6 +448,35 @@ components:
         metadata:
           $ref: '#/components/schemas/Metadata'
 
+    LedgerAssetBinding:
+      type: object
+      description: Representa a associação entre um ledger e um asset, incluindo informações específicas do vínculo.
+      properties:
+        ledger_entity_id:
+          $ref: '#/components/schemas/EntityID'
+          description: Identificador único do ledger.
+        asset_entity_id:
+          $ref: '#/components/schemas/EntityID'
+          description: Identificador único do asset.
+        code:
+          type: string
+          description: Código do asset vinculado.
+          minLength: 3
+          maxLength: 10
+        number:
+          type: string
+          description: Número de identificação do asset vinculado.
+          minLength: 3
+          maxLength: 10
+        exponent:
+          type: number
+          description: Expoente do asset vinculado.
+          minimum: 0
+          maximum: 10
+        binded_at:
+          $ref: '#/components/schemas/DateTime'
+          description: Data e hora em que o asset foi vinculado ao ledger.
+
     Metadata:
       type: object
       description: Os metadados a serem adicionados à entidade devem ser fornecidos como pares de chave-valor em um formato de objeto JSON, com chave e valor como strings. O tamanho maximo do objeto deve ser 1MB.
@@ -725,7 +754,7 @@ components:
           minLength: 3
           maxLength: 128
           description: Nome único do book dentro do ledger.
-        ledger_entity_id:
+        ledger:
           $ref: '#/components/schemas/EntityID'
           description: UUIDv7 do ledger ao qual o book pertence.
         nature:
@@ -764,9 +793,6 @@ components:
           minLength: 3
           maxLength: 3
           example: 'USD'
-        chapter:
-          $ref: '#/components/schemas/EntityID'
-          description: UUIDv7 do chapter ao qual o book pertence.
         metadata:
           $ref: '#/components/schemas/Metadata'
       required:
